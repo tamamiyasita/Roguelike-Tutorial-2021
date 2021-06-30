@@ -2,16 +2,15 @@ extends "res://Actors/Actor.gd"
 
 
 
+
+
 func _ready() -> void:
-	add_to_group("enemy")
-	
+	add_to_group("actor")	
+
+
 	
 func take_turn() -> void:
 	random_walk()
-
-
-func turn_ready() -> void:
-	is_turn_complete = false
 
 
 func random_walk() -> void:

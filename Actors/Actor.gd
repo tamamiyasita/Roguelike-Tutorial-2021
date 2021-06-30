@@ -79,8 +79,11 @@ func move_animation(direction) -> void:
 func turn_complete() -> void:
 	is_turn_complete = true
 	get_tree().call_group("main", "turn_change")
-	print("complete")
-	
+	print("turn_change 送信")
+
+func turn_ready() -> void:
+	is_turn_complete = false
+	print(self.name, " ok!")
 
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	turn_complete()
