@@ -12,9 +12,11 @@ const INPUT_KEY :Dictionary = {
 	"down_left": Vector2(-1, 1),
 	}
 
+func _ready() -> void:
+	is_turn_complete = false
 
 func _unhandled_input(event: InputEvent) -> void:
-	if tween.is_active() == false:
+	if tween.is_active() == false and not is_turn_complete:
 		for direction in INPUT_KEY.keys():
 			if event.is_action_pressed(direction):
 				var direction_tile = INPUT_KEY[direction] * TILE_SIZE
@@ -32,5 +34,3 @@ func collider_check(collider) -> void:
 		DOOR:
 			print("door open")
 			
-
-	

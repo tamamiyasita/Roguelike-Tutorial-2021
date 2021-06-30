@@ -2,6 +2,8 @@ tool
 class_name Actor
 extends Area2D
 
+signal turn_change
+
 const TILE_SIZE := 32
 
 enum {WALL = 2, ENEMY = 4, DOOR = 8}
@@ -15,6 +17,7 @@ export (bool) var move_anime = true
 
 var direction
 
+var is_turn_complete := false
 
 func _ready() -> void:
 	sprite.texture = texture
@@ -54,6 +57,7 @@ func collider_check(collider) -> void:
 func move(direction) -> void:
 	if not move_anime:
 		position += direction
+		turn_complete()
 	else:
 		move_animation(direction)
 	
@@ -70,3 +74,19 @@ func move_animation(direction) -> void:
 		
 	)
 	tween.start()
+
+
+func turn_complete() -> void:
+	is_turn_complete = true
+	get_tree().call_group("main", "turn_change")
+	print("complete")
+	
+
+func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
+	turn_complete()
+	print("tween")
+
+
+
+#func _on_Tween_tween_all_completed() -> void:
+#	turn_complete()
