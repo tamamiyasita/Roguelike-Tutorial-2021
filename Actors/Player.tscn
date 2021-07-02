@@ -1,19 +1,94 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Actors/Actor.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Actors/Player.gd" type="Script" id=2]
+[ext_resource path="res://image/player_walk.png" type="Texture" id=2]
 [ext_resource path="res://image/player.png" type="Texture" id=3]
 
+[sub_resource type="GDScript" id=1]
+script/source = "extends Actor
+
+
+const INPUT_KEY :Dictionary = {
+	\"right\": Vector2.RIGHT,
+	\"left\": Vector2.LEFT,
+	\"up\": Vector2.UP,
+	\"down\": Vector2.DOWN,
+	\"up_right\": Vector2(1, -1),
+	\"up_left\": Vector2(-1, -1),
+	\"down_right\": Vector2(1, 1),
+	\"down_left\": Vector2(-1, 1),
+	}
+
+func _ready() -> void:
+	is_turn_complete = false
+	
+	
+
+func _unhandled_input(event: InputEvent) -> void:
+	if tween.is_active() == false and not is_turn_complete:
+		for direction in INPUT_KEY.keys():
+			if event.is_action_pressed(direction):
+				var direction_tile = INPUT_KEY[direction] * TILE_SIZE
+				neighbor_search(direction_tile)
+
+
+func collider_check(collider, direction) -> void:
+	var tile_search = ray.get_collider().collision_layer
+	print(tile_search)
+	match tile_search:
+		WALL:
+			print(\"is wall\")
+		ENEMY:
+			print(\"enemy pop!\")
+		DOOR:
+			door_check(collider, direction)
+			print(\"door open\")
+			
+"
+
+[sub_resource type="StreamTexture" id=2]
+load_path = "res://.import/player.png-1f689d969e4228c2cd397b4c95a320de.stex"
+
+[sub_resource type="Animation" id=3]
+resource_name = "walk"
+length = 0.2
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.02, 0.18, 0.2 ),
+"transitions": PoolRealArray( 1, 0.31864, 0.68302, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -7 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 0.0544094 ),
+"update": 1,
+"values": [ ExtResource( 2 ), SubResource( 2 ) ]
+}
+
 [node name="Player" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
+collision_layer = 1
+script = SubResource( 1 )
 texture = ExtResource( 3 )
 move_anime = true
-
-[node name="Sprite" parent="." index="0"]
-texture = ExtResource( 3 )
 
 [node name="RayCast2D" parent="." index="2"]
 collision_mask = 14
 
 [node name="Camera2D" type="Camera2D" parent="." index="4"]
 current = true
+
+[node name="AnimationPlayer" parent="." index="5"]
+anims/walk = SubResource( 3 )

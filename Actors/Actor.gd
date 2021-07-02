@@ -41,10 +41,10 @@ func neighbor_search(direction) -> void:
 	if not collider:
 		move(direction)
 	else:
-		collider_check(collider)
+		collider_check(collider, direction)
 
 
-func collider_check(collider) -> void:
+func collider_check(collider, direction) -> void:
 	var tile_search = ray.get_collider().collision_layer
 	match tile_search:
 		WALL:
@@ -62,7 +62,15 @@ func move(direction) -> void:
 	else:
 		move_animation(direction)
 	is_turn_complete = true
+
+
+func door_check(collider, direction) -> void:
+	if collider.is_open:
+		move(direction)
+	else:
+		collider.open_door()
 	
+
 	
 func move_animation(direction) -> void:
 	print(position," pos")

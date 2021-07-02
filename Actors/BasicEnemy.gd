@@ -24,7 +24,7 @@ func random_walk() -> void:
 	neighbor_search(direction_tile)
 
 
-func collider_check(collider) -> void:
+func collider_check(collider, direction) -> void:
 	var tile_search = ray.get_collider().collision_layer
 	match tile_search:
 		WALL:
@@ -35,4 +35,4 @@ func collider_check(collider) -> void:
 		ENEMY:
 			turn_complete()
 		DOOR:
-			pass
+			turn_complete()

@@ -23,9 +23,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			if event.is_action_pressed(direction):
 				var direction_tile = INPUT_KEY[direction] * TILE_SIZE
 				neighbor_search(direction_tile)
+				is_turn_complete = true
 
 
-func collider_check(collider) -> void:
+func collider_check(collider, direction) -> void:
 	var tile_search = ray.get_collider().collision_layer
 	print(tile_search)
 	match tile_search:
@@ -34,5 +35,6 @@ func collider_check(collider) -> void:
 		ENEMY:
 			print("enemy pop!")
 		DOOR:
+			door_check(collider, direction)
 			print("door open")
 			

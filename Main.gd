@@ -22,15 +22,12 @@ func turn_switch() -> void:
 			if enemy.is_turn_complete == false:
 				enemy.take_turn()
 				break
-			
-				
+
+
 	elif game_state == PLAYAR_TURN:
 		if player.is_turn_complete == true:
 			get_tree().call_group("actor", "turn_ready")
 			player.is_turn_complete = false
-			
-		
-
 
 
 func game_turn_start() -> void:
