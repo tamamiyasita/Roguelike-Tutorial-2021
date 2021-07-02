@@ -14,6 +14,8 @@ const INPUT_KEY :Dictionary = {
 
 func _ready() -> void:
 	is_turn_complete = false
+	
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	if tween.is_active() == false and not is_turn_complete:

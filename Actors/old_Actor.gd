@@ -1,5 +1,5 @@
 tool
-class_name Actor
+class_name Old_Actor
 extends Area2D
 
 signal turn_change
@@ -56,7 +56,7 @@ func collider_check(collider) -> void:
 	
 
 func move(direction) -> void:
-	position += direction
+#	position += direction
 	if not move_anime:
 		turn_complete()
 	else:
@@ -71,10 +71,10 @@ func move_animation(direction) -> void:
 	anime.play('walk')
 	
 	tween.interpolate_property(
-		anime,
+		self,
 		"position",
-		Vector2.ZERO,
-		direction,
+		position,
+		position+direction,
 		anime.current_animation_length,
 		Tween.TRANS_SINE,
 		Tween.EASE_IN_OUT
