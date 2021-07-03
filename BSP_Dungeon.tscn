@@ -1,0 +1,122 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://image/wall.png" type="Texture" id=1]
+[ext_resource path="res://image/floor.jpg" type="Texture" id=2]
+[ext_resource path="res://BSP_Dungeon.gd" type="Script" id=3]
+[ext_resource path="res://map_object/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=7]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 28, 28, 4, 28, 4, 4, 28, 4 )
+
+[sub_resource type="TileSet" id=2]
+0/name = "wall_0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "floor_0"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 32, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Actor
+
+
+const INPUT_KEY :Dictionary = {
+	\"right\": Vector2.RIGHT,
+	\"left\": Vector2.LEFT,
+	\"up\": Vector2.UP,
+	\"down\": Vector2.DOWN,
+	\"up_right\": Vector2(1, -1),
+	\"up_left\": Vector2(-1, -1),
+	\"down_right\": Vector2(1, 1),
+	\"down_left\": Vector2(-1, 1),
+	}
+
+func _ready() -> void:
+	is_turn_complete = false
+	
+	
+
+func _unhandled_input(event: InputEvent) -> void:
+	if tween.is_active() == false and not is_turn_complete:
+		for direction in INPUT_KEY.keys():
+			if event.is_action_pressed(direction):
+				var direction_tile = INPUT_KEY[direction] * TILE_SIZE
+				neighbor_search(direction_tile)
+
+
+func collider_check(collider, direction) -> void:
+	var tile_search = ray.get_collider().collision_layer
+	print(tile_search)
+	match tile_search:
+		WALL:
+			print(\"is wall\")
+		ENEMY:
+			print(\"enemy pop!\")
+		DOOR:
+			door_check(collider, direction)
+			print(\"door open\")
+			
+
+func start_positon(point):
+	position = point
+
+
+
+
+func _on_BSP_Dungeon_player_point(point) -> void:
+	start_positon(point)
+"
+
+[node name="BSP_Dungeon" type="TileMap"]
+tile_set = SubResource( 2 )
+cell_size = Vector2( 32, 32 )
+cell_y_sort = true
+show_collision = true
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, -65518, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 18, 0, 0, 131071, 0, 0, 65536, 1, 0, 65537, 1, 0, 65538, 0, 0, 65539, 1, 0, 65541, 0, 0, 65554, 0, 0, 196607, 0, 0, 131072, 1, 0, 131076, 0, 0, 131083, 0, 0, 131085, 0, 0, 131090, 0, 0, 262143, 0, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196615, 0, 0, 196616, 1, 0, 196617, 0, 0, 196618, 1, 0, 196620, 0, 0, 196626, 0, 0, 327679, 0, 0, 262144, 1, 0, 262145, 1, 0, 262146, 0, 0, 262147, 1, 0, 262149, 1, 0, 262150, 0, 0, 262151, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262162, 0, 0, 393215, 0, 0, 327681, 0, 0, 327682, 1, 0, 327683, 2, 0, 327684, 1, 0, 327685, 2, 0, 327686, 1, 0, 327693, 0, 0, 327698, 0, 0, 458751, 0, 0, 393217, 1, 0, 393218, 1, 0, 393219, 0, 0, 393220, 0, 0, 393222, 2, 0, 393223, 2, 0, 393224, 1, 0, 393229, 0, 0, 393234, 0, 0, 524287, 0, 0, 458754, 0, 0, 458758, 1, 0, 458765, 0, 0, 458770, 0, 0, 589823, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524306, 0, 0, 655359, 0, 0, 589832, 0, 0, 589842, 0, 0, 720895, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0 )
+script = ExtResource( 3 )
+
+[node name="Door" parent="." instance=ExtResource( 4 )]
+position = Vector2( 48, 144 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 656, 640 )
+scale = Vector2( -24.8488, 2.62957 )
+current = true
+zoom = Vector2( 4, 4 )
+
+[node name="Player" parent="." groups=[
+"player",
+] instance=ExtResource( 7 )]
+script = SubResource( 3 )

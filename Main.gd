@@ -3,7 +3,7 @@ extends Node
 
 
 onready var enemies = $Dungeon/Enemy.get_children()
-onready var player = $Dungeon/Player
+onready var player = $Dungeon/BSP_Dungeon/Player
 
 enum  {PLAYAR_TURN, ENEMY_TURN, MENUE}
 

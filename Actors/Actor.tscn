@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Actors/old_Actor.gd" type="Script" id=1]
-[ext_resource path="res://image/player_walk.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.28164, 7.59011 )
@@ -43,13 +42,15 @@ script = ExtResource( 1 )
 move_anime = false
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 3 )
+centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 16, 16 )
 shape = SubResource( 1 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 modulate = Color( 1, 0.470588, 0.470588, 1 )
+position = Vector2( 16, 16 )
 cast_to = Vector2( 0, 35 )
 collision_mask = 2
 collide_with_areas = true

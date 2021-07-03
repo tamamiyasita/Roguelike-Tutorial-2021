@@ -38,3 +38,5 @@ func collider_check(collider, direction) -> void:
 			door_check(collider, direction)
 			print("door open")
 			
+func start_positon(point):
+	position = point
