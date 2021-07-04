@@ -40,7 +40,7 @@ func generate() -> void:
 	clear_deadends()
 	enemy_place(rooms)
 	door_place()
-	
+	update_bitmask_region(Vector2.ZERO, Vector2(map_w, map_h))
 	
 	var point = rooms[0].center
 	print(point, "point")
@@ -237,6 +237,7 @@ func create_rooms() -> void:
 		for x in range(r.x, r.x + r.w):
 			for y in range(r.y, r.y + r.h):
 				set_cell(x, y, FLOOR)
+				
 	
 
 func join_rooms() -> void:
