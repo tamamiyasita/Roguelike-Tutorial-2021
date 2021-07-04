@@ -8,5 +8,6 @@ func _ready() -> void:
 
 func open_door() -> void:
 	is_open = true
+	$CollisionShape2D.disabled = true
 	anime.play('open')
 	

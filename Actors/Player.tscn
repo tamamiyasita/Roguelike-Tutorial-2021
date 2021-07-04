@@ -77,6 +77,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ ExtResource( 2 ), SubResource( 2 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("shadow:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.529412, 0.494118, 0.494118, 1 ), Color( 0.529412, 0.494118, 0.494118, 0.709804 ), Color( 0.529412, 0.494118, 0.494118, 1 ) ]
+}
 
 [node name="Player" instance=ExtResource( 1 )]
 collision_layer = 1
@@ -84,22 +96,17 @@ script = SubResource( 1 )
 texture = ExtResource( 3 )
 move_anime = true
 
-[node name="Sprite" parent="." index="0"]
-position = Vector2( -16, -16 )
-centered = false
+[node name="shadow" parent="." index="0"]
+modulate = Color( 0.854902, 0.827451, 0.827451, 1 )
 
-[node name="CollisionShape2D" parent="." index="1"]
-position = Vector2( 16, 16 )
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 2 )
 
-[node name="RayCast2D" parent="." index="2"]
-position = Vector2( 16, 16 )
+[node name="RayCast2D" parent="." index="3"]
 collision_mask = 14
 
 [node name="Camera2D" type="Camera2D" parent="." index="4"]
 current = true
 
-[node name="AnimationPlayer" parent="." index="5"]
+[node name="AnimationPlayer" parent="." index="6"]
 anims/walk = SubResource( 3 )
-
-[node name="Position2D" type="Position2D" parent="." index="6"]
-position = Vector2( -16, -16 )

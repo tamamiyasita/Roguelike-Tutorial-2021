@@ -1,15 +1,17 @@
+tool
 extends TileMap
 
 export(int) var map_w := 40
 export(int) var map_h := 40
-export(int) var min_room_size := 8
+export(int) var min_room_size := 5
 export(float, 0.2, 0.5) var min_room_factor := 0.4
+
+export(bool) var redraw setget redraw
 
 var WALL :int = tile_set.find_tile_by_name("wall_0")
 var FLOOR :int = tile_set.find_tile_by_name("floor_0")
 
-var UT = preload("res://Util.tscn")
-var Util = UT.instance()
+var Util = preload("res://Util.tscn").instance()
 
 var tree := {}
 var leaves := []
@@ -17,9 +19,16 @@ var leaf_id :int = 0
 var rooms := []
 
 onready var player :Area2D = $Player
+onready var enemies :Node = $Enemies
+onready var doors :Node = $Doors
+
+var rats = preload('res://Actors/CheeseRat.tscn')
+var door = preload('res://map_object/Door.tscn')
+
 
 func _ready() -> void:
 	generate()
+	
 
 func generate() -> void:
 	clear()
@@ -29,10 +38,110 @@ func generate() -> void:
 	create_rooms()
 	join_rooms()
 	clear_deadends()
+	enemy_place(rooms)
+	door_place()
 	
 	
 	var point = rooms[0].center
+	print(point, "point")
 	player.position = map_to_world(point)
+	
+	
+func enemy_place(rooms) -> void:
+	var enemy_point := []
+	var choice_num := 5
+	randomize()
+	for room in rooms:
+		if room == rooms[0]:
+			continue
+		for r in range(choice_num):
+			var center_x = int(room.center[0])
+			var center_y = int(room.center[1])
+			var x = randi() % int(room["w"]) + room.x
+			var y = randi() % int(room["h"]) + room.y
+			if get_cell(x, y) == FLOOR:
+				var point :Vector2 = Vector2(x, y)
+				if !(point) in enemy_point:
+					enemy_point.append(point)
+					
+	for p in enemy_point:
+		var rat = rats.instance()
+
+		rat.position = map_to_world(p)
+		enemies.add_child(rat)
+	
+func door_place() -> void:
+	var door_point_list := []
+	for x in range(0, map_w):
+		for y in range(0, map_h):
+			if get_cell(x, y) == FLOOR:
+				var door_point 
+				
+				if get_cell(x+1, y) == WALL and get_cell(x-1, y) == WALL and \
+				 get_cell(x, y+1) == FLOOR and get_cell(x, y-1) == FLOOR:
+					if get_cell(x, y+2) == FLOOR and get_cell(x, y-2) == FLOOR:
+						
+						if get_cell(x+1, y+1) == FLOOR or get_cell(x-1, y-1) == FLOOR or \
+							get_cell(x+1, y-1) == FLOOR or get_cell(x-1, y+1) == FLOOR: 
+								
+							if get_cell(x+2, y+2) == FLOOR or get_cell(x-2, y-2) == FLOOR or \
+							get_cell(x+2, y-2) == FLOOR or get_cell(x-2, y+2) == FLOOR: 
+								if next_door(Vector2(x,y), door_point_list):
+									door_point = Vector2(x,y)
+									door_point_list.append(door_point)
+
+						elif get_cell(x-1, y+1) == FLOOR or get_cell(x-1, y-1) == FLOOR: 
+							if get_cell(x-2, y+2) == FLOOR or get_cell(x-2, y-2) == FLOOR: 
+								if next_door(Vector2(x,y), door_point_list):
+									door_point = Vector2(x,y)
+									door_point_list.append(door_point)
+					
+				if get_cell(x+1, y) == FLOOR and get_cell(x-1, y) == FLOOR and \
+				 get_cell(x, y+1) == WALL and get_cell(x, y-1) == WALL:
+					if get_cell(x+2, y) == FLOOR and get_cell(x-2, y) == FLOOR:
+						
+						if get_cell(x+1, y+1) == FLOOR or get_cell(x-1, y-1) == FLOOR or \
+							get_cell(x+1, y-1) == FLOOR or get_cell(x-1, y+1) == FLOOR: 
+								
+							if get_cell(x+2, y+2) == FLOOR or get_cell(x-2, y-2) == FLOOR or \
+							get_cell(x+2, y-2) == FLOOR or get_cell(x-2, y+2) == FLOOR: 
+								if next_door(Vector2(x,y), door_point_list):
+									door_point = Vector2(x,y)
+									door_point_list.append(door_point)
+								
+						elif get_cell(x-1, y+1) == FLOOR or get_cell(x-1, y-1) == FLOOR: 
+							if get_cell(x-2, y+2) == FLOOR or get_cell(x-2, y-2) == FLOOR: 
+								if next_door(Vector2(x,y), door_point_list):
+									door_point = Vector2(x,y)
+									door_point_list.append(door_point)
+				
+								
+	for point in door_point_list:
+		var d = door.instance()
+		d.position = map_to_world(point)
+		doors.add_child(d)
+		
+func next_door(point, door_point):
+	for d in door_point:
+		if d.x+1 == point.x and d.y == point.y:
+			return false
+		if d.x-1 == point.x and d.y == point.y:
+			return false
+
+		if d.y+1 == point.y and d.x == point.x:
+			return false		
+		if d.y-1 == point.y and d.x == point.x:
+			return false		
+	return true
+	
+			
+func redraw(value=null):
+	
+	if !Engine.is_editor_hint():
+		return
+	generate()
+	
+	
 	
 func fill_roof() -> void:
 	for x in range(0, map_w):

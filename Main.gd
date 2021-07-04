@@ -2,7 +2,7 @@ class_name Main
 extends Node
 
 
-onready var enemies = $Dungeon/Enemy.get_children()
+onready var enemies = $Dungeon/BSP_Dungeon/Enemies.get_children()
 onready var player = $Dungeon/BSP_Dungeon/Player
 
 enum  {PLAYAR_TURN, ENEMY_TURN, MENUE}
