@@ -1,45 +1,48 @@
 class_name Main
-extends Node
+extends TileMap
 
 
-onready var enemies = $Dungeon/BSP_Dungeon/Enemies.get_children()
 onready var player = $Dungeon/BSP_Dungeon/Player
+var enemies
 
 enum  {PLAYAR_TURN, ENEMY_TURN, MENUE}
 
 
 var game_state = PLAYAR_TURN
 
-var actors := []
+var current_actor = player
 
 func _ready() -> void:
-	turn_switch()
+	turn_switch(player)
 
 
-func turn_switch() -> void:
-	if game_state == ENEMY_TURN:
-		for enemy in enemies:
-			if enemy.is_turn_complete == false:
-				enemy.take_turn()
-				break
-
-
-	elif game_state == PLAYAR_TURN:
+func turn_switch(current_actor) -> void:
+	if current_actor == player:
+		game_state = PLAYAR_TURN
+	else:
+		game_state = ENEMY_TURN
+		
+		
+	if game_state == PLAYAR_TURN:
 		if player.is_turn_complete == true:
-			get_tree().call_group("actor", "turn_ready")
 			player.is_turn_complete = false
+			
+	elif game_state == ENEMY_TURN:
+		current_actor.take_turn()
 
 
 func game_turn_start() -> void:
-	
-	actors.append_array(enemies)
-	
-	for actor in actors:
-		if actor.is_turn_complete == false:
-			game_state = ENEMY_TURN
-			break
-		game_state = PLAYAR_TURN
+	enemies = $Dungeon/BSP_Dungeon/Enemies.get_children()
+	current_actor = player
+	if enemies:
+		for enemy in enemies:
+			if enemy.is_turn_complete == false:
+				current_actor = enemy
+				break
+				
+	if current_actor == player:
+		get_tree().call_group("actor", "turn_ready")
 		
-	turn_switch()
+	turn_switch(current_actor)
 
 

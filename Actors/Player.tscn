@@ -1,60 +1,37 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Actors/Actor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://image/player_walk.png" type="Texture" id=2]
 [ext_resource path="res://image/player.png" type="Texture" id=3]
+[ext_resource path="res://Actors/Player.gd" type="Script" id=4]
+[ext_resource path="res://image/gb4.png" type="Texture" id=5]
+[ext_resource path="res://image/gb1.png" type="Texture" id=6]
+[ext_resource path="res://image/gb3.png" type="Texture" id=7]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Actor
-
-
-const INPUT_KEY :Dictionary = {
-	\"right\": Vector2.RIGHT,
-	\"left\": Vector2.LEFT,
-	\"up\": Vector2.UP,
-	\"down\": Vector2.DOWN,
-	\"up_right\": Vector2(1, -1),
-	\"up_left\": Vector2(-1, -1),
-	\"down_right\": Vector2(1, 1),
-	\"down_left\": Vector2(-1, 1),
-	}
-
-func _ready() -> void:
-	is_turn_complete = false
-	
-	
-
-func _unhandled_input(event: InputEvent) -> void:
-	if tween.is_active() == false and not is_turn_complete:
-		for direction in INPUT_KEY.keys():
-			if event.is_action_pressed(direction):
-				var direction_tile = INPUT_KEY[direction] * TILE_SIZE
-				neighbor_search(direction_tile)
-
-
-func collider_check(collider, direction) -> void:
-	var tile_search = ray.get_collider().collision_layer
-	print(tile_search)
-	match tile_search:
-		WALL:
-			print(\"is wall\")
-		ENEMY:
-			print(\"enemy pop!\")
-		DOOR:
-			door_check(collider, direction)
-			print(\"door open\")
-			
-"
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 2, 2.5, 2.9, 3.4, 3.7, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 3 ) ]
+}
 
 [sub_resource type="StreamTexture" id=2]
 load_path = "res://.import/player.png-1f689d969e4228c2cd397b4c95a320de.stex"
 
 [sub_resource type="Animation" id=3]
-resource_name = "walk"
 length = 0.2
 step = 0.02
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("Position2D/Sprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -66,47 +43,66 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -7 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:texture")
+tracks/1/path = NodePath("Position2D/Sprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 0.0544094 ),
+"times": PoolRealArray( 0, 0.02, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 0.0544094 ),
 "update": 1,
-"values": [ ExtResource( 2 ), SubResource( 2 ) ]
+"values": [ ExtResource( 3 ), ExtResource( 2 ), SubResource( 2 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("shadow:modulate")
+tracks/2/path = NodePath("Position2D/shadow:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"transitions": PoolRealArray( 1, 0.267943, 1 ),
 "update": 0,
 "values": [ Color( 0.529412, 0.494118, 0.494118, 1 ), Color( 0.529412, 0.494118, 0.494118, 0.709804 ), Color( 0.529412, 0.494118, 0.494118, 1 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Position2D/shadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.75, 1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="StreamTexture" id=4]
+flags = 4
+load_path = "res://.import/shadow.png-933a40835afcc17c83c194c13369a3bd.stex"
 
 [node name="Player" instance=ExtResource( 1 )]
 collision_layer = 1
-script = SubResource( 1 )
+script = ExtResource( 4 )
 texture = ExtResource( 3 )
-move_anime = true
 
-[node name="shadow" parent="." index="0"]
-modulate = Color( 0.854902, 0.827451, 0.827451, 1 )
-
-[node name="Sprite" parent="." index="1"]
-texture = ExtResource( 2 )
-
-[node name="RayCast2D" parent="." index="3"]
-collision_mask = 14
-
-[node name="Camera2D" type="Camera2D" parent="." index="4"]
+[node name="Camera2D" type="Camera2D" parent="." index="0"]
 current = true
 
-[node name="AnimationPlayer" parent="." index="6"]
+[node name="RayCast2D" parent="." index="2"]
+collision_mask = 14
+
+[node name="AnimationPlayer" parent="." index="3"]
+autoplay = ""
+anims/idle = SubResource( 1 )
 anims/walk = SubResource( 3 )
+
+[node name="shadow" parent="Position2D" index="0"]
+modulate = Color( 0.529412, 0.494118, 0.494118, 1 )
+texture = SubResource( 4 )
+
+[node name="Sprite" parent="Position2D" index="1"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 3 )

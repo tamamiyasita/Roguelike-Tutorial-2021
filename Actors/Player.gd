@@ -16,14 +16,18 @@ func _ready() -> void:
 	is_turn_complete = false
 	
 	
+	
+#func _process(delta: float) -> void:
+#	anime.play("idle")
+	
+
 
 func _unhandled_input(event: InputEvent) -> void:
-	if tween.is_active() == false and not is_turn_complete:
+	if not is_turn_complete:
 		for direction in INPUT_KEY.keys():
 			if event.is_action_pressed(direction):
 				var direction_tile = INPUT_KEY[direction] * TILE_SIZE
 				neighbor_search(direction_tile)
-				is_turn_complete = true
 
 
 func collider_check(collider, direction) -> void:
@@ -33,7 +37,8 @@ func collider_check(collider, direction) -> void:
 		WALL:
 			print("is wall")
 		ENEMY:
-			print("enemy pop!")
+			print("enemy depop!")
+			collider.queue_free()
 		DOOR:
 			door_check(collider, direction)
 			print("door open")

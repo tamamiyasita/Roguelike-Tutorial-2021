@@ -1,18 +1,14 @@
 extends "res://Actors/Actor.gd"
 
 
-
-
-
 func _ready() -> void:
 	add_to_group("actor")	
 
 
 	
 func take_turn() -> void:
-	if is_turn_complete == false:
-		random_walk()
-	is_turn_complete = true
+#	is_turn_complete = true
+	random_walk()
 
 
 func random_walk() -> void:

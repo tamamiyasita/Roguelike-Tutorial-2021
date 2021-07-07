@@ -14,20 +14,14 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Actors/Actor.gd"
 }, {
-"base": "Node",
+"base": "TileMap",
 "class": "Main",
 "language": "GDScript",
 "path": "res://Main.gd"
-}, {
-"base": "Area2D",
-"class": "Old_Actor",
-"language": "GDScript",
-"path": "res://Actors/old_Actor.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
-"Main": "",
-"Old_Actor": ""
+"Main": ""
 }
 
 [application]

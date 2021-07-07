@@ -9,8 +9,7 @@ const TILE_SIZE := 32
 enum {PLAYER=1,  WALL = 2, ENEMY = 4, DOOR = 8}
 
 onready var ray :RayCast2D = $RayCast2D
-onready var sprite: Sprite = $Sprite
-onready var tween: Tween = $Tween
+onready var sprite: Sprite = $Position2D/Sprite
 onready var anime: AnimationPlayer = $AnimationPlayer
 
 export (Texture) var texture 
@@ -18,18 +17,21 @@ export (bool) var move_anime = true
 
 var direction
 
-var is_turn_complete := false
+var is_turn_complete := true
 
 func _ready() -> void:
 	sprite.texture = texture
 	ray.set_collide_with_areas(true)
 
+func _process(delta: float) -> void:
+	if !anime.is_playing():
+		anime.play('idle')
 
 func flip_h_switching(direction) -> void:
 	if direction.x > 0:
-		$Sprite.flip_h = false
+		sprite.flip_h = false
 	elif direction.x < 0:
-		$Sprite.flip_h = true
+		sprite.flip_h = true
 
 
 func neighbor_search(direction) -> void:
@@ -61,7 +63,6 @@ func move(direction) -> void:
 		turn_complete()
 	else:
 		move_animation(direction)
-	is_turn_complete = true
 
 
 func door_check(collider, direction) -> void:
@@ -69,31 +70,17 @@ func door_check(collider, direction) -> void:
 		move(direction)
 	else:
 		collider.open_door()
-	
 
-	
+
 func move_animation(direction) -> void:
-	print(position," pos")
-	print(direction," dir")
-	
-	anime.play('walk')
-	
-	tween.interpolate_property(
-		anime,
-		"position",
-		Vector2.ZERO,
-		direction,
-		anime.current_animation_length,
-		Tween.TRANS_SINE,
-		Tween.EASE_IN_OUT
-		
-	)
-	tween.start()
 
-	
+	anime.play('walk')
+	yield(get_tree(),'idle_frame')
+	turn_complete()
 
 
 func turn_complete() -> void:
+	is_turn_complete = true
 	get_tree().call_group("main", "game_turn_start")
 	print("turn_change 送信")
 
@@ -104,5 +91,7 @@ func turn_ready() -> void:
 	print(self.name, " ok!")
 
 
-func _on_Tween_tween_all_completed() -> void:
-	turn_complete()
+
+
+
+

@@ -1,17 +1,48 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Actors/old_Actor.gd" type="Script" id=1]
+[ext_resource path="res://Actors/Actor.gd" type="Script" id=1]
 [ext_resource path="res://image/shadow.png" type="Texture" id=2]
+[ext_resource path="res://image/cheese_rat1.png" type="Texture" id=3]
+[ext_resource path="res://image/cheese_rat.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.28164, 7.59011 )
 
 [sub_resource type="Animation" id=2]
-resource_name = "walk"
+resource_name = "idle"
+length = 2.0
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.75, 1, 1.55, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, -1 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.75, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 3 ) ]
+}
+
+[sub_resource type="Animation" id=3]
 length = 0.15
 step = 0.025
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("Position2D/Sprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -23,7 +54,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -10 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:scale")
+tracks/1/path = NodePath("Position2D/Sprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -35,7 +66,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.15, 0.85 ), Vector2( 1.25, 1 ), Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("shadow:modulate")
+tracks/2/path = NodePath("Position2D/shadow:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -47,7 +78,7 @@ tracks/2/keys = {
 "values": [ Color( 0.529412, 0.494118, 0.494118, 1 ), Color( 1, 1, 1, 0 ), Color( 0.513726, 0.490196, 0.490196, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("shadow:scale")
+tracks/3/path = NodePath("Position2D/shadow:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -64,15 +95,6 @@ position = Vector2( 16, 16 )
 collision_layer = 0
 collision_mask = 15
 script = ExtResource( 1 )
-move_anime = false
-
-[node name="shadow" type="Sprite" parent="."]
-modulate = Color( 0.529412, 0.494118, 0.494118, 1 )
-texture = ExtResource( 2 )
-centered = false
-
-[node name="Sprite" type="Sprite" parent="."]
-centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 16, 16 )
@@ -85,9 +107,18 @@ cast_to = Vector2( 0, 35 )
 collision_mask = 2
 collide_with_areas = true
 
-[node name="Tween" type="Tween" parent="."]
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/walk = SubResource( 2 )
+autoplay = "idle"
+anims/idle = SubResource( 2 )
+anims/walk = SubResource( 3 )
 
-[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 16, 16 )
+
+[node name="shadow" type="Sprite" parent="Position2D"]
+modulate = Color( 0.513726, 0.490196, 0.490196, 1 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Position2D"]
+position = Vector2( 0, -0.0750662 )
+scale = Vector2( 1.2, 1 )
