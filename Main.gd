@@ -4,6 +4,7 @@ extends TileMap
 
 onready var player = $Dungeon/BSP_Dungeon/Player
 var enemies
+var active_enemy = []
 
 enum  {PLAYAR_TURN, ENEMY_TURN, MENUE}
 
@@ -12,37 +13,51 @@ var game_state = PLAYAR_TURN
 
 var current_actor = player
 
-func _ready() -> void:
-	turn_switch(player)
 
+func request_move(c, direction) -> void:
+	c.is_turn_complete = true
+	c.position += direction
+	
+	game_turn_start()
+	
+func request_pass(c) -> void:
+	c.is_turn_complete = true
+	game_turn_start()
 
-func turn_switch(current_actor) -> void:
-	if current_actor == player:
-		game_state = PLAYAR_TURN
-	else:
-		game_state = ENEMY_TURN
-		
-		
-	if game_state == PLAYAR_TURN:
-		if player.is_turn_complete == true:
-			player.is_turn_complete = false
-			
-	elif game_state == ENEMY_TURN:
-		current_actor.take_turn()
+func _process(delta: float) -> void:
+#
+	for e in active_enemy:
+		yield(get_tree(),'idle_frame')
+		e.take_turn()
+		break
+
+	if active_enemy.empty():
+		player.is_turn_complete = false
+		get_tree().call_group("actor", "turn_ready")
+
+	active_enemy.clear()
+	set_process(false)
+
 
 
 func game_turn_start() -> void:
 	enemies = $Dungeon/BSP_Dungeon/Enemies.get_children()
-	current_actor = player
-	if enemies:
-		for enemy in enemies:
-			if enemy.is_turn_complete == false:
-				current_actor = enemy
-				break
-				
-	if current_actor == player:
-		get_tree().call_group("actor", "turn_ready")
+	if player.is_turn_complete == true:
+		if enemies:
+			for enemy in enemies:
+				if enemy.is_turn_complete == false and enemy.visible == true:
+					active_enemy.append(enemy)
+					break
+#	for e in active_enemy:
+#		yield(get_tree(),'idle_frame')
+#		e.take_turn()
+#		break
+#
+#	if active_enemy.empty():
+#		player.is_turn_complete = false
+#		get_tree().call_group("actor", "turn_ready")
+#
+#	active_enemy.clear()
+	set_process(true)
 		
-	turn_switch(current_actor)
-
 

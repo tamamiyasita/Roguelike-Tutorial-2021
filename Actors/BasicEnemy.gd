@@ -4,10 +4,12 @@ extends "res://Actors/Actor.gd"
 func _ready() -> void:
 	add_to_group("actor")	
 
+#func _process(delta: float) -> void:
+#	set_process(false)
+#	set_process(true)
 
 	
 func take_turn() -> void:
-#	is_turn_complete = true
 	random_walk()
 
 
@@ -24,11 +26,14 @@ func collider_check(collider, direction) -> void:
 	var tile_search = ray.get_collider().collision_layer
 	match tile_search:
 		WALL:
-			turn_complete()
+#			print("tyu-!1")
+			get_tree().call_group("main", "request_pass",self)
 		PLAYER:
-			print("tyu-!")
-			turn_complete()
+			get_tree().call_group("main", "request_pass",self)
+			print("tyu-!2")
 		ENEMY:
-			turn_complete()
+			get_tree().call_group("main", "request_pass",self)
+#			print("tyu-!3")
 		DOOR:
-			turn_complete()
+			get_tree().call_group("main", "request_pass",self)
+#			print("tyu-!4")

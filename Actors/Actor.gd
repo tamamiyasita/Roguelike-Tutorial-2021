@@ -13,7 +13,6 @@ onready var sprite: Sprite = $Position2D/Sprite
 onready var anime: AnimationPlayer = $AnimationPlayer
 
 export (Texture) var texture 
-export (bool) var move_anime = true
 
 var direction
 
@@ -58,11 +57,8 @@ func collider_check(collider, direction) -> void:
 	
 
 func move(direction) -> void:
-	position += direction
-	if not move_anime:
-		turn_complete()
-	else:
-		move_animation(direction)
+	get_tree().call_group("main", "request_move", self, direction)
+	move_animation(direction)
 
 
 func door_check(collider, direction) -> void:
@@ -75,20 +71,10 @@ func door_check(collider, direction) -> void:
 func move_animation(direction) -> void:
 
 	anime.play('walk')
-	yield(get_tree(),'idle_frame')
-	turn_complete()
-
-
-func turn_complete() -> void:
-	is_turn_complete = true
-	get_tree().call_group("main", "game_turn_start")
-	print("turn_change 送信")
-
 
 
 func turn_ready() -> void:
 	is_turn_complete = false
-	print(self.name, " ok!")
 
 
 

@@ -120,5 +120,6 @@ modulate = Color( 0.513726, 0.490196, 0.490196, 1 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-position = Vector2( 0, -0.0750662 )
+position = Vector2( 0, -1 )
 scale = Vector2( 1.2, 1 )
+texture = ExtResource( 3 )
