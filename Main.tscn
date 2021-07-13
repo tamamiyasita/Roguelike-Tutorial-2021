@@ -11,11 +11,15 @@ script = ExtResource( 7 )
 
 [node name="Dungeon" type="Node2D" parent="."]
 
-[node name="CanvasModulate" type="CanvasModulate" parent="Dungeon"]
-visible = false
-color = Color( 0, 0, 0, 1 )
-
 [node name="BSP_Dungeon" parent="Dungeon" instance=ExtResource( 1 )]
-min_room_size = 6
+show_behind_parent = true
+min_room_size = 8
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Dungeon"]
+light_mask = 0
+color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
 
 [node name="Dungeon_add_Entity" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2

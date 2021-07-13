@@ -1,16 +1,27 @@
 extends "res://Actors/Actor.gd"
 
+onready var particle :CPUParticles2D = $Position2D/CPUParticles2D
+onready var sprit :Sprite = $Position2D/Sprite
+
 
 func _ready() -> void:
 	add_to_group("actor")	
 
-#func _process(delta: float) -> void:
-#	set_process(false)
-#	set_process(true)
-
+func _process(delta: float) -> void:
+	if !anime.is_playing():
+		anime.play('idle')
+	if is_dead:
+		if particle.emitting == false:
+			queue_free()
 	
 func take_turn() -> void:
 	random_walk()
+
+func dead() -> void:
+	sprit.hide()
+	$Position2D/shadow.hide()
+	particle.emitting = true
+	is_dead = true
 
 
 func random_walk() -> void:

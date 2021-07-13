@@ -42,7 +42,7 @@ func collider_check(collider, direction) -> void:
 			print("is wall")
 		ENEMY:
 			print("enemy depop!")
-			collider.queue_free()
+			collider.dead()
 		DOOR:
 			door_check(collider, direction)
 			print("door open")
@@ -58,12 +58,9 @@ func area_check(areas):
 				fov_ray.cast_to = area.global_position - global_position
 				fov_ray.force_raycast_update()
 				var look = fov_ray.get_collider()
-				if look.collision_layer == 2:
-					look.modulate = Color("ffffff")
-				if look.collision_layer == 5:
-					look.modulate = Color("ffffff")
-					look.occ.hide()
-					look.col.hide()
+				if is_instance_valid(look):		
+					if look.collision_layer == 2 or look.collision_layer == 8:
+						look.light.visible = true
 				
 		areas = []
 
@@ -76,21 +73,21 @@ func enemies_visible_check(enemies) -> void:
 			var look = fov_ray.get_collider()
 			if look == enemy:
 				look.visible = true
-			else:
-				enemy.visible = false
+
 	
 
 func _on_Fov_area_entered(area: Area2D) -> void:
-	if area.collision_layer == 3:
+	if area.collision_layer == 4:
 		if !enemies in area:
 			enemies.append(area)
-	else:
+	if area.collision_layer == 2 or area.collision_layer == 8:
 		areas.append(area)
 
+		
+
 func _on_Fov_area_exited(area: Area2D) -> void:
-	for enemy in enemies:
-		if enemy == area:
-			enemies.erase(enemy)
-			area.visible = false
+	if area.collision_layer == 4:
+		area.visible = false
 			
-#
+#	if area.collision_layer == 2 or area.collision_layer == 8:
+#		area.light.visible = false

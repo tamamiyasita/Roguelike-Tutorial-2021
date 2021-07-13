@@ -59,9 +59,9 @@ func entity_set():
 			walls.add_child(wall)
 		elif tiles[tile] == FLOOR:
 			set_cellv(tile, tiles[tile])
-			var f = floor_obj.instance()
-			f.position = map_to_world(tile)
-			floors.add_child(f)
+#			var f = floor_obj.instance()
+#			f.position = map_to_world(tile)
+#			floors.add_child(f)
 func enemy_place(rooms) -> void:
 	var enemy_point := []
 	var choice_num := 5

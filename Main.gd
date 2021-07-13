@@ -27,9 +27,10 @@ func request_pass(c) -> void:
 func _process(delta: float) -> void:
 #
 	for e in active_enemy:
-		yield(get_tree(),'idle_frame')
-		e.take_turn()
-		break
+#		yield(get_tree(),'idle_frame')
+		if is_instance_valid(e):		
+			e.take_turn()
+			break
 
 	if active_enemy.empty():
 		player.is_turn_complete = false

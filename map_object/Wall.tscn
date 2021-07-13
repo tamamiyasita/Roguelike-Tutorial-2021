@@ -29,3 +29,9 @@ polygon = PoolVector2Array( 0, -16, -16, 0, 0, 16, 16, 0 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 32, 32 )
+
+[node name="Light2D" type="Light2D" parent="."]
+visible = false
+position = Vector2( 16, 16 )
+texture = ExtResource( 1 )
+energy = 0.77

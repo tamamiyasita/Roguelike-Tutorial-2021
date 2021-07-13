@@ -5,14 +5,13 @@
 
 [node name="CheeseRat" instance=ExtResource( 1 )]
 visible = false
-light_mask = 3
-z_index = 1
-collision_mask = 31
+z_index = 2
+collision_mask = 17
 texture = ExtResource( 2 )
 
 [node name="RayCast2D" parent="." index="1"]
 collision_mask = 15
 collide_with_areas = false
 
-[node name="shadow" parent="Position2D" index="0"]
+[node name="shadow" parent="Position2D" index="1"]
 modulate = Color( 0.529412, 0.494118, 0.494118, 1 )

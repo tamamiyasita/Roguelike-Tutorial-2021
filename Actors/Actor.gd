@@ -12,6 +12,8 @@ onready var ray :RayCast2D = $RayCast2D
 onready var sprite: Sprite = $Position2D/Sprite
 onready var anime: AnimationPlayer = $AnimationPlayer
 
+var is_dead := false
+
 export (Texture) var texture 
 
 var direction

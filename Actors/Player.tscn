@@ -39,10 +39,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.02, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 0.31864, 0.68302, 0.435275 ),
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 0.68302, 0.435275 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -7 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, -7 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Position2D/Sprite:texture")
@@ -117,18 +117,22 @@ modulate = Color( 0.529412, 0.494118, 0.494118, 1 )
 texture = SubResource( 4 )
 
 [node name="Sprite" parent="Position2D" index="1"]
+position = Vector2( 0, 0 )
 scale = Vector2( 1, 1 )
 texture = ExtResource( 3 )
 
 [node name="Light2D" type="Light2D" parent="." index="6"]
 position = Vector2( 16, 16 )
-scale = Vector2( 0.8, 0.8 )
+scale = Vector2( 0.796825, 0.796825 )
 texture = ExtResource( 8 )
 texture_scale = 1.05
 energy = 1.1
+range_item_cull_mask = 5
 shadow_enabled = true
-shadow_gradient_length = 1.0
-shadow_filter_smooth = 3.3
+shadow_gradient_length = 1.5
+shadow_filter = 5
+shadow_filter_smooth = 4.2
+shadow_item_cull_mask = 5
 
 [node name="Fov" type="Area2D" parent="." index="7"]
 position = Vector2( 16, 16 )
