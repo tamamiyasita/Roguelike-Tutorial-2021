@@ -2,6 +2,7 @@ extends "res://Actors/Actor.gd"
 
 onready var particle :CPUParticles2D = $Position2D/CPUParticles2D
 onready var sprit :Sprite = $Position2D/Sprite
+onready var a_star_path = find_parent("BSP_Dungeon")
 
 
 func _ready() -> void:
@@ -14,14 +15,20 @@ func _process(delta: float) -> void:
 		if particle.emitting == false:
 			queue_free()
 	
-func take_turn() -> void:
-	random_walk()
+func take_turn(direction) -> void:
+#	random_walk()
+	basic_ai(direction)
 
 func dead() -> void:
 	sprit.hide()
 	$Position2D/shadow.hide()
 	particle.emitting = true
 	is_dead = true
+	
+func basic_ai(direction) -> void:
+	var path = a_star_path.get_astar_path(position, direction)[-1]
+	neighbor_search(path)
+	
 
 
 func random_walk() -> void:

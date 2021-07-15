@@ -1,3 +1,4 @@
+class_name Astar_path
 extends TileMap
 
 const PATH_LINE_WIDTH = 2.0
@@ -17,12 +18,14 @@ var _point_path = []
 onready var astar_node = AStar2D.new()
 
 # get_used_cells_by_id()メソッドで壁になっているタイルセットIDをリストで得る
-onready var obstacles = get_used_cells_by_id(1)
+#onready var obstacles
+# = tile_set.find_tile_by_name("wall_0")
 onready var _half_cell_size = cell_size / 2
 
-func _ready() -> void:
-	var walkable_cell_list = astar_add_walkable_cells(obstacles)
-	astar_connect_walkable_cells(walkable_cell_list)
+
+#func _ready() -> void:
+#	var walkable_cell_list = astar_add_walkable_cells(obstacles)
+#	astar_connect_walkable_cells(walkable_cell_list)
 	
 func _draw() -> void:
 	if not _point_path:
@@ -57,7 +60,7 @@ func astar_add_walkable_cells(obstacle_list = []):
 	
 
 # 上下左右のpointを接続する
-func astar_connect_walkable_cells(point_array):
+func astar_connect_walkable_cells(points_array):
 	for point in points_array:
 		var point_index = calculate_point_index(point)
 		# マップの各セルの隣接したセルをチェックする
@@ -71,13 +74,13 @@ func astar_connect_walkable_cells(point_array):
 			var point_relative_index = calculate_point_index(point_relative)
 			if is_outside_map_bounds(point_relative):
 				continue
-			if not astar_node.has_point(point_relative):
+			if not astar_node.has_point(point_relative_index):
 				continue
 			astar_node.connect_points(point_index, point_relative_index, false)
 			
 # 上記のバリエーション、上下左右斜めにpointを接続する
 func astar_connect_walkable_cells_diagonal(points_array):
-	for point in point_array:
+	for point in points_array:
 		var point_index = calculate_point_index(point)
 		for local_y in range(3):
 			for local_x in range(3):
@@ -90,7 +93,7 @@ func astar_connect_walkable_cells_diagonal(points_array):
 				astar_node.connect_points(point_index, point_relative_index, true)
 				
 				
-func calclulate_point_index(point):
+func calculate_point_index(point):
 	return point.x + map_size.x * point.y
 
 
@@ -120,8 +123,8 @@ func get_astar_path(world_start, world_end):
 	
 func _recalculate_path():
 	clear_previous_path_drawing()
-	var start_point_index = calclulate_point_index(path_start_position)
-	var end_point_index = calclulate_point_index(path_end_position)
+	var start_point_index = calculate_point_index(path_start_position)
+	var end_point_index = calculate_point_index(path_end_position)
 	
 	_point_path = astar_node.get_point_path(start_point_index, end_point_index)
 	
@@ -141,6 +144,17 @@ func _set_path_start_position(value):
 		_recalculate_path()
 	
 
+func _set_path_end_position(value):
+	if value in obstacles:
+		return
+	if is_outside_map_bounds(value):
+		return
+	
+	set_cell(path_start_position.x, path_start_position.y, -1)
+	set_cell(value.x, value.y, 2)
+	path_end_position = value
+	if path_start_position != value:
+		_recalculate_path()
 
 
 

@@ -15,12 +15,18 @@ _global_script_classes=[ {
 "path": "res://Actors/Actor.gd"
 }, {
 "base": "TileMap",
+"class": "Astar_path",
+"language": "GDScript",
+"path": "res://astar_path.gd"
+}, {
+"base": "TileMap",
 "class": "Main",
 "language": "GDScript",
 "path": "res://Main.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
+"Astar_path": "",
 "Main": ""
 }
 
