@@ -1,4 +1,4 @@
-extends Astar_path
+extends TileMap
 
 export(int) var map_w := 40
 export(int) var map_h := 40
@@ -54,7 +54,7 @@ func entity_set():
 	for tile in tiles:
 		if tiles[tile] == WALL:
 			set_cellv(tile, tiles[tile])
-			obstacles.append(tiles[tile])
+			obstacles.append(Vector2(tile))
 
 			var wall = wall_obj.instance()
 			wall.position = map_to_world(tile)
@@ -64,8 +64,7 @@ func entity_set():
 #			var f = floor_obj.instance()
 #			f.position = map_to_world(tile)
 #			floors.add_child(f)
-	var walkable_cell_list = astar_add_walkable_cells(obstacles)
-	astar_connect_walkable_cells(walkable_cell_list)
+
 func enemy_place(rooms) -> void:
 	var enemy_point := []
 	var choice_num := 5

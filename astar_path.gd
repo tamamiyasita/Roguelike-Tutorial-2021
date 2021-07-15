@@ -18,15 +18,16 @@ var _point_path = []
 onready var astar_node = AStar2D.new()
 
 # get_used_cells_by_id()メソッドで壁になっているタイルセットIDをリストで得る
-#onready var obstacles
+onready var obstacles = get_node('BSP_Dungeon').obstacles
 # = tile_set.find_tile_by_name("wall_0")
 onready var _half_cell_size = cell_size / 2
 
 
-#func _ready() -> void:
-#	var walkable_cell_list = astar_add_walkable_cells(obstacles)
-#	astar_connect_walkable_cells(walkable_cell_list)
-	
+func _ready() -> void:
+	print(obstacles)
+	var walkable_cell_list = astar_add_walkable_cells(obstacles)
+	astar_connect_walkable_cells(walkable_cell_list)
+
 func _draw() -> void:
 	if not _point_path:
 		return

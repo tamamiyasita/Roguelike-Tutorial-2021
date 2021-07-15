@@ -2,7 +2,7 @@ extends "res://Actors/Actor.gd"
 
 onready var particle :CPUParticles2D = $Position2D/CPUParticles2D
 onready var sprit :Sprite = $Position2D/Sprite
-onready var a_star_path = find_parent("BSP_Dungeon")
+onready var a_star_path = find_parent("Dungeon")
 
 
 func _ready() -> void:
@@ -26,7 +26,9 @@ func dead() -> void:
 	is_dead = true
 	
 func basic_ai(direction) -> void:
-	var path = a_star_path.get_astar_path(position, direction)[-1]
+	var path = a_star_path.get_astar_path(position, direction)
+	path = path[0]/32
+	
 	neighbor_search(path)
 	
 
@@ -48,7 +50,7 @@ func collider_check(collider, direction) -> void:
 			get_tree().call_group("main", "request_pass",self)
 		PLAYER:
 			get_tree().call_group("main", "request_pass",self)
-			print("tyu-!2")
+			print("tyu-! player-!")
 		ENEMY:
 			get_tree().call_group("main", "request_pass",self)
 #			print("tyu-!3")
