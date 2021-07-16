@@ -26,10 +26,12 @@ func dead() -> void:
 	is_dead = true
 	
 func basic_ai(direction) -> void:
-	var path = a_star_path.get_astar_path(position, direction)
-	path = path[0]/32
-	
-	neighbor_search(path)
+	var path = a_star_path.get_astar_path(global_position, direction)
+	path = path[1]
+	var dist = path.distance_to(direction)
+	var d = (path - global_position)
+	print(d)
+	neighbor_search(d)
 	
 
 

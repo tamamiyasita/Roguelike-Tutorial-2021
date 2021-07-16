@@ -24,7 +24,6 @@ onready var _half_cell_size = cell_size / 2
 
 
 func _ready() -> void:
-	print(obstacles)
 	var walkable_cell_list = astar_add_walkable_cells(obstacles)
 	astar_connect_walkable_cells(walkable_cell_list)
 
@@ -117,7 +116,8 @@ func get_astar_path(world_start, world_end):
 	_recalculate_path()
 	var path_world = []
 	for point in _point_path:
-		var point_world = map_to_world(Vector2(point.x, point.y)) + _half_cell_size
+		var point_world = map_to_world(Vector2(point.x, point.y))
+#		 + _half_cell_size
 		path_world.append(point_world)
 	return path_world
 	

@@ -47,7 +47,6 @@ func generate() -> void:
 	enemy_place(rooms)
 	door_place()
 	var point = rooms[0].center
-	print(point, "point")
 	player.position = map_to_world(point)
 	
 func entity_set():
