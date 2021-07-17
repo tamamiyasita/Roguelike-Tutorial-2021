@@ -7,10 +7,14 @@ signal turn_change
 const TILE_SIZE := 32
 
 enum {PLAYER=1,  WALL = 2, ENEMY = 4, DOOR = 8}
-
+enum {IDLE, MOVE, ATTACK}
+var state = IDLE
 onready var ray :RayCast2D = $RayCast2D
 onready var sprite: Sprite = $Position2D/Sprite
 onready var anime: AnimationPlayer = $AnimationPlayer
+onready var position2d: Position2D = $Position2D
+onready var tween: Tween = $Position2D/Tween
+onready var fighter: Node = $Fighter
 
 var is_dead := false
 
@@ -23,10 +27,27 @@ var is_turn_complete := true
 func _ready() -> void:
 	sprite.texture = texture
 	ray.set_collide_with_areas(true)
+	
 
 func _process(delta: float) -> void:
+	if state == ATTACK:
+		anime.play("attack")
+		turn_end()
+		
+	if state == MOVE:
+		anime.play('walk')
+		turn_end()
+	
+	
 	if !anime.is_playing():
+		state = IDLE
 		anime.play('idle')
+
+func turn_end() -> void:
+	state = IDLE
+	yield(anime, "animation_finished" )
+	yield(tween, "tween_all_completed" )
+	get_tree().call_group("main", "request_pass",self)
 
 func flip_h_switching(direction) -> void:
 	if direction.x > 0:
@@ -60,7 +81,8 @@ func collider_check(collider, direction) -> void:
 
 func move(direction) -> void:
 	get_tree().call_group("main", "request_move", self, direction)
-	move_animation(direction)
+	state = MOVE
+#	move_animation(direction)
 
 
 func door_check(collider, direction) -> void:

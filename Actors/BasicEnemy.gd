@@ -23,6 +23,7 @@ func dead() -> void:
 	sprit.hide()
 	$Position2D/shadow.hide()
 	particle.emitting = true
+	is_turn_complete = true
 	is_dead = true
 	
 func basic_ai(direction) -> void:
@@ -51,7 +52,7 @@ func collider_check(collider, direction) -> void:
 #			print("tyu-!1")
 			get_tree().call_group("main", "request_pass",self)
 		PLAYER:
-			get_tree().call_group("main", "request_pass",self)
+			attack(collider, direction)
 			print("tyu-! player-!")
 		ENEMY:
 			get_tree().call_group("main", "request_pass",self)
@@ -59,3 +60,14 @@ func collider_check(collider, direction) -> void:
 		DOOR:
 			get_tree().call_group("main", "request_pass",self)
 #			print("tyu-!4")
+
+func attack(collider, direction):
+	state = ATTACK
+	position2d.attack_start(direction)
+	
+	collider.fighter.hp -= (self.fighter.power-collider.fighter.defense)
+
+	print("player HP: ", collider.fighter.hp)
+	if collider.fighter.hp <= 0:
+		collider.dead()
+		print("player dead!")

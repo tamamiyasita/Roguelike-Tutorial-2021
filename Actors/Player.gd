@@ -2,6 +2,7 @@ extends Actor
 
 onready var fov_ray :RayCast2D = $Fovray
 onready var fov :Area2D = $Fov
+
 var enemies := []
 var areas := []
 
@@ -19,20 +20,27 @@ const INPUT_KEY :Dictionary = {
 func _ready() -> void:
 	is_turn_complete = false
 	fov_ray.set_collide_with_areas(true)
-	
+
+
+		
+func start_positon(point):
+	position = point
+
 	
 func parent_path():
 	return get_parent().walls.get_children()
 
 
+
 func _unhandled_input(event: InputEvent) -> void:
-	if not is_turn_complete:
+	if not is_turn_complete and state == IDLE:
 		for direction in INPUT_KEY.keys():
 			if event.is_action_pressed(direction):
 				var direction_tile = INPUT_KEY[direction] * TILE_SIZE
 				neighbor_search(direction_tile)
 				area_check(areas)
 				enemies_visible_check(enemies)
+
 
 func collider_check(collider, direction) -> void:
 	var tile_search = ray.get_collider().collision_layer
@@ -42,13 +50,24 @@ func collider_check(collider, direction) -> void:
 			print("is wall")
 		ENEMY:
 			print("enemy depop!")
-			collider.dead()
+			attack(collider, direction)
 		DOOR:
 			door_check(collider, direction)
 			print("door open")
 			
-func start_positon(point):
-	position = point
+
+func attack(collider, direction):
+	state = ATTACK
+	position2d.attack_start(direction)
+	
+	collider.fighter.hp -= (self.fighter.power-collider.fighter.defense)
+
+	print(collider.name," HP: ", collider.fighter.hp)
+	if collider.fighter.hp <= 0:
+		collider.dead()
+		print("enemy dead!")
+
+
 
 
 func area_check(areas):
@@ -61,7 +80,6 @@ func area_check(areas):
 				if is_instance_valid(look):		
 					if look.collision_layer == 2 or look.collision_layer == 8:
 						look.light.visible = true
-				
 		areas = []
 
 func enemies_visible_check(enemies) -> void:
@@ -74,7 +92,6 @@ func enemies_visible_check(enemies) -> void:
 			if look == enemy:
 				look.visible = true
 
-	
 
 func _on_Fov_area_entered(area: Area2D) -> void:
 	if area.collision_layer == 4:
@@ -91,3 +108,5 @@ func _on_Fov_area_exited(area: Area2D) -> void:
 			
 #	if area.collision_layer == 2 or area.collision_layer == 8:
 #		area.light.visible = false
+
+
