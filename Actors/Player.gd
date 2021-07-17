@@ -110,3 +110,5 @@ func _on_Fov_area_exited(area: Area2D) -> void:
 #		area.light.visible = false
 
 
+
+

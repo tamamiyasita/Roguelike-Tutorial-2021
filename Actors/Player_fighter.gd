@@ -9,6 +9,7 @@ var defense
 var power 
 
 func _ready() -> void:
+	get_tree()
 	max_hp = 10
 	hp = max_hp
 	defense = 1
@@ -18,7 +19,7 @@ func _ready() -> void:
 func set_max(new_max) -> void:
 	max_hp = new_max
 	max_hp = max(1, new_max)
-	emit_signal('max_changed', max_hp)
+	emit_signal('max_changed', hp, max_hp)
 	
 	
 func set_current(new_value):

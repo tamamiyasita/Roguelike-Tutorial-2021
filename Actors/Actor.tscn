@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Actors/Actor.gd" type="Script" id=1]
 [ext_resource path="res://image/shadow.png" type="Texture" id=2]
@@ -14,6 +14,24 @@ extents = Vector2( 7.28164, 7.59011 )
 resource_name = "attack"
 
 [sub_resource type="Animation" id=3]
+resource_name = "damage"
+length = 0.2
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.09, 0.13, 0.166666 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 4, 4, 4, 1 ), Color( 1, 1, 1, 1 ), Color( 4, 4, 4, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
 length = 2.0
 loop = true
 step = 0.05
@@ -42,7 +60,7 @@ tracks/1/keys = {
 "values": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 3 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.15
 step = 0.025
 tracks/0/type = "value"
@@ -112,10 +130,10 @@ collision_mask = 2
 collide_with_areas = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "idle"
 anims/attack = SubResource( 2 )
-anims/idle = SubResource( 3 )
-anims/walk = SubResource( 4 )
+anims/damage = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/walk = SubResource( 5 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 16, 16 )
@@ -126,7 +144,8 @@ modulate = Color( 0.529412, 0.494118, 0.494118, 1 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-position = Vector2( 0, -0.919969 )
+modulate = Color( 3.39371, 3.39371, 3.39371, 1 )
+position = Vector2( 0, -1 )
 texture = ExtResource( 3 )
 
 [node name="Tween" type="Tween" parent="Position2D"]

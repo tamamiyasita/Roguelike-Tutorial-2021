@@ -7,7 +7,7 @@ signal turn_change
 const TILE_SIZE := 32
 
 enum {PLAYER=1,  WALL = 2, ENEMY = 4, DOOR = 8}
-enum {IDLE, MOVE, ATTACK}
+enum {IDLE, MOVE, ATTACK, AMOUNT}
 var state = IDLE
 onready var ray :RayCast2D = $RayCast2D
 onready var sprite: Sprite = $Position2D/Sprite
@@ -37,7 +37,11 @@ func _process(delta: float) -> void:
 	if state == MOVE:
 		anime.play('walk')
 		turn_end()
-	
+		
+	if state == AMOUNT:
+		anime.play('damage')
+		yield(anime, "animation_finished" )
+		state = IDLE
 	
 	if !anime.is_playing():
 		state = IDLE

@@ -14,7 +14,6 @@
 [ext_resource path="res://image/player_attack.png" type="Texture" id=12]
 [ext_resource path="res://Actors/player_Position2D.gd" type="Script" id=13]
 [ext_resource path="res://image/player_idol3.png" type="Texture" id=14]
-[ext_resource path="res://LifeBar.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -42,6 +41,23 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "damage"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 4, 4, 4, 1 ), Color( 1, 1, 1, 1 ), Color( 4, 4, 4, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -142,8 +158,8 @@ current = true
 collision_mask = 14
 
 [node name="AnimationPlayer" parent="." index="4"]
-autoplay = ""
 anims/attack = SubResource( 1 )
+anims/damage = SubResource( 7 )
 anims/idle = SubResource( 2 )
 anims/walk = SubResource( 4 )
 
@@ -154,6 +170,7 @@ script = ExtResource( 13 )
 texture = SubResource( 5 )
 
 [node name="Sprite" parent="Position2D" index="1"]
+modulate = Color( 3.4, 3.4, 3.4, 1 )
 z_index = 4
 texture = ExtResource( 12 )
 
@@ -183,17 +200,6 @@ shape = SubResource( 6 )
 script = ExtResource( 10 )
 max_hp = 3
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="9"]
-
-[node name="LifeBar" parent="CanvasLayer" index="0" instance=ExtResource( 15 )]
-visible = false
-margin_left = 4.0
-margin_top = 304.0
-margin_right = 104.0
-margin_bottom = 316.0
-
 [connection signal="tween_all_completed" from="Position2D/Tween" to="Position2D" method="_on_Tween_tween_all_completed"]
 [connection signal="area_entered" from="Fov" to="." method="_on_Fov_area_entered"]
 [connection signal="area_exited" from="Fov" to="." method="_on_Fov_area_exited"]
-[connection signal="changed" from="Fighter" to="CanvasLayer/LifeBar" method="set_value"]
-[connection signal="max_changed" from="Fighter" to="CanvasLayer/LifeBar" method="set_max"]
