@@ -35,11 +35,13 @@ func parent_path():
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_turn_complete and state == IDLE:
 		for direction in INPUT_KEY.keys():
-			if event.is_action_pressed(direction):
+			if event.is_action(direction):
+				state = ENPTY
 				var direction_tile = INPUT_KEY[direction] * TILE_SIZE
 				neighbor_search(direction_tile)
 				area_check(areas)
 				enemies_visible_check(enemies)
+		
 
 
 func collider_check(collider, direction) -> void:
@@ -48,19 +50,22 @@ func collider_check(collider, direction) -> void:
 	match tile_search:
 		WALL:
 			print("is wall")
+			state = IDLE
 		ENEMY:
 			print("enemy depop!")
+			state = ATTACK
 			attack(collider, direction)
 		DOOR:
 			door_check(collider, direction)
+			state = IDLE
 			print("door open")
 			
 
 func attack(collider, direction):
-	state = ATTACK
 	position2d.attack_start(direction)
 	
 	collider.fighter.hp -= (self.fighter.power-collider.fighter.defense)
+	collider.state = AMOUNT
 
 	print(collider.name," HP: ", collider.fighter.hp)
 	if collider.fighter.hp <= 0:
@@ -109,6 +114,7 @@ func _on_Fov_area_exited(area: Area2D) -> void:
 #	if area.collision_layer == 2 or area.collision_layer == 8:
 #		area.light.visible = false
 
-
+func dead() -> void:
+	get_tree().quit()
 
 

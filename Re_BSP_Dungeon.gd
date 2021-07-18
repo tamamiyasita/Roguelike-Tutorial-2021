@@ -20,7 +20,7 @@ var rooms := []
 var tiles := {}
 var obstacles = []
 
-onready var player :Area2D = $Player
+#onready var player = $Player
 onready var enemies :Node = $Enemies
 onready var doors :Node = $Doors
 onready var walls :Node = $Walls
@@ -31,9 +31,9 @@ var door = preload('res://map_object/Door.tscn')
 var wall_obj = preload('res://map_object/Wall.tscn')
 var floor_obj = preload('res://map_object/Floor.tscn')
 
-func _ready() -> void:
-	generate()
-	
+#func _ready() -> void:
+#	generate()
+#
 
 func generate() -> void:
 	clear()
@@ -46,6 +46,8 @@ func generate() -> void:
 	entity_set()
 	enemy_place(rooms)
 	door_place()
+	
+func set_player_position(player)->void:
 	var point = rooms[0].center
 	player.position = map_to_world(point)
 	

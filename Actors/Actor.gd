@@ -7,7 +7,7 @@ signal turn_change
 const TILE_SIZE := 32
 
 enum {PLAYER=1,  WALL = 2, ENEMY = 4, DOOR = 8}
-enum {IDLE, MOVE, ATTACK, AMOUNT}
+enum {ENPTY, IDLE, MOVE, ATTACK, AMOUNT}
 var state = IDLE
 onready var ray :RayCast2D = $RayCast2D
 onready var sprite: Sprite = $Position2D/Sprite
@@ -32,26 +32,27 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if state == ATTACK:
 		anime.play("attack")
+#		yield(get_tree().create_timer(0.2), "timeout")
 		turn_end()
 		
 	if state == MOVE:
 		anime.play('walk')
-		turn_end()
+#		yield(get_tree(),'idle_frame')
+#		turn_end()
 		
 	if state == AMOUNT:
 		anime.play('damage')
-		yield(anime, "animation_finished" )
 		state = IDLE
 	
-	if !anime.is_playing():
+	if !anime.is_playing() :
 		state = IDLE
 		anime.play('idle')
 
 func turn_end() -> void:
-	state = IDLE
+	state = ENPTY
 	yield(anime, "animation_finished" )
-	yield(tween, "tween_all_completed" )
 	get_tree().call_group("main", "request_pass",self)
+	state = IDLE
 
 func flip_h_switching(direction) -> void:
 	if direction.x > 0:
@@ -84,9 +85,14 @@ func collider_check(collider, direction) -> void:
 	
 
 func move(direction) -> void:
-	get_tree().call_group("main", "request_move", self, direction)
 	state = MOVE
-#	move_animation(direction)
+	position2d.move_start(direction)
+#	yield(tween, "tween_all_completed" )	
+	yield(anime, "animation_finished" )
+	get_tree().call_group("main", "request_pass",self)
+	
+#	get_tree().call_group("main", "request_move", self, direction)
+	state = IDLE
 
 
 func door_check(collider, direction) -> void:
@@ -95,10 +101,6 @@ func door_check(collider, direction) -> void:
 	else:
 		collider.open_door()
 
-
-func move_animation(direction) -> void:
-
-	anime.play('walk')
 
 
 func turn_ready() -> void:

@@ -16,7 +16,6 @@ resource_name = "attack"
 [sub_resource type="Animation" id=3]
 resource_name = "damage"
 length = 0.2
-loop = true
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:modulate")
@@ -25,15 +24,38 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.09, 0.13, 0.166666 ),
+"times": PoolRealArray( 0.01, 0.06, 0.11, 0.15, 0.19 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 4, 4, 4, 1 ), Color( 1, 1, 1, 1 ), Color( 4, 4, 4, 1 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.09, 0.12, 0.15, 0.19 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0, 1 ), Vector2( -1, 0 ), Vector2( 0, -1 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.09, 0.12, 0.15, 0.19 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.15, 1 ), Vector2( 1, 1.15 ), Vector2( 0.95, 1 ), Vector2( 1, 0.95 ), Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 2.0
-loop = true
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:position")
@@ -111,6 +133,20 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 1, 1 ) ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.15 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "turn_end"
+} ]
+}
 
 [node name="Actor" type="Area2D"]
 position = Vector2( 16, 16 )
@@ -144,11 +180,11 @@ modulate = Color( 0.529412, 0.494118, 0.494118, 1 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-modulate = Color( 3.39371, 3.39371, 3.39371, 1 )
-position = Vector2( 0, -1 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="Tween" type="Tween" parent="Position2D"]
 
 [node name="Fighter" type="Node" parent="."]
 script = ExtResource( 5 )
+
+[connection signal="tween_all_completed" from="Position2D/Tween" to="Position2D" method="_on_Tween_tween_all_completed"]

@@ -17,7 +17,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
-length = 0.4
+length = 0.41
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:texture")
 tracks/0/interp = 1
@@ -43,7 +43,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=2]
 resource_name = "damage"
 length = 0.2
 step = 0.01
@@ -54,13 +54,37 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"times": PoolRealArray( 0.01, 0.05, 0.1, 0.15, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 4, 4, 4, 1 ), Color( 1, 1, 1, 1 ), Color( 4, 4, 4, 1 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 0.34151, 2.63902, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( -1, 0 ), Vector2( 1, -1 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.19 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1.15 ), Vector2( 1.15, 1 ), Vector2( 0.95, 0.95 ), Vector2( 1, 1 ) ]
+}
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 7.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:texture")
@@ -75,12 +99,12 @@ tracks/0/keys = {
 "values": [ ExtResource( 3 ), ExtResource( 14 ), ExtResource( 3 ), ExtResource( 14 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 3 ) ]
 }
 
-[sub_resource type="StreamTexture" id=3]
+[sub_resource type="StreamTexture" id=4]
 load_path = "res://.import/player.png-1f689d969e4228c2cd397b4c95a320de.stex"
 
-[sub_resource type="Animation" id=4]
-length = 0.2
-step = 0.02
+[sub_resource type="Animation" id=5]
+length = 0.25
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:position")
 tracks/0/interp = 1
@@ -103,7 +127,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.02, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 0.0544094 ),
 "update": 1,
-"values": [ ExtResource( 3 ), ExtResource( 2 ), SubResource( 3 ) ]
+"values": [ ExtResource( 3 ), ExtResource( 2 ), SubResource( 4 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Position2D/shadow:modulate")
@@ -130,11 +154,11 @@ tracks/3/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.75, 1 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="StreamTexture" id=5]
+[sub_resource type="StreamTexture" id=6]
 flags = 4
 load_path = "res://.import/shadow.png-933a40835afcc17c83c194c13369a3bd.stex"
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=7]
 radius = 160.0
 
 [node name="Player" instance=ExtResource( 1 )]
@@ -144,35 +168,36 @@ collision_mask = 14
 script = ExtResource( 4 )
 texture = ExtResource( 3 )
 
-[node name="Fovray" type="RayCast2D" parent="." index="0"]
+[node name="Camera2D" type="Camera2D" parent="." index="0"]
+position = Vector2( 16, 16 )
+rotating = true
+current = true
+
+[node name="Fovray" type="RayCast2D" parent="." index="1"]
 position = Vector2( 16, 16 )
 cast_to = Vector2( 0, 192 )
 collision_mask = 30
 collide_with_areas = true
 
-[node name="Camera2D" type="Camera2D" parent="." index="1"]
-position = Vector2( 16, 16 )
-current = true
-
 [node name="RayCast2D" parent="." index="3"]
 collision_mask = 14
 
 [node name="AnimationPlayer" parent="." index="4"]
+autoplay = "idle"
 anims/attack = SubResource( 1 )
-anims/damage = SubResource( 7 )
-anims/idle = SubResource( 2 )
-anims/walk = SubResource( 4 )
+anims/damage = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/walk = SubResource( 5 )
 
 [node name="Position2D" parent="." index="5"]
 script = ExtResource( 13 )
 
 [node name="shadow" parent="Position2D" index="0"]
-texture = SubResource( 5 )
+texture = SubResource( 6 )
 
 [node name="Sprite" parent="Position2D" index="1"]
-modulate = Color( 3.4, 3.4, 3.4, 1 )
 z_index = 4
-texture = ExtResource( 12 )
+texture = ExtResource( 3 )
 
 [node name="Light2D" type="Light2D" parent="." index="6"]
 position = Vector2( 16, 16 )
@@ -194,12 +219,11 @@ collision_mask = 30
 script = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fov" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="Fighter" parent="." index="8"]
 script = ExtResource( 10 )
-max_hp = 3
+max_hp = 15
 
-[connection signal="tween_all_completed" from="Position2D/Tween" to="Position2D" method="_on_Tween_tween_all_completed"]
 [connection signal="area_entered" from="Fov" to="." method="_on_Fov_area_entered"]
 [connection signal="area_exited" from="Fov" to="." method="_on_Fov_area_exited"]

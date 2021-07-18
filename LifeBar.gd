@@ -34,3 +34,5 @@ func set_target_value(amount: float) -> void:
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 	if value < 0.2 * max_value:
 		_anime_player.play("danger")
+
+

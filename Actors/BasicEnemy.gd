@@ -66,9 +66,9 @@ func attack(collider, direction):
 	position2d.attack_start(direction)
 	
 	collider.fighter.hp -= (self.fighter.power-collider.fighter.defense)
+	collider.state = AMOUNT
 
 	print("player HP: ", collider.fighter.hp)
 	if collider.fighter.hp <= 0:
-		collider.state = AMOUNT
-		collider.dead()
 		print("player dead!")
+		collider.dead()

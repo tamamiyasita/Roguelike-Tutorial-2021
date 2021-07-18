@@ -28,5 +28,3 @@ color = Color( 1, 1, 0.792157, 1 )
 [node name="shadow" parent="Position2D" index="1"]
 modulate = Color( 0.944636, 0.940484, 0.940484, 0.117649 )
 scale = Vector2( 0.933333, 0.933333 )
-
-[connection signal="tween_all_completed" from="Position2D/Tween" to="Position2D" method="_on_Tween_tween_all_completed"]
