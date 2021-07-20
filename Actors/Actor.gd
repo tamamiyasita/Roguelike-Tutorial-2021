@@ -30,23 +30,27 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
-	if state == ATTACK:
-		anime.play("attack")
-#		yield(get_tree().create_timer(0.2), "timeout")
-		turn_end()
+	if is_dead == false:
+		if state == ATTACK:
+			anime.play("attack")
+	#		yield(get_tree().create_timer(0.2), "timeout")
+			turn_end()
+			
+		if state == MOVE:
+			anime.play('walk')
+	#		yield(get_tree(),'idle_frame')
+	#		turn_end()
+			
+		if state == AMOUNT:
+			anime.play('damage')
+			state = IDLE
 		
-	if state == MOVE:
-		anime.play('walk')
-#		yield(get_tree(),'idle_frame')
-#		turn_end()
+		if !anime.is_playing() :
+			state = IDLE
+			anime.play('idle')
+	else:
+		get_tree().call_group("main", "request_pass",self)
 		
-	if state == AMOUNT:
-		anime.play('damage')
-		state = IDLE
-	
-	if !anime.is_playing() :
-		state = IDLE
-		anime.play('idle')
 
 func turn_end() -> void:
 	state = ENPTY
@@ -104,7 +108,8 @@ func door_check(collider, direction) -> void:
 
 
 func turn_ready() -> void:
-	is_turn_complete = false
+	if is_dead == false:
+		is_turn_complete = false
 
 
 

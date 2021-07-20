@@ -20,6 +20,7 @@ func take_turn(direction) -> void:
 	basic_ai(direction)
 
 func dead() -> void:
+	get_tree().call_group("message", "get_massage", "The {0} is dead".format([self.name]))
 	sprit.hide()
 	$Position2D/shadow.hide()
 	particle.emitting = true
@@ -31,7 +32,7 @@ func basic_ai(direction) -> void:
 	path = path[1]
 	var dist = path.distance_to(direction)
 	var d = (path - global_position)
-	print(d)
+	print(d, "_path_")
 	neighbor_search(d)
 	
 
@@ -65,10 +66,15 @@ func attack(collider, direction):
 	state = ATTACK
 	position2d.attack_start(direction)
 	
-	collider.fighter.hp -= (self.fighter.power-collider.fighter.defense)
+	var damage = (self.fighter.power-collider.fighter.defense)
+	
+	collider.fighter.hp -= damage
 	collider.state = AMOUNT
 
-	print("player HP: ", collider.fighter.hp)
+	print(collider.name," HP: ", collider.fighter.hp)
+	var text = [self.name, collider.name, damage]
+	get_tree().call_group("message", "get_massage", "{0} hit the {1} for {2} damage!".format(text))
+	
 	if collider.fighter.hp <= 0:
 		print("player dead!")
 		collider.dead()

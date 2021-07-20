@@ -81,6 +81,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 3 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 length = 0.15
@@ -180,7 +192,8 @@ modulate = Color( 0.529412, 0.494118, 0.494118, 1 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-texture = ExtResource( 4 )
+position = Vector2( 0, -1 )
+texture = ExtResource( 3 )
 
 [node name="Tween" type="Tween" parent="Position2D"]
 

@@ -21,6 +21,8 @@ func _process(delta: float) -> void:
 #
 	for e in active_enemy:
 #		yield(get_tree(),'idle_frame')
+		if e.is_dead:
+			continue
 		if is_instance_valid(e):		
 			e.take_turn(player.position)
 			break

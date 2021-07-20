@@ -93,5 +93,9 @@ anims/idle = SubResource( 2 )
 modulate = Color( 0.529412, 0.494118, 0.494118, 1 )
 scale = Vector2( 1, 1 )
 
+[node name="Sprite" parent="Position2D" index="2"]
+position = Vector2( 0, 0 )
+texture = ExtResource( 2 )
+
 [node name="Fighter" parent="." index="4"]
 script = ExtResource( 3 )

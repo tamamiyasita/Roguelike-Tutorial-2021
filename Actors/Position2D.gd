@@ -18,7 +18,9 @@ func attack_start(direction):
 	)
 	tween.start()
 	yield(tween, "tween_all_completed" )
-	position = old_pos
+	print(global_position, my_owner.global_position)
+	global_position.x = my_owner.global_position.x +16
+	global_position.y = my_owner.global_position.y +16
 	
 func move_start(direction):
 	tween.interpolate_property(

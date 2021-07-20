@@ -2,12 +2,10 @@ extends Position2D
 
 onready var player = get_parent()
 onready var tween = $Tween
-var old_pos
 func _ready() -> void:
 	pass
 	
 func attack_start(direction):
-	old_pos = position
 	tween.interpolate_property(
 		self,
 		"position",
@@ -19,7 +17,8 @@ func attack_start(direction):
 	)
 	tween.start()
 	yield(tween, "tween_all_completed" )
-	position = old_pos
+	global_position.x = player.global_position.x +16
+	global_position.y = player.global_position.y +16
 	
 func move_start(direction):
 	tween.interpolate_property(

@@ -58,17 +58,23 @@ func collider_check(collider, direction) -> void:
 		DOOR:
 			door_check(collider, direction)
 			state = IDLE
+			get_tree().call_group("message", "get_massage", "{0} opened the door".format([self.name]))
+			
 			print("door open")
 			
 
 func attack(collider, direction):
 	position2d.attack_start(direction)
+	var damage = (self.fighter.power-collider.fighter.defense)
 	
-	collider.fighter.hp -= (self.fighter.power-collider.fighter.defense)
+	collider.fighter.hp -= damage
 	collider.state = AMOUNT
 
 	print(collider.name," HP: ", collider.fighter.hp)
+	var text = [self.name, collider.name, damage]
+	get_tree().call_group("message", "get_massage", "{0} hit the {1} for {2} damage!".format(text))
 	if collider.fighter.hp <= 0:
+		
 		collider.dead()
 		print("enemy dead!")
 

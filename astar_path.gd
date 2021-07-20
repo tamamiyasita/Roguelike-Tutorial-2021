@@ -129,7 +129,7 @@ func _recalculate_path():
 	
 	_point_path = astar_node.get_point_path(start_point_index, end_point_index)
 	
-	update()
+#	update()
 	
 	
 func _set_path_start_position(value):
