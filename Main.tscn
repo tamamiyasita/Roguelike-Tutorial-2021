@@ -257,7 +257,7 @@ script = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 8 )]
 
-[node name="Sprite" parent="Player/Position2D" index="1"]
+[node name="Sprite" parent="Player/Position2D" index="3"]
 texture = SubResource( 1 )
 
 [node name="Dungeon" type="TileMap" parent="."]

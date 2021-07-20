@@ -33,10 +33,12 @@ func parent_path():
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not is_turn_complete and state == IDLE:
+	if not is_turn_complete:
 		for direction in INPUT_KEY.keys():
-			if event.is_action(direction):
-				state = ENPTY
+			if event.is_action_pressed('rest'):
+				turn_end()
+			if event.is_action_pressed(direction):
+				state = _TURN_RUN
 				$Position2D/Camera2D.current = true
 				
 				var direction_tile = INPUT_KEY[direction] * TILE_SIZE
@@ -52,14 +54,14 @@ func collider_check(collider, direction) -> void:
 	match tile_search:
 		WALL:
 			print("is wall")
-			state = IDLE
+			
 		ENEMY:
 			print("enemy depop!")
-			state = ATTACK
+			anime_state = ATTACK
 			attack(collider, direction)
 		DOOR:
 			door_check(collider, direction)
-			state = IDLE
+			anime_state = IDLE
 			get_tree().call_group("message", "get_massage", "{0} opened the door".format([self.name]))
 			
 			print("door open")
@@ -71,7 +73,7 @@ func attack(collider, direction):
 	var damage = (self.fighter.power-collider.fighter.defense)
 	
 	collider.fighter.hp -= damage
-	collider.state = AMOUNT
+	collider.anime_state = AMOUNT
 
 	print(collider.name," HP: ", collider.fighter.hp)
 	var text = [self.name, collider.name, damage]

@@ -18,6 +18,9 @@ func request_pass(c) -> void:
 	game_turn_start()
 
 func _process(delta: float) -> void:
+	if active_enemy.empty():
+		player.is_turn_complete = false
+		get_tree().call_group("actor", "turn_ready")
 #
 	for e in active_enemy:
 #		yield(get_tree(),'idle_frame')
@@ -27,9 +30,6 @@ func _process(delta: float) -> void:
 			e.take_turn(player.position)
 			break
 
-	if active_enemy.empty():
-		player.is_turn_complete = false
-		get_tree().call_group("actor", "turn_ready")
 
 	active_enemy.clear()
 	set_process(false)

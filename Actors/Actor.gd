@@ -6,8 +6,10 @@ signal turn_change
 const TILE_SIZE := 32
 
 enum {PLAYER=1,  WALL = 2, ENEMY = 4, DOOR = 8}
-enum {ENPTY, IDLE, MOVE, ATTACK, AMOUNT}
-var state = IDLE
+enum {_TURN_READY, _TURN_END, _TURN_RUN}
+enum {IDLE, MOVE, ATTACK, AMOUNT}
+var state = _TURN_READY
+var anime_state = IDLE
 onready var ray :RayCast2D = $RayCast2D
 onready var sprite: Sprite = $Position2D/Sprite
 onready var anime: AnimationPlayer = $AnimationPlayer
@@ -29,30 +31,35 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
-	if state == ATTACK:
+	print(anime_state, state)
+	if anime_state == ATTACK:
 		anime.play("attack")
+		yield(anime, "animation_finished" )
+		anime_state = IDLE
+
 		turn_end()
 		
-	if state == MOVE:
+	if anime_state == MOVE:
 		anime.play('walk')
-#		yield(get_tree(),'idle_frame')
-#		turn_end()
+		yield(anime, "animation_finished" )
+		anime_state = IDLE
+
 		
-	if state == AMOUNT:
+	if anime_state == AMOUNT:
 		anime.play('damage')
-		state = IDLE
+		yield(anime, "animation_finished" )
+		anime_state = IDLE
+	
 	
 	if !anime.is_playing() :
-		state = IDLE
+		anime_state = IDLE
 		position2d.global_position = self.global_position+Vector2(16,16)
 		anime.play('idle')
 
 
 func turn_end() -> void:
-	yield(anime, "animation_finished" )
-	state = ENPTY
+	state = _TURN_END
 	get_tree().call_group("main", "request_pass",self)
-	state = IDLE
 
 func flip_h_switching(direction) -> void:
 	if direction.x > 0:
@@ -85,15 +92,16 @@ func collider_check(collider, direction) -> void:
 	
 
 func move(direction) -> void:
-	state = MOVE
+	anime_state = MOVE
 	position2d.move_start(position, direction)
-#	yield(tween, "tween_all_completed" )	
 	yield(get_tree(),'idle_frame')
 
 	get_tree().call_group("main", "request_move",self, direction)
 	
+	
 	yield(anime, "animation_finished" )
-	state = IDLE
+	state = _TURN_END
+	anime_state = IDLE
 
 
 func door_check(collider, direction) -> void:
@@ -106,6 +114,7 @@ func door_check(collider, direction) -> void:
 
 func turn_ready() -> void:
 	if is_dead == false:
+		state = _TURN_READY
 		is_turn_complete = false
 
 

@@ -63,13 +63,13 @@ func collider_check(collider, direction) -> void:
 #			print("tyu-!4")
 
 func attack(collider, direction):
-	state = ATTACK
+	anime_state = ATTACK
 	position2d.attack_start(direction)
 	
 	var damage = (self.fighter.power-collider.fighter.defense)
 	
 	collider.fighter.hp -= damage
-	collider.state = AMOUNT
+	collider.anime_state = AMOUNT
 
 	print(collider.name," HP: ", collider.fighter.hp)
 	var text = [self.name, collider.name, damage]
