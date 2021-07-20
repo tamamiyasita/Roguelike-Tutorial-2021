@@ -9,7 +9,7 @@ var active_enemy = []
 
 func request_move(c, direction) -> void:
 	c.is_turn_complete = true
-#	c.position += direction
+	c.position += direction
 	game_turn_start()
 
 	

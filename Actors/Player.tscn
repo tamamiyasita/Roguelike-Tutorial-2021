@@ -193,39 +193,30 @@ collision_mask = 14
 script = ExtResource( 4 )
 texture = ExtResource( 3 )
 
-[node name="Camera2D" type="Camera2D" parent="." index="0"]
-position = Vector2( 16, 16 )
-rotating = true
-current = true
-
-[node name="Fovray" type="RayCast2D" parent="." index="1"]
+[node name="Fovray" type="RayCast2D" parent="." index="0"]
 position = Vector2( 16, 16 )
 cast_to = Vector2( 0, 192 )
 collision_mask = 30
 collide_with_areas = true
 
-[node name="RayCast2D" parent="." index="3"]
+[node name="RayCast2D" parent="." index="2"]
 collision_mask = 14
 
-[node name="AnimationPlayer" parent="." index="4"]
+[node name="AnimationPlayer" parent="." index="3"]
 autoplay = "idle"
 anims/attack = SubResource( 1 )
 anims/damage = SubResource( 2 )
 anims/idle = SubResource( 3 )
 anims/walk = SubResource( 5 )
 
-[node name="Position2D" parent="." index="5"]
+[node name="Position2D" parent="." index="4"]
 script = ExtResource( 13 )
 
-[node name="shadow" parent="Position2D" index="0"]
-texture = SubResource( 6 )
+[node name="Camera2D" type="Camera2D" parent="Position2D" index="0"]
+rotating = true
+current = true
 
-[node name="Sprite" parent="Position2D" index="1"]
-z_index = 4
-texture = ExtResource( 3 )
-
-[node name="Light2D" type="Light2D" parent="." index="6"]
-position = Vector2( 16, 16 )
+[node name="Light2D" type="Light2D" parent="Position2D" index="1"]
 scale = Vector2( 0.796825, 0.796825 )
 texture = ExtResource( 8 )
 texture_scale = 1.05
@@ -237,7 +228,16 @@ shadow_filter = 5
 shadow_filter_smooth = 4.2
 shadow_item_cull_mask = 5
 
-[node name="Fov" type="Area2D" parent="." index="7"]
+[node name="shadow" parent="Position2D" index="2"]
+texture = SubResource( 6 )
+
+[node name="Sprite" parent="Position2D" index="3"]
+modulate = Color( 1, 1, 1, 0.196078 )
+position = Vector2( 0, 0 )
+z_index = 4
+texture = ExtResource( 3 )
+
+[node name="Fov" type="Area2D" parent="." index="5"]
 position = Vector2( 16, 16 )
 collision_layer = 0
 collision_mask = 30
@@ -246,7 +246,7 @@ script = ExtResource( 9 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fov" index="0"]
 shape = SubResource( 7 )
 
-[node name="Fighter" parent="." index="8"]
+[node name="Fighter" parent="." index="6"]
 script = ExtResource( 10 )
 max_hp = 15
 

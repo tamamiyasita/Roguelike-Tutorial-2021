@@ -1,4 +1,3 @@
-tool
 class_name Actor
 extends Area2D
 
@@ -30,31 +29,28 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
-	if is_dead == false:
-		if state == ATTACK:
-			anime.play("attack")
-	#		yield(get_tree().create_timer(0.2), "timeout")
-			turn_end()
-			
-		if state == MOVE:
-			anime.play('walk')
-	#		yield(get_tree(),'idle_frame')
-	#		turn_end()
-			
-		if state == AMOUNT:
-			anime.play('damage')
-			state = IDLE
+	if state == ATTACK:
+		anime.play("attack")
+		turn_end()
 		
-		if !anime.is_playing() :
-			state = IDLE
-			anime.play('idle')
-	else:
-		get_tree().call_group("main", "request_pass",self)
+	if state == MOVE:
+		anime.play('walk')
+#		yield(get_tree(),'idle_frame')
+#		turn_end()
 		
+	if state == AMOUNT:
+		anime.play('damage')
+		state = IDLE
+	
+	if !anime.is_playing() :
+		state = IDLE
+		position2d.global_position = self.global_position+Vector2(16,16)
+		anime.play('idle')
+
 
 func turn_end() -> void:
-	state = ENPTY
 	yield(anime, "animation_finished" )
+	state = ENPTY
 	get_tree().call_group("main", "request_pass",self)
 	state = IDLE
 
@@ -90,12 +86,13 @@ func collider_check(collider, direction) -> void:
 
 func move(direction) -> void:
 	state = MOVE
-	position2d.move_start(direction)
+	position2d.move_start(position, direction)
 #	yield(tween, "tween_all_completed" )	
-	yield(anime, "animation_finished" )
-	get_tree().call_group("main", "request_pass",self)
+	yield(get_tree(),'idle_frame')
+
+	get_tree().call_group("main", "request_move",self, direction)
 	
-#	get_tree().call_group("main", "request_move", self, direction)
+	yield(anime, "animation_finished" )
 	state = IDLE
 
 

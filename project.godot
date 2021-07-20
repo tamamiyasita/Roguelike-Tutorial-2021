@@ -45,7 +45,6 @@ shapes/collision/draw_2d_outlines=false
 window/dpi/allow_hidpi=true
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
-window/stretch/shrink=2.0
 
 [gui]
 

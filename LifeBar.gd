@@ -15,7 +15,7 @@ func setup(health: float, max_health: float) -> void:
 	max_value = max_health
 	value = health
 	target_value = health
-	_tween.connect("tween_completed", self, "_on_Tween_tween_completed") 
+#	_tween.connect("tween_completed", self, "_on_Tween_tween_completed") 
 	
 func set_target_value(amount: float) -> void:
 	if target_value > amount:

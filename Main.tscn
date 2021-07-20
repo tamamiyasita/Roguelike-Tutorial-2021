@@ -229,17 +229,17 @@ tracks/3/keys = {
 extra_spacing_char = 2
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFontData" id=15]
+[sub_resource type="DynamicFontData" id=9]
 font_path = "res://image/mplus-2m-bold.ttf"
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=10]
 use_mipmaps = true
 use_filter = true
 extra_spacing_char = 1
 font_data = ExtResource( 5 )
-fallback/0 = SubResource( 15 )
+fallback/0 = SubResource( 9 )
 
-[sub_resource type="DynamicFontData" id=13]
+[sub_resource type="DynamicFontData" id=11]
 hinting = 1
 font_path = "res://image/Thintel.ttf"
 
@@ -247,7 +247,7 @@ font_path = "res://image/Thintel.ttf"
 use_mipmaps = true
 use_filter = true
 extra_spacing_space = 1
-font_data = SubResource( 13 )
+font_data = SubResource( 11 )
 
 [node name="Main" type="TileMap" groups=[
 "main",
@@ -367,7 +367,7 @@ margin_left = -148.5
 margin_top = -97.5
 margin_right = 148.5
 margin_bottom = 97.5
-custom_fonts/normal_font = SubResource( 14 )
+custom_fonts/normal_font = SubResource( 10 )
 custom_colors/default_color = Color( 3, 3, 3, 1 )
 bbcode_enabled = true
 bbcode_text = "You entered the dungeon"

@@ -44,8 +44,6 @@ func load_massage() -> void:
 			tex += massage[t]
 		
 		text_box.text = tex
-	if massage.size() > 3:
-		text_box.text.empty()
-#		massage.remove(-1)
+
 
 

@@ -29,7 +29,7 @@ func set_current(new_value):
 
 
 func _initialize():
-	emit_signal('max_changed', max_hp)
+	emit_signal('max_changed',hp, max_hp)
 	emit_signal('changed', hp)
 	
 

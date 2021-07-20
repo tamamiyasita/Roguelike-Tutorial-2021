@@ -1,12 +1,12 @@
 extends Position2D
 onready var my_owner = get_parent()
 onready var tween = $Tween
-var old_pos
+var offset_pos = Vector2(16,16)
+
 func _ready() -> void:
 	pass
 	
 func attack_start(direction):
-	old_pos = position
 	tween.interpolate_property(
 		self,
 		"position",
@@ -18,16 +18,14 @@ func attack_start(direction):
 	)
 	tween.start()
 	yield(tween, "tween_all_completed" )
-	print(global_position, my_owner.global_position)
-	global_position.x = my_owner.global_position.x +16
-	global_position.y = my_owner.global_position.y +16
+	global_position = my_owner.global_position + offset_pos
 	
-func move_start(direction):
+func move_start(pos, direction):
 	tween.interpolate_property(
-		my_owner,
-		"position",
-		my_owner.position,
-		(my_owner.position + direction),
+		self,
+		"global_position",
+		global_position,
+		pos+direction+offset_pos,
 		0.1,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_IN

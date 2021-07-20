@@ -37,6 +37,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		for direction in INPUT_KEY.keys():
 			if event.is_action(direction):
 				state = ENPTY
+				$Position2D/Camera2D.current = true
+				
 				var direction_tile = INPUT_KEY[direction] * TILE_SIZE
 				neighbor_search(direction_tile)
 				area_check(areas)
@@ -64,6 +66,7 @@ func collider_check(collider, direction) -> void:
 			
 
 func attack(collider, direction):
+	$Position2D/Camera2D.current = false
 	position2d.attack_start(direction)
 	var damage = (self.fighter.power-collider.fighter.defense)
 	
