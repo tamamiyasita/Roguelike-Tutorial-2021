@@ -19,9 +19,14 @@ func setup(health: float, max_health: float) -> void:
 #	_tween.connect("tween_completed", self, "_on_Tween_tween_completed") 
 	
 func set_target_value(amount: float) -> void:
-	if target_value > amount:
+	if target_value > amount and value < 0.3 * max_value:
+		_anime_player.play('damage2')
+	elif target_value > amount and value <= 0.7 * max_value:
+		_anime_player.play('damage1')
+	elif target_value > amount and value > 0.7 * max_value:
 		_anime_player.play('damage')
-		
+
+
 	target_value = amount
 	if is_instance_valid(hp_value):		
 		hp_value.text = ("HP " +str(target_value)+"/"+ str(max_value))
@@ -37,9 +42,10 @@ func set_target_value(amount: float) -> void:
 
 
 func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
-	if value < 0.4 * max_value:
+	yield(_anime_player, "animation_finished" )
+	if value < 0.3 * max_value:
 		_anime_player.play("danger")
-	elif value < 0.7 * max_value:
+	elif value <= 0.7 * max_value:
 		_anime_player.play("warning")
 	elif value > 0.7 * max_value:
 		_anime_player.play("normal")
