@@ -35,8 +35,12 @@ func _process(delta: float) -> void:
 		game_turn_start()
 
 func actor_sefe_check(actor) -> bool:
-	return actor.is_turn_complete == false and actor.visible == true\
+	return actor.is_turn_complete == false\
 		and actor.is_dead == false and is_instance_valid(actor)
+		
+func enemy_path_check(enemy) -> bool:
+	print(enemy.paths)
+	return enemy.is_visible() or enemy.paths
 	
 
 
@@ -46,9 +50,10 @@ func game_turn_start() -> void:
 	if enemies:
 		for enemy in enemies:
 			if actor_sefe_check(enemy):
-				active_actor = enemy
-				active_actor.take_turn(player.position)
-				break
+				if enemy_path_check(enemy):
+					active_actor = enemy
+					active_actor.take_turn(player.position)
+					break
 	yield(get_tree(),'idle_frame')# 原因はコレがないから同時判定になってしまったのか
 					
 	if active_actor == null:

@@ -23,7 +23,8 @@ onready var obstacles = get_node('BSP_Dungeon').obstacles
 onready var _half_cell_size = cell_size / 2
 
 
-func _ready() -> void:
+func a_path_ready() -> void:
+	print(obstacles, "obst")
 	var walkable_cell_list = astar_add_walkable_cells(obstacles)
 	astar_connect_walkable_cells_diagonal(walkable_cell_list)
 
@@ -69,6 +70,10 @@ func astar_connect_walkable_cells(points_array):
 			point + Vector2.LEFT,
 			point + Vector2.UP,
 			point + Vector2.DOWN,
+#			point + Vector2(1,1),
+#			point + Vector2(-1,1),
+#			point + Vector2(1,-1),
+#			point + Vector2(-1,-1),
 		])
 		for point_relative in points_relative:
 			var point_relative_index = calculate_point_index(point_relative)

@@ -16,6 +16,7 @@ func _ready() -> void:
 		Dungeon = BSP_Dungeon
 	Dungeon.generate()
 	Dungeon.set_player_position(player)
+	a_path_ready()
 	
 
 

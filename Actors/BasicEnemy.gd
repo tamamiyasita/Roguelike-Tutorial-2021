@@ -3,7 +3,7 @@ extends "res://Actors/Actor.gd"
 onready var particle :CPUParticles2D = $Position2D/CPUParticles2D
 onready var sprit :Sprite = $Position2D/Sprite
 onready var a_star_path = find_parent("Dungeon")
-
+var paths:Array
 
 func _ready() -> void:
 	add_to_group("actor")	
@@ -29,8 +29,9 @@ func dead() -> void:
 	
 func basic_ai(direction) -> void:
 	state = _TURN_RUN
-	var path = a_star_path.get_astar_path(global_position, direction)
-	path = path[1]
+	paths = a_star_path.get_astar_path(global_position, direction)
+	var path = paths[1]
+	
 	var dist = path.distance_to(direction)
 	var d = (path - global_position)
 	print(d, "_path_")
