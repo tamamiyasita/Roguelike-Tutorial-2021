@@ -22,11 +22,13 @@ var obstacles = []
 
 #onready var player = $Player
 onready var enemies :Node = $Enemies
+onready var items:Node = $Items
 onready var doors :Node = $Doors
 onready var walls :Node = $Walls
 onready var floors :Node = $Floors
 
 var rats = preload('res://Actors/CheeseRat.tscn')
+var apples = preload('res://map_object/apple.tscn')
 var door = preload('res://map_object/Door.tscn')
 var wall_obj = preload('res://map_object/Wall.tscn')
 var floor_obj = preload('res://map_object/Floor.tscn')
@@ -45,6 +47,7 @@ func generate() -> void:
 	clear_deadends()
 	entity_set()
 	enemy_place(rooms)
+	item_place(rooms)
 	door_place()
 	
 func set_player_position(player)->void:
@@ -89,6 +92,31 @@ func enemy_place(rooms) -> void:
 
 		rat.position = map_to_world(p)
 		enemies.add_child(rat)
+		
+		
+func item_place(rooms) -> void:
+	var item_point := []
+	var choice_num := 5
+	randomize()
+	for room in rooms:
+		if room == rooms[0]:
+			continue
+		for r in range(choice_num):
+			var center_x = int(room.center[0])
+			var center_y = int(room.center[1])
+			var x = randi() % int(room["w"]) + room.x
+			var y = randi() % int(room["h"]) + room.y
+			print(get_cell(x, y))
+			if get_cell(x, y) == FLOOR:
+				var point :Vector2 = Vector2(x, y)
+				if !(point) in item_point:
+					item_point.append(point)
+					
+	for p in item_point:
+		var apple = apples.instance()
+
+		apple.position = map_to_world(p)
+		items.add_child(apple)
 	
 func door_place() -> void:
 	var door_point_list := []
