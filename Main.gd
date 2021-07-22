@@ -4,47 +4,57 @@ extends TileMap
 
 onready var player = $Player
 var enemies
-var active_enemy = []
+var active_actor
 
+
+func _ready() -> void:
+	set_process(false)
+	game_turn_start()
 
 func request_move(c, direction) -> void:
-	c.is_turn_complete = true
-	c.position += direction
-	game_turn_start()
+#	c.position += direction
+#	game_turn_start()
+	pass
 
 	
 func request_pass(c) -> void:
-	c.is_turn_complete = true
-	game_turn_start()
+#	game_turn_start()
+	pass
+	
+	
+func actor_ready_on():
+	enemies = $Dungeon/BSP_Dungeon/Enemies.get_children()
+	for e in enemies:
+		e.turn_ready()
+
 
 func _process(delta: float) -> void:
-	if active_enemy.empty():
-		player.is_turn_complete = false
-		get_tree().call_group("actor", "turn_ready")
-#
-	for e in active_enemy:
-#		yield(get_tree(),'idle_frame')
-		if e.is_dead:
-			continue
-		if is_instance_valid(e):		
-			e.take_turn(player.position)
-			break
+#	if is_instance_valid(active_actor):
+	if active_actor.is_turn_complete == true:
+		set_process(false)
+		game_turn_start()
 
-
-	active_enemy.clear()
-	set_process(false)
-
+func actor_sefe_check(actor) -> bool:
+	return actor.is_turn_complete == false and actor.visible == true\
+		and actor.is_dead == false and is_instance_valid(actor)
+	
 
 
 func game_turn_start() -> void:
 	enemies = $Dungeon/BSP_Dungeon/Enemies.get_children()
-	if player.is_turn_complete == true:
-		if enemies:
-			for enemy in enemies:
-				if enemy.is_turn_complete == false and enemy.visible == true:
-					active_enemy.append(enemy)
-					break
+	active_actor = null
+	if enemies:
+		for enemy in enemies:
+			if actor_sefe_check(enemy):
+				active_actor = enemy
+				active_actor.take_turn(player.position)
+				break
+	yield(get_tree(),'idle_frame')# 原因はコレがないから同時判定になってしまったのか
+					
+	if active_actor == null:
+		player.turn_ready()
+		active_actor = player
+		actor_ready_on()
 
 	set_process(true)
 		
-

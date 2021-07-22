@@ -28,6 +28,7 @@ func dead() -> void:
 	is_dead = true
 	
 func basic_ai(direction) -> void:
+	state = _TURN_RUN
 	var path = a_star_path.get_astar_path(global_position, direction)
 	path = path[1]
 	var dist = path.distance_to(direction)
@@ -51,15 +52,15 @@ func collider_check(collider, direction) -> void:
 	match tile_search:
 		WALL:
 #			print("tyu-!1")
-			get_tree().call_group("main", "request_pass",self)
+			state = _TURN_END
 		PLAYER:
 			attack(collider, direction)
 			print("tyu-! player-!")
 		ENEMY:
-			get_tree().call_group("main", "request_pass",self)
+			state = _TURN_END
 #			print("tyu-!3")
 		DOOR:
-			get_tree().call_group("main", "request_pass",self)
+			state = _TURN_END
 #			print("tyu-!4")
 
 func attack(collider, direction):
@@ -71,10 +72,12 @@ func attack(collider, direction):
 	collider.fighter.hp -= damage
 	collider.anime_state = AMOUNT
 
-	print(collider.name," HP: ", collider.fighter.hp)
 	var text = [self.name, collider.name, damage]
 	get_tree().call_group("message", "get_massage", "{0} hit the {1} for {2} damage!".format(text))
-	
+			
 	if collider.fighter.hp <= 0:
 		print("player dead!")
 		collider.dead()
+
+	yield(anime, "animation_finished" )
+	turn_end()

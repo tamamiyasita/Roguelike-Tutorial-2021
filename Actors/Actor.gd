@@ -6,7 +6,7 @@ signal turn_change
 const TILE_SIZE := 32
 
 enum {PLAYER=1,  WALL = 2, ENEMY = 4, DOOR = 8}
-enum {_TURN_READY, _TURN_END, _TURN_RUN}
+enum {_TURN_READY, _TURN_RUN, _TURN_END}
 enum {IDLE, MOVE, ATTACK, AMOUNT}
 var state = _TURN_READY
 var anime_state = IDLE
@@ -31,13 +31,11 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
-	print(anime_state, state)
 	if anime_state == ATTACK:
 		anime.play("attack")
 		yield(anime, "animation_finished" )
 		anime_state = IDLE
 
-		turn_end()
 		
 	if anime_state == MOVE:
 		anime.play('walk')
@@ -55,11 +53,17 @@ func _process(delta: float) -> void:
 		anime_state = IDLE
 		position2d.global_position = self.global_position+Vector2(16,16)
 		anime.play('idle')
+		
+	if state == _TURN_END:
+		is_turn_complete = true
 
 
 func turn_end() -> void:
 	state = _TURN_END
-	get_tree().call_group("main", "request_pass",self)
+	is_turn_complete = true	
+#	yield(get_tree(),'idle_frame')
+#
+#	get_tree().call_group("main", "request_pass",self)
 
 func flip_h_switching(direction) -> void:
 	if direction.x > 0:
@@ -94,14 +98,20 @@ func collider_check(collider, direction) -> void:
 func move(direction) -> void:
 	anime_state = MOVE
 	position2d.move_start(position, direction)
-	yield(get_tree(),'idle_frame')
-
-	get_tree().call_group("main", "request_move",self, direction)
+	position += direction
+#	yield(get_tree(),'idle_frame')
+	state = _TURN_END
+#
+#	yield(get_tree().create_timer(0.1), "timeout")
+#	turn_end()
+#	get_tree().call_group("main", "request_move",self, direction)
 	
 	
 	yield(anime, "animation_finished" )
-	state = _TURN_END
-	anime_state = IDLE
+	
+	is_turn_complete = true	
+	
+#	anime_state = IDLE
 
 
 func door_check(collider, direction) -> void:

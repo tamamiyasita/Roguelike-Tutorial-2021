@@ -128,7 +128,7 @@ tracks/1/keys = {
 load_path = "res://.import/player.png-1f689d969e4228c2cd397b4c95a320de.stex"
 
 [sub_resource type="Animation" id=5]
-length = 0.25
+length = 0.15
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:position")
@@ -137,7 +137,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
+"times": PoolRealArray( 0, 0.08, 0.15 ),
 "transitions": PoolRealArray( 1, 0.68302, 0.435275 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -7 ), Vector2( 0, 0 ) ]
@@ -149,7 +149,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.02, 0.2 ),
+"times": PoolRealArray( 0, 0.01, 0.15 ),
 "transitions": PoolRealArray( 1, 1, 0.0544094 ),
 "update": 1,
 "values": [ ExtResource( 3 ), ExtResource( 2 ), SubResource( 4 ) ]
@@ -161,7 +161,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
+"times": PoolRealArray( 0, 0.08, 0.15 ),
 "transitions": PoolRealArray( 1, 0.267943, 1 ),
 "update": 0,
 "values": [ Color( 0.529412, 0.494118, 0.494118, 1 ), Color( 0.529412, 0.494118, 0.494118, 0.709804 ), Color( 0.529412, 0.494118, 0.494118, 1 ) ]
@@ -173,14 +173,13 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
+"times": PoolRealArray( 0, 0.08, 0.15 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 0.75, 1 ), Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="StreamTexture" id=6]
-flags = 4
 load_path = "res://.import/shadow.png-933a40835afcc17c83c194c13369a3bd.stex"
 
 [sub_resource type="CircleShape2D" id=7]
@@ -215,6 +214,7 @@ script = ExtResource( 13 )
 [node name="Camera2D" type="Camera2D" parent="Position2D" index="0"]
 rotating = true
 current = true
+zoom = Vector2( 0.5, 0.5 )
 
 [node name="Light2D" type="Light2D" parent="Position2D" index="1"]
 scale = Vector2( 0.796825, 0.796825 )
@@ -232,7 +232,6 @@ shadow_item_cull_mask = 5
 texture = SubResource( 6 )
 
 [node name="Sprite" parent="Position2D" index="3"]
-modulate = Color( 1, 1, 1, 0.196078 )
 position = Vector2( 0, 0 )
 z_index = 4
 texture = ExtResource( 3 )

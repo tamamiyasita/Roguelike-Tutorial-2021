@@ -6,9 +6,10 @@ var target_value := 0.0 setget set_target_value
 
 onready var _tween: Tween = $Tween
 onready var _anime_player: AnimationPlayer = $AnimationPlayer
-
+onready var hp_value:Label = $Label
 
 func _ready() -> void:
+	hp_value.text = ("HP " +str(value)+"/"+ str(max_value))
 	_anime_player.play("normal")
 
 func setup(health: float, max_health: float) -> void:
@@ -22,6 +23,8 @@ func set_target_value(amount: float) -> void:
 		_anime_player.play('damage')
 		
 	target_value = amount
+	if is_instance_valid(hp_value):		
+		hp_value.text = ("HP " +str(target_value)+"/"+ str(max_value))
 	if is_instance_valid(_tween):		
 		if _tween.is_active():
 			_tween.stop_all()

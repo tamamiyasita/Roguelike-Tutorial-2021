@@ -33,11 +33,11 @@ func parent_path():
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not is_turn_complete:
+	if not is_turn_complete and state == _TURN_READY:
 		for direction in INPUT_KEY.keys():
 			if event.is_action_pressed('rest'):
 				turn_end()
-			if event.is_action_pressed(direction):
+			if event.is_action(direction):
 				state = _TURN_RUN
 				$Position2D/Camera2D.current = true
 				
@@ -54,12 +54,17 @@ func collider_check(collider, direction) -> void:
 	match tile_search:
 		WALL:
 			print("is wall")
-			
+			state = _TURN_READY
 		ENEMY:
-			print("enemy depop!")
-			anime_state = ATTACK
-			attack(collider, direction)
+			if not collider.is_dead:
+				print("enemy depop!")
+				anime_state = ATTACK
+				state = _TURN_RUN
+				attack(collider, direction)
+			else:
+				state = _TURN_READY
 		DOOR:
+			state = _TURN_READY
 			door_check(collider, direction)
 			anime_state = IDLE
 			get_tree().call_group("message", "get_massage", "{0} opened the door".format([self.name]))
@@ -79,9 +84,11 @@ func attack(collider, direction):
 	var text = [self.name, collider.name, damage]
 	get_tree().call_group("message", "get_massage", "{0} hit the {1} for {2} damage!".format(text))
 	if collider.fighter.hp <= 0:
-		
 		collider.dead()
 		print("enemy dead!")
+
+	yield(anime, "animation_finished" )
+	turn_end()
 
 
 

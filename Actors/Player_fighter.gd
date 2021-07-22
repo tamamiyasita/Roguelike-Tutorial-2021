@@ -10,7 +10,7 @@ var power
 
 func _ready() -> void:
 	get_tree()
-	max_hp = 10
+	max_hp = 20
 	hp = max_hp
 	defense = 1
 	power = 2

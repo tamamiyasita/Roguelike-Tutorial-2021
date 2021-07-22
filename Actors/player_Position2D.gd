@@ -21,7 +21,6 @@ func attack_start(direction):
 	global_position = player.global_position + offset_pos
 	
 func move_start(pos, direction):
-	print(pos, direction)
 	tween.interpolate_property(
 		self,
 		"global_position",
