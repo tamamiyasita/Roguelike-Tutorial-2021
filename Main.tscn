@@ -83,7 +83,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 13 ), ExtResource( 10 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=5]
 resource_name = "damage1"
 step = 0.02
 tracks/0/type = "value"
@@ -123,7 +123,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 15 ), ExtResource( 4 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=6]
 resource_name = "damage2"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -162,7 +162,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 14 ), ExtResource( 9 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:custom_styles/fg:bg_color")
@@ -213,8 +213,7 @@ tracks/3/keys = {
 "values": [ ExtResource( 9 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "normal"
+[sub_resource type="Animation" id=8]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -266,8 +265,7 @@ tracks/3/keys = {
 "values": [ ExtResource( 10 ) ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "warning"
+[sub_resource type="Animation" id=9]
 length = 1.5
 loop = true
 tracks/0/type = "value"
@@ -319,27 +317,27 @@ tracks/3/keys = {
 "values": [ ExtResource( 4 ) ]
 }
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=10]
 extra_spacing_char = 2
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFontData" id=9]
-font_path = "res://image/mplus-2m-bold.ttf"
-
-[sub_resource type="DynamicFont" id=10]
-use_mipmaps = true
-extra_spacing_char = 1
-font_data = ExtResource( 5 )
-fallback/0 = SubResource( 9 )
-
 [sub_resource type="DynamicFontData" id=11]
-hinting = 1
-font_path = "res://image/Thintel.ttf"
+font_path = "res://image/mplus-2m-bold.ttf"
 
 [sub_resource type="DynamicFont" id=12]
 use_mipmaps = true
+extra_spacing_char = 1
+font_data = ExtResource( 5 )
+fallback/0 = SubResource( 11 )
+
+[sub_resource type="DynamicFontData" id=13]
+hinting = 1
+font_path = "res://image/Thintel.ttf"
+
+[sub_resource type="DynamicFont" id=14]
+use_mipmaps = true
 extra_spacing_space = 1
-font_data = SubResource( 11 )
+font_data = SubResource( 13 )
 
 [node name="Main" type="TileMap" groups=[
 "main",
@@ -396,11 +394,11 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Position2D/LifeBar"]
 anims/damage = SubResource( 4 )
-anims/damage1 = SubResource( 13 )
-anims/damage2 = SubResource( 14 )
-anims/danger = SubResource( 5 )
-anims/normal = SubResource( 6 )
-anims/warning = SubResource( 7 )
+anims/damage1 = SubResource( 5 )
+anims/damage2 = SubResource( 6 )
+anims/danger = SubResource( 7 )
+anims/normal = SubResource( 8 )
+anims/warning = SubResource( 9 )
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Position2D/LifeBar"]
 margin_left = -2.0
@@ -420,7 +418,7 @@ anchor_right = 0.16
 anchor_bottom = 0.928571
 rect_clip_content = true
 size_flags_stretch_ratio = 20.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.607843, 0.419608, 0.623529, 1 )
 text = "HP"
 __meta__ = {
@@ -462,7 +460,7 @@ margin_left = -148.5
 margin_top = -97.5
 margin_right = 148.5
 margin_bottom = 97.5
-custom_fonts/normal_font = SubResource( 10 )
+custom_fonts/normal_font = SubResource( 12 )
 custom_colors/default_color = Color( 3, 3, 3, 1 )
 bbcode_enabled = true
 bbcode_text = "You entered the dungeon"
@@ -478,7 +476,7 @@ anchor_bottom = 1.0
 margin_left = 3.0
 margin_top = 3.0
 margin_bottom = -2.0
-custom_fonts/normal_font = SubResource( 12 )
+custom_fonts/normal_font = SubResource( 14 )
 custom_colors/default_color = Color( 4, 4, 4, 1 )
 bbcode_text = "You entered the dungeon"
 tab_size = 5

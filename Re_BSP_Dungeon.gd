@@ -91,7 +91,7 @@ func enemy_place(rooms) -> void:
 		var rat = rats.instance()
 
 		rat.position = map_to_world(p)
-		enemies.add_child(rat)
+		enemies.add_child(rat, true)
 		
 		
 func item_place(rooms) -> void:
