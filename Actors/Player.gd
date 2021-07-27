@@ -3,6 +3,8 @@ extends Actor
 onready var fov_ray :RayCast2D = $Fovray
 onready var fov :Area2D = $Fov
 onready var inventory = preload("res://Items/Inventory.tres")
+onready var states = preload('res://Actors/player_states.tres')
+
 
 var enemies := []
 var areas := []
@@ -91,15 +93,15 @@ func get_item():
 func attack(collider, direction):
 	$Position2D/Camera2D.current = false
 	position2d.attack_start(direction)
-	var damage = (self.fighter.power-collider.fighter.defense)
+	var damage = (self.states.power-collider.states.defense)
 	
-	collider.fighter.hp -= damage
+	collider.states.hp -= damage
 	collider.anime_state = AMOUNT
 
-	print(collider.name," HP: ", collider.fighter.hp)
+	print(collider.name," HP: ", collider.states.hp)
 	var text = [self.name, collider.name, damage]
 	get_tree().call_group("message", "get_massage", "{0} hit the {1} for {2} damage!".format(text))
-	if collider.fighter.hp <= 0:
+	if collider.states.hp <= 0:
 		collider.dead()
 		print("enemy dead!")
 

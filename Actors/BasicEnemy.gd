@@ -3,10 +3,12 @@ extends "res://Actors/Actor.gd"
 onready var particle :CPUParticles2D = $Position2D/CPUParticles2D
 onready var sprit :Sprite = $Position2D/Sprite
 onready var a_star_path = find_parent("Dungeon")
+onready var states = preload('res://Actors/enemy_states.tres')
 var paths:Array
 
 func _ready() -> void:
-	add_to_group("actor")	
+	add_to_group("actor")
+	states = states.duplicate()
 
 func _process(delta: float) -> void:
 	if !anime.is_playing():
@@ -67,15 +69,15 @@ func attack(collider, direction):
 	anime_state = ATTACK
 	position2d.attack_start(direction)
 	
-	var damage = (self.fighter.power-collider.fighter.defense)
+	var damage = (self.states.power-collider.states.defense)
 	
-	collider.fighter.hp -= damage
+	collider.states.hp -= damage
 	collider.anime_state = AMOUNT
 
 	var text = [self.name, collider.name, damage]
 	get_tree().call_group("message", "get_massage", "{0} hit the {1} for {2} damage!".format(text))
 			
-	if collider.fighter.hp <= 0:
+	if collider.states.hp <= 0:
 		print("player dead!")
 		collider.dead()
 

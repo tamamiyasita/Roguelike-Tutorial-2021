@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://BSP_Dungeon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BasicDungeon.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://image/bst_d.png" type="Texture" id=13]
 [ext_resource path="res://image/bst2_d.png" type="Texture" id=14]
 [ext_resource path="res://image/bst1_d.png" type="Texture" id=15]
+[ext_resource path="res://UI.gd" type="Script" id=16]
 
 [sub_resource type="StreamTexture" id=1]
 load_path = "res://.import/player.png-1f689d969e4228c2cd397b4c95a320de.stex"
@@ -368,13 +369,14 @@ color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
 
 [node name="Dungeon_add_Entity" type="Node" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 layer = 5
+script = ExtResource( 16 )
 
-[node name="Position2D" type="Position2D" parent="CanvasLayer"]
+[node name="Position2D" type="Position2D" parent="UI"]
 position = Vector2( 8, 444 )
 
-[node name="LifeBar" type="ProgressBar" parent="CanvasLayer/Position2D" groups=[
+[node name="LifeBar" type="ProgressBar" parent="UI/Position2D" groups=[
 "lifebar",
 ]]
 margin_right = 100.0
@@ -390,9 +392,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tween" type="Tween" parent="CanvasLayer/Position2D/LifeBar"]
+[node name="Tween" type="Tween" parent="UI/Position2D/LifeBar"]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Position2D/LifeBar"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Position2D/LifeBar"]
 anims/damage = SubResource( 4 )
 anims/damage1 = SubResource( 5 )
 anims/damage2 = SubResource( 6 )
@@ -400,7 +402,7 @@ anims/danger = SubResource( 7 )
 anims/normal = SubResource( 8 )
 anims/warning = SubResource( 9 )
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Position2D/LifeBar"]
+[node name="TextureRect" type="TextureRect" parent="UI/Position2D/LifeBar"]
 margin_left = -2.0
 margin_top = -24.0
 margin_right = 15.0
@@ -411,7 +413,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="CanvasLayer/Position2D/LifeBar"]
+[node name="Label" type="Label" parent="UI/Position2D/LifeBar"]
 anchor_left = 0.04
 anchor_top = 0.142857
 anchor_right = 0.16
@@ -425,7 +427,7 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="MessageBox" type="TextureRect" parent="CanvasLayer/Position2D" groups=[
+[node name="MessageBox" type="TextureRect" parent="UI/Position2D" groups=[
 "message",
 ]]
 modulate = Color( 0.266667, 0.309804, 0.341176, 0.65098 )
@@ -440,7 +442,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Position2D/MessageBox"]
+[node name="TextureRect" type="TextureRect" parent="UI/Position2D/MessageBox"]
 visible = false
 margin_left = 100.0
 margin_top = -228.0
@@ -451,7 +453,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Log" type="RichTextLabel" parent="CanvasLayer/Position2D/MessageBox/TextureRect"]
+[node name="Log" type="RichTextLabel" parent="UI/Position2D/MessageBox/TextureRect"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -470,7 +472,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Position2D/MessageBox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Position2D/MessageBox"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 3.0
@@ -486,9 +488,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="changed" from="Player/Fighter" to="CanvasLayer/Position2D/LifeBar" method="set_target_value"]
-[connection signal="max_changed" from="Player/Fighter" to="CanvasLayer/Position2D/LifeBar" method="setup"]
-[connection signal="tween_completed" from="CanvasLayer/Position2D/LifeBar/Tween" to="CanvasLayer/Position2D/LifeBar" method="_on_Tween_tween_completed"]
+[connection signal="tween_completed" from="UI/Position2D/LifeBar/Tween" to="UI/Position2D/LifeBar" method="_on_Tween_tween_completed"]
 
 [editable path="Player"]
 [editable path="Dungeon/BSP_Dungeon"]

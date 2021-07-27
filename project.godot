@@ -33,13 +33,25 @@ _global_script_classes=[ {
 "class": "Main",
 "language": "GDScript",
 "path": "res://Main.gd"
+}, {
+"base": "Resource",
+"class": "PlayerStates",
+"language": "GDScript",
+"path": "res://Actors/Player_fighter.gd"
+}, {
+"base": "Resource",
+"class": "States",
+"language": "GDScript",
+"path": "res://Actors/Fighter.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
 "Astar_path": "",
 "Inventory": "",
 "Item": "",
-"Main": ""
+"Main": "",
+"PlayerStates": "",
+"States": ""
 }
 
 [application]

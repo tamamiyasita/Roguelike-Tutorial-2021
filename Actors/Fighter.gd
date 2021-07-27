@@ -1,9 +1,12 @@
-extends Node
+extends Resource
+class_name States
 
-var max_hp = 3
-var hp = max_hp
-var power
-var defense
+
+
+export var max_hp = 3
+export var hp = 3
+export var power = 1
+export var defense = 1
 var ai
 
 func _ready() -> void:
