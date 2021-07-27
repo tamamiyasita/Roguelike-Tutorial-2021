@@ -71,7 +71,7 @@ func attack(collider, direction):
 	
 	var damage = (self.states.power-collider.states.defense)
 	
-	collider.states.hp -= damage
+	collider.hp_change(-damage)
 	collider.anime_state = AMOUNT
 
 	var text = [self.name, collider.name, damage]

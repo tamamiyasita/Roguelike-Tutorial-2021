@@ -3,6 +3,7 @@ extends TileMap
 
 
 onready var player = $Player
+onready var lifebar = $UI/Position2D/LifeBar
 var enemies
 var active_actor
 
@@ -10,6 +11,9 @@ var active_actor
 func _ready() -> void:
 	set_process(false)
 	game_turn_start()
+	player.connect('hp_changed', lifebar, "set_target_value")
+	player.connect('states_changed', lifebar, "setup")
+	
 
 func request_move(c, direction) -> void:
 #	c.position += direction
@@ -62,3 +66,4 @@ func game_turn_start() -> void:
 
 	set_process(true)
 		
+

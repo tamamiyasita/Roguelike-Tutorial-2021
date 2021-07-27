@@ -4,7 +4,8 @@ onready var fov_ray :RayCast2D = $Fovray
 onready var fov :Area2D = $Fov
 onready var inventory = preload("res://Items/Inventory.tres")
 onready var states = preload('res://Actors/player_states.tres')
-
+signal hp_changed
+signal states_changed
 
 var enemies := []
 var areas := []
@@ -25,6 +26,11 @@ const INPUT_KEY :Dictionary = {
 func _ready() -> void:
 	is_turn_complete = false
 	fov_ray.set_collide_with_areas(true)
+	self.states.reset()
+	print(self.states.max_hp)
+	var c_states = self.states.states_change()
+	emit_signal('states_changed', c_states)
+	
 
 
 		
@@ -88,7 +94,12 @@ func get_item():
 				floor_items[0].queue_free()
 				break
 
-
+func hp_change(value):
+	self.states.hp_change(value)
+	emit_signal('hp_changed', self.states.hp)
+	print(self.states.hp, " my hp")
+	
+	
 
 func attack(collider, direction):
 	$Position2D/Camera2D.current = false

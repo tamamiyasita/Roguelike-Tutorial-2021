@@ -12,10 +12,11 @@ func _ready() -> void:
 	hp_value.text = ("HP " +str(value)+"/"+ str(max_value))
 	_anime_player.play("normal")
 
-func setup(max_health: float) -> void:
-	max_value = max_health
-	value = max_health
-	target_value = max_health
+func setup(states) -> void:
+	print(states)
+	max_value = states["max_hp"]
+	value = max_value
+	target_value = max_value
 	
 func set_target_value(amount: float) -> void:
 	if target_value > amount and value < 0.3 * max_value:
