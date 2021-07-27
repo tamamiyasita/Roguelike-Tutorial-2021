@@ -2,9 +2,12 @@ extends Actor
 
 onready var fov_ray :RayCast2D = $Fovray
 onready var fov :Area2D = $Fov
+onready var inventory = preload("res://Items/Inventory.tres")
 
 var enemies := []
 var areas := []
+var floor_items := []
+
 
 const INPUT_KEY :Dictionary = {
 	"right": Vector2.RIGHT,
@@ -37,7 +40,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		for direction in INPUT_KEY.keys():
 			if event.is_action_pressed('rest'):
 				turn_end()
-			if event.is_action(direction):
+			elif event.is_action_pressed("get"):
+				get_item()
+				turn_end()
+				break
+			elif event.is_action(direction):
 				state = _TURN_RUN
 				$Position2D/Camera2D.current = true
 				
@@ -50,7 +57,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func collider_check(collider, direction) -> void:
 	var tile_search = ray.get_collider().collision_layer
-	print(tile_search)
 	match tile_search:
 		WALL:
 			print("is wall")
@@ -71,6 +77,16 @@ func collider_check(collider, direction) -> void:
 			
 			print("door open")
 			
+
+func get_item():
+	if !floor_items.empty():
+		for i in inventory.items.size():
+			if inventory.items[i] == null:
+				inventory.set_item(i, floor_items[0].is_item)
+				floor_items[0].queue_free()
+				break
+
+
 
 func attack(collider, direction):
 	$Position2D/Camera2D.current = false
@@ -136,3 +152,21 @@ func dead() -> void:
 	get_tree().quit()
 
 
+
+
+
+
+func _on_Player_area_entered(area: Area2D) -> void:
+	print(area)
+	if area.is_item:
+		print("get_ok")
+		floor_items.append(area)
+		print(floor_items)
+
+
+func _on_Player_area_exited(area: Area2D) -> void:
+	print(area)
+	if area.is_item:
+		print("rere_ok")
+		floor_items.erase(area)
+		print(floor_items)

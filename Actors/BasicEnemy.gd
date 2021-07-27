@@ -34,7 +34,6 @@ func basic_ai(direction) -> void:
 	
 	var dist = path.distance_to(direction)
 	var d = (path - global_position)
-	print(d, "_path_")
 	neighbor_search(d)
 	
 

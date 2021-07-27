@@ -1,11 +1,14 @@
 extends Resource
 class_name Inventory
 
-signal item_changed(indexes)
+signal items_changed(indexes)
 
 export(Array, Resource) var items = [
 	null, null, null, null, null, null, null, null, null
 ]
+
+var drag_data = null
+
 
 func set_item(item_index, item):
 	var previousItem = items[item_index]

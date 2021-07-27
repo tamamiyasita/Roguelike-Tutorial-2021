@@ -54,6 +54,9 @@ func set_player_position(player)->void:
 	var point = rooms[0].center
 	player.position = map_to_world(point)
 	
+	var apple = apples.instance()
+	apple.position = map_to_world(point)
+	items.add_child(apple)
 func entity_set():
 	for tile in tiles:
 		if tiles[tile] == WALL:

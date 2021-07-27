@@ -39,7 +39,6 @@ func actor_sefe_check(actor) -> bool:
 		and actor.is_dead == false and is_instance_valid(actor)
 		
 func enemy_path_check(enemy) -> bool:
-	print(enemy.paths)
 	return enemy.is_visible() or enemy.paths
 	
 

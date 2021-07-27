@@ -16,6 +16,10 @@ func _ready() -> void:
 	power = 2
 	_initialize()
 
+
+func hp_change(value):
+	hp = value
+
 func set_max(new_max) -> void:
 	max_hp = new_max
 	max_hp = max(1, new_max)
