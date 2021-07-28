@@ -13,6 +13,7 @@ func _ready() -> void:
 	game_turn_start()
 	player.connect('hp_changed', lifebar, "set_target_value")
 	player.connect('states_changed', lifebar, "setup")
+	player.states_reset()
 	
 
 func request_move(c, direction) -> void:
@@ -57,7 +58,7 @@ func game_turn_start() -> void:
 					active_actor = enemy
 					active_actor.take_turn(player.position)
 					break
-	yield(get_tree(),'idle_frame')# 原因はコレがないから同時判定になってしまったのか
+	yield(get_tree(),'idle_frame')
 					
 	if active_actor == null:
 		player.turn_ready()

@@ -4,6 +4,8 @@ onready var fov_ray :RayCast2D = $Fovray
 onready var fov :Area2D = $Fov
 onready var inventory = preload("res://Items/Inventory.tres")
 onready var states = preload('res://Actors/player_states.tres')
+onready var container = $CanvasLayer/InventoryContainer
+onready var use_item = $Useitem
 signal hp_changed
 signal states_changed
 
@@ -28,6 +30,8 @@ func _ready() -> void:
 	fov_ray.set_collide_with_areas(true)
 	self.states.reset()
 	print(self.states.max_hp)
+#	use_item.connect('useitem', container, "setup")
+func states_reset():
 	var c_states = self.states.states_change()
 	emit_signal('states_changed', c_states)
 	
@@ -51,6 +55,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			elif event.is_action_pressed("get"):
 				get_item()
 				turn_end()
+				break
+			elif event.is_action_pressed('inv'):
+				container.visible = !container.visible
 				break
 			elif event.is_action(direction):
 				state = _TURN_RUN

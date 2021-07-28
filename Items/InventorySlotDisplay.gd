@@ -4,6 +4,8 @@ var inventory = preload("res://Items/Inventory.tres")
 
 onready var itemTextureRect = $ItemTextureRect
 
+signal useitem
+
 
 
 func display_item(item):
@@ -18,7 +20,7 @@ func _gui_input(event: InputEvent) -> void:
 		var item = inventory.items[item_index]
 		if item is Item:
 			print(item)
-			item.use()
+			BaseInfo.Player.hp_change(5)
 			inventory.remove_item(item_index)
 		
 

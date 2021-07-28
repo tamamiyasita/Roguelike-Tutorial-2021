@@ -6,7 +6,7 @@ signal turn_change
 const TILE_SIZE := 32
 
 enum {PLAYER=1,  WALL = 2, ENEMY = 4, DOOR = 8}
-enum {_TURN_READY, _TURN_RUN, _TURN_END}
+enum {_TURN_READY, _TURN_RUN, _TURN_END, _TURN_INPUT}
 enum {IDLE, MOVE, ATTACK, AMOUNT}
 var state = _TURN_READY
 var anime_state = IDLE
@@ -53,6 +53,9 @@ func _process(delta: float) -> void:
 		anime_state = IDLE
 		position2d.global_position = self.global_position+Vector2(16,16)
 		anime.play('idle')
+		
+	if state == _TURN_INPUT:
+		pass
 		
 	if state == _TURN_END:
 		is_turn_complete = true
