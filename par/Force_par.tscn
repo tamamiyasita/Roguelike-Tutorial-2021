@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://image/force.png" type="Texture" id=1]
+[ext_resource path="res://par/Force_par.gd" type="Script" id=2]
+
+[node name="Force_par" type="CPUParticles2D"]
+emitting = false
+amount = 11
+lifetime = 2.0
+one_shot = true
+speed_scale = 3.52
+explosiveness = 0.22
+texture = ExtResource( 1 )
+spread = 65.22
+gravity = Vector2( 0, 60 )
+initial_velocity_random = 0.19
+angular_velocity = -186.07
+linear_accel = -30.34
+linear_accel_random = 0.41
+radial_accel = -6.74
+damping = 10.11
+scale_amount = 1.35
+scale_amount_random = 0.63
+color = Color( 0.992157, 1, 0.784314, 1 )
+script = ExtResource( 2 )

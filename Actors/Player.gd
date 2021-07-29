@@ -68,9 +68,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				neighbor_search(direction_tile)
 				area_check(areas)
 				enemies_visible_check(enemies)
-		for e in enemies:
-			if not is_instance_valid(e) or e.is_dead:
-				enemies.remove(e)
+#		for e in enemies:
+#			if not is_instance_valid(e) or e.is_dead:
+#				enemies.remove(e)
 			
 		
 

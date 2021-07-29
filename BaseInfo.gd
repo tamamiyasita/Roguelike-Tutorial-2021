@@ -4,7 +4,7 @@ extends Node
 onready var Player = get_node("/root/Main/Player")
 onready var Main = get_node("/root/Main/")
 onready var Enemies = get_node('/root/Main/Dungeon/BSP_Dungeon/Enemies')
-
+var force = preload("res://par/Force_par.tscn")
 
 func _ready() -> void:
 	print(Player)
@@ -24,6 +24,7 @@ func item_use(name, value=null):
 						e.hp_change(value)
 						get_tree().call_group("message", "get_massage", "You read the Force scroll")			
 						print(e, e.states.hp, " baban")
+						force.inidfs
 						break
 				else:
 					continue

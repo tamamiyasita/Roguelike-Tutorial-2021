@@ -25,7 +25,8 @@ func dead() -> void:
 	get_tree().call_group("message", "get_massage", "The {0} is dead".format([self.name]))
 	sprit.hide()
 	$Position2D/shadow.hide()
-	particle.emitting = true
+#	particle.emitting = true
+	anime.play("dead")
 	is_turn_complete = true
 	is_dead = true
 	
