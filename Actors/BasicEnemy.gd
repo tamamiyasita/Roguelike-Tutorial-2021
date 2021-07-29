@@ -65,6 +65,17 @@ func collider_check(collider, direction) -> void:
 			state = _TURN_END
 #			print("tyu-!4")
 
+
+func hp_change(value):
+	self.states.hp_change(value)
+#	emit_signal('hp_changed', self.states.hp)
+	print(self.states.hp, " my hp")
+	
+	if states.hp <= 0:
+		print(name, "dead!")
+		dead()
+
+
 func attack(collider, direction):
 	anime_state = ATTACK
 	position2d.attack_start(direction)

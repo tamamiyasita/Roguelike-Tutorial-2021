@@ -31,6 +31,7 @@ func _ready() -> void:
 	self.states.reset()
 	print(self.states.max_hp)
 #	use_item.connect('useitem', container, "setup")
+
 func states_reset():
 	var c_states = self.states.states_change()
 	emit_signal('states_changed', c_states)
@@ -67,6 +68,10 @@ func _unhandled_input(event: InputEvent) -> void:
 				neighbor_search(direction_tile)
 				area_check(areas)
 				enemies_visible_check(enemies)
+		for e in enemies:
+			if not is_instance_valid(e) or e.is_dead:
+				enemies.remove(e)
+			
 		
 
 
@@ -177,7 +182,6 @@ func dead() -> void:
 
 
 func _on_Player_area_entered(area: Area2D) -> void:
-	print(area)
 	if area.is_item:
 		print("get_ok")
 		floor_items.append(area)
@@ -185,7 +189,6 @@ func _on_Player_area_entered(area: Area2D) -> void:
 
 
 func _on_Player_area_exited(area: Area2D) -> void:
-	print(area)
 	if area.is_item:
 		print("rere_ok")
 		floor_items.erase(area)

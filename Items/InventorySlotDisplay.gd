@@ -19,8 +19,8 @@ func _gui_input(event: InputEvent) -> void:
 		var item_index = get_index()
 		var item = inventory.items[item_index]
 		if item is Item:
-			print(item)
-			BaseInfo.Player.hp_change(5)
+			print(item.name)
+			BaseInfo.item_use(item.name, item.use())
 			inventory.remove_item(item_index)
 		
 

@@ -29,6 +29,7 @@ onready var floors :Node = $Floors
 
 var rats = preload('res://Actors/CheeseRat.tscn')
 var apples = preload('res://map_object/apple.tscn')
+var forces = preload('res://map_object/force.tscn')
 var door = preload('res://map_object/Door.tscn')
 var wall_obj = preload('res://map_object/Wall.tscn')
 var floor_obj = preload('res://map_object/Floor.tscn')
@@ -57,6 +58,11 @@ func set_player_position(player)->void:
 	var apple = apples.instance()
 	apple.position = map_to_world(point)
 	items.add_child(apple)
+	
+	var force = forces.instance()
+	force.position = map_to_world(point+Vector2.ONE)
+	items.add_child(force)
+	
 func entity_set():
 	for tile in tiles:
 		if tiles[tile] == WALL:
@@ -84,7 +90,6 @@ func enemy_place(rooms) -> void:
 			var center_y = int(room.center[1])
 			var x = randi() % int(room["w"]) + room.x
 			var y = randi() % int(room["h"]) + room.y
-			print(get_cell(x, y))
 			if get_cell(x, y) == FLOOR:
 				var point :Vector2 = Vector2(x, y)
 				if !(point) in enemy_point:
@@ -109,7 +114,6 @@ func item_place(rooms) -> void:
 			var center_y = int(room.center[1])
 			var x = randi() % int(room["w"]) + room.x
 			var y = randi() % int(room["h"]) + room.y
-			print(get_cell(x, y))
 			if get_cell(x, y) == FLOOR:
 				var point :Vector2 = Vector2(x, y)
 				if !(point) in item_point:
@@ -117,10 +121,14 @@ func item_place(rooms) -> void:
 					
 	for p in item_point:
 		var apple = apples.instance()
-
-		apple.position = map_to_world(p)
-		items.add_child(apple)
-	
+		var force = forces.instance()
+		var rng = rand_range(1,10)
+		if rng < 5:
+			apple.position = map_to_world(p)
+			items.add_child(apple)
+		else:
+			force.position = map_to_world(p)
+			items.add_child(force)
 func door_place() -> void:
 	var door_point_list := []
 	for x in range(0, map_w):
@@ -198,8 +206,7 @@ func fill_roof() -> void:
 	for x in range(0, map_w):
 		for y in range(0, map_h):
 			tiles[Vector2(x,y)] = WALL
-#			print(tiles)
-#			set_cell(x, y, WALL)
+
 			
 
 func start_tree() -> void:

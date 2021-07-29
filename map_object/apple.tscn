@@ -15,6 +15,6 @@ script = ExtResource( 2 )
 position = Vector2( 32, 32 )
 shape = SubResource( 1 )
 
-[node name="apple" type="Sprite" parent="."]
+[node name="image" type="Sprite" parent="."]
 position = Vector2( 32, 40 )
 texture = ExtResource( 1 )

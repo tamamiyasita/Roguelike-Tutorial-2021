@@ -12,7 +12,6 @@ func _ready() -> void:
 	_anime_player.play("normal")
 
 func setup(states) -> void:
-	print(states)
 	max_value = states["max_hp"]
 	value = max_value
 	target_value = max_value

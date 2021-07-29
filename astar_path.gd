@@ -24,7 +24,6 @@ onready var _half_cell_size = cell_size / 2
 
 
 func a_path_ready() -> void:
-	print(obstacles, "obst")
 	var walkable_cell_list = astar_add_walkable_cells(obstacles)
 	astar_connect_walkable_cells_diagonal(walkable_cell_list)
 

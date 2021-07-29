@@ -4,7 +4,7 @@ extends TileMap
 
 onready var player = $Player
 onready var lifebar = $UI/Position2D/LifeBar
-var enemies
+onready var enemies = $Dungeon/BSP_Dungeon/Enemies.get_children()
 var active_actor
 
 
