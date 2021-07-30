@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Actors/Actor.gd" type="Script" id=1]
 [ext_resource path="res://image/shadow.png" type="Texture" id=2]
 [ext_resource path="res://image/cheese_rat1.png" type="Texture" id=3]
 [ext_resource path="res://image/cheese_rat.png" type="Texture" id=4]
+[ext_resource path="res://par/DMG_Particles.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Actors/Position2D.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -51,6 +52,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.15, 1 ), Vector2( 1, 1.15 ), Vector2( 0.95, 1 ), Vector2( 1, 0.95 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Position2D/DMG_Particles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -191,9 +204,11 @@ modulate = Color( 0.529412, 0.494118, 0.494118, 1 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-position = Vector2( 0, -1 )
 texture = ExtResource( 3 )
 
 [node name="Tween" type="Tween" parent="Position2D"]
+
+[node name="DMG_Particles" parent="Position2D" instance=ExtResource( 5 )]
+position = Vector2( 0, 0 )
 
 [connection signal="tween_all_completed" from="Position2D/Tween" to="Position2D" method="_on_Tween_tween_all_completed"]

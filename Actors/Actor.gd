@@ -17,6 +17,7 @@ onready var position2d: Position2D = $Position2D
 onready var tween: Tween = $Position2D/Tween
 onready var fighter: Node = $Fighter
 
+
 var is_dead := false
 
 export (Texture) var texture 

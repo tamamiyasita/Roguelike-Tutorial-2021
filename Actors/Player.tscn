@@ -96,6 +96,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ ExtResource( 3 ), ExtResource( 15 ), ExtResource( 3 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Position2D/DMG_Particles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 7.0
@@ -233,9 +245,12 @@ shadow_item_cull_mask = 5
 texture = SubResource( 6 )
 
 [node name="Sprite" parent="Position2D" index="3"]
-position = Vector2( 0, 0 )
+modulate = Color( 1, 1, 1, 0.196078 )
 z_index = 4
 texture = ExtResource( 3 )
+
+[node name="DMG_Particles" parent="Position2D" index="5"]
+z_index = 4
 
 [node name="Fov" type="Area2D" parent="." index="5"]
 position = Vector2( 16, 16 )

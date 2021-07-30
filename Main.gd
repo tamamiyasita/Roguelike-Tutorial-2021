@@ -6,7 +6,7 @@ onready var player = $Player
 onready var lifebar = $UI/Position2D/LifeBar
 onready var enemies = $Dungeon/BSP_Dungeon/Enemies.get_children()
 var active_actor
-
+var current_cell = Vector2.ZERO
 
 func _ready() -> void:
 	set_process(false)
@@ -15,6 +15,14 @@ func _ready() -> void:
 	player.connect('states_changed', lifebar, "setup")
 	player.states_reset()
 	
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		print("mouse click")
+	elif event is InputEventMouseMotion:
+		current_cell = world_to_map(event.position)
+		print("mousu at: ", event.position, "is: ", current_cell)
+
 
 func request_move(c, direction) -> void:
 #	c.position += direction

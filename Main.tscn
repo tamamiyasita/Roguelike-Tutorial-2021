@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://BSP_Dungeon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BasicDungeon.tscn" type="PackedScene" id=2]
@@ -16,9 +16,6 @@
 [ext_resource path="res://image/bst2_d.png" type="Texture" id=14]
 [ext_resource path="res://image/bst1_d.png" type="Texture" id=15]
 [ext_resource path="res://UI.gd" type="Script" id=16]
-
-[sub_resource type="StreamTexture" id=1]
-load_path = "res://.import/player.png-1f689d969e4228c2cd397b4c95a320de.stex"
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.384314, 0.776471, 0.552941, 0.996078 )
@@ -347,9 +344,6 @@ format = 1
 script = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 8 )]
-
-[node name="Sprite" parent="Player/Position2D" index="3"]
-texture = SubResource( 1 )
 
 [node name="Dungeon" type="TileMap" parent="."]
 cell_size = Vector2( 32, 32 )
