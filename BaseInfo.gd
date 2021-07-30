@@ -23,8 +23,10 @@ func item_use(name, value=null):
 					if e.visible:
 						e.hp_change(value)
 						get_tree().call_group("message", "get_massage", "You read the Force scroll")			
-						print(e, e.states.hp, " baban")
-						force.inidfs
+						var f = force.instance()
+						add_child(f)
+						f.position = e.position+Vector2(16,-10)
+						f.start()
 						break
 				else:
 					continue

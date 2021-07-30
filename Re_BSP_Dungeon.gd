@@ -60,9 +60,14 @@ func set_player_position(player)->void:
 	items.add_child(apple)
 	
 	var force = forces.instance()
-	force.position = map_to_world(point+Vector2.ONE)
+	force.position = map_to_world(point)
 	items.add_child(force)
-	
+
+	var rat = rats.instance()
+
+	rat.position = map_to_world(point+Vector2.ONE)
+	enemies.add_child(rat, true)
+
 func entity_set():
 	for tile in tiles:
 		if tiles[tile] == WALL:
