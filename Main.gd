@@ -16,12 +16,17 @@ func _ready() -> void:
 	player.states_reset()
 	
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		print("mouse click")
-	elif event is InputEventMouseMotion:
-		current_cell = world_to_map(event.position)
-		print("mousu at: ", event.position, "is: ", current_cell)
+#func _input(event: InputEvent) -> void:
+#	if player.state == 3:
+#		if event is InputEventMouseButton:
+#			current_cell = map_to_world(event.position)
+#			for e in enemies:
+#				var epos = map_to_world(player.position)
+#				if epos == current_cell:
+#					print("effect on")
+##		elif event is InputEventMouseMotion:
+#			current_cell = world_to_map(event.position)
+#			print("mousu at: ", event.position)
 
 
 func request_move(c, direction) -> void:

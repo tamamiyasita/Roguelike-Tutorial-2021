@@ -4,6 +4,11 @@ onready var particle :CPUParticles2D = $Position2D/CPUParticles2D
 onready var sprit :Sprite = $Position2D/Sprite
 onready var a_star_path = find_parent("Dungeon")
 onready var states = preload('res://Actors/enemy_states.tres')
+onready var tex = $Position2D/TextureRect
+
+var cnf = false
+var cnf_turn:int = 0
+
 var paths:Array
 
 func _ready() -> void:
@@ -11,6 +16,11 @@ func _ready() -> void:
 	states = states.duplicate()
 
 func _process(delta: float) -> void:
+	if cnf == true:
+		tex.show()
+	elif cnf == false:
+		tex.hide()
+		
 	if !anime.is_playing():
 		anime.play('idle')
 	if is_dead:
@@ -18,8 +28,13 @@ func _process(delta: float) -> void:
 			queue_free()
 	
 func take_turn(direction) -> void:
-#	random_walk()
-	basic_ai(direction)
+	if cnf and cnf_turn > 0:
+		cnf_turn -= 1
+		random_walk()
+		if cnf_turn < 1:
+			cnf = false
+	else:
+		basic_ai(direction)
 
 func dead() -> void:
 	get_tree().call_group("message", "get_massage", "The {0} is dead".format([self.name]))
@@ -95,3 +110,10 @@ func attack(collider, direction):
 
 	yield(anime, "animation_finished" )
 	turn_end()
+
+
+func _on_Enemy_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			BaseInfo.target_enemy = self
+

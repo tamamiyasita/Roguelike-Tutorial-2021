@@ -100,9 +100,11 @@ func collider_check(collider, direction) -> void:
 
 func get_item():
 	if !floor_items.empty():
+		var item = floor_items[0].is_item
 		for i in inventory.items.size():
 			if inventory.items[i] == null:
-				inventory.set_item(i, floor_items[0].is_item)
+				inventory.set_item(i, item)
+				get_tree().call_group("message", "get_massage", "You picked up an {0} ".format([item.name]))
 				floor_items[0].queue_free()
 				break
 

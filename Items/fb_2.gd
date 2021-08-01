@@ -1,12 +1,11 @@
 extends "res://Item.gd"
 
-var par = preload("res://par/Force_par.tscn")
+var par = preload("res://par/FB_par.tscn")
 
 func _ready() -> void:
 	var part = par.instance()
 
 func use():
 #	part.start()
-	print("aaaaaaaaaaaaaaa")
-	return -7
+	return -9
 

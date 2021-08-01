@@ -1,4 +1,4 @@
-extends ColorRect
+extends TextureRect
 
 
 var inventory = preload("res://Items/Inventory.tres")

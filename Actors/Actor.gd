@@ -7,7 +7,7 @@ const TILE_SIZE := 32
 
 enum {PLAYER=1,  WALL = 2, ENEMY = 4, DOOR = 8}
 enum {_TURN_READY, _TURN_RUN, _TURN_END, _TURN_INPUT}
-enum {IDLE, MOVE, ATTACK, AMOUNT}
+enum {IDLE, MOVE, ATTACK, AMOUNT, CNF}
 var state = _TURN_READY
 var anime_state = IDLE
 onready var ray :RayCast2D = $RayCast2D
@@ -32,6 +32,7 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
+			
 	if anime_state == ATTACK:
 		anime.play("attack")
 		yield(anime, "animation_finished" )
@@ -48,7 +49,10 @@ func _process(delta: float) -> void:
 		anime.play('damage')
 		yield(anime, "animation_finished" )
 		anime_state = IDLE
-	
+
+		
+#	if anime_state == CNF:
+#		anime.play("cnf")
 	
 	if !anime.is_playing() :
 		anime_state = IDLE

@@ -17,7 +17,7 @@
 [ext_resource path="res://image/bst1_d.png" type="Texture" id=15]
 [ext_resource path="res://UI.gd" type="Script" id=16]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.384314, 0.776471, 0.552941, 0.996078 )
 border_width_left = 1
 border_width_top = 1
@@ -29,7 +29,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.247059, 0.0862745, 0.337255, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -41,7 +41,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 length = 0.3
 step = 0.01
 tracks/0/type = "value"
@@ -81,7 +81,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 13 ), ExtResource( 10 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "damage1"
 step = 0.02
 tracks/0/type = "value"
@@ -121,7 +121,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 15 ), ExtResource( 4 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "damage2"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -160,7 +160,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 14 ), ExtResource( 9 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:custom_styles/fg:bg_color")
@@ -211,7 +211,7 @@ tracks/3/keys = {
 "values": [ ExtResource( 9 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -263,7 +263,7 @@ tracks/3/keys = {
 "values": [ ExtResource( 10 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 length = 1.5
 loop = true
 tracks/0/type = "value"
@@ -315,27 +315,27 @@ tracks/3/keys = {
 "values": [ ExtResource( 4 ) ]
 }
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=9]
 extra_spacing_char = 2
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFontData" id=11]
+[sub_resource type="DynamicFontData" id=10]
 font_path = "res://image/mplus-2m-bold.ttf"
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=11]
 use_mipmaps = true
 extra_spacing_char = 1
 font_data = ExtResource( 5 )
-fallback/0 = SubResource( 11 )
+fallback/0 = SubResource( 10 )
 
-[sub_resource type="DynamicFontData" id=13]
+[sub_resource type="DynamicFontData" id=12]
 hinting = 1
 font_path = "res://image/Thintel.ttf"
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=13]
 use_mipmaps = true
 extra_spacing_space = 1
-font_data = SubResource( 13 )
+font_data = SubResource( 12 )
 
 [node name="Main" type="TileMap" groups=[
 "main",
@@ -376,8 +376,8 @@ position = Vector2( 8, 444 )
 margin_right = 100.0
 margin_bottom = 14.0
 rect_scale = Vector2( 2, 2 )
-custom_styles/fg = SubResource( 2 )
-custom_styles/bg = SubResource( 3 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
 max_value = 10.0
 value = 10.0
 percent_visible = false
@@ -389,12 +389,12 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="UI/Position2D/LifeBar"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Position2D/LifeBar"]
-anims/damage = SubResource( 4 )
-anims/damage1 = SubResource( 5 )
-anims/damage2 = SubResource( 6 )
-anims/danger = SubResource( 7 )
-anims/normal = SubResource( 8 )
-anims/warning = SubResource( 9 )
+anims/damage = SubResource( 3 )
+anims/damage1 = SubResource( 4 )
+anims/damage2 = SubResource( 5 )
+anims/danger = SubResource( 6 )
+anims/normal = SubResource( 7 )
+anims/warning = SubResource( 8 )
 
 [node name="TextureRect" type="TextureRect" parent="UI/Position2D/LifeBar"]
 margin_left = -2.0
@@ -414,7 +414,7 @@ anchor_right = 0.16
 anchor_bottom = 0.928571
 rect_clip_content = true
 size_flags_stretch_ratio = 20.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0.607843, 0.419608, 0.623529, 1 )
 text = "HP"
 __meta__ = {
@@ -456,7 +456,7 @@ margin_left = -148.5
 margin_top = -97.5
 margin_right = 148.5
 margin_bottom = 97.5
-custom_fonts/normal_font = SubResource( 12 )
+custom_fonts/normal_font = SubResource( 11 )
 custom_colors/default_color = Color( 3, 3, 3, 1 )
 bbcode_enabled = true
 bbcode_text = "You entered the dungeon"
@@ -472,7 +472,7 @@ anchor_bottom = 1.0
 margin_left = 3.0
 margin_top = 3.0
 margin_bottom = -2.0
-custom_fonts/normal_font = SubResource( 14 )
+custom_fonts/normal_font = SubResource( 13 )
 custom_colors/default_color = Color( 4, 4, 4, 1 )
 bbcode_text = "You entered the dungeon"
 tab_size = 5

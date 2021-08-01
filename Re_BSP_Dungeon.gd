@@ -30,6 +30,9 @@ onready var floors :Node = $Floors
 var rats = preload('res://Actors/CheeseRat.tscn')
 var apples = preload('res://map_object/apple.tscn')
 var forces = preload('res://map_object/force.tscn')
+var fbs = preload("res://map_object/fb.tscn")
+var cnfs = preload("res://map_object/cnf_2.tscn")
+
 var door = preload('res://map_object/Door.tscn')
 var wall_obj = preload('res://map_object/Wall.tscn')
 var floor_obj = preload('res://map_object/Floor.tscn')
@@ -56,17 +59,25 @@ func set_player_position(player)->void:
 	player.position = map_to_world(point)
 	
 	var apple = apples.instance()
-	apple.position = map_to_world(point)
+	apple.position = map_to_world(point + Vector2(0,1))
 	items.add_child(apple)
 	
 	var force = forces.instance()
-	force.position = map_to_world(point)
+	force.position = map_to_world(point +Vector2.ONE)
 	items.add_child(force)
+		
+	var fb = fbs.instance()
+	fb.position = map_to_world(point + Vector2(2,1))
+	items.add_child(fb)
+	
+	var cnf = cnfs.instance()
+	cnf.position = map_to_world(point+ Vector2(2,2))
+	items.add_child(cnf)
 
-	var rat = rats.instance()
 
-	rat.position = map_to_world(point+Vector2.ONE)
-	enemies.add_child(rat, true)
+#	var rat = rats.instance()
+#	rat.position = map_to_world(point+Vector2.ONE)
+#	enemies.add_child(rat, true)
 
 func entity_set():
 	for tile in tiles:
@@ -128,12 +139,16 @@ func item_place(rooms) -> void:
 		var apple = apples.instance()
 		var force = forces.instance()
 		var rng = rand_range(1,10)
-		if rng < 5:
+		if rng+2 < 5:
 			apple.position = map_to_world(p)
 			items.add_child(apple)
-		else:
+		elif rng+2 < 7:
 			force.position = map_to_world(p)
 			items.add_child(force)
+		elif rng+2 < 8:
+			var fb = fbs.instance()
+			fb.position = map_to_world(p)
+			items.add_child(fb)
 func door_place() -> void:
 	var door_point_list := []
 	for x in range(0, map_w):

@@ -192,7 +192,6 @@ tracks/3/keys = {
 }
 
 [sub_resource type="StreamTexture" id=6]
-flags = 4
 load_path = "res://.import/shadow.png-933a40835afcc17c83c194c13369a3bd.stex"
 
 [sub_resource type="CircleShape2D" id=7]
@@ -265,10 +264,10 @@ shape = SubResource( 7 )
 
 [node name="InventoryContainer" parent="CanvasLayer" index="0" instance=ExtResource( 16 )]
 visible = false
-margin_left = 216.0
-margin_top = 32.0
-margin_right = 416.0
-margin_bottom = 232.0
+margin_left = 236.0
+margin_top = 8.0
+margin_right = 486.0
+margin_bottom = 278.0
 
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Player_area_exited"]

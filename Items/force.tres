@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "force"
+name = "Force scroll"
 texture = ExtResource( 2 )
