@@ -343,7 +343,9 @@ font_data = SubResource( 12 )
 format = 1
 script = ExtResource( 7 )
 
-[node name="Player" parent="." instance=ExtResource( 8 )]
+[node name="Player" parent="." groups=[
+"save",
+] instance=ExtResource( 8 )]
 
 [node name="Dungeon" type="TileMap" parent="."]
 cell_size = Vector2( 32, 32 )

@@ -1,5 +1,6 @@
 extends "res://astar_path.gd"
 
+
 onready var BSP_Dungeon = $BSP_Dungeon
 onready var player = get_parent().find_node("Player")
 # Declare member variables here. Examples:

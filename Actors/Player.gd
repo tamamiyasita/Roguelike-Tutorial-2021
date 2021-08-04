@@ -51,6 +51,8 @@ func parent_path():
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_turn_complete and state == _TURN_READY:
 		for direction in INPUT_KEY.keys():
+			if event.is_action_pressed('ui_home'):
+				pass
 			if event.is_action_pressed('rest'):
 				turn_end()
 			elif event.is_action_pressed("get"):
