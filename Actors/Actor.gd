@@ -15,7 +15,6 @@ onready var sprite: Sprite = $Position2D/Sprite
 onready var anime: AnimationPlayer = $AnimationPlayer
 onready var position2d: Position2D = $Position2D
 onready var tween: Tween = $Position2D/Tween
-onready var SAVE_KEY: String = "character" + name
 
 var is_dead := false
 

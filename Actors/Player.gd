@@ -8,7 +8,7 @@ onready var container = $CanvasLayer/InventoryContainer
 onready var gamesaver = $GameSaver
 signal hp_changed
 signal states_changed
-
+onready var SAVE_KEY: String = "pc"
 var enemies := []
 var areas := []
 var floor_items := []

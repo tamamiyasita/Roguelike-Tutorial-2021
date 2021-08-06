@@ -4,6 +4,8 @@ const SaveGame = preload("res://SaveGame.gd")
 
 var SAVE_FOLDER : String = "res://save"
 var SAVE_NAME_TEMPLATE : String = "save_%03d.tres"
+var rats = preload('res://Actors/CheeseRat.tscn')
+
 
 func save(id : int):
 	var save_game := SaveGame.new()
@@ -29,6 +31,9 @@ func _load(id : int):
 		
 	var save_game : Resource = load(save_file_path)
 	for node in get_tree().get_nodes_in_group("save"):
-		node._load(save_game)
+		print(node.name)
+		if "Rat" in node.name:
+			var r = rats.instance()
+			r._load(save_game)
 	
 	

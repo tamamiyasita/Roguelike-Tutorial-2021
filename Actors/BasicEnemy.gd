@@ -5,6 +5,7 @@ onready var sprit :Sprite = $Position2D/Sprite
 onready var a_star_path = find_parent("Dungeon")
 onready var states = preload('res://Actors/enemy_states.tres')
 onready var tex = $Position2D/TextureRect
+var SAVE_KEY: String = "character"
 
 var cnf = false
 var cnf_turn:int = 0
