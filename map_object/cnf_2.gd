@@ -1,4 +1,4 @@
-extends Area2D
+extends Itembase
 
 const is_item = preload('res://Items/cnf.tres')
 

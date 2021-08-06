@@ -1,6 +1,6 @@
-extends Area2D
+extends Itembase
 
-const is_item = preload('res://Items/force.tres')
+var is_item = preload('res://Items/force.tres')
 
 func _ready() -> void:
 	pass

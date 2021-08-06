@@ -1,0 +1,5277 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://image/wood_door1.png" type="Texture" id=1]
+[ext_resource path="res://SaveGame.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+game_varsion = "0.1.1"
+data = {
+"characterCheeseRat": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 704, 256 ),
+"visible": false
+},
+"characterCheeseRat10": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 512, 608 ),
+"visible": false
+},
+"characterCheeseRat11": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 960, 128 ),
+"visible": false
+},
+"characterCheeseRat12": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 896, 160 ),
+"visible": false
+},
+"characterCheeseRat13": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 896, 96 ),
+"visible": false
+},
+"characterCheeseRat14": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 992, 224 ),
+"visible": false
+},
+"characterCheeseRat15": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 1056, 224 ),
+"visible": false
+},
+"characterCheeseRat16": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 960, 448 ),
+"visible": false
+},
+"characterCheeseRat17": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 832, 512 ),
+"visible": false
+},
+"characterCheeseRat18": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 1088, 512 ),
+"visible": false
+},
+"characterCheeseRat19": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 1024, 608 ),
+"visible": false
+},
+"characterCheeseRat2": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 672, 288 ),
+"visible": false
+},
+"characterCheeseRat20": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 800, 544 ),
+"visible": false
+},
+"characterCheeseRat21": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 192, 1120 ),
+"visible": false
+},
+"characterCheeseRat22": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 256, 1088 ),
+"visible": false
+},
+"characterCheeseRat23": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 352, 928 ),
+"visible": false
+},
+"characterCheeseRat24": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 288, 896 ),
+"visible": false
+},
+"characterCheeseRat25": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 288, 928 ),
+"visible": false
+},
+"characterCheeseRat26": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 640, 896 ),
+"visible": false
+},
+"characterCheeseRat27": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 832, 1024 ),
+"visible": false
+},
+"characterCheeseRat28": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 736, 1088 ),
+"visible": false
+},
+"characterCheeseRat29": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 832, 960 ),
+"visible": false
+},
+"characterCheeseRat3": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 512, 224 ),
+"visible": false
+},
+"characterCheeseRat30": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 768, 832 ),
+"visible": false
+},
+"characterCheeseRat31": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 1088, 832 ),
+"visible": false
+},
+"characterCheeseRat32": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 1056, 992 ),
+"visible": false
+},
+"characterCheeseRat33": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 992, 928 ),
+"visible": false
+},
+"characterCheeseRat34": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 1088, 1088 ),
+"visible": false
+},
+"characterCheeseRat35": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 1056, 928 ),
+"visible": false
+},
+"characterCheeseRat4": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 512, 160 ),
+"visible": false
+},
+"characterCheeseRat5": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 672, 128 ),
+"visible": false
+},
+"characterCheeseRat6": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 704, 480 ),
+"visible": false
+},
+"characterCheeseRat7": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 640, 480 ),
+"visible": false
+},
+"characterCheeseRat8": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 608, 448 ),
+"visible": false
+},
+"characterCheeseRat9": {
+"hp": 3,
+"is_dead": false,
+"max_hp": 3,
+"position": Vector2( 672, 480 ),
+"visible": false
+},
+"characterPlayer": {
+"hp": 15,
+"items": [ null, null, null, null, null, null, null, null, null ],
+"max_hp": 15,
+"position": Vector2( 384, 320 )
+},
+"door@Door@988": {
+"collsion": false,
+"is_open": false,
+"light": ExtResource( 1 ),
+"occ": true,
+"position": Vector2( 416, 320 ),
+"texture": ExtResource( 1 )
+},
+"door@Door@989": {
+"collsion": false,
+"is_open": false,
+"light": ExtResource( 1 ),
+"occ": true,
+"position": Vector2( 448, 928 ),
+"texture": ExtResource( 1 )
+},
+"door@Door@990": {
+"collsion": false,
+"is_open": false,
+"light": ExtResource( 1 ),
+"occ": true,
+"position": Vector2( 544, 352 ),
+"texture": ExtResource( 1 )
+},
+"door@Door@991": {
+"collsion": false,
+"is_open": false,
+"light": ExtResource( 1 ),
+"occ": true,
+"position": Vector2( 576, 928 ),
+"texture": ExtResource( 1 )
+},
+"door@Door@992": {
+"collsion": false,
+"is_open": false,
+"light": ExtResource( 1 ),
+"occ": true,
+"position": Vector2( 608, 352 ),
+"texture": ExtResource( 1 )
+},
+"door@Door@993": {
+"collsion": false,
+"is_open": false,
+"light": ExtResource( 1 ),
+"occ": true,
+"position": Vector2( 608, 640 ),
+"texture": ExtResource( 1 )
+},
+"door@Door@994": {
+"collsion": false,
+"is_open": false,
+"light": ExtResource( 1 ),
+"occ": true,
+"position": Vector2( 608, 800 ),
+"texture": ExtResource( 1 )
+},
+"door@Door@995": {
+"collsion": false,
+"is_open": false,
+"light": ExtResource( 1 ),
+"occ": true,
+"position": Vector2( 736, 320 ),
+"texture": ExtResource( 1 )
+},
+"door@Door@996": {
+"collsion": false,
+"is_open": false,
+"light": ExtResource( 1 ),
+"occ": true,
+"position": Vector2( 864, 320 ),
+"texture": ExtResource( 1 )
+},
+"door@Door@997": {
+"collsion": false,
+"is_open": false,
+"light": ExtResource( 1 ),
+"occ": true,
+"position": Vector2( 864, 928 ),
+"texture": ExtResource( 1 )
+},
+"door@Door@998": {
+"collsion": false,
+"is_open": false,
+"light": ExtResource( 1 ),
+"occ": true,
+"position": Vector2( 928, 928 ),
+"texture": ExtResource( 1 )
+},
+"door@Door@999": {
+"collsion": false,
+"is_open": false,
+"light": ExtResource( 1 ),
+"occ": true,
+"position": Vector2( 960, 352 ),
+"texture": ExtResource( 1 )
+},
+"doorDoor": {
+"collsion": false,
+"is_open": false,
+"light": ExtResource( 1 ),
+"occ": true,
+"position": Vector2( 192, 288 ),
+"texture": ExtResource( 1 )
+},
+"items@Apple@1000": {
+"position": Vector2( 256, 512 )
+},
+"items@Apple@972": {
+"position": Vector2( 704, 384 )
+},
+"items@Apple@975": {
+"position": Vector2( 1024, 256 )
+},
+"items@Apple@976": {
+"position": Vector2( 1056, 160 )
+},
+"items@Apple@980": {
+"position": Vector2( 320, 992 )
+},
+"items@Apple@983": {
+"position": Vector2( 800, 1088 )
+},
+"items@Apple@985": {
+"position": Vector2( 1088, 992 )
+},
+"items@FbScroll@1002": {
+"position": Vector2( 320, 512 )
+},
+"items@FbScroll@977": {
+"position": Vector2( 928, 224 )
+},
+"items@FbScroll@978": {
+"position": Vector2( 1184, 416 )
+},
+"items@FbScroll@987": {
+"position": Vector2( 1184, 1088 )
+},
+"items@ForceScroll@1001": {
+"position": Vector2( 288, 512 )
+},
+"items@ForceScroll@971": {
+"position": Vector2( 512, 160 )
+},
+"items@ForceScroll@973": {
+"position": Vector2( 672, 608 )
+},
+"items@ForceScroll@974": {
+"position": Vector2( 960, 96 )
+},
+"items@ForceScroll@979": {
+"position": Vector2( 1184, 512 )
+},
+"items@ForceScroll@981": {
+"position": Vector2( 352, 1088 )
+},
+"items@ForceScroll@982": {
+"position": Vector2( 192, 832 )
+},
+"items@ForceScroll@984": {
+"position": Vector2( 800, 1024 )
+},
+"items@ForceScroll@986": {
+"position": Vector2( 1120, 928 )
+},
+"itemsApple": {
+"position": Vector2( 608, 288 )
+},
+"itemsCNFScroll": {
+"position": Vector2( 320, 544 )
+},
+"itemsFbScroll": {
+"position": Vector2( 1088, 288 )
+},
+"itemsForceScroll": {
+"position": Vector2( 672, 288 )
+},
+"obj@Wall@10": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 224 )
+},
+"obj@Wall@100": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 64, 544 )
+},
+"obj@Wall@101": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 64, 576 )
+},
+"obj@Wall@102": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 64, 608 )
+},
+"obj@Wall@103": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 640 )
+},
+"obj@Wall@104": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 672 )
+},
+"obj@Wall@105": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 704 )
+},
+"obj@Wall@106": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 736 )
+},
+"obj@Wall@107": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 768 )
+},
+"obj@Wall@108": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 800 )
+},
+"obj@Wall@109": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 832 )
+},
+"obj@Wall@11": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 256 )
+},
+"obj@Wall@110": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 864 )
+},
+"obj@Wall@111": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 896 )
+},
+"obj@Wall@112": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 928 )
+},
+"obj@Wall@113": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 960 )
+},
+"obj@Wall@114": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 992 )
+},
+"obj@Wall@115": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 1024 )
+},
+"obj@Wall@116": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 1056 )
+},
+"obj@Wall@117": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 1088 )
+},
+"obj@Wall@118": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 1120 )
+},
+"obj@Wall@119": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 1152 )
+},
+"obj@Wall@12": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 288 )
+},
+"obj@Wall@120": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 1184 )
+},
+"obj@Wall@121": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 1216 )
+},
+"obj@Wall@122": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 1248 )
+},
+"obj@Wall@123": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 0 )
+},
+"obj@Wall@124": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 32 )
+},
+"obj@Wall@125": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 64 )
+},
+"obj@Wall@126": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 96 )
+},
+"obj@Wall@127": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 128 )
+},
+"obj@Wall@128": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 160 )
+},
+"obj@Wall@129": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 192 )
+},
+"obj@Wall@13": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 320 )
+},
+"obj@Wall@130": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 224 )
+},
+"obj@Wall@131": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 256 )
+},
+"obj@Wall@132": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 288 )
+},
+"obj@Wall@133": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 96, 320 )
+},
+"obj@Wall@134": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 96, 640 )
+},
+"obj@Wall@135": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 672 )
+},
+"obj@Wall@136": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 704 )
+},
+"obj@Wall@137": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 736 )
+},
+"obj@Wall@138": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 768 )
+},
+"obj@Wall@139": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 800 )
+},
+"obj@Wall@14": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 352 )
+},
+"obj@Wall@140": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 832 )
+},
+"obj@Wall@141": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 864 )
+},
+"obj@Wall@142": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 896 )
+},
+"obj@Wall@143": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 928 )
+},
+"obj@Wall@144": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 960 )
+},
+"obj@Wall@145": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 992 )
+},
+"obj@Wall@146": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 1024 )
+},
+"obj@Wall@147": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 1056 )
+},
+"obj@Wall@148": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 1088 )
+},
+"obj@Wall@149": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 1120 )
+},
+"obj@Wall@15": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 384 )
+},
+"obj@Wall@150": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 1152 )
+},
+"obj@Wall@151": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 1184 )
+},
+"obj@Wall@152": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 1216 )
+},
+"obj@Wall@153": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 96, 1248 )
+},
+"obj@Wall@154": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 0 )
+},
+"obj@Wall@155": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 32 )
+},
+"obj@Wall@156": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 64 )
+},
+"obj@Wall@157": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 96 )
+},
+"obj@Wall@158": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 128 )
+},
+"obj@Wall@159": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 160 )
+},
+"obj@Wall@16": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 416 )
+},
+"obj@Wall@160": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 192 )
+},
+"obj@Wall@161": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 224 )
+},
+"obj@Wall@162": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 256 )
+},
+"obj@Wall@163": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 288 )
+},
+"obj@Wall@164": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 128, 320 )
+},
+"obj@Wall@165": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 128, 640 )
+},
+"obj@Wall@166": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 672 )
+},
+"obj@Wall@167": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 704 )
+},
+"obj@Wall@168": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 736 )
+},
+"obj@Wall@169": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 768 )
+},
+"obj@Wall@17": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 448 )
+},
+"obj@Wall@170": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 800 )
+},
+"obj@Wall@171": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 832 )
+},
+"obj@Wall@172": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 864 )
+},
+"obj@Wall@173": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 896 )
+},
+"obj@Wall@174": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 928 )
+},
+"obj@Wall@175": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 960 )
+},
+"obj@Wall@176": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 992 )
+},
+"obj@Wall@177": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 1024 )
+},
+"obj@Wall@178": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 1056 )
+},
+"obj@Wall@179": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 1088 )
+},
+"obj@Wall@18": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 480 )
+},
+"obj@Wall@180": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 1120 )
+},
+"obj@Wall@181": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 1152 )
+},
+"obj@Wall@182": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 1184 )
+},
+"obj@Wall@183": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 1216 )
+},
+"obj@Wall@184": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 128, 1248 )
+},
+"obj@Wall@185": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 0 )
+},
+"obj@Wall@186": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 32 )
+},
+"obj@Wall@187": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 64 )
+},
+"obj@Wall@188": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 96 )
+},
+"obj@Wall@189": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 128 )
+},
+"obj@Wall@19": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 512 )
+},
+"obj@Wall@190": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 160 )
+},
+"obj@Wall@191": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 192 )
+},
+"obj@Wall@192": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 224 )
+},
+"obj@Wall@193": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 256 )
+},
+"obj@Wall@194": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 288 )
+},
+"obj@Wall@195": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 160, 320 )
+},
+"obj@Wall@196": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 160, 640 )
+},
+"obj@Wall@197": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 672 )
+},
+"obj@Wall@198": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 704 )
+},
+"obj@Wall@199": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 736 )
+},
+"obj@Wall@20": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 544 )
+},
+"obj@Wall@200": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 768 )
+},
+"obj@Wall@201": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 800 )
+},
+"obj@Wall@202": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 832 )
+},
+"obj@Wall@203": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 864 )
+},
+"obj@Wall@204": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 896 )
+},
+"obj@Wall@205": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 928 )
+},
+"obj@Wall@206": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 960 )
+},
+"obj@Wall@207": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 992 )
+},
+"obj@Wall@208": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 1024 )
+},
+"obj@Wall@209": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 1056 )
+},
+"obj@Wall@21": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 576 )
+},
+"obj@Wall@210": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 1088 )
+},
+"obj@Wall@211": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 1120 )
+},
+"obj@Wall@212": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 1152 )
+},
+"obj@Wall@213": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 1184 )
+},
+"obj@Wall@214": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 1216 )
+},
+"obj@Wall@215": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 160, 1248 )
+},
+"obj@Wall@216": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 192, 0 )
+},
+"obj@Wall@217": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 192, 32 )
+},
+"obj@Wall@218": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 192, 64 )
+},
+"obj@Wall@219": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 192, 96 )
+},
+"obj@Wall@22": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 608 )
+},
+"obj@Wall@220": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 192, 128 )
+},
+"obj@Wall@221": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 192, 640 )
+},
+"obj@Wall@222": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 192, 672 )
+},
+"obj@Wall@223": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 192, 704 )
+},
+"obj@Wall@224": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 192, 736 )
+},
+"obj@Wall@225": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 192, 768 )
+},
+"obj@Wall@226": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 192, 1152 )
+},
+"obj@Wall@227": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 192, 1184 )
+},
+"obj@Wall@228": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 192, 1216 )
+},
+"obj@Wall@229": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 192, 1248 )
+},
+"obj@Wall@23": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 640 )
+},
+"obj@Wall@230": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 224, 0 )
+},
+"obj@Wall@231": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 224, 32 )
+},
+"obj@Wall@232": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 224, 64 )
+},
+"obj@Wall@233": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 224, 96 )
+},
+"obj@Wall@234": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 224, 128 )
+},
+"obj@Wall@235": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 224, 160 )
+},
+"obj@Wall@236": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 224, 192 )
+},
+"obj@Wall@237": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 224, 224 )
+},
+"obj@Wall@238": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 224, 256 )
+},
+"obj@Wall@239": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 224, 288 )
+},
+"obj@Wall@24": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 672 )
+},
+"obj@Wall@240": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 224, 640 )
+},
+"obj@Wall@241": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 224, 672 )
+},
+"obj@Wall@242": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 224, 704 )
+},
+"obj@Wall@243": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 224, 736 )
+},
+"obj@Wall@244": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 224, 768 )
+},
+"obj@Wall@245": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 224, 1152 )
+},
+"obj@Wall@246": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 224, 1184 )
+},
+"obj@Wall@247": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 224, 1216 )
+},
+"obj@Wall@248": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 224, 1248 )
+},
+"obj@Wall@249": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 256, 0 )
+},
+"obj@Wall@25": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 704 )
+},
+"obj@Wall@250": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 256, 32 )
+},
+"obj@Wall@251": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 256, 64 )
+},
+"obj@Wall@252": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 256, 96 )
+},
+"obj@Wall@253": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 256, 128 )
+},
+"obj@Wall@254": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 256, 160 )
+},
+"obj@Wall@255": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 256, 192 )
+},
+"obj@Wall@256": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 256, 224 )
+},
+"obj@Wall@257": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 256, 256 )
+},
+"obj@Wall@258": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 256, 288 )
+},
+"obj@Wall@259": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 256, 640 )
+},
+"obj@Wall@26": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 736 )
+},
+"obj@Wall@260": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 256, 672 )
+},
+"obj@Wall@261": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 256, 704 )
+},
+"obj@Wall@262": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 256, 736 )
+},
+"obj@Wall@263": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 256, 768 )
+},
+"obj@Wall@264": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 256, 1152 )
+},
+"obj@Wall@265": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 256, 1184 )
+},
+"obj@Wall@266": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 256, 1216 )
+},
+"obj@Wall@267": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 256, 1248 )
+},
+"obj@Wall@268": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 288, 0 )
+},
+"obj@Wall@269": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 288, 32 )
+},
+"obj@Wall@27": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 768 )
+},
+"obj@Wall@270": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 288, 64 )
+},
+"obj@Wall@271": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 288, 96 )
+},
+"obj@Wall@272": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 288, 128 )
+},
+"obj@Wall@273": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 288, 160 )
+},
+"obj@Wall@274": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 288, 192 )
+},
+"obj@Wall@275": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 288, 224 )
+},
+"obj@Wall@276": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 288, 256 )
+},
+"obj@Wall@277": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 288, 288 )
+},
+"obj@Wall@278": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 288, 640 )
+},
+"obj@Wall@279": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 288, 672 )
+},
+"obj@Wall@28": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 800 )
+},
+"obj@Wall@280": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 288, 704 )
+},
+"obj@Wall@281": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 288, 736 )
+},
+"obj@Wall@282": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 288, 768 )
+},
+"obj@Wall@283": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 288, 1152 )
+},
+"obj@Wall@284": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 288, 1184 )
+},
+"obj@Wall@285": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 288, 1216 )
+},
+"obj@Wall@286": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 288, 1248 )
+},
+"obj@Wall@287": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 320, 0 )
+},
+"obj@Wall@288": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 320, 32 )
+},
+"obj@Wall@289": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 320, 64 )
+},
+"obj@Wall@29": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 832 )
+},
+"obj@Wall@290": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 320, 96 )
+},
+"obj@Wall@291": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 320, 128 )
+},
+"obj@Wall@292": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 320, 160 )
+},
+"obj@Wall@293": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 320, 192 )
+},
+"obj@Wall@294": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 320, 224 )
+},
+"obj@Wall@295": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 320, 256 )
+},
+"obj@Wall@296": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 320, 288 )
+},
+"obj@Wall@297": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 320, 640 )
+},
+"obj@Wall@298": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 320, 672 )
+},
+"obj@Wall@299": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 320, 704 )
+},
+"obj@Wall@30": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 864 )
+},
+"obj@Wall@300": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 320, 736 )
+},
+"obj@Wall@301": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 320, 768 )
+},
+"obj@Wall@302": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 320, 1152 )
+},
+"obj@Wall@303": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 320, 1184 )
+},
+"obj@Wall@304": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 320, 1216 )
+},
+"obj@Wall@305": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 320, 1248 )
+},
+"obj@Wall@306": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 352, 0 )
+},
+"obj@Wall@307": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 352, 32 )
+},
+"obj@Wall@308": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 352, 64 )
+},
+"obj@Wall@309": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 352, 96 )
+},
+"obj@Wall@31": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 896 )
+},
+"obj@Wall@310": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 352, 128 )
+},
+"obj@Wall@311": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 352, 160 )
+},
+"obj@Wall@312": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 352, 192 )
+},
+"obj@Wall@313": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 352, 224 )
+},
+"obj@Wall@314": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 352, 256 )
+},
+"obj@Wall@315": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 352, 288 )
+},
+"obj@Wall@316": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 352, 640 )
+},
+"obj@Wall@317": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 352, 672 )
+},
+"obj@Wall@318": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 352, 704 )
+},
+"obj@Wall@319": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 352, 736 )
+},
+"obj@Wall@32": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 928 )
+},
+"obj@Wall@320": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 352, 768 )
+},
+"obj@Wall@321": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 352, 1152 )
+},
+"obj@Wall@322": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 352, 1184 )
+},
+"obj@Wall@323": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 352, 1216 )
+},
+"obj@Wall@324": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 352, 1248 )
+},
+"obj@Wall@325": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 384, 0 )
+},
+"obj@Wall@326": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 384, 32 )
+},
+"obj@Wall@327": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 384, 64 )
+},
+"obj@Wall@328": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 384, 96 )
+},
+"obj@Wall@329": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 384, 128 )
+},
+"obj@Wall@33": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 960 )
+},
+"obj@Wall@330": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 384, 160 )
+},
+"obj@Wall@331": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 384, 192 )
+},
+"obj@Wall@332": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 384, 224 )
+},
+"obj@Wall@333": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 384, 256 )
+},
+"obj@Wall@334": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 384, 288 )
+},
+"obj@Wall@335": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 384, 640 )
+},
+"obj@Wall@336": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 384, 672 )
+},
+"obj@Wall@337": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 384, 704 )
+},
+"obj@Wall@338": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 384, 736 )
+},
+"obj@Wall@339": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 384, 768 )
+},
+"obj@Wall@34": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 992 )
+},
+"obj@Wall@340": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 384, 1152 )
+},
+"obj@Wall@341": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 384, 1184 )
+},
+"obj@Wall@342": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 384, 1216 )
+},
+"obj@Wall@343": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 384, 1248 )
+},
+"obj@Wall@344": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 416, 0 )
+},
+"obj@Wall@345": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 416, 32 )
+},
+"obj@Wall@346": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 416, 64 )
+},
+"obj@Wall@347": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 416, 96 )
+},
+"obj@Wall@348": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 416, 128 )
+},
+"obj@Wall@349": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 416, 160 )
+},
+"obj@Wall@35": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 1024 )
+},
+"obj@Wall@350": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 416, 192 )
+},
+"obj@Wall@351": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 416, 224 )
+},
+"obj@Wall@352": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 416, 256 )
+},
+"obj@Wall@353": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 416, 288 )
+},
+"obj@Wall@354": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 416, 352 )
+},
+"obj@Wall@355": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 416, 384 )
+},
+"obj@Wall@356": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 416, 416 )
+},
+"obj@Wall@357": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 416, 448 )
+},
+"obj@Wall@358": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 416, 480 )
+},
+"obj@Wall@359": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 416, 512 )
+},
+"obj@Wall@36": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 1056 )
+},
+"obj@Wall@360": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 416, 544 )
+},
+"obj@Wall@361": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 416, 576 )
+},
+"obj@Wall@362": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 416, 608 )
+},
+"obj@Wall@363": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 416, 640 )
+},
+"obj@Wall@364": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 416, 672 )
+},
+"obj@Wall@365": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 416, 704 )
+},
+"obj@Wall@366": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 416, 736 )
+},
+"obj@Wall@367": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 416, 768 )
+},
+"obj@Wall@368": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 416, 1152 )
+},
+"obj@Wall@369": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 416, 1184 )
+},
+"obj@Wall@37": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 1088 )
+},
+"obj@Wall@370": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 416, 1216 )
+},
+"obj@Wall@371": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 416, 1248 )
+},
+"obj@Wall@372": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 0 )
+},
+"obj@Wall@373": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 32 )
+},
+"obj@Wall@374": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 64 )
+},
+"obj@Wall@375": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 96 )
+},
+"obj@Wall@376": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 128 )
+},
+"obj@Wall@377": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 160 )
+},
+"obj@Wall@378": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 192 )
+},
+"obj@Wall@379": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 224 )
+},
+"obj@Wall@38": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 1120 )
+},
+"obj@Wall@380": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 256 )
+},
+"obj@Wall@381": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 288 )
+},
+"obj@Wall@382": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 352 )
+},
+"obj@Wall@383": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 384 )
+},
+"obj@Wall@384": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 416 )
+},
+"obj@Wall@385": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 448 )
+},
+"obj@Wall@386": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 480 )
+},
+"obj@Wall@387": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 512 )
+},
+"obj@Wall@388": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 544 )
+},
+"obj@Wall@389": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 576 )
+},
+"obj@Wall@39": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 1152 )
+},
+"obj@Wall@390": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 608 )
+},
+"obj@Wall@391": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 640 )
+},
+"obj@Wall@392": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 672 )
+},
+"obj@Wall@393": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 704 )
+},
+"obj@Wall@394": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 736 )
+},
+"obj@Wall@395": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 768 )
+},
+"obj@Wall@396": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 800 )
+},
+"obj@Wall@397": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 832 )
+},
+"obj@Wall@398": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 864 )
+},
+"obj@Wall@399": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 896 )
+},
+"obj@Wall@4": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 32 )
+},
+"obj@Wall@40": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 1184 )
+},
+"obj@Wall@400": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 960 )
+},
+"obj@Wall@401": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 992 )
+},
+"obj@Wall@402": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 1024 )
+},
+"obj@Wall@403": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 1056 )
+},
+"obj@Wall@404": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 1088 )
+},
+"obj@Wall@405": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 1120 )
+},
+"obj@Wall@406": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 1152 )
+},
+"obj@Wall@407": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 1184 )
+},
+"obj@Wall@408": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 1216 )
+},
+"obj@Wall@409": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 448, 1248 )
+},
+"obj@Wall@41": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 1216 )
+},
+"obj@Wall@410": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 0 )
+},
+"obj@Wall@411": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 32 )
+},
+"obj@Wall@412": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 64 )
+},
+"obj@Wall@413": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 352 )
+},
+"obj@Wall@414": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 640 )
+},
+"obj@Wall@415": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 672 )
+},
+"obj@Wall@416": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 704 )
+},
+"obj@Wall@417": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 736 )
+},
+"obj@Wall@418": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 768 )
+},
+"obj@Wall@419": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 800 )
+},
+"obj@Wall@42": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 1248 )
+},
+"obj@Wall@420": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 832 )
+},
+"obj@Wall@421": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 864 )
+},
+"obj@Wall@422": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 896 )
+},
+"obj@Wall@423": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 960 )
+},
+"obj@Wall@424": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 992 )
+},
+"obj@Wall@425": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 1024 )
+},
+"obj@Wall@426": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 1056 )
+},
+"obj@Wall@427": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 1088 )
+},
+"obj@Wall@428": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 1120 )
+},
+"obj@Wall@429": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 1152 )
+},
+"obj@Wall@43": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 0 )
+},
+"obj@Wall@430": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 1184 )
+},
+"obj@Wall@431": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 1216 )
+},
+"obj@Wall@432": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 480, 1248 )
+},
+"obj@Wall@433": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 0 )
+},
+"obj@Wall@434": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 32 )
+},
+"obj@Wall@435": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 64 )
+},
+"obj@Wall@436": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 352 )
+},
+"obj@Wall@437": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 640 )
+},
+"obj@Wall@438": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 672 )
+},
+"obj@Wall@439": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 704 )
+},
+"obj@Wall@44": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 32 )
+},
+"obj@Wall@440": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 736 )
+},
+"obj@Wall@441": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 768 )
+},
+"obj@Wall@442": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 800 )
+},
+"obj@Wall@443": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 832 )
+},
+"obj@Wall@444": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 864 )
+},
+"obj@Wall@445": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 896 )
+},
+"obj@Wall@446": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 960 )
+},
+"obj@Wall@447": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 992 )
+},
+"obj@Wall@448": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 1024 )
+},
+"obj@Wall@449": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 1056 )
+},
+"obj@Wall@45": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 64 )
+},
+"obj@Wall@450": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 1088 )
+},
+"obj@Wall@451": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 1120 )
+},
+"obj@Wall@452": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 1152 )
+},
+"obj@Wall@453": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 1184 )
+},
+"obj@Wall@454": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 1216 )
+},
+"obj@Wall@455": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 512, 1248 )
+},
+"obj@Wall@456": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 0 )
+},
+"obj@Wall@457": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 32 )
+},
+"obj@Wall@458": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 64 )
+},
+"obj@Wall@459": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 640 )
+},
+"obj@Wall@46": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 96 )
+},
+"obj@Wall@460": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 672 )
+},
+"obj@Wall@461": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 704 )
+},
+"obj@Wall@462": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 736 )
+},
+"obj@Wall@463": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 768 )
+},
+"obj@Wall@464": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 800 )
+},
+"obj@Wall@465": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 832 )
+},
+"obj@Wall@466": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 864 )
+},
+"obj@Wall@467": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 896 )
+},
+"obj@Wall@468": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 960 )
+},
+"obj@Wall@469": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 992 )
+},
+"obj@Wall@47": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 128 )
+},
+"obj@Wall@470": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 1024 )
+},
+"obj@Wall@471": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 1056 )
+},
+"obj@Wall@472": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 1088 )
+},
+"obj@Wall@473": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 1120 )
+},
+"obj@Wall@474": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 1152 )
+},
+"obj@Wall@475": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 1184 )
+},
+"obj@Wall@476": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 1216 )
+},
+"obj@Wall@477": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 544, 1248 )
+},
+"obj@Wall@478": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 0 )
+},
+"obj@Wall@479": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 32 )
+},
+"obj@Wall@48": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 160 )
+},
+"obj@Wall@480": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 64 )
+},
+"obj@Wall@481": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 352 )
+},
+"obj@Wall@482": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 640 )
+},
+"obj@Wall@483": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 672 )
+},
+"obj@Wall@484": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 704 )
+},
+"obj@Wall@485": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 736 )
+},
+"obj@Wall@486": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 768 )
+},
+"obj@Wall@487": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 800 )
+},
+"obj@Wall@488": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 832 )
+},
+"obj@Wall@489": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 864 )
+},
+"obj@Wall@49": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 192 )
+},
+"obj@Wall@490": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 896 )
+},
+"obj@Wall@491": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 960 )
+},
+"obj@Wall@492": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 992 )
+},
+"obj@Wall@493": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 1024 )
+},
+"obj@Wall@494": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 1056 )
+},
+"obj@Wall@495": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 1088 )
+},
+"obj@Wall@496": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 1120 )
+},
+"obj@Wall@497": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 1152 )
+},
+"obj@Wall@498": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 1184 )
+},
+"obj@Wall@499": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 1216 )
+},
+"obj@Wall@5": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 64 )
+},
+"obj@Wall@50": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 224 )
+},
+"obj@Wall@500": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 576, 1248 )
+},
+"obj@Wall@501": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 608, 0 )
+},
+"obj@Wall@502": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 608, 32 )
+},
+"obj@Wall@503": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 608, 64 )
+},
+"obj@Wall@504": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 608, 960 )
+},
+"obj@Wall@505": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 608, 992 )
+},
+"obj@Wall@506": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 608, 1024 )
+},
+"obj@Wall@507": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 608, 1056 )
+},
+"obj@Wall@508": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 608, 1088 )
+},
+"obj@Wall@509": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 608, 1120 )
+},
+"obj@Wall@51": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 256 )
+},
+"obj@Wall@510": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 608, 1152 )
+},
+"obj@Wall@511": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 608, 1184 )
+},
+"obj@Wall@512": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 608, 1216 )
+},
+"obj@Wall@513": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 608, 1248 )
+},
+"obj@Wall@514": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 640, 0 )
+},
+"obj@Wall@515": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 640, 32 )
+},
+"obj@Wall@516": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 640, 64 )
+},
+"obj@Wall@517": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 640, 352 )
+},
+"obj@Wall@518": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 640, 640 )
+},
+"obj@Wall@519": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 640, 672 )
+},
+"obj@Wall@52": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 288 )
+},
+"obj@Wall@520": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 640, 704 )
+},
+"obj@Wall@521": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 640, 736 )
+},
+"obj@Wall@522": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 640, 768 )
+},
+"obj@Wall@523": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 640, 800 )
+},
+"obj@Wall@524": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 640, 1120 )
+},
+"obj@Wall@525": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 640, 1152 )
+},
+"obj@Wall@526": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 640, 1184 )
+},
+"obj@Wall@527": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 640, 1216 )
+},
+"obj@Wall@528": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 640, 1248 )
+},
+"obj@Wall@529": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 672, 0 )
+},
+"obj@Wall@53": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 320 )
+},
+"obj@Wall@530": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 672, 32 )
+},
+"obj@Wall@531": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 672, 64 )
+},
+"obj@Wall@532": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 672, 352 )
+},
+"obj@Wall@533": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 672, 640 )
+},
+"obj@Wall@534": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 672, 672 )
+},
+"obj@Wall@535": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 672, 704 )
+},
+"obj@Wall@536": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 672, 736 )
+},
+"obj@Wall@537": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 672, 768 )
+},
+"obj@Wall@538": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 672, 800 )
+},
+"obj@Wall@539": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 672, 1120 )
+},
+"obj@Wall@54": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 352 )
+},
+"obj@Wall@540": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 672, 1152 )
+},
+"obj@Wall@541": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 672, 1184 )
+},
+"obj@Wall@542": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 672, 1216 )
+},
+"obj@Wall@543": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 672, 1248 )
+},
+"obj@Wall@544": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 704, 0 )
+},
+"obj@Wall@545": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 704, 32 )
+},
+"obj@Wall@546": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 704, 64 )
+},
+"obj@Wall@547": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 704, 352 )
+},
+"obj@Wall@548": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 704, 640 )
+},
+"obj@Wall@549": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 704, 672 )
+},
+"obj@Wall@55": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 384 )
+},
+"obj@Wall@550": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 704, 704 )
+},
+"obj@Wall@551": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 704, 736 )
+},
+"obj@Wall@552": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 704, 768 )
+},
+"obj@Wall@553": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 704, 800 )
+},
+"obj@Wall@554": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 704, 1120 )
+},
+"obj@Wall@555": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 704, 1152 )
+},
+"obj@Wall@556": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 704, 1184 )
+},
+"obj@Wall@557": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 704, 1216 )
+},
+"obj@Wall@558": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 704, 1248 )
+},
+"obj@Wall@559": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 0 )
+},
+"obj@Wall@56": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 416 )
+},
+"obj@Wall@560": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 32 )
+},
+"obj@Wall@561": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 64 )
+},
+"obj@Wall@562": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 96 )
+},
+"obj@Wall@563": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 128 )
+},
+"obj@Wall@564": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 160 )
+},
+"obj@Wall@565": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 192 )
+},
+"obj@Wall@566": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 224 )
+},
+"obj@Wall@567": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 256 )
+},
+"obj@Wall@568": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 288 )
+},
+"obj@Wall@569": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 352 )
+},
+"obj@Wall@57": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 448 )
+},
+"obj@Wall@570": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 384 )
+},
+"obj@Wall@571": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 416 )
+},
+"obj@Wall@572": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 448 )
+},
+"obj@Wall@573": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 480 )
+},
+"obj@Wall@574": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 512 )
+},
+"obj@Wall@575": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 544 )
+},
+"obj@Wall@576": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 576 )
+},
+"obj@Wall@577": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 608 )
+},
+"obj@Wall@578": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 640 )
+},
+"obj@Wall@579": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 672 )
+},
+"obj@Wall@58": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 480 )
+},
+"obj@Wall@580": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 704 )
+},
+"obj@Wall@581": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 736 )
+},
+"obj@Wall@582": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 768 )
+},
+"obj@Wall@583": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 800 )
+},
+"obj@Wall@584": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 1120 )
+},
+"obj@Wall@585": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 1152 )
+},
+"obj@Wall@586": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 1184 )
+},
+"obj@Wall@587": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 1216 )
+},
+"obj@Wall@588": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 736, 1248 )
+},
+"obj@Wall@589": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 0 )
+},
+"obj@Wall@59": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 512 )
+},
+"obj@Wall@590": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 32 )
+},
+"obj@Wall@591": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 64 )
+},
+"obj@Wall@592": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 96 )
+},
+"obj@Wall@593": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 128 )
+},
+"obj@Wall@594": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 160 )
+},
+"obj@Wall@595": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 192 )
+},
+"obj@Wall@596": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 224 )
+},
+"obj@Wall@597": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 256 )
+},
+"obj@Wall@598": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 288 )
+},
+"obj@Wall@599": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 352 )
+},
+"obj@Wall@6": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 96 )
+},
+"obj@Wall@60": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 544 )
+},
+"obj@Wall@600": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 384 )
+},
+"obj@Wall@601": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 416 )
+},
+"obj@Wall@602": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 448 )
+},
+"obj@Wall@603": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 480 )
+},
+"obj@Wall@604": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 512 )
+},
+"obj@Wall@605": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 544 )
+},
+"obj@Wall@606": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 576 )
+},
+"obj@Wall@607": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 608 )
+},
+"obj@Wall@608": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 640 )
+},
+"obj@Wall@609": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 672 )
+},
+"obj@Wall@61": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 576 )
+},
+"obj@Wall@610": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 704 )
+},
+"obj@Wall@611": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 736 )
+},
+"obj@Wall@612": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 768 )
+},
+"obj@Wall@613": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 800 )
+},
+"obj@Wall@614": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 1120 )
+},
+"obj@Wall@615": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 1152 )
+},
+"obj@Wall@616": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 1184 )
+},
+"obj@Wall@617": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 1216 )
+},
+"obj@Wall@618": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 768, 1248 )
+},
+"obj@Wall@619": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 0 )
+},
+"obj@Wall@62": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 608 )
+},
+"obj@Wall@620": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 32 )
+},
+"obj@Wall@621": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 64 )
+},
+"obj@Wall@622": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 96 )
+},
+"obj@Wall@623": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 128 )
+},
+"obj@Wall@624": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 160 )
+},
+"obj@Wall@625": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 192 )
+},
+"obj@Wall@626": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 224 )
+},
+"obj@Wall@627": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 256 )
+},
+"obj@Wall@628": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 288 )
+},
+"obj@Wall@629": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 352 )
+},
+"obj@Wall@63": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 640 )
+},
+"obj@Wall@630": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 384 )
+},
+"obj@Wall@631": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 640 )
+},
+"obj@Wall@632": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 672 )
+},
+"obj@Wall@633": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 704 )
+},
+"obj@Wall@634": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 736 )
+},
+"obj@Wall@635": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 768 )
+},
+"obj@Wall@636": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 800 )
+},
+"obj@Wall@637": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 1120 )
+},
+"obj@Wall@638": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 1152 )
+},
+"obj@Wall@639": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 1184 )
+},
+"obj@Wall@64": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 672 )
+},
+"obj@Wall@640": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 1216 )
+},
+"obj@Wall@641": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 800, 1248 )
+},
+"obj@Wall@642": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 0 )
+},
+"obj@Wall@643": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 32 )
+},
+"obj@Wall@644": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 64 )
+},
+"obj@Wall@645": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 96 )
+},
+"obj@Wall@646": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 128 )
+},
+"obj@Wall@647": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 160 )
+},
+"obj@Wall@648": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 192 )
+},
+"obj@Wall@649": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 224 )
+},
+"obj@Wall@65": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 704 )
+},
+"obj@Wall@650": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 256 )
+},
+"obj@Wall@651": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 288 )
+},
+"obj@Wall@652": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 352 )
+},
+"obj@Wall@653": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 384 )
+},
+"obj@Wall@654": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 640 )
+},
+"obj@Wall@655": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 672 )
+},
+"obj@Wall@656": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 704 )
+},
+"obj@Wall@657": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 736 )
+},
+"obj@Wall@658": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 768 )
+},
+"obj@Wall@659": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 800 )
+},
+"obj@Wall@66": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 736 )
+},
+"obj@Wall@660": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 1120 )
+},
+"obj@Wall@661": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 1152 )
+},
+"obj@Wall@662": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 1184 )
+},
+"obj@Wall@663": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 1216 )
+},
+"obj@Wall@664": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 832, 1248 )
+},
+"obj@Wall@665": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 0 )
+},
+"obj@Wall@666": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 32 )
+},
+"obj@Wall@667": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 64 )
+},
+"obj@Wall@668": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 96 )
+},
+"obj@Wall@669": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 128 )
+},
+"obj@Wall@67": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 768 )
+},
+"obj@Wall@670": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 160 )
+},
+"obj@Wall@671": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 192 )
+},
+"obj@Wall@672": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 224 )
+},
+"obj@Wall@673": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 256 )
+},
+"obj@Wall@674": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 288 )
+},
+"obj@Wall@675": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 352 )
+},
+"obj@Wall@676": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 384 )
+},
+"obj@Wall@677": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 640 )
+},
+"obj@Wall@678": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 672 )
+},
+"obj@Wall@679": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 704 )
+},
+"obj@Wall@68": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 800 )
+},
+"obj@Wall@680": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 736 )
+},
+"obj@Wall@681": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 768 )
+},
+"obj@Wall@682": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 800 )
+},
+"obj@Wall@683": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 832 )
+},
+"obj@Wall@684": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 864 )
+},
+"obj@Wall@685": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 896 )
+},
+"obj@Wall@686": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 960 )
+},
+"obj@Wall@687": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 992 )
+},
+"obj@Wall@688": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 1024 )
+},
+"obj@Wall@689": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 1056 )
+},
+"obj@Wall@69": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 832 )
+},
+"obj@Wall@690": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 1088 )
+},
+"obj@Wall@691": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 1120 )
+},
+"obj@Wall@692": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 1152 )
+},
+"obj@Wall@693": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 1184 )
+},
+"obj@Wall@694": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 1216 )
+},
+"obj@Wall@695": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 864, 1248 )
+},
+"obj@Wall@696": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 0 )
+},
+"obj@Wall@697": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 32 )
+},
+"obj@Wall@698": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 64 )
+},
+"obj@Wall@699": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 352 )
+},
+"obj@Wall@7": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 128 )
+},
+"obj@Wall@70": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 864 )
+},
+"obj@Wall@700": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 384 )
+},
+"obj@Wall@701": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 640 )
+},
+"obj@Wall@702": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 672 )
+},
+"obj@Wall@703": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 704 )
+},
+"obj@Wall@704": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 736 )
+},
+"obj@Wall@705": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 768 )
+},
+"obj@Wall@706": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 800 )
+},
+"obj@Wall@707": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 832 )
+},
+"obj@Wall@708": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 864 )
+},
+"obj@Wall@709": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 896 )
+},
+"obj@Wall@71": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 896 )
+},
+"obj@Wall@710": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 960 )
+},
+"obj@Wall@711": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 992 )
+},
+"obj@Wall@712": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 1024 )
+},
+"obj@Wall@713": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 1056 )
+},
+"obj@Wall@714": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 1088 )
+},
+"obj@Wall@715": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 1120 )
+},
+"obj@Wall@716": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 1152 )
+},
+"obj@Wall@717": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 1184 )
+},
+"obj@Wall@718": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 1216 )
+},
+"obj@Wall@719": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 896, 1248 )
+},
+"obj@Wall@72": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 928 )
+},
+"obj@Wall@720": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 0 )
+},
+"obj@Wall@721": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 32 )
+},
+"obj@Wall@722": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 64 )
+},
+"obj@Wall@723": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 352 )
+},
+"obj@Wall@724": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 384 )
+},
+"obj@Wall@725": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 640 )
+},
+"obj@Wall@726": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 672 )
+},
+"obj@Wall@727": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 704 )
+},
+"obj@Wall@728": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 736 )
+},
+"obj@Wall@729": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 768 )
+},
+"obj@Wall@73": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 960 )
+},
+"obj@Wall@730": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 800 )
+},
+"obj@Wall@731": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 832 )
+},
+"obj@Wall@732": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 864 )
+},
+"obj@Wall@733": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 896 )
+},
+"obj@Wall@734": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 960 )
+},
+"obj@Wall@735": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 992 )
+},
+"obj@Wall@736": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 1024 )
+},
+"obj@Wall@737": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 1056 )
+},
+"obj@Wall@738": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 1088 )
+},
+"obj@Wall@739": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 1120 )
+},
+"obj@Wall@74": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 992 )
+},
+"obj@Wall@740": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 1152 )
+},
+"obj@Wall@741": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 1184 )
+},
+"obj@Wall@742": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 1216 )
+},
+"obj@Wall@743": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 928, 1248 )
+},
+"obj@Wall@744": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 960, 0 )
+},
+"obj@Wall@745": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 960, 32 )
+},
+"obj@Wall@746": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 960, 64 )
+},
+"obj@Wall@747": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 960, 640 )
+},
+"obj@Wall@748": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 960, 672 )
+},
+"obj@Wall@749": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 960, 704 )
+},
+"obj@Wall@75": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 1024 )
+},
+"obj@Wall@750": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 960, 736 )
+},
+"obj@Wall@751": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 960, 768 )
+},
+"obj@Wall@752": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 960, 800 )
+},
+"obj@Wall@753": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 960, 1120 )
+},
+"obj@Wall@754": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 960, 1152 )
+},
+"obj@Wall@755": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 960, 1184 )
+},
+"obj@Wall@756": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 960, 1216 )
+},
+"obj@Wall@757": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 960, 1248 )
+},
+"obj@Wall@758": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 992, 0 )
+},
+"obj@Wall@759": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 992, 32 )
+},
+"obj@Wall@76": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 1056 )
+},
+"obj@Wall@760": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 992, 64 )
+},
+"obj@Wall@761": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 992, 320 )
+},
+"obj@Wall@762": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 992, 352 )
+},
+"obj@Wall@763": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 992, 384 )
+},
+"obj@Wall@764": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 992, 640 )
+},
+"obj@Wall@765": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 992, 672 )
+},
+"obj@Wall@766": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 992, 704 )
+},
+"obj@Wall@767": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 992, 736 )
+},
+"obj@Wall@768": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 992, 768 )
+},
+"obj@Wall@769": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 992, 800 )
+},
+"obj@Wall@77": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 1088 )
+},
+"obj@Wall@770": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 992, 1120 )
+},
+"obj@Wall@771": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 992, 1152 )
+},
+"obj@Wall@772": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 992, 1184 )
+},
+"obj@Wall@773": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 992, 1216 )
+},
+"obj@Wall@774": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 992, 1248 )
+},
+"obj@Wall@775": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1024, 0 )
+},
+"obj@Wall@776": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1024, 32 )
+},
+"obj@Wall@777": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1024, 64 )
+},
+"obj@Wall@778": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1024, 320 )
+},
+"obj@Wall@779": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1024, 352 )
+},
+"obj@Wall@78": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 1120 )
+},
+"obj@Wall@780": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1024, 384 )
+},
+"obj@Wall@781": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1024, 640 )
+},
+"obj@Wall@782": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1024, 672 )
+},
+"obj@Wall@783": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1024, 704 )
+},
+"obj@Wall@784": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1024, 736 )
+},
+"obj@Wall@785": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1024, 768 )
+},
+"obj@Wall@786": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1024, 800 )
+},
+"obj@Wall@787": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1024, 1120 )
+},
+"obj@Wall@788": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1024, 1152 )
+},
+"obj@Wall@789": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1024, 1184 )
+},
+"obj@Wall@79": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 1152 )
+},
+"obj@Wall@790": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1024, 1216 )
+},
+"obj@Wall@791": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1024, 1248 )
+},
+"obj@Wall@792": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1056, 0 )
+},
+"obj@Wall@793": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1056, 32 )
+},
+"obj@Wall@794": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1056, 64 )
+},
+"obj@Wall@795": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1056, 320 )
+},
+"obj@Wall@796": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1056, 352 )
+},
+"obj@Wall@797": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1056, 384 )
+},
+"obj@Wall@798": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1056, 640 )
+},
+"obj@Wall@799": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1056, 672 )
+},
+"obj@Wall@8": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 160 )
+},
+"obj@Wall@80": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 1184 )
+},
+"obj@Wall@800": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1056, 704 )
+},
+"obj@Wall@801": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1056, 736 )
+},
+"obj@Wall@802": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1056, 768 )
+},
+"obj@Wall@803": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1056, 800 )
+},
+"obj@Wall@804": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1056, 1120 )
+},
+"obj@Wall@805": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1056, 1152 )
+},
+"obj@Wall@806": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1056, 1184 )
+},
+"obj@Wall@807": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1056, 1216 )
+},
+"obj@Wall@808": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1056, 1248 )
+},
+"obj@Wall@809": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1088, 0 )
+},
+"obj@Wall@81": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 1216 )
+},
+"obj@Wall@810": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1088, 32 )
+},
+"obj@Wall@811": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1088, 64 )
+},
+"obj@Wall@812": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1088, 320 )
+},
+"obj@Wall@813": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1088, 352 )
+},
+"obj@Wall@814": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1088, 384 )
+},
+"obj@Wall@815": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1088, 640 )
+},
+"obj@Wall@816": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1088, 672 )
+},
+"obj@Wall@817": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1088, 704 )
+},
+"obj@Wall@818": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1088, 736 )
+},
+"obj@Wall@819": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1088, 768 )
+},
+"obj@Wall@82": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 32, 1248 )
+},
+"obj@Wall@820": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1088, 800 )
+},
+"obj@Wall@821": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1088, 1120 )
+},
+"obj@Wall@822": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1088, 1152 )
+},
+"obj@Wall@823": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1088, 1184 )
+},
+"obj@Wall@824": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1088, 1216 )
+},
+"obj@Wall@825": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1088, 1248 )
+},
+"obj@Wall@826": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 0 )
+},
+"obj@Wall@827": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 32 )
+},
+"obj@Wall@828": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 64 )
+},
+"obj@Wall@829": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 96 )
+},
+"obj@Wall@83": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 0 )
+},
+"obj@Wall@830": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 128 )
+},
+"obj@Wall@831": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 160 )
+},
+"obj@Wall@832": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 192 )
+},
+"obj@Wall@833": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 224 )
+},
+"obj@Wall@834": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 256 )
+},
+"obj@Wall@835": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 288 )
+},
+"obj@Wall@836": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 320 )
+},
+"obj@Wall@837": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 352 )
+},
+"obj@Wall@838": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 384 )
+},
+"obj@Wall@839": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 640 )
+},
+"obj@Wall@84": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 32 )
+},
+"obj@Wall@840": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 672 )
+},
+"obj@Wall@841": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 704 )
+},
+"obj@Wall@842": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 736 )
+},
+"obj@Wall@843": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 768 )
+},
+"obj@Wall@844": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 800 )
+},
+"obj@Wall@845": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 1120 )
+},
+"obj@Wall@846": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 1152 )
+},
+"obj@Wall@847": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 1184 )
+},
+"obj@Wall@848": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 1216 )
+},
+"obj@Wall@849": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1120, 1248 )
+},
+"obj@Wall@85": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 64 )
+},
+"obj@Wall@850": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 0 )
+},
+"obj@Wall@851": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 32 )
+},
+"obj@Wall@852": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 64 )
+},
+"obj@Wall@853": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 96 )
+},
+"obj@Wall@854": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 128 )
+},
+"obj@Wall@855": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 160 )
+},
+"obj@Wall@856": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 192 )
+},
+"obj@Wall@857": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 224 )
+},
+"obj@Wall@858": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 256 )
+},
+"obj@Wall@859": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 288 )
+},
+"obj@Wall@86": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 96 )
+},
+"obj@Wall@860": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 320 )
+},
+"obj@Wall@861": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 352 )
+},
+"obj@Wall@862": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 384 )
+},
+"obj@Wall@863": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 640 )
+},
+"obj@Wall@864": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 672 )
+},
+"obj@Wall@865": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 704 )
+},
+"obj@Wall@866": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 736 )
+},
+"obj@Wall@867": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 768 )
+},
+"obj@Wall@868": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 800 )
+},
+"obj@Wall@869": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 1120 )
+},
+"obj@Wall@87": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 128 )
+},
+"obj@Wall@870": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 1152 )
+},
+"obj@Wall@871": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 1184 )
+},
+"obj@Wall@872": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 1216 )
+},
+"obj@Wall@873": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1152, 1248 )
+},
+"obj@Wall@874": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 0 )
+},
+"obj@Wall@875": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 32 )
+},
+"obj@Wall@876": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 64 )
+},
+"obj@Wall@877": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 96 )
+},
+"obj@Wall@878": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 128 )
+},
+"obj@Wall@879": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 160 )
+},
+"obj@Wall@88": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 160 )
+},
+"obj@Wall@880": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 192 )
+},
+"obj@Wall@881": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 224 )
+},
+"obj@Wall@882": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 256 )
+},
+"obj@Wall@883": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 288 )
+},
+"obj@Wall@884": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 320 )
+},
+"obj@Wall@885": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 352 )
+},
+"obj@Wall@886": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 384 )
+},
+"obj@Wall@887": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 640 )
+},
+"obj@Wall@888": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 672 )
+},
+"obj@Wall@889": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 704 )
+},
+"obj@Wall@89": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 192 )
+},
+"obj@Wall@890": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 736 )
+},
+"obj@Wall@891": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 768 )
+},
+"obj@Wall@892": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 800 )
+},
+"obj@Wall@893": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 1120 )
+},
+"obj@Wall@894": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 1152 )
+},
+"obj@Wall@895": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 1184 )
+},
+"obj@Wall@896": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 1216 )
+},
+"obj@Wall@897": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1184, 1248 )
+},
+"obj@Wall@898": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 0 )
+},
+"obj@Wall@899": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 32 )
+},
+"obj@Wall@9": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 192 )
+},
+"obj@Wall@90": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 224 )
+},
+"obj@Wall@900": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 64 )
+},
+"obj@Wall@901": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 96 )
+},
+"obj@Wall@902": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 128 )
+},
+"obj@Wall@903": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 160 )
+},
+"obj@Wall@904": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 192 )
+},
+"obj@Wall@905": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 224 )
+},
+"obj@Wall@906": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 256 )
+},
+"obj@Wall@907": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 288 )
+},
+"obj@Wall@908": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 320 )
+},
+"obj@Wall@909": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 352 )
+},
+"obj@Wall@91": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 256 )
+},
+"obj@Wall@910": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 384 )
+},
+"obj@Wall@911": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 640 )
+},
+"obj@Wall@912": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 672 )
+},
+"obj@Wall@913": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 704 )
+},
+"obj@Wall@914": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 736 )
+},
+"obj@Wall@915": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 768 )
+},
+"obj@Wall@916": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 800 )
+},
+"obj@Wall@917": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 832 )
+},
+"obj@Wall@918": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 864 )
+},
+"obj@Wall@919": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 896 )
+},
+"obj@Wall@92": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 288 )
+},
+"obj@Wall@920": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 928 )
+},
+"obj@Wall@921": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 960 )
+},
+"obj@Wall@922": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 992 )
+},
+"obj@Wall@923": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 1024 )
+},
+"obj@Wall@924": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 1056 )
+},
+"obj@Wall@925": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 1088 )
+},
+"obj@Wall@926": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 1120 )
+},
+"obj@Wall@927": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 1152 )
+},
+"obj@Wall@928": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 1184 )
+},
+"obj@Wall@929": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 1216 )
+},
+"obj@Wall@93": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 64, 320 )
+},
+"obj@Wall@930": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1216, 1248 )
+},
+"obj@Wall@931": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 0 )
+},
+"obj@Wall@932": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 32 )
+},
+"obj@Wall@933": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 64 )
+},
+"obj@Wall@934": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 96 )
+},
+"obj@Wall@935": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 128 )
+},
+"obj@Wall@936": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 160 )
+},
+"obj@Wall@937": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 192 )
+},
+"obj@Wall@938": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 224 )
+},
+"obj@Wall@939": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 256 )
+},
+"obj@Wall@94": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 64, 352 )
+},
+"obj@Wall@940": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 288 )
+},
+"obj@Wall@941": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 320 )
+},
+"obj@Wall@942": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 352 )
+},
+"obj@Wall@943": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 384 )
+},
+"obj@Wall@944": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 416 )
+},
+"obj@Wall@945": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 448 )
+},
+"obj@Wall@946": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 480 )
+},
+"obj@Wall@947": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 512 )
+},
+"obj@Wall@948": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 544 )
+},
+"obj@Wall@949": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 576 )
+},
+"obj@Wall@95": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 64, 384 )
+},
+"obj@Wall@950": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 608 )
+},
+"obj@Wall@951": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 640 )
+},
+"obj@Wall@952": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 672 )
+},
+"obj@Wall@953": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 704 )
+},
+"obj@Wall@954": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 736 )
+},
+"obj@Wall@955": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 768 )
+},
+"obj@Wall@956": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 800 )
+},
+"obj@Wall@957": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 832 )
+},
+"obj@Wall@958": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 864 )
+},
+"obj@Wall@959": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 896 )
+},
+"obj@Wall@96": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 64, 416 )
+},
+"obj@Wall@960": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 928 )
+},
+"obj@Wall@961": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 960 )
+},
+"obj@Wall@962": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 992 )
+},
+"obj@Wall@963": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 1024 )
+},
+"obj@Wall@964": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 1056 )
+},
+"obj@Wall@965": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 1088 )
+},
+"obj@Wall@966": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 1120 )
+},
+"obj@Wall@967": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 1152 )
+},
+"obj@Wall@968": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 1184 )
+},
+"obj@Wall@969": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 1216 )
+},
+"obj@Wall@97": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 64, 448 )
+},
+"obj@Wall@970": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 1248, 1248 )
+},
+"obj@Wall@98": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 64, 480 )
+},
+"obj@Wall@99": {
+"is_visible": false,
+"light": true,
+"position": Vector2( 64, 512 )
+},
+"objWall": {
+"is_visible": false,
+"light": false,
+"position": Vector2( 0, 0 )
+}
+}

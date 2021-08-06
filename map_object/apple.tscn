@@ -6,7 +6,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
 
-[node name="Apple" type="Area2D"]
+[node name="Apple" type="Area2D" groups=[
+"save",
+]]
 scale = Vector2( 0.5, 0.5 )
 collision_layer = 32
 script = ExtResource( 2 )

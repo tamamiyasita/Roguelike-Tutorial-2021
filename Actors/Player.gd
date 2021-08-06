@@ -5,14 +5,13 @@ onready var fov :Area2D = $Fov
 onready var inventory = preload("res://Items/Inventory.tres")
 onready var states = preload('res://Actors/player_states.tres')
 onready var container = $CanvasLayer/InventoryContainer
-onready var use_item = $Useitem
+onready var gamesaver = $GameSaver
 signal hp_changed
 signal states_changed
 
 var enemies := []
 var areas := []
 var floor_items := []
-
 
 const INPUT_KEY :Dictionary = {
 	"right": Vector2.RIGHT,
@@ -47,12 +46,42 @@ func parent_path():
 	return get_parent().walls.get_children()
 
 
+func save(save_game: Resource):
+	save_game.data[SAVE_KEY] = {
+#		'experience': experience,
+		'hp': states.hp,
+		"max_hp":states.max_hp,
+		"position": position,
+		"items": inventory.items
+#		'mana': stats.mana,
+	}
+	print("ok save_?")
+	
+func _load(save_game: Resource):
+	var data: Dictionary = save_game.data[SAVE_KEY]
+#	experience = data['experience']
+	self.states.hp = data['hp']
+	self.states.max_hp = data['max_hp']
+	position = data["position"]
+	inventory.items = data["items"]
+	
+	print("load")
+	hp_change(0)
+	container.disp.update_inventory_display()
+#	stats.mana = data['mana']
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_turn_complete and state == _TURN_READY:
 		for direction in INPUT_KEY.keys():
-			if event.is_action_pressed('ui_home'):
-				pass
+			if event.is_action_pressed('save'):
+				gamesaver.save(1)
+				turn_end()
+				break
+			if event.is_action_pressed("load"):
+				gamesaver._load(1)
+				turn_end()
+				break
 			if event.is_action_pressed('rest'):
 				turn_end()
 			elif event.is_action_pressed("get"):
@@ -107,7 +136,7 @@ func get_item():
 			if inventory.items[i] == null:
 				inventory.set_item(i, item)
 				get_tree().call_group("message", "get_massage", "You picked up an {0} ".format([item.name]))
-				floor_items[0].queue_free()
+				floor_items[0].position = Vector2.ZERO
 				break
 
 func hp_change(value):

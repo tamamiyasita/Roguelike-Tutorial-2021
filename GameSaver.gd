@@ -7,7 +7,7 @@ var SAVE_NAME_TEMPLATE : String = "save_%03d.tres"
 
 func save(id : int):
 	var save_game := SaveGame.new()
-	save_game.game_varsion = ProjectSettings.get_setting("application/config/version")
+	save_game.game_varsion = ProjectSettings.get_setting("application/config/varsion")
 	for node in get_tree().get_nodes_in_group("save"):
 		node.save(save_game)
 		
@@ -20,7 +20,7 @@ func save(id : int):
 	if errer != OK:
 		print("errer")
 	
-func load(id : int):
+func _load(id : int):
 	var save_file_path : String = SAVE_FOLDER.plus_file(SAVE_NAME_TEMPLATE % id)
 	var file : File = File.new()
 	if not file.file_exists(save_file_path):
@@ -29,6 +29,6 @@ func load(id : int):
 		
 	var save_game : Resource = load(save_file_path)
 	for node in get_tree().get_nodes_in_group("save"):
-		node.load(save_game)
+		node._load(save_game)
 	
 	

@@ -25,7 +25,8 @@ func _process(delta: float) -> void:
 		anime.play('idle')
 	if is_dead:
 		if particle.emitting == false:
-			queue_free()
+#			queue_free()
+			position = Vector2.ZERO
 	
 func take_turn(direction) -> void:
 	if cnf and cnf_turn > 0:
@@ -38,8 +39,8 @@ func take_turn(direction) -> void:
 
 func dead() -> void:
 	get_tree().call_group("message", "get_massage", "The {0} is dead".format([self.name]))
-	sprit.hide()
-	$Position2D/shadow.hide()
+#	sprit.hide()
+#	$Position2D/shadow.hide()
 #	particle.emitting = true
 	anime.play("dead")
 	is_turn_complete = true
@@ -117,3 +118,26 @@ func _on_Enemy_input_event(viewport: Node, event: InputEvent, shape_idx: int) ->
 		if event.is_pressed():
 			BaseInfo.target_enemy = self
 
+func save(save_game: Resource):
+	print(SAVE_KEY)
+	
+	save_game.data[SAVE_KEY] = {
+#		'experience': experience,
+		'hp': states.hp,
+		"max_hp":states.max_hp,
+		"position": position,
+		"is_dead": is_dead,
+		"visible": visible
+#		'mana': stats.mana,
+	}
+	
+func _load(save_game: Resource):
+
+	var data: Dictionary = save_game.data[SAVE_KEY]
+	self.states.hp = data['hp']
+	self.states.max_hp = data['max_hp']
+	position = data["position"]
+	is_dead = data["is_dead"]
+	visible = data["visible"]
+	
+	

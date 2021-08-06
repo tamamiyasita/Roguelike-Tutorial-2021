@@ -18,29 +18,34 @@ func setup(states) -> void:
 	hp_value.text = ("HP " +str(value)+"/"+ str(max_value))
 	
 func set_target_value(amount: float) -> void:
-	if value > 0.7 * max_value:
-		_anime_player.play('damage')
-	elif value <= 0.7 * max_value:
-		_anime_player.play('damage1')
-	elif value < 0.3 * max_value:
-		_anime_player.play('damage2')
-
-
 	target_value = amount
 	if is_instance_valid(hp_value):		
 		hp_value.text = ("HP " +str(target_value)+"/"+ str(max_value))
-	if is_instance_valid(_tween):		
-		if _tween.is_active():
-			_tween.stop_all()
-			
-		var duration := abs(target_value - value) / max_value * fill_rate
-		
-		_tween.interpolate_property(self, "value", value, target_value, duration, Tween.TRANS_QUAD)
-		_tween.start()
+
+	if amount <= 0:
+		if value > 0.7 * max_value:
+			_anime_player.play('damage')
+		elif value <= 0.7 * max_value:
+			_anime_player.play('damage1')
+		elif value < 0.3 * max_value:
+			_anime_player.play('damage2')
+
+		if is_instance_valid(_tween):		
+			if _tween.is_active():
+				_tween.stop_all()
+
+			var duration := abs(target_value - value) / max_value * fill_rate
+
+			_tween.interpolate_property(self, "value", value, target_value, duration, Tween.TRANS_QUAD)
+			_tween.start()
+
+			damage_anime()
+
 		
 
 
-func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
+#func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
+func damage_anime():
 	yield(_anime_player, "animation_finished" )
 	if value < 0.3 * max_value:
 		_anime_player.play("danger")
