@@ -1,6 +1,6 @@
 extends "res://astar_path.gd"
 
-
+onready var gamesaver = $GameSaver
 onready var BSP_Dungeon = $BSP_Dungeon
 onready var player = get_parent().find_node("Player")
 # Declare member variables here. Examples:
@@ -18,9 +18,11 @@ func _ready() -> void:
 	Dungeon.generate()
 	Dungeon.set_player_position(player)
 	a_path_ready()
-	
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("save"):
+		gamesaver.save(1)
+	if Input.is_action_just_pressed("load"):
+		for e in BSP_Dungeon.enemies.get_children():
+			e.queue_free()
+		gamesaver._load(1)

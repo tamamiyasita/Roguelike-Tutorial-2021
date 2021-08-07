@@ -3,9 +3,9 @@ extends "res://Actors/Actor.gd"
 onready var particle :CPUParticles2D = $Position2D/CPUParticles2D
 onready var sprit :Sprite = $Position2D/Sprite
 onready var a_star_path = find_parent("Dungeon")
-onready var states = preload('res://Actors/enemy_states.tres')
+onready var states = preload('res://Actors/enemy_states.tres').duplicate()
 onready var tex = $Position2D/TextureRect
-var SAVE_KEY: String = "character"
+onready var SAVE_KEY = "character"+name
 
 var cnf = false
 var cnf_turn:int = 0
@@ -14,7 +14,7 @@ var paths:Array
 
 func _ready() -> void:
 	add_to_group("actor")
-	states = states.duplicate()
+#	states = states.duplicate()
 
 func _process(delta: float) -> void:
 	if cnf == true:
@@ -120,10 +120,12 @@ func _on_Enemy_input_event(viewport: Node, event: InputEvent, shape_idx: int) ->
 			BaseInfo.target_enemy = self
 
 func save(save_game: Resource):
+	
 	print(SAVE_KEY)
 	
 	save_game.data[SAVE_KEY] = {
 #		'experience': experience,
+#		"name":name,
 		'hp': states.hp,
 		"max_hp":states.max_hp,
 		"position": position,
@@ -135,6 +137,8 @@ func save(save_game: Resource):
 func _load(save_game: Resource):
 
 	var data: Dictionary = save_game.data[SAVE_KEY]
+	self.states = load('res://Actors/enemy_states.tres').duplicate()
+#	name = data["name"]
 	self.states.hp = data['hp']
 	self.states.max_hp = data['max_hp']
 	position = data["position"]

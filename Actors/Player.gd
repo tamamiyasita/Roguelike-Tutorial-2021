@@ -5,7 +5,7 @@ onready var fov :Area2D = $Fov
 onready var inventory = preload("res://Items/Inventory.tres")
 onready var states = preload('res://Actors/player_states.tres')
 onready var container = $CanvasLayer/InventoryContainer
-onready var gamesaver = $GameSaver
+#onready var gamesaver = $GameSaver
 signal hp_changed
 signal states_changed
 onready var SAVE_KEY: String = "pc"
@@ -74,14 +74,14 @@ func _load(save_game: Resource):
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_turn_complete and state == _TURN_READY:
 		for direction in INPUT_KEY.keys():
-			if event.is_action_pressed('save'):
-				gamesaver.save(1)
-				turn_end()
-				break
-			if event.is_action_pressed("load"):
-				gamesaver._load(1)
-				turn_end()
-				break
+#			if event.is_action_pressed('save'):
+#				gamesaver.save(1)
+#				turn_end()
+#				break
+#			if event.is_action_pressed("load"):
+#				gamesaver._load(1)
+#				turn_end()
+#				break
 			if event.is_action_pressed('rest'):
 				turn_end()
 			elif event.is_action_pressed("get"):

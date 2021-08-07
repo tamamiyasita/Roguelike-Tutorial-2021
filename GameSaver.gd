@@ -5,7 +5,7 @@ const SaveGame = preload("res://SaveGame.gd")
 var SAVE_FOLDER : String = "res://save"
 var SAVE_NAME_TEMPLATE : String = "save_%03d.tres"
 var rats = preload('res://Actors/CheeseRat.tscn')
-
+var rat = rats.instance()
 
 func save(id : int):
 	var save_game := SaveGame.new()
@@ -34,6 +34,7 @@ func _load(id : int):
 		print(node.name)
 		if "Rat" in node.name:
 			var r = rats.instance()
+			BaseInfo.Main.enemies.add_child(r, true)
 			r._load(save_game)
 	
 	

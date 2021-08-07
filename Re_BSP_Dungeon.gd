@@ -77,7 +77,7 @@ func set_player_position(player)->void:
 	cnf.position = map_to_world(point+ Vector2(2,2))
 	items.add_child(cnf)
 
-
+#
 #	var rat = rats.instance()
 #	rat.position = map_to_world(point+Vector2.ONE)
 #	enemies.add_child(rat, true)
@@ -122,6 +122,7 @@ func enemy_place(rooms) -> void:
 	var enemy_point := []
 	var choice_num := 5
 	randomize()
+	var count = 0
 	for room in rooms:
 		if room == rooms[0]:
 			continue
@@ -139,8 +140,11 @@ func enemy_place(rooms) -> void:
 		var rat = rats.instance()
 
 		rat.position = map_to_world(p)
+#		rat.set_name("Rat"+str(count))
 		enemies.add_child(rat, true)
-		
+		count += 1
+#		rat.SAVE_KEY = rat.name
+		print(rat.name)
 		
 func item_place(rooms) -> void:
 	var item_point := []

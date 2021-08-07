@@ -4,9 +4,10 @@ extends TileMap
 
 onready var player = $Player
 onready var lifebar = $UI/Position2D/LifeBar
-onready var enemies = $Dungeon/BSP_Dungeon/Enemies.get_children()
+onready var enemies = $Dungeon/BSP_Dungeon/Enemies
 var active_actor
 var current_cell = Vector2.ZERO
+
 
 func _ready() -> void:
 	set_process(false)
@@ -15,6 +16,7 @@ func _ready() -> void:
 	player.connect('states_changed', lifebar, "setup")
 	player.states_reset()
 	
+
 
 #func _input(event: InputEvent) -> void:
 #	if player.state == 3:
@@ -41,8 +43,8 @@ func request_pass(c) -> void:
 	
 	
 func actor_ready_on():
-	enemies = $Dungeon/BSP_Dungeon/Enemies.get_children()
-	for e in enemies:
+	enemies = $Dungeon/BSP_Dungeon/Enemies
+	for e in enemies.get_children():
 		e.turn_ready()
 
 
@@ -62,10 +64,10 @@ func enemy_path_check(enemy) -> bool:
 
 
 func game_turn_start() -> void:
-	enemies = $Dungeon/BSP_Dungeon/Enemies.get_children()
+	enemies = $Dungeon/BSP_Dungeon/Enemies
 	active_actor = null
-	if enemies:
-		for enemy in enemies:
+	if enemies.get_children():
+		for enemy in enemies.get_children():
 			if actor_sefe_check(enemy):
 				if enemy_path_check(enemy):
 					active_actor = enemy
