@@ -33,3 +33,5 @@ zoom = Vector2( 4, 4 )
 [node name="Items" type="Node" parent="."]
 
 [node name="RemoveEntity" type="Node" parent="."]
+
+[node name="Stairs" type="Node" parent="."]

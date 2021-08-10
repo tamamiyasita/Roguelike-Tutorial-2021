@@ -13,6 +13,8 @@ var enemies := []
 var areas := []
 var floor_items := []
 
+var on_stairs := false
+
 const INPUT_KEY :Dictionary = {
 	"right": Vector2.RIGHT,
 	"left": Vector2.LEFT,
@@ -83,8 +85,10 @@ func _unhandled_input(event: InputEvent) -> void:
 #				gamesaver._load(1)
 #				turn_end()
 #				break
+			
 			if event.is_action_pressed('rest'):
 				turn_end()
+
 			elif event.is_action_pressed("get"):
 				get_item()
 				turn_end()
@@ -216,14 +220,20 @@ func dead() -> void:
 
 
 func _on_Player_area_entered(area: Area2D) -> void:
-	if area.is_item:
+	if "is_item" in area.get_parent():
 		print("get_ok")
 		floor_items.append(area)
 		print(floor_items)
+	else:
+		print("is_stairs")
+		on_stairs = true
 
 
 func _on_Player_area_exited(area: Area2D) -> void:
-	if area.is_item:
+	if "is_item" in area.get_parent():
 		print("rere_ok")
 		floor_items.erase(area)
 		print(floor_items)
+	else:
+		print("not_stairs")
+		on_stairs = false

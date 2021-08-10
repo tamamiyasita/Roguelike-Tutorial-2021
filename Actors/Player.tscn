@@ -193,6 +193,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="StreamTexture" id=6]
+flags = 4
 load_path = "res://.import/shadow.png-933a40835afcc17c83c194c13369a3bd.stex"
 
 [sub_resource type="CircleShape2D" id=7]
@@ -201,7 +202,7 @@ radius = 160.0
 [node name="Player" instance=ExtResource( 1 )]
 z_index = 3
 collision_layer = 1
-collision_mask = 46
+collision_mask = 110
 script = ExtResource( 4 )
 texture = ExtResource( 3 )
 
@@ -254,7 +255,7 @@ z_index = 4
 [node name="Fov" type="Area2D" parent="." index="5"]
 position = Vector2( 16, 16 )
 collision_layer = 0
-collision_mask = 30
+collision_mask = 126
 script = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fov" index="0"]

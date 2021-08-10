@@ -26,6 +26,7 @@ onready var items:Node = $Items
 onready var doors :Node = $Doors
 onready var walls :Node = $Walls
 onready var floors :Node = $Floors
+onready var stairs :Node = $Stairs
 
 var rats = preload('res://Actors/CheeseRat.tscn')
 var apples = preload('res://map_object/apple.tscn')
@@ -34,6 +35,7 @@ var fbs = preload("res://map_object/fb.tscn")
 var cnfs = preload("res://map_object/cnf_2.tscn")
 
 var door = preload('res://map_object/Door.tscn')
+var stairs_obj = preload('res://map_object/Stairs.tscn')
 var wall_obj = preload('res://map_object/Wall.tscn')
 var floor_obj = preload('res://map_object/Floor.tscn')
 
@@ -41,10 +43,20 @@ onready var SAVE_KEY: String = "dungeon" + name
 #func _ready() -> void:
 #	generate()
 #
-
+func delete_children(node):
+	for n in node.get_children():
+		node.remove_child(n)
+		n.queue_free()
 
 
 func generate() -> void:
+	delete_children(walls)
+	delete_children(items)
+	delete_children(enemies)
+	delete_children(doors)
+	rooms = []
+	tiles = {}
+	obstacles = []
 	clear()
 	fill_roof()
 	start_tree()
@@ -56,6 +68,19 @@ func generate() -> void:
 	enemy_place(rooms)
 	item_place(rooms)
 	door_place()
+	add_stairs()
+
+func add_stairs():
+	var last_point = rooms[-1].center
+	var second_point = rooms[0].center
+	var s1 = stairs_obj.instance()
+	s1.position = map_to_world(last_point)
+	stairs.add_child(s1)
+	var s2 = stairs_obj.instance()
+	s2.position = map_to_world(second_point+Vector2(2,2))
+	stairs.add_child(s2)
+	
+	
 	
 func set_player_position(player)->void:
 	var point = rooms[0].center
@@ -76,12 +101,6 @@ func set_player_position(player)->void:
 	var cnf = cnfs.instance()
 	cnf.position = map_to_world(point+ Vector2(2,2))
 	items.add_child(cnf)
-
-#
-#	var rat = rats.instance()
-#	rat.position = map_to_world(point+Vector2.ONE)
-#	enemies.add_child(rat, true)
-
 
 
 

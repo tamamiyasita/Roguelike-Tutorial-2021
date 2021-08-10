@@ -9,17 +9,29 @@ onready var player = get_parent().find_node("Player")
 enum {BSP}
 var level_type = BSP
 var Dungeon
+var dungeon_level = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(player)
+	next_map()
+	
+
+func next_map():
 	if level_type == BSP:
 		Dungeon = BSP_Dungeon
 	Dungeon.generate()
 	Dungeon.set_player_position(player)
 	a_path_ready()
-
+	dungeon_level += 1
+	player.hp_change(int(player.states.max_hp/2))
+	
+	
+	
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed('stairs'):
+		if player.on_stairs:
+			next_map()
 	if Input.is_action_just_pressed("save"):
 		gamesaver.save(1)
 	if Input.is_action_just_pressed("load"):
