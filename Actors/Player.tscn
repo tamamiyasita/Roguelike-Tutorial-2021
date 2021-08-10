@@ -193,7 +193,6 @@ tracks/3/keys = {
 }
 
 [sub_resource type="StreamTexture" id=6]
-flags = 4
 load_path = "res://.import/shadow.png-933a40835afcc17c83c194c13369a3bd.stex"
 
 [sub_resource type="CircleShape2D" id=7]
@@ -228,7 +227,6 @@ script = ExtResource( 13 )
 [node name="Camera2D" type="Camera2D" parent="Position2D" index="0"]
 rotating = true
 current = true
-zoom = Vector2( 0.5, 0.5 )
 
 [node name="Light2D" type="Light2D" parent="Position2D" index="1"]
 scale = Vector2( 0.796825, 0.796825 )

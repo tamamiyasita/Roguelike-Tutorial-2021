@@ -25,4 +25,10 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("load"):
 		for e in BSP_Dungeon.enemies.get_children():
 			e.queue_free()
+		for w in BSP_Dungeon.walls.get_children():
+			w.queue_free()
+		for d in BSP_Dungeon.doors.get_children():
+			d.queue_free()
+		for i in BSP_Dungeon.items.get_children():
+			i.queue_free()			
 		gamesaver._load(1)

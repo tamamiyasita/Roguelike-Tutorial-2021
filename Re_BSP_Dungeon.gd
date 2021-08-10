@@ -83,25 +83,7 @@ func set_player_position(player)->void:
 #	enemies.add_child(rat, true)
 
 
-func save(save_game: Resource):
-#	var en = []
-#	for e in enemies.get_children():
-#		en.append(e)
-#	save_game.data[SAVE_KEY] = {
-#		'enemies': en,
-#	}
-	print("save_?", enemies)
-	
-func _load(save_game: Resource):
-	var data: Dictionary = save_game.data[SAVE_KEY]
-	var Enemies : Node
-	for e in data["enemies"]:
-		Enemies.add_child(e)
-#	experience = data['experience']
-	enemies = Enemies
-	
-	
-	print(enemies)
+
 
 func entity_set():
 	for tile in tiles:

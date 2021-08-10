@@ -4,8 +4,17 @@ const SaveGame = preload("res://SaveGame.gd")
 
 var SAVE_FOLDER : String = "res://save"
 var SAVE_NAME_TEMPLATE : String = "save_%03d.tres"
+
+var apples = preload('res://map_object/apple.tscn')
+var forces = preload('res://map_object/force.tscn')
+var fbs = preload("res://map_object/fb.tscn")
+var cnfs = preload("res://map_object/cnf_2.tscn")
+
+var door = preload('res://map_object/Door.tscn')
+var wall_obj = preload('res://map_object/Wall.tscn')
+
 var rats = preload('res://Actors/CheeseRat.tscn')
-var rat = rats.instance()
+
 
 func save(id : int):
 	var save_game := SaveGame.new()
@@ -30,11 +39,31 @@ func _load(id : int):
 		return
 		
 	var save_game : Resource = load(save_file_path)
-	for node in get_tree().get_nodes_in_group("save"):
-		print(node.name)
-		if "Rat" in node.name:
-			var r = rats.instance()
-			BaseInfo.Main.enemies.add_child(r, true)
-			r._load(save_game)
-	
-	
+	for entites in save_game.data.values():
+		for entity in entites:
+			print(entity.name , "NAME")
+		
+			if "Rat" in entity.name:
+				var r = rats.instance()
+				BaseInfo.Main.enemies.add_child(r, true)
+				r._load(save_game)
+				
+			if "Wall" in entity.name:
+				var w = wall_obj.instance()
+				BaseInfo.Main.walls.add_child(w, true)
+				w._load(save_game)
+
+			if "Door" in entity.name:
+				var d = door.instance()
+				BaseInfo.Main.doors.add_child(d, true)
+				d._load(save_game)
+				
+			if "Apple" in entity.name:
+				var a = apples.instance()
+				BaseInfo.Main.items.add_child(a, true)
+				a._load(save_game)
+				
+			if "Force" in entity.name:
+				var f = forces.instance()
+				BaseInfo.Main.items.add_child(f, true)
+				f._load(save_game)

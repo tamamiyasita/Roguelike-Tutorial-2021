@@ -5,7 +5,7 @@ onready var sprit :Sprite = $Position2D/Sprite
 onready var a_star_path = find_parent("Dungeon")
 onready var states = preload('res://Actors/enemy_states.tres').duplicate()
 onready var tex = $Position2D/TextureRect
-onready var SAVE_KEY = "character"+name
+onready var SAVE_KEY = "enemy"
 
 var cnf = false
 var cnf_turn:int = 0
@@ -121,24 +121,23 @@ func _on_Enemy_input_event(viewport: Node, event: InputEvent, shape_idx: int) ->
 
 func save(save_game: Resource):
 	
-	print(SAVE_KEY)
 	
-	save_game.data[SAVE_KEY] = {
+	save_game.data["enemy"].append({
 #		'experience': experience,
-#		"name":name,
+		"name":name,
 		'hp': states.hp,
 		"max_hp":states.max_hp,
 		"position": position,
 		"is_dead": is_dead,
 		"visible": visible
 #		'mana': stats.mana,
-	}
-	
+	})
 func _load(save_game: Resource):
 
-	var data: Dictionary = save_game.data[SAVE_KEY]
+	var data_array: Array = save_game.data["enemy"]
+	var data = data_array.pop_front()
 	self.states = load('res://Actors/enemy_states.tres').duplicate()
-#	name = data["name"]
+	name = data["name"]
 	self.states.hp = data['hp']
 	self.states.max_hp = data['max_hp']
 	position = data["position"]

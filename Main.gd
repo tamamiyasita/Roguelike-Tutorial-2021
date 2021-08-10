@@ -5,6 +5,10 @@ extends TileMap
 onready var player = $Player
 onready var lifebar = $UI/Position2D/LifeBar
 onready var enemies = $Dungeon/BSP_Dungeon/Enemies
+onready var walls = $Dungeon/BSP_Dungeon/Walls
+onready var doors = $Dungeon/BSP_Dungeon/Doors
+onready var items = $Dungeon/BSP_Dungeon/Items
+
 var active_actor
 var current_cell = Vector2.ZERO
 

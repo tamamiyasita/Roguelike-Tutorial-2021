@@ -8,7 +8,7 @@ onready var container = $CanvasLayer/InventoryContainer
 #onready var gamesaver = $GameSaver
 signal hp_changed
 signal states_changed
-onready var SAVE_KEY: String = "pc"
+onready var SAVE_KEY: String = "player"
 var enemies := []
 var areas := []
 var floor_items := []
@@ -47,19 +47,20 @@ func parent_path():
 
 
 func save(save_game: Resource):
-	save_game.data[SAVE_KEY] = {
-#		'experience': experience,
+	save_game.data[SAVE_KEY].append({
+		"name": name,
 		'hp': states.hp,
 		"max_hp":states.max_hp,
 		"position": position,
 		"items": inventory.items
 #		'mana': stats.mana,
-	}
-	print("ok save_?")
+	})
 	
 func _load(save_game: Resource):
-	var data: Dictionary = save_game.data[SAVE_KEY]
-#	experience = data['experience']
+	var data_array: Array = save_game.data[SAVE_KEY]
+	var data = data_array.pop_front()
+	
+	name = data["name"]
 	self.states.hp = data['hp']
 	self.states.max_hp = data['max_hp']
 	position = data["position"]
