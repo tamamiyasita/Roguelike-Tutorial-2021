@@ -14,7 +14,7 @@ var door = preload('res://map_object/Door.tscn')
 var wall_obj = preload('res://map_object/Wall.tscn')
 
 var rats = preload('res://Actors/CheeseRat.tscn')
-
+var dogs = preload('res://Actors/Dog.tscn')
 
 func save(id : int):
 	var save_game := SaveGame.new()
@@ -51,6 +51,11 @@ func _load(id : int):
 				var r = rats.instance()
 				BaseInfo.Main.enemies.add_child(r, true)
 				r._load(save_game)
+				
+			if "Dog" in entity.name:
+				var d = dogs.instance()
+				BaseInfo.Main.enemies.add_child(d, true)
+				d._load(save_game)
 				
 			if "Wall" in entity.name:
 				var w = wall_obj.instance()
