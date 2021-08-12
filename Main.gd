@@ -8,6 +8,8 @@ onready var enemies = $Dungeon/BSP_Dungeon/Enemies
 onready var walls = $Dungeon/BSP_Dungeon/Walls
 onready var doors = $Dungeon/BSP_Dungeon/Doors
 onready var items = $Dungeon/BSP_Dungeon/Items
+onready var dungeon_level = $UI/Dungeonlevel
+onready var dungeon = $Dungeon
 
 var active_actor
 var current_cell = Vector2.ZERO
@@ -19,32 +21,10 @@ func _ready() -> void:
 	player.connect('hp_changed', lifebar, "set_target_value")
 	player.connect('states_changed', lifebar, "setup")
 	player.states_reset()
-	
+	dungeon.connect("level", dungeon_level,"dungeon_level_up")
+	dungeon.connect("save_p", dungeon_level,"save_pop")
+	dungeon.connect("load_p", dungeon_level,"load_pop")
 
-
-#func _input(event: InputEvent) -> void:
-#	if player.state == 3:
-#		if event is InputEventMouseButton:
-#			current_cell = map_to_world(event.position)
-#			for e in enemies:
-#				var epos = map_to_world(player.position)
-#				if epos == current_cell:
-#					print("effect on")
-##		elif event is InputEventMouseMotion:
-#			current_cell = world_to_map(event.position)
-#			print("mousu at: ", event.position)
-
-
-func request_move(c, direction) -> void:
-#	c.position += direction
-#	game_turn_start()
-	pass
-
-	
-func request_pass(c) -> void:
-#	game_turn_start()
-	pass
-	
 	
 func actor_ready_on():
 	enemies = $Dungeon/BSP_Dungeon/Enemies
@@ -53,7 +33,6 @@ func actor_ready_on():
 
 
 func _process(delta: float) -> void:
-#	if is_instance_valid(active_actor):
 	if active_actor.is_turn_complete == true:
 		set_process(false)
 		game_turn_start()

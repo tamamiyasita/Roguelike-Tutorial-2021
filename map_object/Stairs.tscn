@@ -2,7 +2,7 @@
 
 [ext_resource path="res://image/wall.png" type="Texture" id=1]
 [ext_resource path="res://map_object/Stairs.gd" type="Script" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://image/down_stairs.png" type="Texture" id=3]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( -16, -16, -16, 16, 16, 16, 16, -16 )
@@ -26,7 +26,6 @@ occluder = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 16, 16 )
-scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

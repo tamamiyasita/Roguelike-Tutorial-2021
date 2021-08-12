@@ -2,6 +2,7 @@ extends Area2D
 class_name Itembase
 
 onready var SAVE_KEY: String = "items"
+var is_item
 
 func _ready() -> void:
 	pass
@@ -14,6 +15,7 @@ func save(save_game: Resource):
 		"name": name,
 		"position": position,
 		"visible": visible,
+		"is_item": is_item
 	})
 	
 	
@@ -25,3 +27,4 @@ func _load(save_game: Resource):
 	name = data["name"]
 	position = data["position"]
 	visible = data["visible"]
+	is_item = data["is_item"]

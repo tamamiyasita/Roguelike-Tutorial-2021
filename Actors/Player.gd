@@ -77,15 +77,7 @@ func _load(save_game: Resource):
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_turn_complete and state == _TURN_READY:
 		for direction in INPUT_KEY.keys():
-#			if event.is_action_pressed('save'):
-#				gamesaver.save(1)
-#				turn_end()
-#				break
-#			if event.is_action_pressed("load"):
-#				gamesaver._load(1)
-#				turn_end()
-#				break
-			
+
 			if event.is_action_pressed('rest'):
 				turn_end()
 
@@ -220,7 +212,7 @@ func dead() -> void:
 
 
 func _on_Player_area_entered(area: Area2D) -> void:
-	if "is_item" in area.get_parent():
+	if area.is_item:
 		print("get_ok")
 		floor_items.append(area)
 		print(floor_items)
@@ -230,7 +222,8 @@ func _on_Player_area_entered(area: Area2D) -> void:
 
 
 func _on_Player_area_exited(area: Area2D) -> void:
-	if "is_item" in area.get_parent():
+#	if "is_item" in area.get_parent():
+	if area.is_item:
 		print("rere_ok")
 		floor_items.erase(area)
 		print(floor_items)

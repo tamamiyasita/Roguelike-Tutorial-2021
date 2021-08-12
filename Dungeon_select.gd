@@ -10,7 +10,9 @@ enum {BSP}
 var level_type = BSP
 var Dungeon
 var dungeon_level = 0
-
+signal level
+signal save_p
+signal load_p
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,6 +27,7 @@ func next_map():
 	a_path_ready()
 	dungeon_level += 1
 	player.hp_change(int(player.states.max_hp/2))
+	emit_signal('level', dungeon_level)
 	
 	
 	
@@ -33,8 +36,10 @@ func _process(delta: float) -> void:
 		if player.on_stairs:
 			next_map()
 	if Input.is_action_just_pressed("save"):
+		emit_signal('save_p')
 		gamesaver.save(1)
 	if Input.is_action_just_pressed("load"):
+		emit_signal('load_p')
 		for e in BSP_Dungeon.enemies.get_children():
 			e.queue_free()
 		for w in BSP_Dungeon.walls.get_children():

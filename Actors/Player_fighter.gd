@@ -18,7 +18,10 @@ func reset():
 	hp = max_hp
 #
 func hp_change(value):
-	hp += value
+	if value + hp > max_hp:
+		hp = max_hp
+	else:
+		hp += value
 
 func states_change():
 	return {"max_hp":max_hp, "power":power, "defense":defense}
