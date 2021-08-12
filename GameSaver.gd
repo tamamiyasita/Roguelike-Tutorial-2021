@@ -42,7 +42,11 @@ func _load(id : int):
 	for entites in save_game.data.values():
 		for entity in entites:
 			print(entity.name , "NAME")
-		
+			
+			if "Player" in entity.name:
+				BaseInfo.Player._load(save_game)
+				
+				
 			if "Rat" in entity.name:
 				var r = rats.instance()
 				BaseInfo.Main.enemies.add_child(r, true)
