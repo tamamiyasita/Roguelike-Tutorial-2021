@@ -96,10 +96,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				neighbor_search(direction_tile)
 				area_check(areas)
 				enemies_visible_check(enemies)
-#		for e in enemies:
-#			if not is_instance_valid(e) or e.is_dead:
-#				enemies.remove(e)
-			
 		
 
 
@@ -212,7 +208,7 @@ func dead() -> void:
 
 
 func _on_Player_area_entered(area: Area2D) -> void:
-	if area.is_item:
+	if area.collision_layer == 32:
 		print("get_ok")
 		floor_items.append(area)
 		print(floor_items)
@@ -223,7 +219,7 @@ func _on_Player_area_entered(area: Area2D) -> void:
 
 func _on_Player_area_exited(area: Area2D) -> void:
 #	if "is_item" in area.get_parent():
-	if area.is_item:
+	if area.collision_layer == 32:
 		print("rere_ok")
 		floor_items.erase(area)
 		print(floor_items)

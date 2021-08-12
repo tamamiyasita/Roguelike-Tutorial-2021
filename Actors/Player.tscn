@@ -227,6 +227,7 @@ script = ExtResource( 13 )
 [node name="Camera2D" type="Camera2D" parent="Position2D" index="0"]
 rotating = true
 current = true
+zoom = Vector2( 0.5, 0.5 )
 
 [node name="Light2D" type="Light2D" parent="Position2D" index="1"]
 scale = Vector2( 0.796825, 0.796825 )

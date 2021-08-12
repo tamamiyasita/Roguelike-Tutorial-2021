@@ -1,5 +1,6 @@
 extends Itembase
 
 
-func _ready() -> void:
-	is_item = preload('res://Items/force.tres')
+const is_item = preload('res://Items/force.tres')
+const weight = 50
+const level = 2

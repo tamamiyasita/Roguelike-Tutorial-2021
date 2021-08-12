@@ -9,7 +9,6 @@ onready var player = get_parent().find_node("Player")
 enum {BSP}
 var level_type = BSP
 var Dungeon
-var dungeon_level = 0
 signal level
 signal save_p
 signal load_p
@@ -25,9 +24,9 @@ func next_map():
 	Dungeon.generate()
 	Dungeon.set_player_position(player)
 	a_path_ready()
-	dungeon_level += 1
+	BaseInfo.Main.dungeon_Lv += 1
 	player.hp_change(int(player.states.max_hp/2))
-	emit_signal('level', dungeon_level)
+	emit_signal('level', BaseInfo.Main.dungeon_Lv)
 	
 	
 	

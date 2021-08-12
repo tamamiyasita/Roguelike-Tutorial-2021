@@ -1,19 +1,89 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://Actors/Actor.gd" type="Script" id=1]
-[ext_resource path="res://image/shadow.png" type="Texture" id=2]
-[ext_resource path="res://image/dog1.png" type="Texture" id=3]
-[ext_resource path="res://image/dog2.png" type="Texture" id=4]
-[ext_resource path="res://par/DMG_Particles.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Actors/Position2D.gd" type="Script" id=6]
+[ext_resource path="res://Dog.gd" type="Script" id=1]
+[ext_resource path="res://Actors/Position2D.gd" type="Script" id=2]
+[ext_resource path="res://image/cheese_rat1.png" type="Texture" id=3]
+[ext_resource path="res://image/shadow.png" type="Texture" id=4]
+[ext_resource path="res://image/dog1.png" type="Texture" id=5]
+[ext_resource path="res://image/cnf.png" type="Texture" id=6]
+[ext_resource path="res://par/DMG_Particles.tscn" type="PackedScene" id=7]
+[ext_resource path="res://image/dog2.png" type="Texture" id=8]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/dog1.png-6d63738810b48a22710fa01ff0613f1d.stex"
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 7.28164, 7.59011 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "attack"
+length = 0.2
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15, 0.18, 0.2, 0.201 ),
+"transitions": PoolRealArray( 1, 1, 0.183011, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.25, 1.15 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.06, 0.16, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -5 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.254902 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=3]
+resource_name = "cnf"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/TextureRect:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 0.329877, 1 ),
+"update": 0,
+"values": [ Vector2( 4.37796, -6.25085 ), Vector2( 4.378, -6.951 ), Vector2( 4.37796, -6.25085 ) ]
+}
+
+[sub_resource type="Animation" id=4]
 resource_name = "damage"
 length = 0.2
 step = 0.01
@@ -66,8 +136,23 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=9]
 length = 2.0
+loop = true
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:position")
@@ -88,25 +173,13 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.75, 1 ),
+"times": PoolRealArray( 0.05, 0.2, 0.75, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 4 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Position2D/Sprite:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 8 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=10]
 length = 0.15
 step = 0.025
 tracks/0/type = "value"
@@ -172,13 +245,19 @@ tracks/4/keys = {
 } ]
 }
 
-[node name="Actor" type="Area2D" groups=[
+[sub_resource type="Curve" id=12]
+_data = [ Vector2( 0.12069, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.893536, 0.0261364 ), 0.0, 0.0, 0, 0 ]
+
+[node name="Dog" type="Area2D" groups=[
 "save",
 ]]
+visible = false
 position = Vector2( 16, 16 )
-collision_layer = 0
-collision_mask = 15
+z_index = 2
+collision_layer = 4
+collision_mask = 17
 script = ExtResource( 1 )
+texture = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 16, 16 )
@@ -188,28 +267,61 @@ shape = SubResource( 11 )
 modulate = Color( 1, 0.470588, 0.470588, 1 )
 position = Vector2( 16, 16 )
 cast_to = Vector2( 0, 35 )
-collision_mask = 2
-collide_with_areas = true
+collision_mask = 15
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 2 )
-anims/damage = SubResource( 3 )
-anims/idle = SubResource( 4 )
-anims/walk = SubResource( 5 )
+anims/cnf = SubResource( 3 )
+anims/damage = SubResource( 4 )
+anims/dead = SubResource( 5 )
+anims/idle = SubResource( 9 )
+anims/walk = SubResource( 10 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 16, 16 )
-script = ExtResource( 6 )
+script = ExtResource( 2 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Position2D"]
+emitting = false
+amount = 12
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource( 3 )
+spread = 180.0
+initial_velocity = 150.0
+initial_velocity_random = 0.54
+scale_amount = 0.35
+scale_amount_curve = SubResource( 12 )
+color = Color( 1, 1, 0.792157, 1 )
 
 [node name="shadow" type="Sprite" parent="Position2D"]
 modulate = Color( 0.529412, 0.494118, 0.494118, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
+texture = ExtResource( 8 )
 
 [node name="Tween" type="Tween" parent="Position2D"]
 
-[node name="DMG_Particles" parent="Position2D" instance=ExtResource( 5 )]
+[node name="DMG_Particles" parent="Position2D" instance=ExtResource( 7 )]
 position = Vector2( 0, 0 )
+emitting = true
 
+[node name="TextureRect" type="TextureRect" parent="Position2D"]
+modulate = Color( 1.71, 0.98, 1.72, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.88651
+margin_top = -7.94598
+margin_right = 19.8865
+margin_bottom = 4.05402
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="tween_all_completed" from="Position2D/Tween" to="Position2D" method="_on_Tween_tween_all_completed"]

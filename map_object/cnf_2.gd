@@ -1,5 +1,6 @@
 extends Itembase
 
 
-func _ready() -> void:
-	is_item = preload('res://Items/cnf.tres')
+const is_item = preload('res://Items/cnf.tres')
+const weight = 30
+const level = 2

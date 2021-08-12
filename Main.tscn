@@ -500,7 +500,6 @@ __meta__ = {
 [node name="Dungeon_add_Entity" type="Node" parent="."]
 
 [node name="UI" type="CanvasLayer" parent="."]
-layer = 5
 script = ExtResource( 16 )
 
 [node name="Position2D" type="Position2D" parent="UI"]
@@ -578,6 +577,7 @@ margin_left = 100.0
 margin_top = -228.0
 margin_right = 400.0
 margin_bottom = -28.0
+mouse_filter = 2
 texture = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -651,6 +651,7 @@ anims/SAVE = SubResource( 17 )
 [node name="CenterContainer" type="CenterContainer" parent="UI/Dungeonlevel/AnimationPlayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -693,6 +694,7 @@ __meta__ = {
 
 [node name="Transition" parent="UI/Dungeonlevel/AnimationPlayer" instance=ExtResource( 20 )]
 visible = false
+mouse_filter = 2
 
 [connection signal="tween_completed" from="UI/Position2D/LifeBar/Tween" to="UI/Position2D/LifeBar" method="_on_Tween_tween_completed"]
 
