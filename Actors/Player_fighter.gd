@@ -10,9 +10,16 @@ export var max_hp = 15
 export var hp = 10
 export var power = 2
 export var defense = 0
+export var xp = 0
+export var level = 1
+var next_level := {2:30, 3:60, 4:90}
+var next_xp = next_level[level+1]
+
+var wepon = null
+var armer = null
 
 func _ready() -> void:
-	pass
+	next_xp = next_level[level+1]
 	
 func reset():
 	hp = max_hp

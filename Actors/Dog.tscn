@@ -12,11 +12,10 @@
 [sub_resource type="StreamTexture" id=1]
 load_path = "res://.import/dog1.png-6d63738810b48a22710fa01ff0613f1d.stex"
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 7.28164, 7.59011 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "attack"
+[sub_resource type="Animation" id=3]
 length = 0.2
 step = 0.02
 tracks/0/type = "value"
@@ -56,8 +55,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0.254902 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "cnf"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/TextureRect:visible")
 tracks/0/interp = 1
@@ -83,8 +81,7 @@ tracks/1/keys = {
 "values": [ Vector2( 4.37796, -6.25085 ), Vector2( 4.378, -6.951 ), Vector2( 4.37796, -6.25085 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "damage"
+[sub_resource type="Animation" id=5]
 length = 0.2
 step = 0.01
 tracks/0/type = "value"
@@ -136,7 +133,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/CPUParticles2D:emitting")
 tracks/0/interp = 1
@@ -150,7 +147,7 @@ tracks/0/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=7]
 length = 2.0
 loop = true
 step = 0.05
@@ -179,7 +176,7 @@ tracks/1/keys = {
 "values": [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 8 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=8]
 length = 0.15
 step = 0.025
 tracks/0/type = "value"
@@ -245,7 +242,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Curve" id=12]
+[sub_resource type="Curve" id=9]
 _data = [ Vector2( 0.12069, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.893536, 0.0261364 ), 0.0, 0.0, 0, 0 ]
 
 [node name="Dog" type="Area2D" groups=[
@@ -261,7 +258,7 @@ texture = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 16, 16 )
-shape = SubResource( 11 )
+shape = SubResource( 2 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 modulate = Color( 1, 0.470588, 0.470588, 1 )
@@ -270,12 +267,12 @@ cast_to = Vector2( 0, 35 )
 collision_mask = 15
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 2 )
-anims/cnf = SubResource( 3 )
-anims/damage = SubResource( 4 )
-anims/dead = SubResource( 5 )
-anims/idle = SubResource( 9 )
-anims/walk = SubResource( 10 )
+anims/attack = SubResource( 3 )
+anims/cnf = SubResource( 4 )
+anims/damage = SubResource( 5 )
+anims/dead = SubResource( 6 )
+anims/idle = SubResource( 7 )
+anims/walk = SubResource( 8 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 16, 16 )
@@ -292,7 +289,7 @@ spread = 180.0
 initial_velocity = 150.0
 initial_velocity_random = 0.54
 scale_amount = 0.35
-scale_amount_curve = SubResource( 12 )
+scale_amount_curve = SubResource( 9 )
 color = Color( 1, 1, 0.792157, 1 )
 
 [node name="shadow" type="Sprite" parent="Position2D"]

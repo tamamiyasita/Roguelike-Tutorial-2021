@@ -5,6 +5,7 @@ onready var fov :Area2D = $Fov
 onready var inventory = preload("res://Items/Inventory.tres")
 onready var states = preload('res://Actors/player_states.tres')
 onready var container = $CanvasLayer/InventoryContainer
+onready var level_up_window = $CanvasLayer/LevelupWindow
 #onready var gamesaver = $GameSaver
 signal hp_changed
 signal states_changed
@@ -153,9 +154,19 @@ func attack(collider, direction):
 	if collider.states.hp <= 0:
 		collider.dead()
 		print("enemy dead!")
+		self.states.xp += collider.xp
+		var next_level = self.states.level + 1
+		if self.states.next_level[next_level] < self.states.xp:
+			self.states.level += 1
+			self.states.xp = 0
+			state = _TURN_INPUT
+			level_up_window.show()
+			
+		get_tree().call_group("xpbar", "states_update")
 
 	yield(anime, "animation_finished" )
-	turn_end()
+	if !state == _TURN_INPUT:
+		state = _TURN_END
 
 
 

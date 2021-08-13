@@ -9,6 +9,7 @@ onready var walls = $Dungeon/BSP_Dungeon/Walls
 onready var doors = $Dungeon/BSP_Dungeon/Doors
 onready var items = $Dungeon/BSP_Dungeon/Items
 onready var dungeon_level = $UI/Dungeonlevel
+onready var ui = $UI
 onready var dungeon = $Dungeon
 var dungeon_Lv = 0
 

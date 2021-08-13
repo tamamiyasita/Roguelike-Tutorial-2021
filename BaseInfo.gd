@@ -4,6 +4,7 @@ extends Node
 onready var Player = get_node("/root/Main/Player")
 onready var Main = get_node("/root/Main/")
 onready var Enemies = get_node('/root/Main/Dungeon/BSP_Dungeon/Enemies')
+onready var Items = get_node('/root/Main/Dungeon/BSP_Dungeon/Items')
 var force = preload("res://par/Force_par.tscn")
 var fb = preload("res://par/FB_par.tscn")
 var cnf = preload("res://par/cnf_par.tscn")
@@ -53,7 +54,12 @@ func _process(delta: float) -> void:
 			Player.turn_end()
 	
 			
+func equip_wepon(value:int = 0):
+	Player.states.power += value
 
+func dequip_wepon(value:int = 0):
+	Player.states.power -= value
+	
 
 func item_use(name, value=null):
 	match name:

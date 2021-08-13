@@ -3,6 +3,7 @@ class_name Itembase
 
 onready var SAVE_KEY: String = "items"
 
+
 func _ready() -> void:
 	pass
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://BSP_Dungeon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BasicDungeon.tscn" type="PackedScene" id=2]
@@ -20,6 +20,9 @@
 [ext_resource path="res://GameSaver.gd" type="Script" id=18]
 [ext_resource path="res://Dungeonlevel.gd" type="Script" id=19]
 [ext_resource path="res://Transition.tscn" type="PackedScene" id=20]
+[ext_resource path="res://XpBar.gd" type="Script" id=21]
+[ext_resource path="res://image/c_scroll.png" type="Texture" id=22]
+[ext_resource path="res://image/f_scroll.png" type="Texture" id=23]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.384314, 0.776471, 0.552941, 0.996078 )
@@ -110,7 +113,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.04, 0.09, 0.14, 0.2, 0.26 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0, 1 ), Vector2( -1, -1 ), Vector2( 1, 0 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, -16 ), Vector2( 1, 0 ), Vector2( 0, 1 ), Vector2( -1, -1 ), Vector2( 1, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("TextureRect:texture")
@@ -323,31 +326,61 @@ tracks/3/keys = {
 extra_spacing_char = 2
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFontData" id=10]
-font_path = "res://image/mplus-2m-bold.ttf"
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.392157, 0.384314, 0.776471, 0.996078 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
-[sub_resource type="DynamicFont" id=11]
-use_mipmaps = true
-extra_spacing_char = 1
-font_data = ExtResource( 5 )
-fallback/0 = SubResource( 10 )
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.0745098, 0.192157, 0.121569, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
-[sub_resource type="DynamicFontData" id=12]
-hinting = 1
-font_path = "res://image/Thintel.ttf"
-
-[sub_resource type="DynamicFont" id=13]
-use_mipmaps = true
-extra_spacing_space = 1
-font_data = SubResource( 12 )
-
-[sub_resource type="DynamicFont" id=14]
-size = 12
+[sub_resource type="DynamicFont" id=12]
+size = 10
+outline_size = 1
+outline_color = Color( 1, 1, 1, 0.443137 )
 extra_spacing_bottom = -6
 font_data = ExtResource( 17 )
 
-[sub_resource type="Animation" id=15]
-resource_name = "LOAD"
+[sub_resource type="DynamicFontData" id=13]
+font_path = "res://image/mplus-2m-bold.ttf"
+
+[sub_resource type="DynamicFont" id=14]
+use_mipmaps = true
+extra_spacing_char = 1
+font_data = ExtResource( 5 )
+fallback/0 = SubResource( 13 )
+
+[sub_resource type="DynamicFontData" id=15]
+hinting = 1
+font_path = "res://image/Thintel.ttf"
+
+[sub_resource type="DynamicFont" id=16]
+use_mipmaps = true
+extra_spacing_space = 1
+font_data = SubResource( 15 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 11
+extra_spacing_bottom = -6
+font_data = ExtResource( 17 )
+
+[sub_resource type="Animation" id=18]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimationPlayer/Transition:material:shader_param/cutoff")
 tracks/0/interp = 1
@@ -385,7 +418,7 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=19]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimationPlayer/Transition:material:shader_param/cutoff")
 tracks/0/interp = 1
@@ -423,7 +456,7 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=20]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimationPlayer/Transition:material:shader_param/cutoff")
 tracks/0/interp = 1
@@ -460,6 +493,22 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+
+[sub_resource type="DynamicFont" id=22]
+size = 33
+outline_size = 1
+outline_color = Color( 0.827451, 0.247059, 0.247059, 0.839216 )
+use_mipmaps = true
+extra_spacing_char = 1
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=21]
+size = 33
+outline_size = 1
+outline_color = Color( 0.14902, 0.690196, 0.533333, 0.835294 )
+extra_spacing_bottom = -6
+extra_spacing_char = 1
+font_data = ExtResource( 5 )
 
 [node name="Main" type="TileMap" groups=[
 "main",
@@ -503,18 +552,19 @@ __meta__ = {
 script = ExtResource( 16 )
 
 [node name="Position2D" type="Position2D" parent="UI"]
-position = Vector2( 8, 444 )
+position = Vector2( 8, 440 )
 
 [node name="LifeBar" type="ProgressBar" parent="UI/Position2D" groups=[
 "lifebar",
 ]]
+anchor_bottom = 1.0
 margin_right = 100.0
-margin_bottom = 14.0
+margin_bottom = 16.0
 rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 0, 16 )
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
-max_value = 10.0
-value = 10.0
+max_value = 0.0
 percent_visible = false
 script = ExtResource( 6 )
 __meta__ = {
@@ -537,21 +587,87 @@ margin_top = -24.0
 margin_right = 15.0
 margin_bottom = -12.0
 rect_scale = Vector2( 2, 2 )
-texture = ExtResource( 9 )
+texture = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="UI/Position2D/LifeBar"]
 anchor_left = 0.04
-anchor_top = 0.142857
+anchor_top = 0.251
 anchor_right = 0.16
-anchor_bottom = 0.928571
+anchor_bottom = 0.485
 rect_clip_content = true
 size_flags_stretch_ratio = 20.0
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0.607843, 0.419608, 0.623529, 1 )
 text = "HP"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="XpBar" type="ProgressBar" parent="UI/Position2D" groups=[
+"xpbar",
+]]
+margin_top = 16.0
+margin_right = 100.0
+margin_bottom = 26.0
+rect_scale = Vector2( 2, 2 )
+custom_styles/fg = SubResource( 10 )
+custom_styles/bg = SubResource( 11 )
+percent_visible = false
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level" type="Label" parent="UI/Position2D/XpBar"]
+margin_left = 6.0
+margin_top = -46.0
+margin_right = 42.0
+margin_bottom = -34.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 12 )
+text = "LEVEL 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="STR" type="Label" parent="UI/Position2D/XpBar"]
+margin_left = 32.0
+margin_top = -28.0
+margin_right = 58.0
+margin_bottom = -16.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 12 )
+text = "STR 2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DEF" type="Label" parent="UI/Position2D/XpBar"]
+margin_left = 32.0
+margin_top = -22.0
+margin_right = 59.0
+margin_bottom = -10.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 12 )
+text = "DEF 2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI/Position2D/XpBar"]
+anchor_left = 0.04
+anchor_top = 0.285714
+anchor_right = 0.23
+anchor_bottom = 1.07143
+rect_scale = Vector2( 0.5, 0.5 )
+rect_clip_content = true
+size_flags_stretch_ratio = 20.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.890196, 0.792157, 0.898039, 1 )
+text = "EXP"
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -592,7 +708,7 @@ margin_left = -148.5
 margin_top = -97.5
 margin_right = 148.5
 margin_bottom = 97.5
-custom_fonts/normal_font = SubResource( 11 )
+custom_fonts/normal_font = SubResource( 14 )
 custom_colors/default_color = Color( 3, 3, 3, 1 )
 bbcode_enabled = true
 bbcode_text = "You entered the dungeon"
@@ -608,7 +724,7 @@ anchor_bottom = 1.0
 margin_left = 3.0
 margin_top = 3.0
 margin_bottom = -2.0
-custom_fonts/normal_font = SubResource( 13 )
+custom_fonts/normal_font = SubResource( 16 )
 custom_colors/default_color = Color( 4, 4, 4, 1 )
 bbcode_text = "You entered the dungeon"
 tab_size = 5
@@ -620,10 +736,10 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="UI"]
 margin_left = 288.0
-margin_top = 560.0
+margin_top = 556.0
 margin_right = 404.0
-margin_bottom = 604.0
-custom_fonts/font = SubResource( 14 )
+margin_bottom = 584.0
+custom_fonts/font = SubResource( 17 )
 text = "Inventory Key I
 Pick up Item Key G"
 __meta__ = {
@@ -636,7 +752,7 @@ margin_top = 10.0
 margin_right = 112.0
 margin_bottom = 27.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 17 )
 text = "Dungeon Level 1"
 script = ExtResource( 19 )
 __meta__ = {
@@ -644,9 +760,9 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Dungeonlevel"]
-anims/LOAD = SubResource( 15 )
-anims/Next = SubResource( 16 )
-anims/SAVE = SubResource( 17 )
+anims/LOAD = SubResource( 18 )
+anims/Next = SubResource( 19 )
+anims/SAVE = SubResource( 20 )
 
 [node name="CenterContainer" type="CenterContainer" parent="UI/Dungeonlevel/AnimationPlayer"]
 anchor_right = 1.0
@@ -695,6 +811,46 @@ __meta__ = {
 [node name="Transition" parent="UI/Dungeonlevel/AnimationPlayer" instance=ExtResource( 20 )]
 visible = false
 mouse_filter = 2
+
+[node name="Wepon" type="TextureRect" parent="UI"]
+margin_left = 212.0
+margin_top = 440.0
+margin_right = 244.0
+margin_bottom = 472.0
+texture = ExtResource( 22 )
+
+[node name="Armor" type="TextureRect" parent="UI"]
+margin_left = 252.0
+margin_top = 440.0
+margin_right = 284.0
+margin_bottom = 472.0
+texture = ExtResource( 23 )
+
+[node name="Wepon_t" type="Label" parent="UI"]
+margin_left = 212.0
+margin_top = 424.0
+margin_right = 284.0
+margin_bottom = 454.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Weapon"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Armor_t" type="Label" parent="UI"]
+margin_left = 252.0
+margin_top = 424.0
+margin_right = 316.0
+margin_bottom = 454.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 21 )
+text = "Armor"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="tween_completed" from="UI/Position2D/LifeBar/Tween" to="UI/Position2D/LifeBar" method="_on_Tween_tween_completed"]
 

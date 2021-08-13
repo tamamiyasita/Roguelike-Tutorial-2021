@@ -10,7 +10,12 @@ onready var hp_value:Label = $Label
 
 func _ready() -> void:
 	_anime_player.play("normal")
-
+	
+func hp_update():
+	max_value = BaseInfo.Player.states.max_hp
+	value = BaseInfo.Player.states.hp
+	hp_value.text = ("HP " +str(value)+"/"+ str(max_value))
+	
 func setup(states) -> void:
 	max_value = states["max_hp"]
 	value = max_value
@@ -18,11 +23,7 @@ func setup(states) -> void:
 	hp_value.text = ("HP " +str(value)+"/"+ str(max_value))
 	
 func set_target_value(amount: float) -> void:
-	target_value = amount
-	if is_instance_valid(hp_value):		
-		hp_value.text = ("HP " +str(target_value)+"/"+ str(max_value))
-
-	if amount <= 0:
+	if amount <= target_value:
 		if value > 0.7 * max_value:
 			_anime_player.play('damage')
 		elif value <= 0.7 * max_value:
@@ -40,6 +41,11 @@ func set_target_value(amount: float) -> void:
 			_tween.start()
 
 			damage_anime()
+	
+	target_value = amount
+	if is_instance_valid(hp_value):		
+		hp_value.text = ("HP " +str(target_value)+"/"+ str(max_value))
+
 
 		
 
