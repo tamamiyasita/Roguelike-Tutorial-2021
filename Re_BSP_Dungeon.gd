@@ -93,13 +93,13 @@ func set_player_position(player)->void:
 	apple.position = map_to_world(point + Vector2(0,1))
 	items.add_child(apple)
 	
-	var daggr = daggrs.instance()
-	daggr.position = map_to_world(point + Vector2(0,2))
-	items.add_child(daggr)
-	
-	var bangle = bangles.instance()
-	bangle.position = map_to_world(point + Vector2(1,1))
-	items.add_child(bangle)
+#	var daggr = daggrs.instance()
+#	daggr.position = map_to_world(point + Vector2(0,2))
+#	items.add_child(daggr)
+#
+#	var bangle = bangles.instance()
+#	bangle.position = map_to_world(point + Vector2(1,1))
+#	items.add_child(bangle)
 	
 #	var force = forces.instance()
 #	force.position = map_to_world(point +Vector2.ONE)
@@ -156,35 +156,34 @@ func enemy_place(rooms) -> void:
 				if !(point) in enemy_point:
 					enemy_point.append(point)
 					
-	for p in enemy_point:
-		
-		var rat = rats.instance()
-		var dog = dogs.instance()
-		
-		var dungeon_lv = BaseInfo.Main.dungeon_Lv
-		var item_array = [dog, rat]
-		var rng = rand_range(1,100+dungeon_lv)
-		for i in item_array:
-			if i.level > dungeon_lv+1:
-				continue
-			if rng > i.weight:
-				enemies.add_child(i, true)
-				i.position = map_to_world(p)
-				print(i.name, "ENEMY!")
-				break
-			else:
-				var e = item_array[-1]
-				enemies.add_child(e, true)
-				e.position = map_to_world(p)
-				print(e.name, "ENEMY!")
-				break
-		
+#	for p in enemy_point:
+#
+#		var rat = rats.instance()
+#		var dog = dogs.instance()
+#
+#		var dungeon_lv = BaseInfo.Main.dungeon_Lv
+#		var item_array = [dog, rat]
+#		var rng = rand_range(1,100+dungeon_lv)
+#		for i in item_array:
+#			if i.level > dungeon_lv+1:
+#				continue
+#			if rng > i.weight:
+#				enemies.add_child(i, true)
+#				i.position = map_to_world(p)
+#				print(i.name, "ENEMY!")
+#				break
+#			else:
+#				var e = item_array[-1]
+#				enemies.add_child(e, true)
+#				e.position = map_to_world(p)
+#				print(e.name, "ENEMY!")
+#				break
+#
 		
 		
 		
 		
 
-		print(rat.name)
 
 func get_random_entities(chances, entities, level):
 	var entity_weight_chance = {}
@@ -219,6 +218,7 @@ func item_place(rooms) -> void:
 		if room == rooms[0]:
 			continue
 			
+			
 		for i in max_item:
 			if i[0] > BaseInfo.Main.dungeon_Lv:
 				break
@@ -239,6 +239,17 @@ func item_place(rooms) -> void:
 				if !(point) in item_point:
 					item_point.append(point)
 					
+	if BaseInfo.Main.dungeon_Lv > 1:
+		var bangle = bangles.instance()
+		var point = item_point.pop_back()
+		items.add_child(bangle)
+		bangle.position = map_to_world(point)
+	elif BaseInfo.Main.dungeon_Lv > 2:
+		var daggr = daggrs.instance()
+		var point = item_point.pop_back()
+		items.add_child(daggr)
+		daggr.position = map_to_world(point)
+					
 	for p in item_point:
 		var apple = apples.instance()
 		var force = forces.instance()
@@ -247,13 +258,14 @@ func item_place(rooms) -> void:
 		var item_array = [cnf, fb, force, apple]
 		var rng = rand_range(1,70)
 		for i in item_array:
-			if i.level > BaseInfo.Main.dungeon_Lv+1:
+			if i.level > BaseInfo.Main.dungeon_Lv:
 				continue
 			if rng < i.weight:
 				i.position = map_to_world(p)
 				items.add_child(i)
 				print(i, "ITEM!")
 				break
+			
 #			elif rng+2 < 7:
 #				force.position = map_to_world(p)
 #				items.add_child(force)

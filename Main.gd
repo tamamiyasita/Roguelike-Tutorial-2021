@@ -11,7 +11,7 @@ onready var items = $Dungeon/BSP_Dungeon/Items
 onready var dungeon_level = $UI/Dungeonlevel
 onready var ui = $UI
 onready var dungeon = $Dungeon
-var dungeon_Lv = 0
+var dungeon_Lv = 1
 
 var active_actor
 var current_cell = Vector2.ZERO

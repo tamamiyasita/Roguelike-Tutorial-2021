@@ -559,7 +559,7 @@ __meta__ = {
 script = ExtResource( 16 )
 
 [node name="Position2D" type="Position2D" parent="UI"]
-position = Vector2( 8, 440 )
+position = Vector2( 6, 424 )
 
 [node name="LifeBar" type="ProgressBar" parent="UI/Position2D" groups=[
 "lifebar",
@@ -743,9 +743,9 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="UI"]
 margin_left = 288.0
-margin_top = 556.0
+margin_top = 542.0
 margin_right = 404.0
-margin_bottom = 584.0
+margin_bottom = 570.0
 custom_fonts/font = SubResource( 17 )
 text = "Inventory Key I
 Pick up Item Key G"
@@ -820,10 +820,10 @@ visible = false
 mouse_filter = 2
 
 [node name="Wepon" type="TextureRect" parent="UI"]
-margin_left = 212.0
-margin_top = 440.0
-margin_right = 244.0
-margin_bottom = 472.0
+margin_left = 210.0
+margin_top = 424.0
+margin_right = 242.0
+margin_bottom = 456.0
 
 [node name="ColorRect2" type="TextureRect" parent="UI/Wepon"]
 show_behind_parent = true
@@ -832,10 +832,10 @@ anchor_bottom = 1.0
 texture = ExtResource( 23 )
 
 [node name="Armor" type="TextureRect" parent="UI"]
-margin_left = 252.0
-margin_top = 440.0
-margin_right = 284.0
-margin_bottom = 472.0
+margin_left = 248.0
+margin_top = 424.0
+margin_right = 280.0
+margin_bottom = 456.0
 expand = true
 
 [node name="ColorRect" type="TextureRect" parent="UI/Armor"]
@@ -845,10 +845,10 @@ anchor_bottom = 1.0
 texture = ExtResource( 23 )
 
 [node name="Wepon_t" type="Label" parent="UI"]
-margin_left = 212.0
-margin_top = 424.0
-margin_right = 284.0
-margin_bottom = 454.0
+margin_left = 208.0
+margin_top = 410.0
+margin_right = 280.0
+margin_bottom = 440.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 21 )
 text = "Weapon"
@@ -858,10 +858,10 @@ __meta__ = {
 }
 
 [node name="Armor_t" type="Label" parent="UI"]
-margin_left = 252.0
-margin_top = 424.0
-margin_right = 316.0
-margin_bottom = 454.0
+margin_left = 248.0
+margin_top = 412.0
+margin_right = 312.0
+margin_bottom = 442.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 22 )
 text = "Armor"
@@ -872,10 +872,10 @@ __meta__ = {
 
 [node name="pops" type="TextureRect" parent="UI"]
 visible = false
-margin_left = 80.0
-margin_top = 296.0
-margin_right = 250.0
-margin_bottom = 390.0
+margin_left = 62.0
+margin_top = 280.0
+margin_right = 232.0
+margin_bottom = 374.0
 texture = ExtResource( 24 )
 expand = true
 flip_h = true
@@ -886,9 +886,9 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="UI/pops"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -4.0
+margin_top = -6.0
 margin_right = 2.0
-margin_bottom = 10.0
+margin_bottom = 8.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
