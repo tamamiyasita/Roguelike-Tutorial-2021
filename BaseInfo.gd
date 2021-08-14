@@ -60,7 +60,12 @@ func equip_wepon(value:int = 0):
 func dequip_wepon(value:int = 0):
 	Player.states.power -= value
 	
+func equip_armor(value:int = 0):
+	Player.states.defense += value
 
+func dequip_armor(value:int = 0):
+	Player.states.defense -= value
+	
 func item_use(name, value=null):
 	match name:
 		"apple":

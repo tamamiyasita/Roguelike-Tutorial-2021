@@ -10,6 +10,8 @@ func update_inventory_display():
 	for item_index in inventory.items.size():
 		update_inventory_slot_display(item_index)
 
+		
+
 
 func update_inventory_slot_display(item_index):
 	var inventory_slot_display = get_child(item_index)

@@ -35,6 +35,7 @@ var forces = preload('res://map_object/force.tscn')
 var fbs = preload("res://map_object/fb.tscn")
 var cnfs = preload("res://map_object/cnf_2.tscn")
 var daggrs = preload("res://map_object/Daggr.tscn")
+var bangles = preload("res://map_object/Bangle.tscn")
 
 var door = preload('res://map_object/Door.tscn')
 var stairs_obj = preload('res://map_object/Stairs.tscn')
@@ -93,8 +94,13 @@ func set_player_position(player)->void:
 	items.add_child(apple)
 	
 	var daggr = daggrs.instance()
-	daggr.position = map_to_world(point + Vector2(0,1))
+	daggr.position = map_to_world(point + Vector2(0,2))
 	items.add_child(daggr)
+	
+	var bangle = bangles.instance()
+	bangle.position = map_to_world(point + Vector2(1,1))
+	items.add_child(bangle)
+	
 #	var force = forces.instance()
 #	force.position = map_to_world(point +Vector2.ONE)
 #	items.add_child(force)

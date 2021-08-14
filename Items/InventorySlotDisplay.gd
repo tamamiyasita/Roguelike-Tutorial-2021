@@ -12,15 +12,20 @@ var force = preload('res://map_object/force.tscn')
 var fb = preload("res://map_object/fb.tscn")
 var cnf = preload("res://map_object/cnf_2.tscn")
 var daggr = preload("res://map_object/Daggr.tscn")
+var bangle = preload("res://map_object/Bangle.tscn")
 
 var on_wepon := false
+var on_armor := false
 
-var item_list := [apple.instance(), force.instance(), fb.instance(), cnf.instance(), daggr.instance()]
+var item_list := [apple.instance(), force.instance(),
+fb.instance(), cnf.instance(), daggr.instance(),
+bangle.instance()]
 
 
 func display_item(item):
-	if item is Item or item is Wepon:
+	if item is Item or item is Wepon or item is Armor:
 		itemTextureRect.texture = item.texture
+		
 	else:
 		itemTextureRect.texture = load("res://Items/EmptyInventorySlot.png")
 		
@@ -42,9 +47,7 @@ func _gui_input(event: InputEvent) -> void:
 						BaseInfo.equip_wepon(item.equip())
 						item.equipment = true
 						equip_mark.show()
-						player.wepon = item
 						BaseInfo.Player.container.visible = false
-						print(player.wepon, "player_wepon")
 						on_wepon = true
 						BaseInfo.Main.ui.wepon.texture = item.texture
 						get_tree().call_group("message", "get_massage", "You equipped a {0}".format([item.name]))
@@ -52,26 +55,44 @@ func _gui_input(event: InputEvent) -> void:
 					BaseInfo.dequip_wepon(item.equip())
 					item.equipment = false
 					equip_mark.hide()
-					player.wepon = null
-#					BaseInfo.Player.container.visible = false
-					print(player.wepon, "player_wepon_hide")
 					on_wepon = false
 					get_tree().call_group("message", "get_massage", "You removed the {0}".format([item.name]))
 					BaseInfo.Main.ui.wepon.texture = null
+					
+			elif item is Armor:
+				if item.equipment == false:
+					if on_armor == false:
+						BaseInfo.equip_armor(item.equip())
+						item.equipment = true
+						equip_mark.show()
+						BaseInfo.Player.container.visible = false
+						on_armor = true
+						BaseInfo.Main.ui.armor.texture = item.texture
+						get_tree().call_group("message", "get_massage", "You equipped a {0}".format([item.name]))
+				else:
+					BaseInfo.dequip_armor(item.equip())
+					item.equipment = false
+					equip_mark.hide()
+					on_armor = false
+					get_tree().call_group("message", "get_massage", "You removed the {0}".format([item.name]))
+					BaseInfo.Main.ui.armor.texture = null
+					
+					
 		elif event.is_action_pressed('light_mouse'):
 			var item_index = get_index()
 			var item = inventory.items[item_index]	
-			for i in item_list:
-				if item is Wepon:
-					if item.equipment == true:
-						print("wepon on")
-						break
+			if is_instance_valid(item):		
+				for i in item_list:
+					if item is Wepon or item is Armor:
+						if item.equipment == true:
+							print("equip on")
+							break
 
-				if i.item_name == item.name:
-					BaseInfo.Items.add_child(i)
-					i.position = BaseInfo.Player.position
-					inventory.remove_item(item_index)
-					break
+					if i.item_name == item.name:
+						BaseInfo.Items.add_child(i)
+						i.position = BaseInfo.Player.position
+						inventory.remove_item(item_index)
+						break
 		
 		get_tree().call_group("xpbar", "states_update")
 		

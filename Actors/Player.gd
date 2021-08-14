@@ -34,6 +34,11 @@ func _ready() -> void:
 	print(self.states.max_hp)
 #	use_item.connect('useitem', container, "setup")
 
+func _process(delta: float) -> void:
+	if !container.visible:
+		BaseInfo.Main.ui.pop.hide()
+
+
 func states_reset():
 	var c_states = self.states.states_change()
 	emit_signal('states_changed', c_states)
@@ -88,6 +93,13 @@ func _unhandled_input(event: InputEvent) -> void:
 				break
 			elif event.is_action_pressed('inv'):
 				container.visible = !container.visible
+				for i in inventory.items:
+					if i == null:
+						BaseInfo.Main.ui.pop.hide()
+					else:
+						BaseInfo.Main.ui.pop.show()
+						break
+
 				break
 			elif event.is_action(direction):
 				state = _TURN_RUN

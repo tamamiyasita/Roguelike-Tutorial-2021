@@ -15,8 +15,8 @@ export var level = 1
 var next_level := {2:30, 3:60, 4:90}
 var next_xp = next_level[level+1]
 
-var wepon = null
-var armer = null
+#var wepon = null
+#var armer = null
 
 func _ready() -> void:
 	next_xp = next_level[level+1]
