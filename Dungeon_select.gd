@@ -47,4 +47,6 @@ func _process(delta: float) -> void:
 			d.queue_free()
 		for i in BSP_Dungeon.items.get_children():
 			i.queue_free()			
+		for s in BSP_Dungeon.stairs.get_children():
+			s.queue_free()			
 		gamesaver._load(1)

@@ -871,10 +871,9 @@ __meta__ = {
 }
 
 [node name="pops" type="TextureRect" parent="UI"]
-visible = false
-margin_left = 62.0
-margin_top = 280.0
-margin_right = 232.0
+margin_left = 60.0
+margin_top = 292.0
+margin_right = 244.0
 margin_bottom = 374.0
 texture = ExtResource( 24 )
 expand = true
@@ -886,37 +885,38 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="UI/pops"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -6.0
-margin_right = 2.0
-margin_bottom = 8.0
+margin_left = -4.0
+margin_top = -4.0
+margin_right = -2.0
+margin_bottom = 10.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/pops/CenterContainer"]
 margin_left = 14.0
-margin_top = 39.0
-margin_right = 157.0
-margin_bottom = 68.0
+margin_top = 33.0
+margin_right = 172.0
+margin_bottom = 62.0
 custom_constants/separation = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="UI/pops/CenterContainer/VBoxContainer"]
-margin_right = 143.0
+margin_right = 158.0
 margin_bottom = 12.0
 custom_fonts/font = SubResource( 23 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "left key : item use or epuip"
+text = " Left Click : item use or epuip"
 
 [node name="Label2" type="Label" parent="UI/pops/CenterContainer/VBoxContainer"]
 margin_top = 17.0
-margin_right = 143.0
+margin_right = 158.0
 margin_bottom = 29.0
 custom_fonts/font = SubResource( 23 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "     right key : drop item"
+text = "      Right Click : Drop item"
 
 [connection signal="tween_completed" from="UI/Position2D/LifeBar/Tween" to="UI/Position2D/LifeBar" method="_on_Tween_tween_completed"]
 

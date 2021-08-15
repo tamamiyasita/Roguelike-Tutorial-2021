@@ -20,7 +20,6 @@ var rooms := []
 var tiles := {}
 var obstacles = []
 
-#onready var player = $Player
 onready var enemies :Node = $Enemies
 onready var items:Node = $Items
 onready var doors :Node = $Doors
@@ -136,6 +135,8 @@ func enemy_place(rooms) -> void:
 	var enemy_point := []
 	var choice_num = 0
 	randomize()
+	
+	
 	for room in rooms:
 		if room == rooms[0]:
 			continue
@@ -156,30 +157,33 @@ func enemy_place(rooms) -> void:
 				if !(point) in enemy_point:
 					enemy_point.append(point)
 					
-#	for p in enemy_point:
-#
-#		var rat = rats.instance()
-#		var dog = dogs.instance()
-#
-#		var dungeon_lv = BaseInfo.Main.dungeon_Lv
-#		var item_array = [dog, rat]
-#		var rng = rand_range(1,100+dungeon_lv)
-#		for i in item_array:
-#			if i.level > dungeon_lv+1:
-#				continue
-#			if rng > i.weight:
-#				enemies.add_child(i, true)
-#				i.position = map_to_world(p)
-#				print(i.name, "ENEMY!")
-#				break
-#			else:
-#				var e = item_array[-1]
-#				enemies.add_child(e, true)
-#				e.position = map_to_world(p)
-#				print(e.name, "ENEMY!")
-#				break
-#
+	for p in enemy_point:
+
+		var rat = rats.instance()
+		var dog = dogs.instance()
+
+		var dungeon_lv = BaseInfo.Main.dungeon_Lv
+		var item_array = [dog, rat]
+		var rng = rand_range(1,100+dungeon_lv)
+		for i in item_array:
+			if i.level > dungeon_lv+1:
+				continue
+			if rng > i.weight:
+				enemies.add_child(i, true)
+				i.position = map_to_world(p)
+				print(i.name, "ENEMY!")
+				break
+			else:
+				var e = item_array[-1]
+				enemies.add_child(e, true)
+				e.position = map_to_world(p)
+				print(e.name, "ENEMY!")
+				break
+
 		
+	if BaseInfo.Main.dungeon_Lv == 5:
+		pass
+
 		
 		
 		
@@ -209,7 +213,7 @@ func item_place(rooms) -> void:
 		4:["cnf", 15]
 	} 
 	
-	var max_item = [[0,1], [2,1],[3,2]]
+	var max_item = [[0,1], [1,1],[2,2]]
 	
 	var item_point := []
 	var choice_num := 0
@@ -217,14 +221,11 @@ func item_place(rooms) -> void:
 	for room in rooms:
 		if room == rooms[0]:
 			continue
-			
-			
 		for i in max_item:
 			if i[0] > BaseInfo.Main.dungeon_Lv:
 				break
 			else:
 				var some_array = [i[1],i[1], 0]
-	#			choice_num = i[1]
 				choice_num = some_array[randi() % some_array.size()]
 				print(choice_num, "Choice")
 				get_random_entities(item_chances, choice_num, BaseInfo.Main.dungeon_Lv)
@@ -238,34 +239,39 @@ func item_place(rooms) -> void:
 				var point :Vector2 = Vector2(x, y)
 				if !(point) in item_point:
 					item_point.append(point)
-					
-	if BaseInfo.Main.dungeon_Lv > 1:
+		print(item_point, "= item_point")
+	if item_point.size() < 2:
+		item_place(rooms)
+		
+	if BaseInfo.Main.dungeon_Lv == 0:
 		var bangle = bangles.instance()
 		var point = item_point.pop_back()
 		items.add_child(bangle)
 		bangle.position = map_to_world(point)
-	elif BaseInfo.Main.dungeon_Lv > 2:
+	elif BaseInfo.Main.dungeon_Lv == 1:
 		var daggr = daggrs.instance()
 		var point = item_point.pop_back()
 		items.add_child(daggr)
 		daggr.position = map_to_world(point)
-					
-	for p in item_point:
-		var apple = apples.instance()
-		var force = forces.instance()
-		var cnf = cnfs.instance()
-		var fb = fbs.instance()
-		var item_array = [cnf, fb, force, apple]
-		var rng = rand_range(1,70)
-		for i in item_array:
-			if i.level > BaseInfo.Main.dungeon_Lv:
-				continue
-			if rng < i.weight:
-				i.position = map_to_world(p)
-				items.add_child(i)
-				print(i, "ITEM!")
-				break
 			
+	if item_point.size() >= 2:
+		for p in item_point:
+			var apple = apples.instance()
+			var force = forces.instance()
+			var cnf = cnfs.instance()
+			var fb = fbs.instance()
+			var item_array = [cnf, fb, force, apple]
+			var rng = rand_range(1,70)
+			for i in item_array:
+				if i.level > BaseInfo.Main.dungeon_Lv+1:
+					continue
+				if rng < i.weight:
+					i.position = map_to_world(p)
+					items.add_child(i)
+					print(i, "ITEM!")
+					break
+				
+					
 #			elif rng+2 < 7:
 #				force.position = map_to_world(p)
 #				items.add_child(force)
