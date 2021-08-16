@@ -155,7 +155,9 @@ func hp_change(value):
 func attack(collider, direction):
 	$Position2D/Camera2D.current = false
 	position2d.attack_start(direction)
-	var damage = (self.states.power-collider.states.defense)
+	var power = int(rand_range(1, self.states.power))
+	var regist  = int(rand_range(0, collider.states.defense))
+	var damage = (power-regist)
 	
 	collider.states.hp -= damage
 	collider.anime_state = AMOUNT

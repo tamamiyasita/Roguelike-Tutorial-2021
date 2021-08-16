@@ -8,4 +8,4 @@ script = ExtResource( 1 )
 name = "stone bangle"
 texture = ExtResource( 2 )
 equipment = false
-equip_value = 1
+equip_value = 2

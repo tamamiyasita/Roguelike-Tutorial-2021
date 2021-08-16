@@ -38,4 +38,16 @@ func _on_Tween_tween_all_completed() -> void:
 #		position = old_pos
 	pass
 
-
+func ranged_attack_start(direction, ammo):
+	tween.interpolate_property(
+		ammo,
+		"position",
+		position,
+		(direction) + position,
+		0.2,
+		Tween.TRANS_BACK,
+		Tween.EASE_OUT
+	)
+	tween.start()
+#	yield(tween, "tween_all_completed" )
+#	global_position = my_owner.global_position + offset_pos

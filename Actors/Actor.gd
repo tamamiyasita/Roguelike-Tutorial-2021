@@ -7,7 +7,7 @@ const TILE_SIZE := 32
 
 enum {PLAYER=1,  WALL = 2, ENEMY = 4, DOOR = 8}
 enum {_TURN_READY, _TURN_RUN, _TURN_END, _TURN_INPUT}
-enum {IDLE, MOVE, ATTACK, AMOUNT, CNF}
+enum {IDLE, MOVE, ATTACK, RANGED_ATTACK, AMOUNT, CNF}
 var state = _TURN_READY
 var anime_state = IDLE
 onready var ray :RayCast2D = $RayCast2D
@@ -71,11 +71,11 @@ func turn_end() -> void:
 #
 #	get_tree().call_group("main", "request_pass",self)
 
-func flip_h_switching(direction) -> void:
+func flip_h_switching(direction, node=sprite) -> void:
 	if direction.x > 0:
-		sprite.flip_h = false
+		node.flip_h = false
 	elif direction.x < 0:
-		sprite.flip_h = true
+		node.flip_h = true
 
 
 func neighbor_search(direction) -> void:
