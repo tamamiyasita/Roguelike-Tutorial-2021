@@ -141,9 +141,10 @@ func entity_set():
 #			floors.add_child(f)
 
 func enemy_place(rooms) -> void:
-	var max_enemy = [[0,2], [2,3],[3,4]]
+	var max_enemy = [[0,7], [2,10],[3,13]]
 	var enemy_point := []
 	var choice_num = 0
+	var dungeon_lv = BaseInfo.Main.dungeon_Lv
 	randomize()
 	
 	
@@ -153,45 +154,46 @@ func enemy_place(rooms) -> void:
 			continue
 			
 		for e in max_enemy:
-			if e[0] > BaseInfo.Main.dungeon_Lv:
+			print(e[0], "dungeon_lv", dungeon_lv)
+			if e[0] > dungeon_lv:
 				break
 			else:
 				choice_num = e[1]
 				
-		for r in range(choice_num):
-			var center_x = int(room.center[0])
-			var center_y = int(room.center[1])
-			var x = randi() % int(room["w"]) + room.x
-			var y = randi() % int(room["h"]) + room.y
-			if get_cell(x, y) == FLOOR:
-				var point :Vector2 = Vector2(x, y)
-				if !(point) in enemy_point:
-					enemy_point.append(point)
+			while enemy_point.size() < choice_num:
+				for r in range(choice_num):
+					var center_x = int(room.center[0])
+					var center_y = int(room.center[1])
+					var x = randi() % int(room["w"]) + room.x
+					var y = randi() % int(room["h"]) + room.y
+					if get_cell(x, y) == FLOOR:
+						var point :Vector2 = Vector2(x, y)
+						if !(point) in enemy_point:
+							enemy_point.append(point)
 					
 					
+	var c = Cecile.instance()
+	if BaseInfo.Main.dungeon_Lv == 4:
+		var point = enemy_point.pop_back()
+		c.position = map_to_world(point+ Vector2(2,4))
+		enemies.add_child(c)
 	for p in enemy_point:
 
 		var rat = rats.instance()
 		var dog = dogs.instance()
 		var cabbage_snail = cabbage_snails.instance()
-		var c = Cecile.instance()
 
-		var dungeon_lv = BaseInfo.Main.dungeon_Lv
 		
 		var enemy_array = [cabbage_snail, dog, rat]
 		
-		if BaseInfo.Main.dungeon_Lv == 4:
-			var point = enemy_point.pop_back()
-			c.position = map_to_world(point+ Vector2(2,4))
-			enemies.add_child(c)
 	
-		var rng = rand_range(1,100+dungeon_lv)
+		var rng = int(rand_range(1,100+dungeon_lv))
 		
 		for i in enemy_array:
 			if i.level > dungeon_lv+1:
 				continue
 				
-			if rng > i.weight:
+			if rng < i.weight:
 				print(rng, i.weight, i, "  weight!")
 				enemies.add_child(i, true)
 				i.position = map_to_world(p)
@@ -199,7 +201,9 @@ func enemy_place(rooms) -> void:
 				obstacles.append(i)
 				break
 			else:
-				var e = enemy_array[-1]
+				var ef = [dog, rat]
+				var e = Util.choose(ef)
+#				var e = enemy_array[o]
 				enemies.add_child(e, true)
 				e.position = map_to_world(p)
 				print(e.name, "ENEMY!")
