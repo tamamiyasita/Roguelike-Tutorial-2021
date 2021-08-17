@@ -111,9 +111,9 @@ func set_player_position(player)->void:
 #	force.position = map_to_world(point +Vector2.ONE)
 #	items.add_child(force)
 #
-#	var fb = fbs.instance()
-#	fb.position = map_to_world(point + Vector2(2,1))
-#	items.add_child(fb)
+	var fb = fbs.instance()
+	fb.position = map_to_world(point + Vector2(2,1))
+	items.add_child(fb)
 #
 #	var cnf = cabbage_snails.instance()
 #	cnf.position = map_to_world(point+ Vector2(2,2))
@@ -141,7 +141,7 @@ func entity_set():
 #			floors.add_child(f)
 
 func enemy_place(rooms) -> void:
-	var max_enemy = [[0,7], [2,10],[3,13]]
+	var max_enemy = [[0,2], [2,3],[3,4]]
 	var enemy_point := []
 	var choice_num = 0
 	var dungeon_lv = BaseInfo.Main.dungeon_Lv
@@ -160,20 +160,20 @@ func enemy_place(rooms) -> void:
 			else:
 				choice_num = e[1]
 				
-			while enemy_point.size() < choice_num:
-				for r in range(choice_num):
-					var center_x = int(room.center[0])
-					var center_y = int(room.center[1])
-					var x = randi() % int(room["w"]) + room.x
-					var y = randi() % int(room["h"]) + room.y
-					if get_cell(x, y) == FLOOR:
-						var point :Vector2 = Vector2(x, y)
-						if !(point) in enemy_point:
-							enemy_point.append(point)
+#			while enemy_point.size() < choice_num:
+		for r in range(choice_num):
+			var center_x = int(room.center[0])
+			var center_y = int(room.center[1])
+			var x = randi() % int(room["w"]) + room.x
+			var y = randi() % int(room["h"]) + room.y
+			if get_cell(x, y) == FLOOR:
+				var point :Vector2 = Vector2(x, y)
+				if !(point) in enemy_point:
+					enemy_point.append(point)
 					
 					
-	var c = Cecile.instance()
 	if BaseInfo.Main.dungeon_Lv == 4:
+		var c = Cecile.instance()
 		var point = enemy_point.pop_back()
 		c.position = map_to_world(point+ Vector2(2,4))
 		enemies.add_child(c)
@@ -188,7 +188,7 @@ func enemy_place(rooms) -> void:
 		
 	
 		var rng = int(rand_range(1,100+dungeon_lv))
-		
+			
 		for i in enemy_array:
 			if i.level > dungeon_lv+1:
 				continue
@@ -211,27 +211,24 @@ func enemy_place(rooms) -> void:
 
 				break
 
-		
-	if BaseInfo.Main.dungeon_Lv == 5:
-		pass
 
 		
 		
 		
 
 
-func get_random_entities(chances, entities, level):
-	var entity_weight_chance = {}
-	for key in chances.keys():
-		if key > level:
-			break
-		else:
-			for v in chances.values():
-				var rng = RandomNumberGenerator.new()
-				var r = rng.randi_range(1,100)
-				if r > v[1]:
-					pass
-		
+#func get_random_entities(chances, entities, level):
+#	var entity_weight_chance = {}
+#	for key in chances.keys():
+#		if key > level:
+#			break
+#		else:
+#			for v in chances.values():
+#				var rng = RandomNumberGenerator.new()
+#				var r = rng.randi_range(1,100)
+#				if r > v[1]:
+#					pass
+#
 	
 
 
@@ -259,7 +256,7 @@ func item_place(rooms) -> void:
 				var some_array = [i[1],i[1], 0]
 				choice_num = some_array[randi() % some_array.size()]
 				print(choice_num, "Choice")
-				get_random_entities(item_chances, choice_num, BaseInfo.Main.dungeon_Lv)
+#				get_random_entities(item_chances, choice_num, BaseInfo.Main.dungeon_Lv)
 				
 		for r in range(choice_num):
 			var center_x = int(room.center[0])

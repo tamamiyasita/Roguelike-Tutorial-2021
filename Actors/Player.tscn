@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Actors/Actor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://image/player_walk.png" type="Texture" id=2]
@@ -16,7 +16,6 @@
 [ext_resource path="res://image/player_idol3.png" type="Texture" id=14]
 [ext_resource path="res://image/player_damage.png" type="Texture" id=15]
 [ext_resource path="res://Inventory.tscn" type="PackedScene" id=16]
-[ext_resource path="res://LevelupWindow.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -271,8 +270,7 @@ margin_left = 236.0
 margin_top = 8.0
 margin_right = 486.0
 margin_bottom = 278.0
-
-[node name="LevelupWindow" parent="CanvasLayer" index="1" instance=ExtResource( 17 )]
+mouse_filter = 2
 
 [node name="GameSaver" type="Node" parent="." index="7"]
 script = ExtResource( 10 )

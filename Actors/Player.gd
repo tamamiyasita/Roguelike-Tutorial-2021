@@ -4,8 +4,10 @@ onready var fov_ray :RayCast2D = $Fovray
 onready var fov :Area2D = $Fov
 onready var inventory = preload("res://Items/Inventory.tres")
 onready var states = preload('res://Actors/player_states.tres')
+
 onready var container = $CanvasLayer/InventoryContainer
-onready var level_up_window = $CanvasLayer/LevelupWindow
+onready var canvas = $CanvasLayer
+#onready var level_up_window = $CanvasLayer/LevelupWindow
 #onready var gamesaver = $GameSaver
 signal hp_changed
 signal states_changed
@@ -157,26 +159,29 @@ func attack(collider, direction):
 	position2d.attack_start(direction)
 	var power = int(rand_range(1, self.states.power))
 	var regist  = int(rand_range(0, collider.states.defense))
-	var damage = (power-regist)
+#	var damage = (power-regist)
+	var damage = int(clamp(power-regist, 0, power))
 	
-	collider.states.hp -= damage
+	collider.hp_change(-damage)
 	collider.anime_state = AMOUNT
 
 	print(collider.name," HP: ", collider.states.hp)
 	var text = [self.name, collider.name, damage]
 	get_tree().call_group("message", "get_massage", "{0} hit the {1} for {2} damage!".format(text))
-	if collider.states.hp <= 0:
-		collider.dead()
-		print("enemy dead!")
-		self.states.xp += collider.xp
-		var next_level = self.states.level + 1
-		if self.states.next_level[next_level] < self.states.xp:
-			self.states.level += 1
-			self.states.xp = 0
-			state = _TURN_INPUT
-			level_up_window.show()
-			
-		get_tree().call_group("xpbar", "states_update")
+#	if collider.states.hp <= 0:
+#		collider.dead()
+#		print("enemy dead!")
+#		self.states.xp += collider.xp
+#		var next_level = self.states.level + 1
+#		if self.states.next_level[next_level] < self.states.xp:
+#			self.states.level += 1
+#			self.states.xp = 0
+#			state = _TURN_INPUT
+#			var l = level_up_window.instance()
+#			canvas.add_child(l)
+#			l.show()
+#
+#		get_tree().call_group("xpbar", "states_update")
 
 	yield(anime, "animation_finished" )
 	if !state == _TURN_INPUT:

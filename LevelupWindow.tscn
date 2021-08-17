@@ -30,17 +30,17 @@ __meta__ = {
 
 [node name="ColorRect" type="ColorRect" parent="CenterContainer"]
 margin_left = 412.0
-margin_top = 205.0
+margin_top = 193.0
 margin_right = 612.0
-margin_bottom = 395.0
+margin_bottom = 383.0
 rect_min_size = Vector2( 200, 190 )
 color = Color( 0.145098, 0.109804, 0.109804, 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 452.0
-margin_top = 239.0
+margin_top = 227.0
 margin_right = 572.0
-margin_bottom = 361.0
+margin_bottom = 349.0
 rect_min_size = Vector2( 120, 15 )
 custom_constants/separation = 16
 alignment = 1

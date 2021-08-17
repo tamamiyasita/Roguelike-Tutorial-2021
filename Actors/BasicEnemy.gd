@@ -6,7 +6,7 @@ onready var a_star_path = find_parent("Dungeon")
 onready var states = preload('res://Actors/enemy_states.tres').duplicate()
 onready var tex = $Position2D/TextureRect
 onready var SAVE_KEY = "enemy"
-
+onready var level_up_window = preload("res://LevelupWindow.tscn")
 var cnf = false
 var cnf_turn:int = 0
 
@@ -26,8 +26,8 @@ func _process(delta: float) -> void:
 		anime.play('idle')
 	if is_dead:
 		if particle.emitting == false:
-#			queue_free()
-			position = Vector2.ZERO
+			queue_free()
+#			position = Vector2.ZERO
 	
 func take_turn(direction) -> void:
 	if cnf and cnf_turn > 0:
@@ -49,7 +49,11 @@ func dead() -> void:
 	
 func basic_ai(direction) -> void:
 	state = _TURN_RUN
+	a_star_path.a_path_ready(position)
 	paths = a_star_path.get_astar_path(global_position, direction)
+	if paths.empty():
+		random_walk()
+		return
 	var path = paths[1]
 	
 	var dist = path.distance_to(direction)
@@ -85,11 +89,25 @@ func collider_check(collider, direction) -> void:
 
 
 func hp_change(value):
+	var player = BaseInfo.Player
 	self.states.hp_change(value)
 #	emit_signal('hp_changed', self.states.hp)
 	print(self.states.hp, " my hp")
 	
 	if states.hp <= 0:
+		player.states.xp += self.xp
+		var next_level = player.states.level + 1
+		if player.states.next_level[next_level] < player.states.xp:
+			player.states.level += 1
+			player.states.xp = 0
+			player.state = _TURN_INPUT
+			var l = level_up_window.instance()
+			player.canvas.add_child(l)
+			l.show()
+			
+		get_tree().call_group("xpbar", "states_update")
+		
+		
 		print(name, "dead!")
 		dead()
 
@@ -99,7 +117,7 @@ func attack(collider, direction):
 	position2d.attack_start(direction)
 	var power = int(rand_range(0, self.states.power+1))
 	var regist  = int(rand_range(0, collider.states.defense))
-	var damage = (power-regist)
+	var damage = int(clamp(power-regist, 0, power))
 #	var damage = (self.states.power-collider.states.defense)
 	
 	collider.hp_change(-damage)

@@ -8,4 +8,4 @@ func _ready() -> void:
 func use():
 #	part.start()
 	return -9
-
+	BaseInfo.Main.ui.pop2.show()

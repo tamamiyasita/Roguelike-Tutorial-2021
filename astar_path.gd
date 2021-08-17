@@ -15,16 +15,25 @@ var _point_path = []
 
 
 # A*Nodeはコードからのみ作成出来る
-onready var astar_node = AStar2D.new()
+var astar_node
 
 # get_used_cells_by_id()メソッドで壁になっているタイルセットIDをリストで得る
-onready var obstacles = get_node('BSP_Dungeon').obstacles
+var obs
 # = tile_set.find_tile_by_name("wall_0")
 onready var _half_cell_size = cell_size / 2
 
 
-func a_path_ready() -> void:
-	var walkable_cell_list = astar_add_walkable_cells(obstacles)
+func a_path_ready(slf = null) -> void:
+	var obstacles :Array= get_node('BSP_Dungeon').obstacles
+	var enemies = get_node('BSP_Dungeon').enemies
+	astar_node = AStar2D.new()
+	obs = obstacles.duplicate()
+	for e in enemies.get_children():
+		if e.position == slf:
+			continue
+		var es = world_to_map(e.position)
+		obs.append(es)
+	var walkable_cell_list = astar_add_walkable_cells(obs)
 	astar_connect_walkable_cells_diagonal(walkable_cell_list)
 
 func _draw() -> void:
@@ -45,6 +54,7 @@ func _draw() -> void:
 		
 # マップの障害物(obstacles)を覗いた全てのポイントをAstarNodeに追加する
 func astar_add_walkable_cells(obstacle_list = []):
+
 	var points_array = []
 	for y in range(map_size.y):
 		for x in range(map_size.x):
@@ -137,7 +147,7 @@ func _recalculate_path():
 	
 	
 func _set_path_start_position(value):
-	if value in obstacles:
+	if value in obs:
 		return
 	if is_outside_map_bounds(value):
 		return
@@ -150,7 +160,7 @@ func _set_path_start_position(value):
 	
 
 func _set_path_end_position(value):
-	if value in obstacles:
+	if value in obs:
 		return
 	if is_outside_map_bounds(value):
 		return

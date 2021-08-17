@@ -19,10 +19,10 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if current_item.has("Fireball scroll"):
-		var damage = current_item["Fireball scroll"]
-		if target_enemy:
-			for e in Main.enemies:
+	if target_enemy:
+		if current_item.has("Fireball scroll"):
+			var damage = current_item["Fireball scroll"]
+			for e in Enemies.get_children():
 				if 50 > target_enemy.position.distance_to(e.position):
 					print("hai")
 					e.hp_change(damage)
@@ -31,17 +31,13 @@ func _process(delta: float) -> void:
 			add_child(f)
 			f.position = target_enemy.position+Vector2(16,-10)
 			f.start()
-#					target_enemy.hp_change(current_item["fb"])
 					
 	
 			set_process(false)
 			Player.turn_end()
-			target_enemy = null
-		else:
-			Player.state = 0
+
 	
-	elif current_item.has("Scroll of confusion"):
-		if target_enemy:
+		elif current_item.has("Scroll of confusion"):
 			get_tree().call_group("message", "get_massage", "You read a scroll of confusion")			
 			var c = cnf.instance()
 			add_child(c)
@@ -49,10 +45,11 @@ func _process(delta: float) -> void:
 			c.start()
 			target_enemy.cnf = true
 			target_enemy.cnf_turn = 7
-			target_enemy = null
 #			yield(get_tree().create_timer(1.0), "timeout")
 			Player.turn_end()
 	
+		target_enemy = null
+		BaseInfo.Main.ui.pop2.hide()
 			
 func equip_wepon(value:int = 0):
 	Player.states.power += value
@@ -87,12 +84,15 @@ func item_use(name, value=null):
 					continue
 					
 		"Fireball scroll":
+			BaseInfo.Main.ui.pop2.show()
+			
 			Player.state = 3
 			print(Player.state)
 			current_item = {"Fireball scroll":value}
 			set_process(true)
 			
 		"Scroll of confusion":
+			BaseInfo.Main.ui.pop2.show()
 			Player.state = 3
 			current_item = {"Scroll of confusion":value}
 			set_process(true)
