@@ -20,7 +20,10 @@ func take_turn(direction) -> void:
 
 func ranged_ai(direction) -> void:
 	state = _TURN_RUN
+	
+	a_star_path.a_path_ready(position)
 	paths = a_star_path.get_astar_path(global_position, direction)
+	
 	var path = paths[-1]
 	
 	var dist = path.distance_to(direction)

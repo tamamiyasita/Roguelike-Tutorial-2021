@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Dog.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Position2D.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://image/cnf.png" type="Texture" id=6]
 [ext_resource path="res://par/DMG_Particles.tscn" type="PackedScene" id=7]
 [ext_resource path="res://image/dog2.png" type="Texture" id=8]
+[ext_resource path="res://image/ml.png" type="Texture" id=9]
 
 [sub_resource type="StreamTexture" id=1]
 load_path = "res://.import/dog1.png-6d63738810b48a22710fa01ff0613f1d.stex"
@@ -320,5 +321,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Target" type="Sprite" parent="Position2D"]
+visible = false
+texture = ExtResource( 9 )
+
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
 [connection signal="tween_all_completed" from="Position2D/Tween" to="Position2D" method="_on_Tween_tween_all_completed"]

@@ -11,7 +11,7 @@ func _ready() -> void:
 	states_update()
 	
 func states_update():
-	max_value = BaseInfo.Player.states.next_xp
+	max_value = BaseInfo.Player.states.next_xp()
 	value = BaseInfo.Player.states.xp
 	level.text = "LEVEL "+str(BaseInfo.Player.states.level)
 	STR.text = "STR "+str(BaseInfo.Player.states.power)

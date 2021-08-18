@@ -15,8 +15,8 @@ var cnf = preload("res://map_object/cnf_2.tscn")
 var daggr = preload("res://map_object/Daggr.tscn")
 var bangle = preload("res://map_object/Bangle.tscn")
 
-var on_wepon := false
-var on_armor := false
+var on_wepon = null
+var on_armor = null
 
 var item_list := [apple.instance(), force.instance(),
 fb.instance(), cnf.instance(), daggr.instance(),
@@ -44,40 +44,46 @@ func _gui_input(event: InputEvent) -> void:
 				BaseInfo.Player.container.visible = false
 			elif item is Wepon:
 				if item.equipment == false:
-					if on_wepon == false:
+					if BaseInfo.Main.ui.wepon.texture == null:
 						BaseInfo.equip_wepon(item.equip())
 						item.equipment = true
-						equip_mark.show()
+#						equip_mark.show()
 						BaseInfo.Player.container.visible = false
 						on_wepon = true
 						BaseInfo.Main.ui.wepon.texture = item.texture
 						get_tree().call_group("message", "get_massage", "You equipped a {0}".format([item.name]))
 				else:
-					if on_wepon == true:
-						BaseInfo.dequip_wepon(item.equip())
-						item.equipment = false
-						equip_mark.hide()
-						on_wepon = false
-						get_tree().call_group("message", "get_massage", "You removed the {0}".format([item.name]))
-						BaseInfo.Main.ui.wepon.texture = null
+#					if on_wepon == true:
+					BaseInfo.dequip_wepon(item.equip())
+					item.equipment = false
+#					equip_mark.hide()
+					on_wepon = false
+					get_tree().call_group("message", "get_massage", "You removed the {0}".format([item.name]))
+					BaseInfo.Main.ui.wepon.texture = null
+					BaseInfo.Player.container.visible = false
 					
 			elif item is Armor:
 				if item.equipment == false:
-					if on_armor == false:
+#					if on_armor == false:
+					if BaseInfo.Main.ui.armor.texture == null:
 						BaseInfo.equip_armor(item.equip())
 						item.equipment = true
-						equip_mark.show()
+#						equip_mark.show()
 						BaseInfo.Player.container.visible = false
-						on_armor = true
+						on_armor = item
 						BaseInfo.Main.ui.armor.texture = item.texture
 						get_tree().call_group("message", "get_massage", "You equipped a {0}".format([item.name]))
 				else:
 					BaseInfo.dequip_armor(item.equip())
 					item.equipment = false
-					equip_mark.hide()
-					on_armor = false
+#					equip_mark.hide()
+					on_armor = null
 					get_tree().call_group("message", "get_massage", "You removed the {0}".format([item.name]))
 					BaseInfo.Main.ui.armor.texture = null
+					BaseInfo.Player.container.visible = false
+			maru.hide()
+
+#
 					
 					
 		elif event.is_action_pressed('light_mouse'):

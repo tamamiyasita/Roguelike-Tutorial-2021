@@ -7,7 +7,12 @@ func _ready() -> void:
 #func _gui_input(event: InputEvent) -> void:
 		
 #func _unhandled_input(event: InputEvent) -> void:
-func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
+
+
+
+func _on_TextureRect_gui_input(event: InputEvent) -> void:
+	if event is InputEvent:
 		if event.is_action_pressed('left_mous'):
-			get_tree().quit()
+			queue_free()
+
+

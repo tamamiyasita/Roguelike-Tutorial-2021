@@ -70,7 +70,7 @@ func item_use(name, value=null):
 			get_tree().call_group("message", "get_massage", "You ate an apple and recovered 5 HP")
 		"Force scroll":
 			print("ban!")
-			for e in Player.enemies:
+			for e in Enemies.get_children():
 				if is_instance_valid(e):		
 					if e.visible:
 						e.hp_change(value)

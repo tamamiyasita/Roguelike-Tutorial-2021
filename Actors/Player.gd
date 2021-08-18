@@ -41,6 +41,7 @@ func _process(delta: float) -> void:
 		BaseInfo.Main.ui.pop.hide()
 
 
+		
 func states_reset():
 	var c_states = self.states.states_change()
 	emit_signal('states_changed', c_states)
@@ -229,8 +230,8 @@ func _on_Fov_area_exited(area: Area2D) -> void:
 #		area.light.visible = false
 
 func dead() -> void:
-	get_tree().quit()
-
+#	get_tree().quit()
+	get_tree().change_scene("res://GameOver.tscn")
 
 
 
