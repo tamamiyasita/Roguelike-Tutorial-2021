@@ -272,7 +272,7 @@ func item_place(rooms) -> void:
 		item_place(rooms)
 		
 	if item_point.size() >= 2:
-		if item_point.size() > 3:
+		if item_point.size() > 5:
 			item_point.pop_back()
 		if BaseInfo.Main.dungeon_Lv == 0:
 			var knife = knifes.instance()
@@ -310,6 +310,7 @@ func item_place(rooms) -> void:
 					items.add_child(i)
 					print(i, "ITEM!")
 					break
+				
 				
 				
 

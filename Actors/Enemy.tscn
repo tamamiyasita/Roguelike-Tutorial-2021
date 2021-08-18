@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Actors/BasicEnemy.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Actor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://image/cheese_rat1.png" type="Texture" id=3]
 [ext_resource path="res://image/cnf.png" type="Texture" id=4]
+[ext_resource path="res://image/ml.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "cnf"
@@ -90,4 +91,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Target" type="Sprite" parent="Position2D" index="6"]
+texture = ExtResource( 5 )
+
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]

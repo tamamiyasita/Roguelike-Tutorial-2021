@@ -4,6 +4,7 @@ var inventory = preload("res://Items/Inventory.tres")
 
 onready var itemTextureRect = $ItemTextureRect
 onready var equip_mark = $Equip_mark
+onready var maru = $Maru
 
 signal useitem
 
@@ -52,12 +53,13 @@ func _gui_input(event: InputEvent) -> void:
 						BaseInfo.Main.ui.wepon.texture = item.texture
 						get_tree().call_group("message", "get_massage", "You equipped a {0}".format([item.name]))
 				else:
-					BaseInfo.dequip_wepon(item.equip())
-					item.equipment = false
-					equip_mark.hide()
-					on_wepon = false
-					get_tree().call_group("message", "get_massage", "You removed the {0}".format([item.name]))
-					BaseInfo.Main.ui.wepon.texture = null
+					if on_wepon == true:
+						BaseInfo.dequip_wepon(item.equip())
+						item.equipment = false
+						equip_mark.hide()
+						on_wepon = false
+						get_tree().call_group("message", "get_massage", "You removed the {0}".format([item.name]))
+						BaseInfo.Main.ui.wepon.texture = null
 					
 			elif item is Armor:
 				if item.equipment == false:
@@ -122,3 +124,11 @@ func drop_data(_position: Vector2, data):
 	inventory.set_item(my_item_index, data.item)
 	inventory.drag_data = null
 	
+
+
+func _on_ItemTextureRect_mouse_entered():
+	maru.show()
+
+
+func _on_ItemTextureRect_mouse_exited():
+	maru.hide()

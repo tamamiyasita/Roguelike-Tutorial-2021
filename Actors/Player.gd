@@ -160,7 +160,7 @@ func attack(collider, direction):
 	var power = int(rand_range(1, self.states.power))
 	var regist  = int(rand_range(0, collider.states.defense))
 #	var damage = (power-regist)
-	var damage = int(clamp(power-regist, 0, power))
+	var damage = int(clamp(power-regist, 0, self.states.power))
 	
 	collider.hp_change(-damage)
 	collider.anime_state = AMOUNT
@@ -181,7 +181,6 @@ func attack(collider, direction):
 #			canvas.add_child(l)
 #			l.show()
 #
-#		get_tree().call_group("xpbar", "states_update")
 
 	yield(anime, "animation_finished" )
 	if !state == _TURN_INPUT:

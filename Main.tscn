@@ -510,20 +510,20 @@ extra_spacing_bottom = -6
 extra_spacing_char = 1
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFontData" id=24]
+[sub_resource type="DynamicFontData" id=23]
 font_path = "res://image/Gugi-Regular.ttf"
 
-[sub_resource type="DynamicFont" id=23]
+[sub_resource type="DynamicFont" id=24]
 size = 11
 outline_size = 1
 outline_color = Color( 0.490196, 0.745098, 0.52549, 1 )
-font_data = SubResource( 24 )
+font_data = SubResource( 23 )
 
 [sub_resource type="DynamicFont" id=25]
 size = 15
 outline_size = 1
 outline_color = Color( 0.490196, 0.745098, 0.52549, 1 )
-font_data = SubResource( 24 )
+font_data = SubResource( 23 )
 
 [node name="Main" type="TileMap" groups=[
 "main",
@@ -595,7 +595,7 @@ margin_top = -24.0
 margin_right = 15.0
 margin_bottom = -12.0
 rect_scale = Vector2( 2, 2 )
-texture = ExtResource( 15 )
+texture = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -838,6 +838,9 @@ margin_top = 424.0
 margin_right = 280.0
 margin_bottom = 456.0
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="TextureRect" parent="UI/Armor"]
 show_behind_parent = true
@@ -908,7 +911,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="UI/pops/CenterContainer/VBoxContainer"]
 margin_right = 158.0
 margin_bottom = 12.0
-custom_fonts/font = SubResource( 23 )
+custom_fonts/font = SubResource( 24 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = " Left Click : item use or epuip"
 
@@ -916,7 +919,7 @@ text = " Left Click : item use or epuip"
 margin_top = 17.0
 margin_right = 158.0
 margin_bottom = 29.0
-custom_fonts/font = SubResource( 23 )
+custom_fonts/font = SubResource( 24 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "      Right Click : Drop item"
 

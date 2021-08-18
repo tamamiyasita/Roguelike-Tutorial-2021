@@ -173,11 +173,11 @@ tracks/1/keys = {
 "values": [ ExtResource( 9 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 5 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=7]
 resource_name = "ranged_attack"
 length = 0.4
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 0.15
 step = 0.025
 tracks/0/type = "value"
@@ -243,7 +243,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Curve" id=8]
+[sub_resource type="Curve" id=9]
 _data = [ Vector2( 0.12069, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.893536, 0.0261364 ), 0.0, 0.0, 0, 0 ]
 
 [node name="Cecile" type="Area2D" groups=[
@@ -279,8 +279,8 @@ anims/cnf = SubResource( 3 )
 anims/damage = SubResource( 4 )
 anims/dead = SubResource( 5 )
 anims/idle = SubResource( 6 )
-anims/ranged_attack = SubResource( 9 )
-anims/walk = SubResource( 7 )
+anims/ranged_attack = SubResource( 7 )
+anims/walk = SubResource( 8 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 16, 16 )
@@ -297,7 +297,7 @@ spread = 180.0
 initial_velocity = 150.0
 initial_velocity_random = 0.54
 scale_amount = 0.35
-scale_amount_curve = SubResource( 8 )
+scale_amount_curve = SubResource( 9 )
 color = Color( 1, 1, 0.792157, 1 )
 
 [node name="shadow" type="Sprite" parent="Position2D"]

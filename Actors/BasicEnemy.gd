@@ -7,6 +7,7 @@ onready var states = preload('res://Actors/enemy_states.tres').duplicate()
 onready var tex = $Position2D/TextureRect
 onready var SAVE_KEY = "enemy"
 onready var level_up_window = preload("res://LevelupWindow.tscn")
+onready var target = $Position2D/Target
 var cnf = false
 var cnf_turn:int = 0
 
@@ -100,12 +101,16 @@ func hp_change(value):
 		if player.states.next_level[next_level] < player.states.xp:
 			player.states.level += 1
 			player.states.xp = 0
+			player.states.hp += 3
+			player.states.max_hp += 3
+			
 			player.state = _TURN_INPUT
 			var l = level_up_window.instance()
 			player.canvas.add_child(l)
 			l.show()
-			
+			BaseInfo.Main.ui.lifeber.hp_update()
 		get_tree().call_group("xpbar", "states_update")
+			
 		
 		
 		print(name, "dead!")
@@ -115,9 +120,9 @@ func hp_change(value):
 func attack(collider, direction):
 	anime_state = ATTACK
 	position2d.attack_start(direction)
-	var power = int(rand_range(0, self.states.power+1))
+	var power = int(rand_range(1, self.states.power))
 	var regist  = int(rand_range(0, collider.states.defense))
-	var damage = int(clamp(power-regist, 0, power))
+	var damage = int(clamp(power-regist, 0, self.states.power))
 #	var damage = (self.states.power-collider.states.defense)
 	
 	collider.hp_change(-damage)
@@ -165,3 +170,9 @@ func _load(save_game: Resource):
 	visible = data["visible"]
 	
 	
+
+
+func _on_Enemy_mouse_entered():
+	target.show()
+func _on_Enemy_mouse_exited():
+	target.hide()

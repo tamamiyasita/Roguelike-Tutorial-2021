@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Cabbage_snail.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Position2D.gd" type="Script" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://image/cabbage_snail1.png" type="Texture" id=5]
 [ext_resource path="res://image/cnf.png" type="Texture" id=6]
 [ext_resource path="res://par/DMG_Particles.tscn" type="PackedScene" id=7]
-[ext_resource path="res://image/dog2.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.28164, 7.59011 )
@@ -292,8 +291,7 @@ modulate = Color( 0.529412, 0.494118, 0.494118, 1 )
 texture = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
-modulate = Color( 1, 1, 1, 0.254902 )
-texture = ExtResource( 8 )
+texture = ExtResource( 3 )
 
 [node name="Tween" type="Tween" parent="Position2D"]
 

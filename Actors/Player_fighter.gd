@@ -12,7 +12,7 @@ export var power = 2
 export var defense = 0
 export var xp = 0
 export var level = 1
-var next_level := {2:25, 3:40, 4:60, 5:70, 6:180}
+var next_level := {2:25, 3:40, 4:60, 5:70, 6:90, 7:110, 8:120, 9:200, 10:900}
 var next_xp = next_level[level+1]
 
 #var wepon = null
