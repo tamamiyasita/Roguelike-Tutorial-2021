@@ -30,6 +30,15 @@ func display_item(item):
 	else:
 		itemTextureRect.texture = load("res://Items/EmptyInventorySlot.png")
 		
+func update_mark():
+	for i in inventory.items:
+		if i is Wepon or i is Armor:
+			if i.equipment == true:
+				equip_mark.show()
+			else:
+				equip_mark.hide()
+				
+			
 func _gui_input(event: InputEvent) -> void:
 	var items :Node = BaseInfo.Items
 	var player = BaseInfo.Player.states
@@ -101,6 +110,7 @@ func _gui_input(event: InputEvent) -> void:
 						i.position = BaseInfo.Player.position
 						inventory.remove_item(item_index)
 						break
+		update_mark()
 		
 		get_tree().call_group("xpbar", "states_update")
 		
