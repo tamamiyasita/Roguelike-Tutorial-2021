@@ -135,11 +135,15 @@ func set_player_position(player)->void:
 ##	items.add_child(cnf)
 #	enemies.add_child(cnf)
 
-#	var cnf2 = Cecile.instance()
-#	cnf2.position = map_to_world(point+ Vector2(2,4))
-##	items.add_child(cnf)
-#	enemies.add_child(cnf2)
-
+	var cnf2 = Cecile.instance()
+	cnf2.position = map_to_world(point+ Vector2(4,0))
+#	items.add_child(cnf)
+	enemies.add_child(cnf2)
+	
+	var cnf3 = rats.instance()
+	cnf3.position = map_to_world(point+ Vector2(2,0))
+#	items.add_child(cnf)
+	enemies.add_child(cnf3)
 func entity_set():
 	for tile in tiles:
 		if tiles[tile] == WALL:

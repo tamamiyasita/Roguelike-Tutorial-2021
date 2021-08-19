@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "daggr"
+name = "knife"
 texture = ExtResource( 2 )
 equipment = false
 equip_value = 2
