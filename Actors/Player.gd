@@ -160,15 +160,23 @@ func attack(collider, direction):
 	position2d.attack_start(direction)
 	var power = int(rand_range(1, self.states.power))
 	var regist  = int(rand_range(0, collider.states.defense))
-#	var damage = (power-regist)
-	var damage = int(clamp(power-regist, 0, self.states.power))
+	var damage := 0
+	var critical = int(rand_range(1,3))
+	var critical_text = ""
+	if critical == 2:
+		damage = self.states.power+2
+		critical_text = "Critical HIT! "
+		collider.anime_state = C_AMOUNT
+#		yield(get_tree().create_timer(0.2), "timeout")
+	else:
+		damage = int(clamp(power-regist, 0, self.states.power))
+		collider.anime_state = AMOUNT 
 	
 	collider.hp_change(-damage)
-	collider.anime_state = AMOUNT
 
 	print(collider.name," HP: ", collider.states.hp)
-	var text = [self.name, collider.name, damage]
-	get_tree().call_group("message", "get_massage", "{0} hit the {1} for {2} damage!".format(text))
+	var text = [critical_text, self.name, collider.name, damage]
+	get_tree().call_group("message", "get_massage",  "{0}  {1} hit the {2} for {3} damage!".format(text))
 #	if collider.states.hp <= 0:
 #		collider.dead()
 #		print("enemy dead!")

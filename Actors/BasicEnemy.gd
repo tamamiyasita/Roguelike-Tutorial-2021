@@ -44,6 +44,8 @@ func dead() -> void:
 #	sprit.hide()
 #	$Position2D/shadow.hide()
 #	particle.emitting = true
+#	yield(get_tree().create_timer(0.2), "timeout")
+#	yield(anime, "animation_finished" )
 	anime.play("dead")
 	is_turn_complete = true
 	is_dead = true
@@ -94,6 +96,9 @@ func hp_change(value):
 	self.states.hp_change(value)
 #	emit_signal('hp_changed', self.states.hp)
 	print(self.states.hp, " my hp")
+	if anime_state == C_AMOUNT:
+		anime.play("critical_damage") 
+		yield(anime, "animation_finished" )
 	
 	if states.hp <= 0:
 		player.states.xp += self.xp

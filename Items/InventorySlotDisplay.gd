@@ -33,17 +33,12 @@ func display_item(item):
 		
 func update_wepon():
 	for i in get_parent().get_children():
-		if BaseInfo.Main.ui.wepon.texture == i.itemTextureRect.texture:
+		if BaseInfo.Main.ui.wepon.texture == i.itemTextureRect.texture or\
+		BaseInfo.Main.ui.armor.texture == i.itemTextureRect.texture:
 			i.equip_mark.show()
 		else:
 			i.equip_mark.hide()
-			
-func update_armor():
-	for i in get_parent().get_children():
-		if BaseInfo.Main.ui.armor.texture == i.itemTextureRect.texture:
-			i.equip_mark.show()
-		else:
-			i.equip_mark.hide()
+				
 			
 func _gui_input(event: InputEvent) -> void:
 	var items :Node = BaseInfo.Items
@@ -98,7 +93,7 @@ func _gui_input(event: InputEvent) -> void:
 					get_tree().call_group("message", "get_massage", "You removed the {0}".format([item.name]))
 					BaseInfo.Main.ui.armor.texture = null
 #					BaseInfo.Player.container.visible = false
-				update_armor()
+				update_wepon()
 			maru.hide()
 			
 

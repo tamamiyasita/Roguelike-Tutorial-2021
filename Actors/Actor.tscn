@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Actors/Actor.gd" type="Script" id=1]
 [ext_resource path="res://image/shadow.png" type="Texture" id=2]
@@ -7,12 +7,77 @@
 [ext_resource path="res://par/DMG_Particles.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Actors/Position2D.gd" type="Script" id=6]
 [ext_resource path="res://image/ml.png" type="Texture" id=7]
+[ext_resource path="res://image/player_damage.png" type="Texture" id=8]
+[ext_resource path="res://image/player.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.28164, 7.59011 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "attack"
+
+[sub_resource type="Animation" id=8]
+resource_name = "critical_damage"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.01, 0.04, 0.08, 0.11, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1.2, 1.2, 1.2, 1 ), Color( 1, 1, 1, 1 ), Color( 1.2, 1.2, 1.2, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.07, 0.14, 0.21, 0.29 ),
+"transitions": PoolRealArray( 1, 0.34151, 2.63902, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( -1, 0 ), Vector2( 1, -1 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.07, 0.14, 0.21, 0.28 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1.15 ), Vector2( 1.15, 1 ), Vector2( 0.95, 0.95 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Position2D/Sprite:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.01, 0.29 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 9 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Position2D/DMG_Particles2:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "damage"
@@ -173,6 +238,31 @@ tracks/4/keys = {
 } ]
 }
 
+[sub_resource type="ParticlesMaterial" id=6]
+lifetime_randomness = 0.73
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_disable_z = true
+direction = Vector3( 1, 1, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 200.29
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = 57.97
+radial_accel_random = 0.61
+tangential_accel = -18.84
+angle = 62.6
+angle_random = 1.0
+scale = 1.7
+scale_random = 1.0
+hue_variation = 1.0
+hue_variation_random = 1.0
+
+[sub_resource type="StreamTexture" id=7]
+flags = 4
+load_path = "res://.import/particle_1.png-e1872b2168f553f7ec54937be77d2b53.stex"
+
 [node name="Actor" type="Area2D" groups=[
 "save",
 ]]
@@ -194,6 +284,7 @@ collide_with_areas = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 2 )
+anims/critical_damage = SubResource( 8 )
 anims/damage = SubResource( 3 )
 anims/idle = SubResource( 4 )
 anims/walk = SubResource( 5 )
@@ -207,11 +298,18 @@ modulate = Color( 0.529412, 0.494118, 0.494118, 1 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Position2D"]
+texture = ExtResource( 3 )
 
 [node name="Tween" type="Tween" parent="Position2D"]
 
 [node name="DMG_Particles" parent="Position2D" instance=ExtResource( 5 )]
 position = Vector2( 0, 0 )
+
+[node name="DMG_Particles2" parent="Position2D" instance=ExtResource( 5 )]
+position = Vector2( 0, 0 )
+amount = 30
+process_material = SubResource( 6 )
+texture = SubResource( 7 )
 
 [node name="Target" type="Sprite" parent="Position2D"]
 visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Actors/Actor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://image/player_walk.png" type="Texture" id=2]
@@ -46,7 +46,69 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-resource_name = "damage"
+resource_name = "critical_damage"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.01, 0.04, 0.08, 0.11, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1.2, 1.2, 1.2, 1 ), Color( 1, 1, 1, 1 ), Color( 1.2, 1.2, 1.2, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.07, 0.14, 0.21, 0.29 ),
+"transitions": PoolRealArray( 1, 0.34151, 2.63902, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( -1, 0 ), Vector2( 1, -1 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.07, 0.14, 0.21, 0.28 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1.15 ), Vector2( 1.15, 1 ), Vector2( 0.95, 0.95 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Position2D/Sprite:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.01, 0.29 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ), ExtResource( 15 ), ExtResource( 3 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Position2D/DMG_Particles2:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=3]
 length = 0.3
 step = 0.01
 tracks/0/type = "value"
@@ -110,7 +172,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 7.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Position2D/Sprite:texture")
@@ -137,10 +199,10 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="StreamTexture" id=4]
+[sub_resource type="StreamTexture" id=5]
 load_path = "res://.import/player.png-1f689d969e4228c2cd397b4c95a320de.stex"
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.15
 step = 0.01
 tracks/0/type = "value"
@@ -165,7 +227,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.01, 0.15 ),
 "transitions": PoolRealArray( 1, 1, 0.0544094 ),
 "update": 1,
-"values": [ ExtResource( 3 ), ExtResource( 2 ), SubResource( 4 ) ]
+"values": [ ExtResource( 3 ), ExtResource( 2 ), SubResource( 5 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Position2D/shadow:modulate")
@@ -192,10 +254,11 @@ tracks/3/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.75, 1 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="StreamTexture" id=6]
+[sub_resource type="StreamTexture" id=7]
+flags = 4
 load_path = "res://.import/shadow.png-933a40835afcc17c83c194c13369a3bd.stex"
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=8]
 radius = 160.0
 
 [node name="Player" instance=ExtResource( 1 )]
@@ -217,9 +280,10 @@ collision_mask = 14
 [node name="AnimationPlayer" parent="." index="3"]
 autoplay = "idle"
 anims/attack = SubResource( 1 )
-anims/damage = SubResource( 2 )
-anims/idle = SubResource( 3 )
-anims/walk = SubResource( 5 )
+anims/critical_damage = SubResource( 2 )
+anims/damage = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/walk = SubResource( 6 )
 
 [node name="Position2D" parent="." index="4"]
 script = ExtResource( 13 )
@@ -242,10 +306,9 @@ shadow_filter_smooth = 4.2
 shadow_item_cull_mask = 5
 
 [node name="shadow" parent="Position2D" index="2"]
-texture = SubResource( 6 )
+texture = SubResource( 7 )
 
 [node name="Sprite" parent="Position2D" index="3"]
-modulate = Color( 1, 1, 1, 0.196078 )
 z_index = 4
 texture = ExtResource( 3 )
 
@@ -259,7 +322,7 @@ collision_mask = 126
 script = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fov" index="0"]
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="6"]
 
