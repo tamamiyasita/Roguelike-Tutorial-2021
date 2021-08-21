@@ -30,6 +30,7 @@ onready var stairs :Node = $Stairs
 var rats = preload('res://Actors/CheeseRat.tscn')
 var dogs = preload('res://Actors/Dog.tscn')
 var cabbage_snails = preload('res://Actors/Cabbage_snail.tscn')
+var Unicorn = preload("res://Actors/unicorn.tscn")
 var Cecile = preload('res://Actors/Cecile.tscn')
 var apples = preload('res://map_object/apple.tscn')
 var forces = preload('res://map_object/force.tscn')
@@ -73,7 +74,7 @@ func generate() -> void:
 	join_rooms()
 	clear_deadends()
 	entity_set()
-#	enemy_place(rooms)
+	enemy_place(rooms)
 	item_place(rooms)
 	door_place()
 	add_stairs()
@@ -81,27 +82,31 @@ func generate() -> void:
 func add_stairs():
 	var second_point = rooms[0].center
 	var last_point = rooms[-1].center
-	var sd_point = rooms[-2].center
-	if BaseInfo.Main.dungeon_Lv < 4:
+	var sd_point = rooms[1].center
+	if BaseInfo.Main.dungeon_Lv < 3:
 		var s1 = stairs_obj.instance()
 		s1.position = map_to_world(last_point)
 		stairs.add_child(s1)
 		
 		
 		
-		var s2 = stairs_obj.instance()
-		s2.position = map_to_world(second_point+Vector2(2,2))
-		stairs.add_child(s2)
+#		var s2 = stairs_obj.instance()
+#		s2.position = map_to_world(second_point+Vector2(2,2))
+#		stairs.add_child(s2)
 		
-		var apple = apples.instance()
-		apple.position = map_to_world(sd_point + Vector2(1,1))
-		items.add_child(apple)
 	else:
 		var c = Cecile.instance()
 		c.position = map_to_world(last_point)
 		enemies.add_child(c)
-	
-	
+		
+		var uni = Unicorn.instance()
+		uni.position = map_to_world(last_point+ Vector2(1,0))
+		enemies.add_child(uni)
+		
+	if BaseInfo.Main.dungeon_Lv < 2:
+		var apple = apples.instance()
+		apple.position = map_to_world(sd_point + Vector2(1,1))
+		items.add_child(apple)
 func set_player_position(player)->void:
 	var point = rooms[0].center
 	player.position = map_to_world(point)
@@ -110,18 +115,18 @@ func set_player_position(player)->void:
 #	apple.position = map_to_world(point + Vector2(0,1))
 #	items.add_child(apple)
 	
-	var daggr = daggrs.instance()
-	daggr.position = map_to_world(point + Vector2(0,2))
-	items.add_child(daggr)
-	
-	var knife = knifes.instance()
-	knife.position = map_to_world(point + Vector2(0,2))
-	items.add_child(knife)
-	
-	var bangle = bangles.instance()
-	bangle.position = map_to_world(point + Vector2(1,1))
-	items.add_child(bangle)
-	
+#	var daggr = daggrs.instance()
+#	daggr.position = map_to_world(point + Vector2(0,2))
+#	items.add_child(daggr)
+#
+#	var knife = knifes.instance()
+#	knife.position = map_to_world(point + Vector2(0,2))
+#	items.add_child(knife)
+#
+#	var bangle = bangles.instance()
+#	bangle.position = map_to_world(point + Vector2(1,1))
+#	items.add_child(bangle)
+#
 #	var force = forces.instance()
 #	force.position = map_to_world(point +Vector2.ONE)
 #	items.add_child(force)
@@ -135,15 +140,16 @@ func set_player_position(player)->void:
 ##	items.add_child(cnf)
 #	enemies.add_child(cnf)
 
-	var cnf2 = Cecile.instance()
-	cnf2.position = map_to_world(point+ Vector2(4,0))
-#	items.add_child(cnf)
-	enemies.add_child(cnf2)
-	
-	var cnf3 = rats.instance()
-	cnf3.position = map_to_world(point+ Vector2(2,0))
-#	items.add_child(cnf)
-	enemies.add_child(cnf3)
+#	var cnf2 = Cecile.instance()
+#	cnf2.position = map_to_world(point+ Vector2(2,0))
+#	enemies.add_child(cnf2)
+#	var cnf4 = Unicorn.instance()
+#	cnf4.position = map_to_world(point+ Vector2(1,0))
+#	enemies.add_child(cnf4)
+
+#	var cnf3 = rats.instance()
+#	cnf3.position = map_to_world(point+ Vector2(1,0))
+#	enemies.add_child(cnf3)
 func entity_set():
 	for tile in tiles:
 		if tiles[tile] == WALL:

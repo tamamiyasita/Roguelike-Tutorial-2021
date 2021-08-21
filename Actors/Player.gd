@@ -161,7 +161,7 @@ func attack(collider, direction):
 	var power = int(rand_range(1, self.states.power))
 	var regist  = int(rand_range(0, collider.states.defense))
 	var damage := 0
-	var critical = int(rand_range(1,3))
+	var critical = int(rand_range(1,15))
 	var critical_text = ""
 	if critical == 2:
 		damage = self.states.power+2

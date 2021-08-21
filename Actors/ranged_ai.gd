@@ -24,10 +24,13 @@ func ranged_ai(direction) -> void:
 	a_star_path.a_path_ready(position)
 	paths = a_star_path.get_astar_path(global_position, direction)
 	
-	var path = paths[-1]
-	
-	var dist = path.distance_to(direction)
-	var d = (path - global_position)
+#	if paths.empty():
+#		random_walk()
+#	else:
+#		var path = paths[-1]
+#
+#		var dist = path.distance_to(direction)
+	var d = (BaseInfo.Player.position - global_position)
 	ranged_search(d)
 
 
@@ -65,7 +68,7 @@ func ranged_attack(collider, direction):
 	position2d.ranged_attack_start(direction, arrow)
 	var power = int(rand_range(0, self.states.power+1))
 	var regist  = int(rand_range(0, collider.states.defense))
-	var damage = (power-regist)
+	var damage = int(clamp(power-regist, 0, self.states.power))
 #	var damage = (self.states.power-collider.states.defense)
 	
 	collider.hp_change(-damage)

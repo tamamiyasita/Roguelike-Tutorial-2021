@@ -31,8 +31,11 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1.2, 1.2, 1.2, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="GameClear" type="Node2D"]
+[node name="GameClear" type="Control"]
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

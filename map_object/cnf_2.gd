@@ -2,6 +2,6 @@ extends Itembase
 
 
 const is_item = preload('res://Items/cnf.tres')
-const weight = 18
-const level = 3
+const weight = 7
+const level = 2
 var item_name = "Scroll of confusion"

@@ -8,4 +8,4 @@ script = ExtResource( 1 )
 name = "daggr"
 texture = ExtResource( 2 )
 equipment = false
-equip_value = 5
+equip_value = 4

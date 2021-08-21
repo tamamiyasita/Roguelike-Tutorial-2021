@@ -40,6 +40,7 @@ func take_turn(direction) -> void:
 		basic_ai(direction)
 
 func dead() -> void:
+	is_turn_complete = true
 	get_tree().call_group("message", "get_massage", "The {0} is dead".format([self.name]))
 #	sprit.hide()
 #	$Position2D/shadow.hide()
@@ -47,7 +48,6 @@ func dead() -> void:
 #	yield(get_tree().create_timer(0.2), "timeout")
 #	yield(anime, "animation_finished" )
 	anime.play("dead")
-	is_turn_complete = true
 	is_dead = true
 	
 func basic_ai(direction) -> void:

@@ -115,9 +115,12 @@ margin_right = 217.5
 margin_bottom = 54.0
 custom_fonts/font = SubResource( 2 )
 text = "Roguelike Tutorial
-            2021"
+2021"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/TextureRect"]
 autoplay = "play"

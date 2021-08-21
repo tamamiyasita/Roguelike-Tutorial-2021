@@ -255,7 +255,6 @@ tracks/3/keys = {
 }
 
 [sub_resource type="StreamTexture" id=7]
-flags = 4
 load_path = "res://.import/shadow.png-933a40835afcc17c83c194c13369a3bd.stex"
 
 [sub_resource type="CircleShape2D" id=8]
