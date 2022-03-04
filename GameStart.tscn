@@ -34,6 +34,7 @@ tracks/0/keys = {
 }
 
 [node name="GameStart" type="Control"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 6 )
@@ -45,6 +46,7 @@ __meta__ = {
 layer = 5
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
@@ -53,6 +55,7 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -97,8 +100,8 @@ margin_right = 162.0
 margin_bottom = 34.0
 rect_min_size = Vector2( 150, 30 )
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.937255, 0.215686, 0.74902, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "Game Start!"
 __meta__ = {
 "_edit_use_anchors_": false
