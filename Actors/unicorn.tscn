@@ -1,10 +1,9 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://unicorn.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Position2D.gd" type="Script" id=2]
 [ext_resource path="res://image/cheese_rat1.png" type="Texture" id=3]
 [ext_resource path="res://image/shadow.png" type="Texture" id=4]
-[ext_resource path="res://image/unicorn1.png" type="Texture" id=5]
 [ext_resource path="res://image/cnf.png" type="Texture" id=6]
 [ext_resource path="res://par/DMG_Particles.tscn" type="PackedScene" id=7]
 [ext_resource path="res://image/ml.png" type="Texture" id=8]
@@ -223,7 +222,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3, 0.75, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 9 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 5 ) ]
+"values": [ ExtResource( 9 ), ExtResource( 9 ), null, null ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -324,9 +323,7 @@ hue_variation_random = 1.0
 flags = 4
 load_path = "res://.import/particle_1.png-e1872b2168f553f7ec54937be77d2b53.stex"
 
-[node name="Unicorn" type="Area2D" groups=[
-"save",
-]]
+[node name="Unicorn" type="Area2D" groups=["save"]]
 visible = false
 position = Vector2( 16, 16 )
 z_index = 2

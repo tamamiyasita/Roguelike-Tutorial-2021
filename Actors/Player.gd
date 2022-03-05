@@ -4,6 +4,7 @@ onready var fov_ray :RayCast2D = $Fovray
 onready var fov :Area2D = $Fov
 onready var inventory = preload("res://Items/Inventory.tres")
 onready var states = preload('res://Actors/player_states.tres')
+onready var skill_anime = $SkillAnimation
 
 onready var container = $CanvasLayer/InventoryContainer
 onready var canvas = $CanvasLayer
@@ -124,7 +125,6 @@ func collider_check(collider, direction) -> void:
 		ENEMY:
 			if not collider.is_dead:
 				print("enemy depop!")
-				anime_state = ATTACK
 				state = _TURN_RUN
 				attack(collider, direction)
 			else:
@@ -157,41 +157,36 @@ func hp_change(value):
 
 func attack(collider, direction):
 	$Position2D/Camera2D.current = false
-	position2d.attack_start(direction)
-	var power = int(rand_range(1, self.states.power))
-	var regist  = int(rand_range(0, collider.states.defense))
-	var damage := 0
-	var critical = int(rand_range(1,15))
-	var critical_text = ""
-	if critical == 2:
-		damage = self.states.power+2
-		critical_text = "Critical HIT! "
-		collider.anime_state = C_AMOUNT
-#		yield(get_tree().create_timer(0.2), "timeout")
-	else:
+	for s in $Skill.get_children():
+		if !is_instance_valid(collider):
+			state = _TURN_END
+			return
+			
+#		anime.stop()
+		anime.play(s.skill_anime)
+		print(anime.current_animation_length, s.skill_anime)
+		var power = int(rand_range(1, self.states.power))
+		var regist  = int(rand_range(0, collider.states.defense))
+		var damage := 0
+
+
+
 		damage = int(clamp(power-regist, 0, self.states.power))
+		position2d.attack_start(direction, anime.current_animation_length)
+		damage += s.damage
 		collider.anime_state = AMOUNT 
-	
-	collider.hp_change(-damage)
+		
+#		anime_state = IDLE
+#		anime.play("attack")
 
-	print(collider.name," HP: ", collider.states.hp)
-	var text = [critical_text, self.name, collider.name, damage]
-	get_tree().call_group("message", "get_massage",  "{0}  {1} hit the {2} for {3} damage!".format(text))
-#	if collider.states.hp <= 0:
-#		collider.dead()
-#		print("enemy dead!")
-#		self.states.xp += collider.xp
-#		var next_level = self.states.level + 1
-#		if self.states.next_level[next_level] < self.states.xp:
-#			self.states.level += 1
-#			self.states.xp = 0
-#			state = _TURN_INPUT
-#			var l = level_up_window.instance()
-#			canvas.add_child(l)
-#			l.show()
-#
+		collider.hp_change(-damage)
 
-	yield(anime, "animation_finished" )
+		print(collider.name," HP: ", collider.states.hp)
+		var text = ["", self.name, collider.name, damage]
+		get_tree().call_group("message", "get_massage",  "{0}  {1} hit the {2} for {3} damage!".format(text))
+#		yield(tween, "tween_all_completed" )
+		yield(anime, "animation_finished" )
+		yield(get_tree().create_timer(0.2), "timeout")
 	if !state == _TURN_INPUT:
 		state = _TURN_END
 

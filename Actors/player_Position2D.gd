@@ -6,13 +6,13 @@ var offset_pos = Vector2(16,16)
 func _ready() -> void:
 	pass
 	
-func attack_start(direction):
+func attack_start(direction, length = 0.4):
 	tween.interpolate_property(
 		self,
 		"position",
 		position,
-		(direction/1.1) + position,
-		0.4,
+		(direction/1.5) + position,
+		length,
 		Tween.TRANS_BACK,
 		Tween.EASE_OUT_IN
 	)

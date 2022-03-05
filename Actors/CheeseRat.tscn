@@ -322,9 +322,7 @@ hue_variation_random = 1.0
 flags = 4
 load_path = "res://.import/particle_1.png-e1872b2168f553f7ec54937be77d2b53.stex"
 
-[node name="CheeseRat" type="Area2D" groups=[
-"save",
-]]
+[node name="CheeseRat" type="Area2D" groups=["save"]]
 visible = false
 position = Vector2( 16, 16 )
 z_index = 2
