@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://Actors/Actor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://image/player_walk.png" type="Texture" id=2]
@@ -20,9 +20,21 @@
 [ext_resource path="res://Actors/Skill/Kick.gd" type="Script" id=18]
 [ext_resource path="res://image/bst_clear4.png" type="Texture" id=19]
 [ext_resource path="res://image/bst_clear2.png" type="Texture" id=20]
-[ext_resource path="res://image/wood_door1.png" type="Texture" id=21]
-[ext_resource path="res://image/player_idol.png" type="Texture" id=22]
-[ext_resource path="res://Actors/Skill/Chop.gd" type="Script" id=23]
+[ext_resource path="res://image/player_Whirlwind Kick_1.png" type="Texture" id=21]
+[ext_resource path="res://image/player_Whirlwind Kick_2.png" type="Texture" id=22]
+[ext_resource path="res://Actors/Skill/Whirlwindkick.gd" type="Script" id=23]
+[ext_resource path="res://image/player_kick_1.png" type="Texture" id=24]
+[ext_resource path="res://image/Somersault kick_0.png" type="Texture" id=25]
+[ext_resource path="res://image/Somersault kick_1.png" type="Texture" id=26]
+[ext_resource path="res://Actors/Skill/SomersaultKick.gd" type="Script" id=27]
+[ext_resource path="res://Actors/Skill/Hyakuretsukyaku.gd" type="Script" id=28]
+[ext_resource path="res://image/Hyakuretsukyaku_2.png" type="Texture" id=29]
+[ext_resource path="res://image/Hyakuretsukyaku_1.png" type="Texture" id=30]
+[ext_resource path="res://image/Spinning_Bird_Kick_1.png" type="Texture" id=31]
+[ext_resource path="res://image/Spinning_Bird_Kick_2.png" type="Texture" id=32]
+[ext_resource path="res://Actors/Skill/SpinningBirdKick.gd" type="Script" id=33]
+
+[sub_resource type="CircleShape2D" id=17]
 
 [sub_resource type="Animation" id=9]
 length = 0.001
@@ -74,6 +86,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Position2D/Sprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -90,46 +114,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 12 ), ExtResource( 11 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Position2D/Sprite:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1.2, 1.2, 1.2, 1 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Position2D/Sprite:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.39, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=14]
-resource_name = "chop"
-length = 0.81
-tracks/0/type = "value"
-tracks/0/path = NodePath("Position2D/Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ ExtResource( 21 ), ExtResource( 22 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Position2D/Sprite:modulate")
@@ -283,6 +267,47 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="Animation" id=16]
+resource_name = "hyakuretsukyaku"
+length = 0.7
+step = 0.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.100179, 0.195276, 0.300523, 0.402796, 0.503154, 0.605427 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 30 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 29 ), ExtResource( 30 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1.2, 1.2, 1.2, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
 [sub_resource type="Animation" id=4]
 length = 0.5
 tracks/0/type = "value"
@@ -311,7 +336,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 20 ), ExtResource( 19 ) ]
+"values": [ ExtResource( 24 ), ExtResource( 24 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Position2D/Sprite:modulate")
@@ -378,6 +403,99 @@ tracks/2/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=15]
+resource_name = "somersaultkick"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 26 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1.2, 1.2, 1.2, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "spinningbirdkick"
+length = 1.51
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.35, 0.55, 0.8, 1.05, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 31 ), ExtResource( 32 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1.2, 1.2, 1.2, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.39, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Position2D/Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.15, 0.35, 0.55, 0.75, 0.95, 1.15, 1.35, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 37, -5 ), Vector2( 6, -39 ), Vector2( -38, -8 ), Vector2( -21, 32 ), Vector2( 24, 36 ), Vector2( 35, 12 ), Vector2( 23, 1 ), Vector2( 4, 2 ) ]
+}
+
 [sub_resource type="Animation" id=6]
 length = 0.18
 step = 0.01
@@ -428,6 +546,59 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 0.75, 1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "whirlwindkick"
+length = 1.51
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.35, 0.55, 0.8, 1.05, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1.2, 1.2, 1.2, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.39, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Position2D/Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.15, 0.35, 0.55, 0.75, 0.95, 1.15, 1.35, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 37, -5 ), Vector2( 6, -39 ), Vector2( -38, -8 ), Vector2( -21, 32 ), Vector2( 24, 36 ), Vector2( 35, 12 ), Vector2( 23, 1 ), Vector2( 4, 2 ) ]
 }
 
 [sub_resource type="StreamTexture" id=7]
@@ -523,7 +694,8 @@ collision_mask = 110
 script = ExtResource( 4 )
 texture = ExtResource( 3 )
 
-[node name="Skill" type="Node" parent="." index="0"]
+[node name="Skill" type="Node2D" parent="." index="0"]
+position = Vector2( 16, 16 )
 script = ExtResource( 17 )
 
 [node name="Punch" type="Node" parent="Skill" index="0"]
@@ -532,8 +704,33 @@ script = ExtResource( 14 )
 [node name="Kick" type="Node" parent="Skill" index="1"]
 script = ExtResource( 18 )
 
-[node name="Chop" type="Node" parent="Skill" index="2"]
+[node name="WhirlwindKick" type="Node2D" parent="Skill" index="2"]
 script = ExtResource( 23 )
+
+[node name="ShortRange" type="Area2D" parent="Skill/WhirlwindKick" index="0"]
+collision_layer = 128
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skill/WhirlwindKick/ShortRange" index="0"]
+scale = Vector2( 4, 4 )
+shape = SubResource( 17 )
+
+[node name="SpinningBirdKick" type="Node2D" parent="Skill" index="3"]
+script = ExtResource( 33 )
+
+[node name="ShortRange" type="Area2D" parent="Skill/SpinningBirdKick" index="0"]
+collision_layer = 128
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skill/SpinningBirdKick/ShortRange" index="0"]
+scale = Vector2( 4, 4 )
+shape = SubResource( 17 )
+
+[node name="SomersaultKick" type="Node" parent="Skill" index="4"]
+script = ExtResource( 27 )
+
+[node name="Hyakuretsukyaku" type="Node" parent="Skill" index="5"]
+script = ExtResource( 28 )
 
 [node name="Fovray" type="RayCast2D" parent="." index="1"]
 position = Vector2( 16, 16 )
@@ -545,16 +742,18 @@ collide_with_areas = true
 collision_mask = 14
 
 [node name="AnimationPlayer" parent="." index="4"]
-autoplay = "idle"
 anims/RESET = SubResource( 9 )
 anims/attack = SubResource( 1 )
-anims/chop = SubResource( 14 )
 anims/critical_damage = SubResource( 2 )
 anims/damage = SubResource( 3 )
+anims/hyakuretsukyaku = SubResource( 16 )
 anims/idle = SubResource( 4 )
 anims/kick = SubResource( 12 )
 anims/punch = SubResource( 13 )
+anims/somersaultkick = SubResource( 15 )
+anims/spinningbirdkick = SubResource( 18 )
 anims/walk = SubResource( 6 )
+anims/whirlwindkick = SubResource( 14 )
 
 [node name="Position2D" parent="." index="5"]
 script = ExtResource( 13 )
@@ -615,5 +814,9 @@ anims/punch = SubResource( 11 )
 
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Player_area_exited"]
+[connection signal="area_entered" from="Skill/WhirlwindKick/ShortRange" to="Skill/WhirlwindKick" method="_on_ShortRange_area_entered"]
+[connection signal="area_exited" from="Skill/WhirlwindKick/ShortRange" to="Skill/WhirlwindKick" method="_on_ShortRange_area_exited"]
+[connection signal="area_entered" from="Skill/SpinningBirdKick/ShortRange" to="Skill/SpinningBirdKick" method="_on_ShortRange_area_entered"]
+[connection signal="area_exited" from="Skill/SpinningBirdKick/ShortRange" to="Skill/SpinningBirdKick" method="_on_ShortRange_area_exited"]
 [connection signal="area_entered" from="Fov" to="." method="_on_Fov_area_entered"]
 [connection signal="area_exited" from="Fov" to="." method="_on_Fov_area_exited"]

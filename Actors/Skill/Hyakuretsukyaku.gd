@@ -1,6 +1,7 @@
 extends Node
 
-var skill_anime = "punch"
+
+var skill_anime = "hyakuretsukyaku"
 
 func special_skill(amount, enemy):
 	var damage = int(rand_range(1,2))

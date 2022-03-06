@@ -237,6 +237,7 @@ light_mouse={
 2d_physics/layer_5="floor"
 2d_physics/layer_6="item"
 2d_physics/layer_7="stairs"
+2d_physics/layer_8="skill_range"
 
 [physics]
 

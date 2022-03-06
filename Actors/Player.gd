@@ -153,18 +153,18 @@ func hp_change(value):
 	emit_signal('hp_changed', self.states.hp)
 	print(self.states.hp, " my hp")
 	
-	
+
+
+
 
 func attack(collider, direction):
 	$Position2D/Camera2D.current = false
 	for s in $Skill.get_children():
-		if !is_instance_valid(collider):
+		if !is_instance_valid(collider) or collider.states.hp <= 0:
 			state = _TURN_END
 			return
 			
-#		anime.stop()
-		anime.play(s.skill_anime)
-		print(anime.current_animation_length, s.skill_anime)
+		
 		var power = int(rand_range(1, self.states.power))
 		var regist  = int(rand_range(0, collider.states.defense))
 		var damage := 0
@@ -172,21 +172,22 @@ func attack(collider, direction):
 
 
 		damage = int(clamp(power-regist, 0, self.states.power))
-		position2d.attack_start(direction, anime.current_animation_length)
-		damage += s.damage
-		collider.anime_state = AMOUNT 
 		
-#		anime_state = IDLE
-#		anime.play("attack")
 
-		collider.hp_change(-damage)
+		position2d.attack_start(direction, anime.current_animation_length)
+		anime.play(s.skill_anime)
 
-		print(collider.name," HP: ", collider.states.hp)
-		var text = ["", self.name, collider.name, damage]
-		get_tree().call_group("message", "get_massage",  "{0}  {1} hit the {2} for {3} damage!".format(text))
-#		yield(tween, "tween_all_completed" )
 		yield(anime, "animation_finished" )
+		s.special_skill(damage, collider)
+
+#		var text = [s.skill_anime, "Ling", collider.name, damage]
+#		get_tree().call_group("message", "get_massage",  "{0}  {1} hit the {2} for {3} damage!".format(text))
+		
+		print(collider.name," HP: ", collider.states.hp)
 		yield(get_tree().create_timer(0.2), "timeout")
+		if !is_instance_valid(collider) or collider.states.hp <= 0:
+			state = _TURN_END
+			return
 	if !state == _TURN_INPUT:
 		state = _TURN_END
 
@@ -259,3 +260,5 @@ func _on_Player_area_exited(area: Area2D) -> void:
 	else:
 		print("not_stairs")
 		on_stairs = false
+
+
