@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://image/Thintel.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Actors/Skill/SkillBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://image/item_back.png" type="Texture" id=4]
+=======
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://image/bangle.png" type="Texture" id=1]
@@ -5,6 +12,7 @@
 [ext_resource path="res://image/item_back.png" type="Texture" id=3]
 [ext_resource path="res://image/Thintel.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Actors/Skill/Kick.gd" type="Script" id=5]
+>>>>>>> ad54708bb898a6419576307151978b53f7958c94
 
 [sub_resource type="DynamicFont" id=22]
 size = 33
@@ -12,6 +20,24 @@ outline_size = 1
 outline_color = Color( 0.14902, 0.690196, 0.533333, 0.835294 )
 extra_spacing_bottom = -6
 extra_spacing_char = 1
+<<<<<<< HEAD
+font_data = ExtResource( 1 )
+
+[node name="SkillUI" type="Control"]
+margin_left = 28.0
+margin_top = -44.0
+margin_right = 628.0
+margin_bottom = 456.0
+
+[node name="Back" type="ColorRect" parent="."]
+margin_left = -149.0
+margin_top = 264.0
+margin_right = 1.0
+margin_bottom = 337.0
+color = Color( 1, 1, 1, 0.313726 )
+
+[node name="SkillList" type="GridContainer" parent="Back"]
+=======
 font_data = ExtResource( 4 )
 
 [node name="SkillUI" type="Control"]
@@ -33,10 +59,41 @@ __meta__ = {
 }
 
 [node name="SkillList" type="GridContainer" parent="TextureRect"]
+>>>>>>> ad54708bb898a6419576307151978b53f7958c94
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+<<<<<<< HEAD
+margin_left = -68.0
+margin_top = -20.0
+margin_right = 68.0
+margin_bottom = 20.0
+columns = 5
+
+[node name="SkillBase" parent="Back/SkillList" instance=ExtResource( 2 )]
+
+[node name="SkillBase2" parent="Back/SkillList" instance=ExtResource( 2 )]
+margin_left = 48.0
+margin_right = 88.0
+
+[node name="SkillBase3" parent="Back/SkillList" instance=ExtResource( 2 )]
+margin_left = 96.0
+margin_right = 136.0
+
+[node name="SkillEquip" type="HBoxContainer" parent="."]
+margin_left = -172.0
+margin_top = 393.0
+margin_right = 128.0
+margin_bottom = 433.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="SkillBase" parent="SkillEquip" instance=ExtResource( 2 )]
+
+[node name="SkillIcon1" type="TextureRect" parent="SkillEquip"]
+margin_left = 48.0
+margin_right = 88.0
+=======
 margin_left = -116.0
 margin_top = -68.0
 margin_right = 116.0
@@ -352,13 +409,18 @@ custom_constants/separation = 15
 
 [node name="SkillIcon1" type="TextureRect" parent="SkillContainer"]
 margin_right = 40.0
+>>>>>>> ad54708bb898a6419576307151978b53f7958c94
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+<<<<<<< HEAD
+[node name="Skill" type="Label" parent="SkillEquip/SkillIcon1"]
+=======
 [node name="Skill" type="Label" parent="SkillContainer/SkillIcon1"]
+>>>>>>> ad54708bb898a6419576307151978b53f7958c94
 margin_top = -12.0
 margin_right = 64.0
 margin_bottom = 18.0
@@ -367,6 +429,21 @@ custom_fonts/font = SubResource( 22 )
 text = "Skill 1"
 align = 1
 
+<<<<<<< HEAD
+[node name="ColorRect" type="TextureRect" parent="SkillEquip/SkillIcon1"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+
+[node name="SkillIcon2" type="TextureRect" parent="SkillEquip"]
+margin_left = 96.0
+margin_right = 136.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Skill" type="Label" parent="SkillEquip/SkillIcon2"]
+=======
 [node name="ColorRect" type="TextureRect" parent="SkillContainer/SkillIcon1"]
 show_behind_parent = true
 anchor_right = 1.0
@@ -386,6 +463,7 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 
 [node name="Skill" type="Label" parent="SkillContainer/SkillIcon2"]
+>>>>>>> ad54708bb898a6419576307151978b53f7958c94
 margin_top = -12.0
 margin_right = 64.0
 margin_bottom = 18.0
@@ -394,6 +472,21 @@ custom_fonts/font = SubResource( 22 )
 text = "Skill 2"
 align = 1
 
+<<<<<<< HEAD
+[node name="ColorRect" type="TextureRect" parent="SkillEquip/SkillIcon2"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+
+[node name="SkillIcon3" type="TextureRect" parent="SkillEquip"]
+margin_left = 144.0
+margin_right = 184.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Skill" type="Label" parent="SkillEquip/SkillIcon3"]
+=======
 [node name="ColorRect" type="TextureRect" parent="SkillContainer/SkillIcon2"]
 show_behind_parent = true
 anchor_right = 1.0
@@ -457,6 +550,7 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 
 [node name="Skill" type="Label" parent="SkillContainer/SkillIcon5"]
+>>>>>>> ad54708bb898a6419576307151978b53f7958c94
 margin_top = -12.0
 margin_right = 64.0
 margin_bottom = 18.0
@@ -465,6 +559,13 @@ custom_fonts/font = SubResource( 22 )
 text = "Skill 2"
 align = 1
 
+<<<<<<< HEAD
+[node name="ColorRect" type="TextureRect" parent="SkillEquip/SkillIcon3"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+=======
 [node name="ColorRect" type="TextureRect" parent="SkillContainer/SkillIcon5"]
 show_behind_parent = true
 anchor_right = 1.0
@@ -476,3 +577,4 @@ expand = true
 margin_left = 275.0
 margin_right = 299.0
 margin_bottom = 40.0
+>>>>>>> ad54708bb898a6419576307151978b53f7958c94
