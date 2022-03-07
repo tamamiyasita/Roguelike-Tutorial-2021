@@ -7,6 +7,6 @@ func _ready() -> void:
 
 func use():
 #	part.start()
-	print("aaaaaaaaaaaaaaa")
+	print("a")
 	return -7
 

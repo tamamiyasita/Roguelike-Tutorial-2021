@@ -174,8 +174,8 @@ func attack(collider, direction):
 		damage = int(clamp(power-regist, 0, self.states.power))
 		
 
-		position2d.attack_start(direction, anime.current_animation_length)
 		anime.play(s.skill_anime)
+		position2d.attack_start(direction, anime.current_animation_length)
 
 		yield(anime, "animation_finished" )
 		s.special_skill(damage, collider)

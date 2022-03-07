@@ -564,6 +564,138 @@ color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource( 16 )
 
+[node name="GridContainer" type="GridContainer" parent="UI"]
+margin_left = 215.0
+margin_top = 276.0
+margin_right = 255.0
+margin_bottom = 316.0
+columns = 5
+
+[node name="SkillIcon4" type="TextureRect" parent="UI/GridContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Skill" type="Label" parent="UI/GridContainer/SkillIcon4"]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Skill 2"
+align = 1
+
+[node name="ColorRect" type="TextureRect" parent="UI/GridContainer/SkillIcon4"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 23 )
+
+[node name="SkillIcon5" type="TextureRect" parent="UI/GridContainer"]
+margin_left = 48.0
+margin_right = 88.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Skill" type="Label" parent="UI/GridContainer/SkillIcon5"]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Skill 2"
+align = 1
+
+[node name="ColorRect" type="TextureRect" parent="UI/GridContainer/SkillIcon5"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 23 )
+
+[node name="SkillIcon6" type="TextureRect" parent="UI/GridContainer"]
+margin_left = 96.0
+margin_right = 136.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Skill" type="Label" parent="UI/GridContainer/SkillIcon6"]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Skill 2"
+align = 1
+
+[node name="ColorRect" type="TextureRect" parent="UI/GridContainer/SkillIcon6"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 23 )
+
+[node name="SkillIcon7" type="TextureRect" parent="UI/GridContainer"]
+margin_left = 144.0
+margin_right = 184.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Skill" type="Label" parent="UI/GridContainer/SkillIcon7"]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Skill 2"
+align = 1
+
+[node name="ColorRect" type="TextureRect" parent="UI/GridContainer/SkillIcon7"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 23 )
+
+[node name="SkillIcon8" type="TextureRect" parent="UI/GridContainer"]
+margin_left = 192.0
+margin_right = 232.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Skill" type="Label" parent="UI/GridContainer/SkillIcon8"]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Skill 2"
+align = 1
+
+[node name="ColorRect" type="TextureRect" parent="UI/GridContainer/SkillIcon8"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 23 )
+
+[node name="SkillIcon9" type="TextureRect" parent="UI/GridContainer"]
+margin_top = 48.0
+margin_right = 40.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Skill" type="Label" parent="UI/GridContainer/SkillIcon9"]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Skill 2"
+align = 1
+
+[node name="ColorRect" type="TextureRect" parent="UI/GridContainer/SkillIcon9"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 23 )
+
 [node name="SkillContainer" type="HBoxContainer" parent="UI"]
 margin_left = 213.0
 margin_top = 423.0
@@ -667,6 +799,7 @@ anims/normal = SubResource( 7 )
 anims/warning = SubResource( 8 )
 
 [node name="TextureRect" type="TextureRect" parent="UI/Position2D/LifeBar"]
+visible = false
 margin_left = -2.0
 margin_top = -24.0
 margin_right = 15.0
@@ -840,9 +973,6 @@ anims/SAVE = SubResource( 20 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Save" type="Label" parent="UI/Dungeonlevel/AnimationPlayer/CenterContainer"]
 visible = false
