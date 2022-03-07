@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 
 
@@ -12,3 +12,9 @@ func special_skill(amount, enemy):
 	
 	var text = [skill_anime, "Ling", enemy.name, damage]
 	get_tree().call_group("message", "get_massage",  "{0}  {1} hit the {2} for {3} damage!".format(text))
+
+
+
+
+func _on_Icon_pressed():
+	pass # Replace with function body.

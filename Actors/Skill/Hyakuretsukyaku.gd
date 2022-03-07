@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 
 var skill_anime = "hyakuretsukyaku"
