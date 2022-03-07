@@ -8,8 +8,7 @@ onready var skill_anime = $SkillAnimation
 
 onready var container = $CanvasLayer/InventoryContainer
 onready var canvas = $CanvasLayer
-#onready var level_up_window = $CanvasLayer/LevelupWindow
-#onready var gamesaver = $GameSaver
+
 signal hp_changed
 signal states_changed
 onready var SAVE_KEY: String = "player"
