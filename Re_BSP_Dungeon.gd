@@ -115,41 +115,7 @@ func set_player_position(player)->void:
 #	apple.position = map_to_world(point + Vector2(0,1))
 #	items.add_child(apple)
 	
-#	var daggr = daggrs.instance()
-#	daggr.position = map_to_world(point + Vector2(0,2))
-#	items.add_child(daggr)
-#
-#	var knife = knifes.instance()
-#	knife.position = map_to_world(point + Vector2(0,2))
-#	items.add_child(knife)
-#
-#	var bangle = bangles.instance()
-#	bangle.position = map_to_world(point + Vector2(1,1))
-#	items.add_child(bangle)
-#
-#	var force = forces.instance()
-#	force.position = map_to_world(point +Vector2.ONE)
-#	items.add_child(force)
-#
-#	var fb = fbs.instance()
-#	fb.position = map_to_world(point + Vector2(2,1))
-#	items.add_child(fb)
-#
-#	var cnf = cabbage_snails.instance()
-#	cnf.position = map_to_world(point+ Vector2(2,2))
-##	items.add_child(cnf)
-#	enemies.add_child(cnf)
 
-#	var cnf2 = Cecile.instance()
-#	cnf2.position = map_to_world(point+ Vector2(2,0))
-#	enemies.add_child(cnf2)
-#	var cnf4 = Unicorn.instance()
-#	cnf4.position = map_to_world(point+ Vector2(1,0))
-#	enemies.add_child(cnf4)
-
-#	var cnf3 = rats.instance()
-#	cnf3.position = map_to_world(point+ Vector2(1,0))
-#	enemies.add_child(cnf3)
 func entity_set():
 	for tile in tiles:
 		if tiles[tile] == WALL:
