@@ -1,21 +1,52 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 [gd_scene load_steps=51 format=2]
 =======
 [gd_scene load_steps=9 format=2]
 >>>>>>> ad54708bb898a6419576307151978b53f7958c94
+=======
+[gd_scene load_steps=50 format=2]
+>>>>>>> parent of ad54708... cmt
 
 [ext_resource path="res://BSP_Dungeon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BasicDungeon.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Dungeon_select.gd" type="Script" id=3]
-[ext_resource path="res://UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://image/bst1.png" type="Texture" id=4]
+[ext_resource path="res://image/Thintel.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://LifeBar.gd" type="Script" id=6]
 [ext_resource path="res://Main.gd" type="Script" id=7]
 [ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://image/bst2.png" type="Texture" id=9]
+[ext_resource path="res://image/bst.png" type="Texture" id=10]
+[ext_resource path="res://image/massage_box.png" type="Texture" id=11]
+[ext_resource path="res://MessageBox.gd" type="Script" id=12]
+[ext_resource path="res://image/bst_d.png" type="Texture" id=13]
+[ext_resource path="res://image/bst2_d.png" type="Texture" id=14]
+[ext_resource path="res://image/bst1_d.png" type="Texture" id=15]
+[ext_resource path="res://UI.gd" type="Script" id=16]
+[ext_resource path="res://image/Roboto-Regular.ttf" type="DynamicFontData" id=17]
 [ext_resource path="res://GameSaver.gd" type="Script" id=18]
+[ext_resource path="res://Dungeonlevel.gd" type="Script" id=19]
+[ext_resource path="res://Transition.tscn" type="PackedScene" id=20]
+[ext_resource path="res://XpBar.gd" type="Script" id=21]
 [ext_resource path="res://GameStart.tscn" type="PackedScene" id=22]
+<<<<<<< HEAD
 <<<<<<< HEAD
 [ext_resource path="res://image/item_back.png" type="Texture" id=23]
 [ext_resource path="res://image/inventory.png" type="Texture" id=24]
 [ext_resource path="res://SkillUI.tscn" type="PackedScene" id=25]
+=======
+[ext_resource path="res://image/item_back.png" type="Texture" id=23]
+[ext_resource path="res://image/inventory.png" type="Texture" id=24]
+
+[sub_resource type="DynamicFont" id=22]
+size = 33
+outline_size = 1
+outline_color = Color( 0.14902, 0.690196, 0.533333, 0.835294 )
+extra_spacing_bottom = -6
+extra_spacing_char = 1
+font_data = ExtResource( 5 )
+>>>>>>> parent of ad54708... cmt
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.384314, 0.776471, 0.552941, 0.996078 )
@@ -495,6 +526,7 @@ use_mipmaps = true
 extra_spacing_char = 1
 font_data = ExtResource( 5 )
 
+<<<<<<< HEAD
 [sub_resource type="DynamicFont" id=22]
 size = 33
 outline_size = 1
@@ -503,6 +535,8 @@ extra_spacing_bottom = -6
 extra_spacing_char = 1
 font_data = ExtResource( 5 )
 
+=======
+>>>>>>> parent of ad54708... cmt
 [sub_resource type="DynamicFontData" id=23]
 font_path = "res://image/Gugi-Regular.ttf"
 
@@ -517,8 +551,11 @@ size = 15
 outline_size = 1
 outline_color = Color( 0.490196, 0.745098, 0.52549, 1 )
 font_data = SubResource( 23 )
+<<<<<<< HEAD
 =======
 >>>>>>> ad54708bb898a6419576307151978b53f7958c94
+=======
+>>>>>>> parent of ad54708... cmt
 
 [node name="Main" type="TileMap" groups=["main"]]
 format = 1
@@ -556,10 +593,219 @@ color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
 [node name="Dungeon_add_Entity" type="Node" parent="."]
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource( 16 )
 
 [node name="SkillUI" parent="UI" instance=ExtResource( 25 )]
+=======
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource( 16 )
+
+[node name="GridContainer" type="GridContainer" parent="UI"]
+margin_left = 215.0
+margin_top = 276.0
+margin_right = 255.0
+margin_bottom = 316.0
+columns = 5
+
+[node name="SkillIcon4" type="TextureRect" parent="UI/GridContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Skill" type="Label" parent="UI/GridContainer/SkillIcon4"]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Skill 2"
+align = 1
+
+[node name="ColorRect" type="TextureRect" parent="UI/GridContainer/SkillIcon4"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 23 )
+
+[node name="SkillIcon5" type="TextureRect" parent="UI/GridContainer"]
+margin_left = 48.0
+margin_right = 88.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Skill" type="Label" parent="UI/GridContainer/SkillIcon5"]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Skill 2"
+align = 1
+
+[node name="ColorRect" type="TextureRect" parent="UI/GridContainer/SkillIcon5"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 23 )
+
+[node name="SkillIcon6" type="TextureRect" parent="UI/GridContainer"]
+margin_left = 96.0
+margin_right = 136.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Skill" type="Label" parent="UI/GridContainer/SkillIcon6"]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Skill 2"
+align = 1
+
+[node name="ColorRect" type="TextureRect" parent="UI/GridContainer/SkillIcon6"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 23 )
+
+[node name="SkillIcon7" type="TextureRect" parent="UI/GridContainer"]
+margin_left = 144.0
+margin_right = 184.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Skill" type="Label" parent="UI/GridContainer/SkillIcon7"]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Skill 2"
+align = 1
+
+[node name="ColorRect" type="TextureRect" parent="UI/GridContainer/SkillIcon7"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 23 )
+
+[node name="SkillIcon8" type="TextureRect" parent="UI/GridContainer"]
+margin_left = 192.0
+margin_right = 232.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Skill" type="Label" parent="UI/GridContainer/SkillIcon8"]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Skill 2"
+align = 1
+
+[node name="ColorRect" type="TextureRect" parent="UI/GridContainer/SkillIcon8"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 23 )
+
+[node name="SkillIcon9" type="TextureRect" parent="UI/GridContainer"]
+margin_top = 48.0
+margin_right = 40.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Skill" type="Label" parent="UI/GridContainer/SkillIcon9"]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Skill 2"
+align = 1
+
+[node name="ColorRect" type="TextureRect" parent="UI/GridContainer/SkillIcon9"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 23 )
+
+[node name="SkillContainer" type="HBoxContainer" parent="UI"]
+margin_left = 213.0
+margin_top = 423.0
+margin_right = 513.0
+margin_bottom = 463.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="SkillIcon1" type="TextureRect" parent="UI/SkillContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Skill" type="Label" parent="UI/SkillContainer/SkillIcon1"]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Skill 1"
+align = 1
+
+[node name="ColorRect" type="TextureRect" parent="UI/SkillContainer/SkillIcon1"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 23 )
+
+[node name="SkillIcon2" type="TextureRect" parent="UI/SkillContainer"]
+margin_left = 48.0
+margin_right = 88.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Skill" type="Label" parent="UI/SkillContainer/SkillIcon2"]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Skill 2"
+align = 1
+
+[node name="ColorRect" type="TextureRect" parent="UI/SkillContainer/SkillIcon2"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 23 )
+
+[node name="SkillIcon3" type="TextureRect" parent="UI/SkillContainer"]
+margin_left = 96.0
+margin_right = 136.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Skill" type="Label" parent="UI/SkillContainer/SkillIcon3"]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Skill 2"
+align = 1
+
+[node name="ColorRect" type="TextureRect" parent="UI/SkillContainer/SkillIcon3"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 23 )
+>>>>>>> parent of ad54708... cmt
 
 [node name="Position2D" type="Position2D" parent="UI"]
 position = Vector2( 6, 424 )
@@ -933,9 +1179,12 @@ margin_bottom = 46.0
 custom_colors/font_color = Color( 0.807843, 0.0313726, 0.0313726, 1 )
 custom_fonts/font = SubResource( 25 )
 text = "Click on the enemy!"
+<<<<<<< HEAD
 =======
 [node name="UI" parent="." instance=ExtResource( 4 )]
 >>>>>>> ad54708bb898a6419576307151978b53f7958c94
+=======
+>>>>>>> parent of ad54708... cmt
 
 [node name="GameStart" parent="." instance=ExtResource( 22 )]
 

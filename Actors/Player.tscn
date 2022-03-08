@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://Actors/Actor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://image/player_walk.png" type="Texture" id=2]
@@ -35,8 +35,6 @@
 [ext_resource path="res://Actors/Skill/SpinningBirdKick.gd" type="Script" id=33]
 [ext_resource path="res://Actors/Direction.gd" type="Script" id=34]
 [ext_resource path="res://DamageText.gd" type="Script" id=35]
-[ext_resource path="res://image/dagger.png" type="Texture" id=36]
-[ext_resource path="res://image/bangle.png" type="Texture" id=37]
 
 [sub_resource type="CircleShape2D" id=17]
 
@@ -713,24 +711,13 @@ script = ExtResource( 34 )
 position = Vector2( 16, 16 )
 script = ExtResource( 17 )
 
-[node name="Punch" type="Node2D" parent="Skill" index="0"]
+[node name="Punch" type="Node" parent="Skill" index="0"]
 script = ExtResource( 14 )
 
-[node name="icon" type="TextureRect" parent="Skill/Punch" index="0"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 36 )
-
-[node name="Kick" type="Node2D" parent="Skill" index="1"]
+[node name="Kick" type="Node" parent="Skill" index="1"]
 script = ExtResource( 18 )
 
-[node name="Icon" type="TextureButton" parent="Skill/Kick" index="0"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture_normal = ExtResource( 37 )
-expand = true
-
-[node name="WhirlwindKick" type="Control" parent="Skill" index="2"]
+[node name="WhirlwindKick" type="Node2D" parent="Skill" index="2"]
 script = ExtResource( 23 )
 
 [node name="ShortRange" type="Area2D" parent="Skill/WhirlwindKick" index="0"]
@@ -753,10 +740,10 @@ position = Vector2( 44, 0 )
 scale = Vector2( 4, 4 )
 shape = SubResource( 17 )
 
-[node name="SomersaultKick" type="Node2D" parent="Skill" index="4"]
+[node name="SomersaultKick" type="Node" parent="Skill" index="4"]
 script = ExtResource( 27 )
 
-[node name="Hyakuretsukyaku" type="Node2D" parent="Skill" index="5"]
+[node name="Hyakuretsukyaku" type="Node" parent="Skill" index="5"]
 script = ExtResource( 28 )
 
 [node name="Fovray" type="RayCast2D" parent="." index="3"]
