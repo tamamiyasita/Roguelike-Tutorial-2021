@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Items/Inventory_Display.tscn" type="PackedScene" id=1]
+[ext_resource path="res://InventoryContainer.gd" type="Script" id=2]
+[ext_resource path="res://image/inventory.png" type="Texture" id=3]
+
+[node name="InventoryContainer" type="TextureRect"]
+margin_right = 414.0
+margin_bottom = 300.0
+texture = ExtResource( 3 )
+stretch_mode = 4
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Inventory_Display" parent="CenterContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 127.0
+margin_top = 70.0
+margin_right = 287.0
+margin_bottom = 230.0
+
+[node name="InventorySlotDisplay" parent="CenterContainer/Inventory_Display" index="0"]
+margin_right = 53.0
+
+[node name="InventorySlotDisplay2" parent="CenterContainer/Inventory_Display" index="1"]
+margin_left = 53.0
+margin_right = 106.0
+
+[node name="InventorySlotDisplay3" parent="CenterContainer/Inventory_Display" index="2"]
+margin_left = 106.0
+margin_right = 159.0
+
+[node name="InventorySlotDisplay4" parent="CenterContainer/Inventory_Display" index="3"]
+margin_right = 53.0
+
+[node name="InventorySlotDisplay5" parent="CenterContainer/Inventory_Display" index="4"]
+margin_left = 53.0
+margin_right = 106.0
+
+[node name="InventorySlotDisplay6" parent="CenterContainer/Inventory_Display" index="5"]
+margin_left = 106.0
+margin_right = 159.0
+
+[node name="InventorySlotDisplay7" parent="CenterContainer/Inventory_Display" index="6"]
+margin_right = 53.0
+
+[node name="InventorySlotDisplay8" parent="CenterContainer/Inventory_Display" index="7"]
+margin_left = 53.0
+margin_right = 106.0
+
+[node name="InventorySlotDisplay9" parent="CenterContainer/Inventory_Display" index="8"]
+margin_left = 106.0
+margin_right = 159.0
+
+[editable path="CenterContainer/Inventory_Display"]

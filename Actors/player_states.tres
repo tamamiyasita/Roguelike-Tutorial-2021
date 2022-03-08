@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Actors/Player_fighter.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+max_hp = 15
+hp = 15
+power = 1
+defense = 1
+xp = 0
+level = 1

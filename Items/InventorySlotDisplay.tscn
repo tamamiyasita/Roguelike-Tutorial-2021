@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Items/EmptyInventorySlot.png" type="Texture" id=1]
+[ext_resource path="res://Items/InventorySlotDisplay.gd" type="Script" id=2]
+[ext_resource path="res://image/E_mark.png" type="Texture" id=3]
+[ext_resource path="res://image/ml.png" type="Texture" id=4]
+
+[node name="InventorySlotDisplay" type="CenterContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemTextureRect" type="TextureRect" parent="."]
+margin_left = 503.0
+margin_top = 279.0
+margin_right = 521.0
+margin_bottom = 297.0
+rect_min_size = Vector2( 18, 18 )
+texture = ExtResource( 1 )
+stretch_mode = 4
+
+[node name="Equip_mark" type="TextureRect" parent="."]
+visible = false
+margin_left = 496.0
+margin_top = 272.0
+margin_right = 528.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 18, 18 )
+mouse_filter = 2
+texture = ExtResource( 3 )
+stretch_mode = 4
+
+[node name="Maru" type="TextureRect" parent="."]
+visible = false
+margin_left = 496.0
+margin_top = 272.0
+margin_right = 528.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 18, 18 )
+mouse_filter = 2
+texture = ExtResource( 4 )
+stretch_mode = 4
+
+[connection signal="mouse_entered" from="ItemTextureRect" to="." method="_on_ItemTextureRect_mouse_entered"]
+[connection signal="mouse_exited" from="ItemTextureRect" to="." method="_on_ItemTextureRect_mouse_exited"]

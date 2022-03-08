@@ -1,0 +1,222 @@
+class_name Astar_path
+extends TileMap
+
+const PATH_LINE_WIDTH = 2.0
+const DRAW_COLOR = Color.ghostwhite
+
+# グローバルマップサイズ
+export(Vector2) var map_size = Vector2.ONE * 40
+
+# path変数にはセッターメソッドを使う
+var path_start_position = Vector2() setget _set_path_start_position
+var path_end_position = Vector2() setget _set_path_end_position
+
+var _point_path = []
+
+
+# A*Nodeはコードからのみ作成出来る
+var astar_node
+
+# get_used_cells_by_id()メソッドで壁になっているタイルセットIDをリストで得る
+var obs
+# = tile_set.find_tile_by_name("wall_0")
+onready var _half_cell_size = cell_size / 2
+
+
+func a_path_ready(slf = null) -> void:
+	var obstacles :Array= get_node('BSP_Dungeon').obstacles
+	var enemies = get_node('BSP_Dungeon').enemies
+	astar_node = AStar2D.new()
+	obs = obstacles.duplicate()
+	for e in enemies.get_children():
+		if e.position == slf:
+			continue
+		var es = world_to_map(e.position)
+		obs.append(es)
+	var walkable_cell_list = astar_add_walkable_cells(obs)
+	astar_connect_walkable_cells_diagonal(walkable_cell_list)
+
+func _draw() -> void:
+	if not _point_path:
+		return
+	var point_start = _point_path[0]
+	var point_end = _point_path[len(_point_path) - 1]
+	
+	set_cell(point_start.x, point_start.y, 1)
+	set_cell(point_end.x, point_end.y, 2)
+	
+	var last_point = map_to_world(Vector2(point_start.x, point_start.y)) + _half_cell_size
+	for index in range(1, len(_point_path)):
+		var current_point = map_to_world(Vector2(_point_path[index].x, _point_path[index].y)) + _half_cell_size
+		draw_line(last_point, current_point, DRAW_COLOR, PATH_LINE_WIDTH, true)
+		draw_circle(current_point, PATH_LINE_WIDTH * 2.0, DRAW_COLOR)
+		last_point = current_point
+		
+# マップの障害物(obstacles)を覗いた全てのポイントをAstarNodeに追加する
+func astar_add_walkable_cells(obstacle_list = []):
+
+	var points_array = []
+	for y in range(map_size.y):
+		for x in range(map_size.x):
+			var point = Vector2(x, y)
+			if point in obstacle_list:
+				continue
+			points_array.append(point)
+			# Astarクラスはインデックスを点で参照する
+			# 点の座標からインデックスを計算する関数で同じ入力点なら同じインデックスが得られるようにする
+			var point_index = calculate_point_index(point)
+			astar_node.add_point(point_index, Vector2(point.x, point.y))
+	return points_array
+	
+
+# 上下左右のpointを接続する
+func astar_connect_walkable_cells(points_array):
+	for point in points_array:
+		var point_index = calculate_point_index(point)
+		# マップの各セルの隣接したセルをチェックする
+		var points_relative = PoolVector2Array([
+			point + Vector2.RIGHT,
+			point + Vector2.LEFT,
+			point + Vector2.UP,
+			point + Vector2.DOWN,
+#			point + Vector2(1,1),
+#			point + Vector2(-1,1),
+#			point + Vector2(1,-1),
+#			point + Vector2(-1,-1),
+		])
+		for point_relative in points_relative:
+			var point_relative_index = calculate_point_index(point_relative)
+			if is_outside_map_bounds(point_relative):
+				continue
+			if not astar_node.has_point(point_relative_index):
+				continue
+			astar_node.connect_points(point_index, point_relative_index, false)
+			
+# 上記のバリエーション、上下左右斜めにpointを接続する
+func astar_connect_walkable_cells_diagonal(points_array):
+	for point in points_array:
+		var point_index = calculate_point_index(point)
+		for local_y in range(3):
+			for local_x in range(3):
+				var point_relative = Vector2(point.x + local_x - 1, point.y + local_y - 1)
+				var point_relative_index = calculate_point_index(point_relative)
+				if point_relative == point or is_outside_map_bounds(point_relative):
+					continue
+				if not astar_node.has_point(point_relative_index):
+					continue
+				astar_node.connect_points(point_index, point_relative_index, true)
+				
+				
+func calculate_point_index(point):
+	return point.x + map_size.x * point.y
+
+
+func clear_previous_path_drawing():
+	if not _point_path:
+		return
+	var point_start = _point_path[0]
+	var point_end = _point_path[len(_point_path) -1]
+	set_cell(point_start.x, point_start.y, -1)
+	set_cell(point_end.x, point_end.y, -1)
+	
+	
+func is_outside_map_bounds(point):
+	return point.x < 0 or point.y < 0 or point.x >= map_size.x or point.y >= map_size.y
+	
+	
+func get_astar_path(world_start, world_end):
+	self.path_start_position = world_to_map(world_start)
+	self.path_end_position = world_to_map(world_end)
+	_recalculate_path()
+	var path_world = []
+	for point in _point_path:
+		var point_world = map_to_world(Vector2(point.x, point.y))
+#		 + _half_cell_size
+		path_world.append(point_world)
+	return path_world
+	
+	
+func _recalculate_path():
+	clear_previous_path_drawing()
+	var start_point_index = calculate_point_index(path_start_position)
+	var end_point_index = calculate_point_index(path_end_position)
+	
+	_point_path = astar_node.get_point_path(start_point_index, end_point_index)
+	
+#	update()
+	
+	
+func _set_path_start_position(value):
+	if value in obs:
+		return
+	if is_outside_map_bounds(value):
+		return
+	
+	set_cell(path_start_position.x, path_start_position.y, -1)
+	set_cell(value.x, value.y, 1)
+	path_start_position = value
+	if path_end_position and path_end_position != path_start_position:
+		_recalculate_path()
+	
+
+func _set_path_end_position(value):
+	if value in obs:
+		return
+	if is_outside_map_bounds(value):
+		return
+	
+	set_cell(path_start_position.x, path_start_position.y, -1)
+	set_cell(value.x, value.y, 2)
+	path_end_position = value
+	if path_start_position != value:
+		_recalculate_path()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+
+			
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

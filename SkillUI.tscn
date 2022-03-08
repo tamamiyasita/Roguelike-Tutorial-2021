@@ -1,0 +1,463 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://SkillList.gd" type="Script" id=2]
+[ext_resource path="res://image/item_back.png" type="Texture" id=3]
+[ext_resource path="res://image/Thintel.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=22]
+size = 33
+outline_size = 1
+outline_color = Color( 0.14902, 0.690196, 0.533333, 0.835294 )
+extra_spacing_bottom = -6
+extra_spacing_char = 1
+font_data = ExtResource( 4 )
+
+[node name="SkillUI" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="TextureRect" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 217.0
+margin_top = 197.0
+margin_right = 472.0
+margin_bottom = 354.0
+color = Color( 1, 1, 1, 0.34902 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SkillList" type="GridContainer" parent="TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -116.0
+margin_top = -68.0
+margin_right = 116.0
+margin_bottom = 68.0
+columns = 5
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SkillIcon5" type="TextureRect" parent="TextureRect/SkillList"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="TextureRect" parent="TextureRect/SkillList/SkillIcon5"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Icon" type="TextureButton" parent="TextureRect/SkillList/SkillIcon5"]
+margin_right = 40.0
+margin_bottom = 40.0
+expand = true
+
+[node name="SkillIcon6" type="TextureRect" parent="TextureRect/SkillList"]
+margin_left = 48.0
+margin_right = 88.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="TextureRect" parent="TextureRect/SkillList/SkillIcon6"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SkillIcon7" type="TextureRect" parent="TextureRect/SkillList"]
+margin_left = 96.0
+margin_right = 136.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="TextureRect" parent="TextureRect/SkillList/SkillIcon7"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SkillIcon8" type="TextureRect" parent="TextureRect/SkillList"]
+margin_left = 144.0
+margin_right = 184.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="TextureRect" parent="TextureRect/SkillList/SkillIcon8"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SkillIcon9" type="TextureRect" parent="TextureRect/SkillList"]
+margin_left = 192.0
+margin_right = 232.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="TextureRect" parent="TextureRect/SkillList/SkillIcon9"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SkillIcon10" type="TextureRect" parent="TextureRect/SkillList"]
+margin_top = 48.0
+margin_right = 40.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 40, 40 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="TextureRect" parent="TextureRect/SkillList/SkillIcon10"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SkillIcon11" type="TextureRect" parent="TextureRect/SkillList"]
+margin_left = 48.0
+margin_top = 48.0
+margin_right = 88.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 40, 40 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="TextureRect" parent="TextureRect/SkillList/SkillIcon11"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SkillIcon12" type="TextureRect" parent="TextureRect/SkillList"]
+margin_left = 96.0
+margin_top = 48.0
+margin_right = 136.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 40, 40 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="TextureRect" parent="TextureRect/SkillList/SkillIcon12"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SkillIcon13" type="TextureRect" parent="TextureRect/SkillList"]
+margin_left = 144.0
+margin_top = 48.0
+margin_right = 184.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 40, 40 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="TextureRect" parent="TextureRect/SkillList/SkillIcon13"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SkillIcon14" type="TextureRect" parent="TextureRect/SkillList"]
+margin_left = 192.0
+margin_top = 48.0
+margin_right = 232.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 40, 40 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="TextureRect" parent="TextureRect/SkillList/SkillIcon14"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SkillIcon15" type="TextureRect" parent="TextureRect/SkillList"]
+margin_top = 96.0
+margin_right = 40.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 40, 40 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="TextureRect" parent="TextureRect/SkillList/SkillIcon15"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SkillIcon16" type="TextureRect" parent="TextureRect/SkillList"]
+margin_left = 48.0
+margin_top = 96.0
+margin_right = 88.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 40, 40 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="TextureRect" parent="TextureRect/SkillList/SkillIcon16"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SkillIcon17" type="TextureRect" parent="TextureRect/SkillList"]
+margin_left = 96.0
+margin_top = 96.0
+margin_right = 136.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 40, 40 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="TextureRect" parent="TextureRect/SkillList/SkillIcon17"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SkillIcon18" type="TextureRect" parent="TextureRect/SkillList"]
+margin_left = 144.0
+margin_top = 96.0
+margin_right = 184.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 40, 40 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="TextureRect" parent="TextureRect/SkillList/SkillIcon18"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Popup" type="Popup" parent="."]
+visible = true
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="SkillContainer" type="HBoxContainer" parent="."]
+margin_left = 236.0
+margin_top = 410.0
+margin_right = 536.0
+margin_bottom = 450.0
+rect_min_size = Vector2( 40, 40 )
+custom_constants/separation = 15
+
+[node name="SkillIcon1" type="TextureRect" parent="SkillContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Skill" type="Label" parent="SkillContainer/SkillIcon1"]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Skill 1"
+align = 1
+
+[node name="ColorRect" type="TextureRect" parent="SkillContainer/SkillIcon1"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Icon" type="TextureButton" parent="SkillContainer/SkillIcon1"]
+margin_right = 40.0
+margin_bottom = 40.0
+expand = true
+
+[node name="SkillIcon2" type="TextureRect" parent="SkillContainer"]
+margin_left = 55.0
+margin_right = 95.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Skill" type="Label" parent="SkillContainer/SkillIcon2"]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Skill 2"
+align = 1
+
+[node name="ColorRect" type="TextureRect" parent="SkillContainer/SkillIcon2"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Icon" type="TextureButton" parent="SkillContainer/SkillIcon2"]
+margin_right = 40.0
+margin_bottom = 40.0
+expand = true
+
+[node name="SkillIcon3" type="TextureRect" parent="SkillContainer"]
+margin_left = 110.0
+margin_right = 150.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Skill" type="Label" parent="SkillContainer/SkillIcon3"]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Skill 2"
+align = 1
+
+[node name="ColorRect" type="TextureRect" parent="SkillContainer/SkillIcon3"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="SkillIcon4" type="TextureRect" parent="SkillContainer"]
+margin_left = 165.0
+margin_right = 205.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Skill" type="Label" parent="SkillContainer/SkillIcon4"]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Skill 2"
+align = 1
+
+[node name="ColorRect" type="TextureRect" parent="SkillContainer/SkillIcon4"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="SkillIcon5" type="TextureRect" parent="SkillContainer"]
+margin_left = 220.0
+margin_right = 260.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Skill" type="Label" parent="SkillContainer/SkillIcon5"]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 18.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 22 )
+text = "Skill 2"
+align = 1
+
+[node name="ColorRect" type="TextureRect" parent="SkillContainer/SkillIcon5"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="MenuButton" type="MenuButton" parent="SkillContainer"]
+margin_left = 275.0
+margin_right = 299.0
+margin_bottom = 40.0

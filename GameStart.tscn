@@ -1,0 +1,132 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://image/title.png" type="Texture" id=1]
+[ext_resource path="res://image/menu_background.png" type="Texture" id=2]
+[ext_resource path="res://image/item_back.png" type="Texture" id=4]
+[ext_resource path="res://image/Gugi-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://GameClear.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 26
+outline_size = 1
+outline_color = Color( 0.568627, 0.976471, 0.72549, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "play"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 2, 2, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="GameStart" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -320.0
+margin_top = -200.0
+margin_right = 320.0
+margin_bottom = 200.0
+mouse_filter = 0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Sprite" parent="CanvasLayer/TextureRect"]
+position = Vector2( 312, 324 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/TextureRect"]
+modulate = Color( 1.23761, 1.23761, 1, 1 )
+self_modulate = Color( 0.894118, 0.960784, 0.458824, 0.690196 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -88.0
+margin_top = -58.0
+margin_right = 88.0
+margin_bottom = -28.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureRect/TextureRect2"]
+margin_left = 8.0
+margin_top = 2.0
+margin_right = 162.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 150, 30 )
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0.937255, 0.215686, 0.74902, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Game Start!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -217.5
+margin_top = -54.0
+margin_right = 217.5
+margin_bottom = 54.0
+custom_fonts/font = SubResource( 2 )
+text = "Roguelike Tutorial
+2021"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/TextureRect"]
+autoplay = "play"
+anims/play = SubResource( 3 )
+
+[connection signal="gui_input" from="CanvasLayer/TextureRect" to="." method="_on_TextureRect_gui_input"]
