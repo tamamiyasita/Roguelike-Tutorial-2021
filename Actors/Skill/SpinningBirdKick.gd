@@ -1,4 +1,4 @@
-extends Node2D
+extends BaseSkill
 
 
 var skill_anime = "spinningbirdkick"
@@ -28,11 +28,11 @@ func _unhandled_input(event):
 			print(e, "EVENT")
 			match e:
 				"Up":
-					rotation_degrees = -90
+					rect_rotation = -90
 				"Down":
-					rotation_degrees = 90
+					rect_rotation = 90
 				"Left":
-					rotation_degrees = 180
+					rect_rotation = 180
 				"Right":
-					rotation_degrees = 0
-			print(rotation_degrees)
+					rect_rotation = 0
+

@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://astar_path.gd"
 }, {
+"base": "TextureButton",
+"class": "BaseSkill",
+"language": "GDScript",
+"path": "res://Actors/Skill/BaseSkill.gd"
+}, {
 "base": "Resource",
 "class": "Inventory",
 "language": "GDScript",
@@ -68,6 +73,7 @@ _global_script_class_icons={
 "Actor": "",
 "Armor": "",
 "Astar_path": "",
+"BaseSkill": "",
 "Inventory": "",
 "Item": "",
 "Itembase": "",
@@ -88,6 +94,7 @@ config/varsion="0.1.1"
 [autoload]
 
 BaseInfo="*res://BaseInfo.tscn"
+SkillInfo="*res://Actors/Skill/SkillInfo.gd"
 
 [debug]
 

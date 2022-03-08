@@ -1,4 +1,4 @@
-extends Control
+extends BaseSkill
 
 
 var skill_anime = "whirlwindkick"
