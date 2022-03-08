@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=3 format=2]
-
-[ext_resource path="res://Items/force.gd" type="Script" id=1]
-[ext_resource path="res://image/l_scroll.png" type="Texture" id=2]
-
-[resource]
-script = ExtResource( 1 )
-name = "Force scroll"
-texture = ExtResource( 2 )
