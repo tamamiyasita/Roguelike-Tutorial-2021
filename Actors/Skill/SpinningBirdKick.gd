@@ -1,6 +1,6 @@
 extends BaseSkill
 
-
+onready var rang := $ShortRange
 var skill_anime = "spinningbirdkick"
 var short_range := []
 
@@ -28,11 +28,11 @@ func _unhandled_input(event):
 			print(e, "EVENT")
 			match e:
 				"Up":
-					rect_rotation = -90
+					rang.rotation_degrees = -90
 				"Down":
-					rect_rotation = 90
+					rang.rotation_degrees = 90
 				"Left":
-					rect_rotation = 180
+					rang.rotation_degrees = 180
 				"Right":
-					rect_rotation = 0
+					rang.rotation_degrees = 0
 

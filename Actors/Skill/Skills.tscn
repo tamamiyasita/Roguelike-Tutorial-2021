@@ -1,0 +1,22 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Actors/Skill/Kick.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Actors/Skill/Punch.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Actors/Skill/SomersaultKick.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Actors/Skill/SpinningBirdKick.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Actors/Skill/Hyakuretsukyaku.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Actors/Skill/WhirlwindKick.tscn" type="PackedScene" id=14]
+
+[node name="Skills" type="Node2D"]
+
+[node name="Punch" parent="." instance=ExtResource( 4 )]
+
+[node name="Kick" parent="." instance=ExtResource( 3 )]
+
+[node name="WhirlwindKick" parent="." instance=ExtResource( 14 )]
+
+[node name="SpinningBirdKick" parent="." instance=ExtResource( 12 )]
+
+[node name="SomersaultKick" parent="." instance=ExtResource( 11 )]
+
+[node name="Hyakuretsukyaku" parent="." instance=ExtResource( 13 )]

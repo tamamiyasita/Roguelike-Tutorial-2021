@@ -4,7 +4,7 @@
 [ext_resource path="res://SkillList.gd" type="Script" id=2]
 [ext_resource path="res://SkillUI.gd" type="Script" id=3]
 [ext_resource path="res://Actors/Skill/Punch.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Actors/Skill/Kick.tscn" type="PackedScene" id=5]
+[ext_resource path="res://image/l_scroll.png" type="Texture" id=6]
 
 [node name="SkillUI" type="Control" groups=["skillui"]]
 margin_right = 40.0
@@ -21,6 +21,7 @@ margin_left = 217.0
 margin_top = 197.0
 margin_right = 472.0
 margin_bottom = 354.0
+mouse_filter = 2
 color = Color( 1, 1, 1, 0.34902 )
 __meta__ = {
 "_edit_lock_": true
@@ -41,15 +42,17 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="BaseSkill" parent="SkillWindow/SkillLists" instance=ExtResource( 1 )]
-margin_bottom = 64.0
-
 [node name="Punch" parent="SkillWindow/SkillLists" instance=ExtResource( 4 )]
-margin_left = 48.0
-margin_right = 112.0
-margin_bottom = 64.0
+margin_right = 40.0
+margin_bottom = 40.0
 
-[node name="Kick" parent="SkillWindow/SkillLists" instance=ExtResource( 5 )]
+[node name="CloseButton" type="TextureButton" parent="SkillWindow"]
+margin_left = 225.0
+margin_top = -2.0
+margin_right = 256.0
+margin_bottom = 28.0
+texture_normal = ExtResource( 6 )
+expand = true
 
 [node name="ActiveSkills" type="HBoxContainer" parent="."]
 margin_left = 236.0
@@ -66,3 +69,5 @@ margin_bottom = 40.0
 [node name="BaseSkill" parent="ActiveSkills" instance=ExtResource( 1 )]
 margin_left = 55.0
 margin_right = 95.0
+
+[connection signal="pressed" from="SkillWindow/CloseButton" to="." method="_on_CloseButton_pressed"]

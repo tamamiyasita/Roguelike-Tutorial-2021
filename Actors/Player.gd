@@ -5,6 +5,7 @@ onready var fov :Area2D = $Fov
 onready var inventory = preload("res://Items/Inventory.tres")
 onready var states = preload('res://Actors/player_states.tres')
 onready var skill_anime = $SkillAnimation
+onready var skills = $Skills
 
 onready var container = $CanvasLayer/InventoryContainer
 onready var canvas = $CanvasLayer
@@ -34,6 +35,7 @@ func _ready() -> void:
 	fov_ray.set_collide_with_areas(true)
 	self.states.reset()
 	print(self.states.max_hp)
+	skill_clear()
 #	use_item.connect('useitem', container, "setup")
 
 func _process(delta: float) -> void:
@@ -154,11 +156,22 @@ func hp_change(value):
 	
 
 
+func skill_clear():
+	for s in skills.get_children():
+		s.queue_free()
+func skill_set(node_name):
+	var Skill = load(SkillInfo.return_instance(node_name))
+	var skill = Skill.instance()
+	skill.texture_normal = null
+	skills.add_child(skill)
+		
 
 
 func attack(collider, direction):
 	$Position2D/Camera2D.current = false
-	for s in $Skill.get_children():
+	for s in skills.get_children():
+		if s.name == "BaseSkill":
+			continue
 		if !is_instance_valid(collider) or collider.states.hp <= 0:
 			state = _TURN_END
 			return

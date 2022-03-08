@@ -49,4 +49,5 @@ color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
 [node name="GameStart" parent="." instance=ExtResource( 22 )]
 
 [editable path="Player"]
+[editable path="Player/Skills"]
 [editable path="Dungeon/BSP_Dungeon"]

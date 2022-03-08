@@ -65,6 +65,9 @@ func dequip_armor(value:int = 0):
 	
 func item_use(name, value=null):
 	match name:
+		"Scroll of technique":
+			print("tec")
+			get_tree().call_group("skillui", "add_skill_list")
 		"apple":
 			Player.hp_change(value)
 			get_tree().call_group("message", "get_massage", "You ate an apple and recovered 5 HP")

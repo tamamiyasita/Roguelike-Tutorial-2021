@@ -35,6 +35,8 @@ var Cecile = preload('res://Actors/Cecile.tscn')
 var apples = preload('res://map_object/apple.tscn')
 var forces = preload('res://map_object/force.tscn')
 var fbs = preload("res://map_object/fb.tscn")
+var tec = preload('res://map_object/ScrollofTechnique.tscn')
+
 var cnfs = preload("res://map_object/cnf_2.tscn")
 var daggrs = preload("res://map_object/Daggr.tscn")
 var knifes = preload("res://map_object/Knife.tscn")
@@ -114,7 +116,10 @@ func set_player_position(player)->void:
 #	var apple = apples.instance()
 #	apple.position = map_to_world(point + Vector2(0,1))
 #	items.add_child(apple)
-	
+
+	var t = tec.instance()
+	t.position = map_to_world(point + Vector2(0,1))
+	items.add_child(t)
 
 func entity_set():
 	for tile in tiles:
