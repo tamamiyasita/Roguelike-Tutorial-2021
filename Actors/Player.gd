@@ -13,6 +13,8 @@ onready var canvas = $CanvasLayer
 signal hp_changed
 signal states_changed
 onready var SAVE_KEY: String = "player"
+
+var combo_bonus := 0
 var enemies := []
 var areas := []
 var floor_items := []
@@ -36,8 +38,10 @@ func _ready() -> void:
 	self.states.reset()
 	print(self.states.max_hp)
 	skill_clear()
+	skill_set("Punch")
 #	use_item.connect('useitem', container, "setup")
-
+	
+	
 func _process(delta: float) -> void:
 	if !container.visible:
 		BaseInfo.Main.ui.pop.hide()
@@ -150,6 +154,7 @@ func get_item():
 				break
 
 func hp_change(value):
+	damage_text.show_value(value)
 	self.states.hp_change(value)
 	emit_signal('hp_changed', self.states.hp)
 	print(self.states.hp, " my hp")

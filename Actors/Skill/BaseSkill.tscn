@@ -1,13 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Actors/Skill/BaseSkill.gd" type="Script" id=1]
-[ext_resource path="res://image/item_back.png" type="Texture" id=2]
+[ext_resource path="res://image/new_skill.png" type="Texture" id=2]
+[ext_resource path="res://image/new_skill_2.png" type="Texture" id=3]
 
 [node name="BaseSkill" type="TextureButton"]
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
 expand = true
 script = ExtResource( 1 )
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Actors/Actor.gd" type="Script" id=1]
 [ext_resource path="res://image/shadow.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://image/ml.png" type="Texture" id=7]
 [ext_resource path="res://image/player_damage.png" type="Texture" id=8]
 [ext_resource path="res://image/player.png" type="Texture" id=9]
+[ext_resource path="res://FloatingTextManager.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.28164, 7.59011 )
@@ -262,9 +263,7 @@ hue_variation_random = 1.0
 flags = 4
 load_path = "res://.import/particle_1.png-e1872b2168f553f7ec54937be77d2b53.stex"
 
-[node name="Actor" type="Area2D" groups=[
-"save",
-]]
+[node name="Actor" type="Area2D" groups=["save"]]
 position = Vector2( 16, 16 )
 collision_layer = 0
 collision_mask = 15
@@ -313,5 +312,7 @@ texture = SubResource( 8 )
 [node name="Target" type="Sprite" parent="Position2D"]
 visible = false
 texture = ExtResource( 7 )
+
+[node name="FloatingTextManager" parent="." instance=ExtResource( 10 )]
 
 [connection signal="tween_all_completed" from="Position2D/Tween" to="Position2D" method="_on_Tween_tween_all_completed"]

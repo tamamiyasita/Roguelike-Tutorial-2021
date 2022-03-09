@@ -27,13 +27,15 @@ func set_target_value(amount: float) -> void:
 	target_value = amount
 	if is_instance_valid(hp_value):		
 		hp_value.text = ("HP " +str(target_value)+"/"+ str(max_value))
-		
-	if value > 0.7 * max_value:
 		_anime_player.play('damage')
-	elif value <= 0.7 * max_value:
-		_anime_player.play('damage1')
-	elif value < 0.3 * max_value:
-		_anime_player.play('damage2')
+		
+#	if value > 0.7 * max_value:
+#		_anime_player.play('damage')
+#	elif value <= 0.7 * max_value:
+#		_anime_player.play('damage1')
+#	elif value < 0.3 * max_value:
+#		_anime_player.play('damage2')
+		yield(_anime_player, "animation_finished" )
 
 	if is_instance_valid(_tween):		
 		if _tween.is_active():
@@ -44,7 +46,7 @@ func set_target_value(amount: float) -> void:
 		_tween.interpolate_property(self, "value", value, target_value, duration, Tween.TRANS_QUAD)
 		_tween.start()
 
-		damage_anime()
+	damage_anime()
 	
 
 
@@ -53,11 +55,12 @@ func set_target_value(amount: float) -> void:
 
 #func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 func damage_anime():
-	yield(_anime_player, "animation_finished" )
+#	yield(_anime_player, "animation_finished" )
+	yield(_tween, "tween_all_completed" )
 	if value < 0.3 * max_value:
 		_anime_player.play("danger")
-	elif value <= 0.7 * max_value:
+	elif value < 0.6 * max_value:
 		_anime_player.play("warning")
-	elif value > 0.7 * max_value:
+	elif value >= 0.6 * max_value:
 		_anime_player.play("normal")
 

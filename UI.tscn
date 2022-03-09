@@ -1,11 +1,11 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://image/bst1_d.png" type="Texture" id=1]
 [ext_resource path="res://image/inventory.png" type="Texture" id=2]
 [ext_resource path="res://image/bst2.png" type="Texture" id=3]
-[ext_resource path="res://image/bst.png" type="Texture" id=4]
+[ext_resource path="res://image/Lin_bst1.png" type="Texture" id=4]
 [ext_resource path="res://image/massage_box.png" type="Texture" id=5]
-[ext_resource path="res://image/bst_d.png" type="Texture" id=6]
+[ext_resource path="res://image/Lin_bst1_d.png" type="Texture" id=6]
 [ext_resource path="res://image/bst2_d.png" type="Texture" id=7]
 [ext_resource path="res://image/curtain2.png" type="Texture" id=8]
 [ext_resource path="res://LifeBar.gd" type="Script" id=9]
@@ -20,9 +20,12 @@
 [ext_resource path="res://image/Thintel.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://Transition.tscn" type="PackedScene" id=19]
 [ext_resource path="res://SkillUI.tscn" type="PackedScene" id=20]
+[ext_resource path="res://image/Lin_bst.png" type="Texture" id=21]
+[ext_resource path="res://image/Lin_bst1_d2.png" type="Texture" id=22]
+[ext_resource path="res://image/Gugi-Regular.ttf" type="DynamicFontData" id=23]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.384314, 0.776471, 0.552941, 0.996078 )
+bg_color = Color( 0.657957, 0.776471, 0.41612, 0.996078 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -68,7 +71,7 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.04, 0.09, 0.14, 0.19 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1.10957 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0, 1 ), Vector2( -1, -1 ), Vector2( 0, 0 ) ]
 }
@@ -82,7 +85,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.29 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 6 ), ExtResource( 4 ) ]
+"values": [ ExtResource( 4 ), ExtResource( 21 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -212,7 +215,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 3 ) ]
+"values": [ ExtResource( 22 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -264,7 +267,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 4 ) ]
+"values": [ ExtResource( 21 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -316,7 +319,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 10 ) ]
+"values": [ ExtResource( 6 ) ]
 }
 
 [sub_resource type="DynamicFont" id=9]
@@ -350,9 +353,27 @@ corner_radius_bottom_left = 4
 [sub_resource type="DynamicFont" id=12]
 size = 10
 outline_size = 1
-outline_color = Color( 1, 1, 1, 0.443137 )
+outline_color = Color( 0.0509804, 0.0392157, 0.352941, 0.443137 )
 extra_spacing_bottom = -6
 font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=27]
+size = 10
+outline_size = 1
+outline_color = Color( 0.0509804, 0.0392157, 0.352941, 0.443137 )
+extra_spacing_bottom = -6
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=28]
+size = 20
+extra_spacing_char = 1
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=29]
+size = 17
+outline_color = Color( 0, 0.25098, 0.0117647, 1 )
+extra_spacing_char = 2
+font_data = ExtResource( 23 )
 
 [sub_resource type="DynamicFontData" id=13]
 font_path = "res://image/mplus-2m-bold.ttf"
@@ -534,24 +555,19 @@ script = ExtResource( 12 )
 [node name="SkillUI" parent="." instance=ExtResource( 20 )]
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 6, 424 )
+position = Vector2( 6, 418 )
 
 [node name="LifeBar" type="ProgressBar" parent="Position2D" groups=["lifebar"]]
-modulate = Color( 2.5, 2.5, 2.5, 1 )
 anchor_bottom = 1.0
-margin_left = 0.5
-margin_right = 100.5
+margin_right = 100.0
 margin_bottom = 16.0
 rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 0, 16 )
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
-max_value = 0.0
+max_value = 15.0
 percent_visible = false
 script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Tween" type="Tween" parent="Position2D/LifeBar"]
 
@@ -564,16 +580,12 @@ anims/normal = SubResource( 7 )
 anims/warning = SubResource( 8 )
 
 [node name="TextureRect" type="TextureRect" parent="Position2D/LifeBar"]
-visible = false
-margin_left = -2.0
-margin_top = -24.0
-margin_right = 15.0
-margin_bottom = -12.0
+margin_left = 68.0
+margin_top = -29.0
+margin_right = 85.0
+margin_bottom = -15.0
 rect_scale = Vector2( 2, 2 )
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="Position2D/LifeBar"]
 anchor_left = 0.04
@@ -590,50 +602,46 @@ __meta__ = {
 }
 
 [node name="XpBar" type="ProgressBar" parent="Position2D" groups=["xpbar"]]
-margin_top = 16.0
+margin_top = 20.0
 margin_right = 100.0
-margin_bottom = 26.0
+margin_bottom = 30.0
 rect_scale = Vector2( 2, 2 )
 custom_styles/fg = SubResource( 10 )
 custom_styles/bg = SubResource( 11 )
 percent_visible = false
 script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Level" type="Label" parent="Position2D/XpBar"]
-margin_left = 6.0
-margin_top = -46.0
-margin_right = 42.0
-margin_bottom = -34.0
+margin_left = 1.0
+margin_top = -25.0
+margin_right = 37.0
+margin_bottom = -13.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 12 )
 text = "LEVEL 1"
 
 [node name="STR" type="Label" parent="Position2D/XpBar"]
-margin_left = 32.0
-margin_top = -29.0
-margin_right = 58.0
-margin_bottom = -17.0
+margin_left = 25.0
+margin_top = -25.0
+margin_right = 51.0
+margin_bottom = -13.0
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 1, 0.745098, 0.498039, 1 )
+custom_fonts/font = SubResource( 27 )
 text = "STR 2"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DEF" type="Label" parent="Position2D/XpBar"]
-margin_left = 32.0
-margin_top = -23.0
-margin_right = 59.0
-margin_bottom = -11.0
+margin_left = 44.0
+margin_top = -25.0
+margin_right = 71.0
+margin_bottom = -13.0
 rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 0.533333, 0.905882, 1, 1 )
 custom_fonts/font = SubResource( 12 )
 text = "DEF 2"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="Position2D/XpBar"]
 anchor_left = 0.04
@@ -650,11 +658,43 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
+[node name="combo_titol" type="Label" parent="Position2D/XpBar"]
+anchor_left = 0.96
+anchor_top = -2.9
+anchor_right = 1.69
+anchor_bottom = -1.5
+rect_scale = Vector2( 0.5, 0.5 )
+rect_clip_content = true
+size_flags_stretch_ratio = 20.0
+custom_colors/font_color = Color( 0.301961, 1, 0.27451, 1 )
+custom_fonts/font = SubResource( 28 )
+text = "Conbo Bonus"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="combo" type="Label" parent="Position2D/XpBar"]
+anchor_left = 0.96
+anchor_top = -3.8
+anchor_right = 1.68
+anchor_bottom = -2.1
+rect_scale = Vector2( 0.5, 0.5 )
+rect_clip_content = true
+size_flags_stretch_ratio = 20.0
+custom_colors/font_color = Color( 0.964706, 1, 0.560784, 1 )
+custom_fonts/font = SubResource( 29 )
+text = "20"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
 [node name="MessageBox" type="TextureRect" parent="Position2D" groups=["message"]]
 modulate = Color( 0.266667, 0.309804, 0.341176, 0.65098 )
-margin_top = 34.0
-margin_right = 256.0
-margin_bottom = 90.0
+margin_left = -2.0
+margin_top = 42.0
+margin_right = 254.0
+margin_bottom = 98.0
 rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 expand = true

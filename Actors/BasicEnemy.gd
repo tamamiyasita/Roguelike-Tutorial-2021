@@ -8,8 +8,12 @@ onready var tex = $Position2D/TextureRect
 onready var SAVE_KEY = "enemy"
 onready var level_up_window = preload("res://LevelupWindow.tscn")
 onready var target = $Position2D/Target
+
+
+
 var cnf = false
 var cnf_turn:int = 0
+
 
 var paths:Array
 
@@ -92,6 +96,8 @@ func collider_check(collider, direction) -> void:
 
 
 func hp_change(value):
+
+	yield(anime, "animation_finished" )
 	var player = BaseInfo.Player
 	self.states.hp_change(value)
 #	emit_signal('hp_changed', self.states.hp)
@@ -108,6 +114,7 @@ func hp_change(value):
 			player.states.xp = 0
 			player.states.hp += 3
 			player.states.max_hp += 3
+			get_tree().call_group("skillui", "level_up_skill_add")
 			
 			player.state = _TURN_INPUT
 			var l = level_up_window.instance()

@@ -1,10 +1,11 @@
 extends ProgressBar
 
-
+onready var Conbo = $combo
 onready var STR = $STR
 onready var DEF = $DEF
 onready var XP = $Label
 onready var level = $Level
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +17,7 @@ func states_update():
 	level.text = "LEVEL "+str(BaseInfo.Player.states.level)
 	STR.text = "STR "+str(BaseInfo.Player.states.power)
 	DEF.text = "DEF "+str(BaseInfo.Player.states.defense)
+	Conbo.text = str(BaseInfo.Player.combo_bonus)
 	
 
 

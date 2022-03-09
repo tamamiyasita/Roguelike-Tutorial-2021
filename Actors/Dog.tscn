@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Dog.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Position2D.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://par/DMG_Particles.tscn" type="PackedScene" id=7]
 [ext_resource path="res://image/dog2.png" type="Texture" id=8]
 [ext_resource path="res://image/ml.png" type="Texture" id=9]
+[ext_resource path="res://FloatingTextManager.tscn" type="PackedScene" id=10]
 
 [sub_resource type="StreamTexture" id=1]
 load_path = "res://.import/dog1.png-6d63738810b48a22710fa01ff0613f1d.stex"
@@ -323,9 +324,22 @@ hue_variation_random = 1.0
 flags = 4
 load_path = "res://.import/particle_1.png-e1872b2168f553f7ec54937be77d2b53.stex"
 
-[node name="Dog" type="Area2D" groups=[
-"save",
-]]
+[sub_resource type="GDScript" id=13]
+script/source = "extends Node2D
+
+var FCT = preload(\"res://FloatingText.tscn\")
+
+export var travel = Vector2(0, -80)
+export var duration = 2
+export var spread = PI/2
+
+func show_value(value, crit=false):
+	var fct = FCT.instance()
+	add_child(fct)
+	fct.show_value(str(value), travel, duration, spread, crit)
+"
+
+[node name="Dog" type="Area2D" groups=["save"]]
 visible = false
 position = Vector2( 16, 16 )
 z_index = 2
@@ -407,6 +421,9 @@ position = Vector2( 0, 0 )
 amount = 30
 process_material = SubResource( 11 )
 texture = SubResource( 12 )
+
+[node name="FloatingTextManager" parent="." instance=ExtResource( 10 )]
+script = SubResource( 13 )
 
 [connection signal="input_event" from="." to="." method="_on_Enemy_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]

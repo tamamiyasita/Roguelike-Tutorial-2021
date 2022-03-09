@@ -1,6 +1,10 @@
 class_name BaseSkill
 extends TextureButton
 
+export var skill_activation_rate := 100
+export var skill_power_text := "small"
+export var combo_bonus := 5
+
 var ready_change = false
 
 func lists_skill_press():

@@ -6,13 +6,19 @@ var short_range := []
 
 func special_skill(amount, enemy):
 	for s in short_range:
-		var damage = int(rand_range(1,2))
-		damage += amount
-		s.anime.play("damage")  
-		s.hp_change(-damage)
+		var d = 0
+		var damage = amount
+		for i in range(4):
+			randomize()
+			damage += int(rand_range(0,1))
+			s.anime.play("damage")  
+			s.damage_text.show_value(damage)
+			d += damage
+			
+		s.hp_change(-d)
+		var text = ["Ling's", name, enemy.name, d]
+		get_tree().call_group("message", "get_massage",  "{0}  {1}! \n        the {2} for {3} damage!".format(text))
 
-		var text = [skill_anime, "Ling", enemy.name, damage]
-		get_tree().call_group("message", "get_massage",  "{0}  {1} hit the {2} for {3} damage!".format(text))
 		
 func _on_ShortRange_area_entered(area):
 	short_range.append(area)
