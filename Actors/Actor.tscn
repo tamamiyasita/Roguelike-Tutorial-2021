@@ -291,12 +291,12 @@ anims/walk = SubResource( 6 )
 position = Vector2( 16, 16 )
 script = ExtResource( 6 )
 
+[node name="Sprite" type="Sprite" parent="Position2D"]
+texture = ExtResource( 3 )
+
 [node name="shadow" type="Sprite" parent="Position2D"]
 modulate = Color( 0.529412, 0.494118, 0.494118, 1 )
 texture = ExtResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="Position2D"]
-texture = ExtResource( 3 )
 
 [node name="Tween" type="Tween" parent="Position2D"]
 

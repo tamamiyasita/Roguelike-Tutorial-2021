@@ -38,5 +38,15 @@ margin_bottom = 110.0
 custom_colors/font_color = Color( 0.0862745, 0, 0.619608, 1 )
 custom_fonts/font = SubResource( 1 )
 
-[connection signal="mouse_entered" from="." to="." method="_on_Punch_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_Punch_mouse_exited"]
+[node name="SkillAnime" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SkillAnime"]
+
+[node name="Tween" type="Tween" parent="SkillAnime"]
+
+[node name="Body" type="Sprite" parent="SkillAnime"]
+
+[node name="Object" type="Sprite" parent="SkillAnime"]
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -113,9 +113,9 @@ func set_player_position(player)->void:
 	var point = rooms[0].center
 	player.position = map_to_world(point)
 	
-#	var apple = apples.instance()
-#	apple.position = map_to_world(point + Vector2(0,1))
-#	items.add_child(apple)
+	var apple = cabbage_snails.instance()
+	apple.position = map_to_world(point + Vector2(0,1))
+	items.add_child(apple)
 
 	var t = tec.instance()
 	t.position = map_to_world(point + Vector2(0,1))

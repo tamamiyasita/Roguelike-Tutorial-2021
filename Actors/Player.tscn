@@ -37,6 +37,7 @@
 [ext_resource path="res://image/Shiningfinger_3.png" type="Texture" id=35]
 [ext_resource path="res://image/Shiningfinger_1.png" type="Texture" id=36]
 [ext_resource path="res://image/Shiningfinger_4.png" type="Texture" id=37]
+[ext_resource path="res://image/shadow.png" type="Texture" id=38]
 
 [sub_resource type="Animation" id=9]
 length = 0.001
@@ -99,6 +100,18 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("attack_pos/Object:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 11 ) ]
 }
 
 [sub_resource type="Animation" id=1]
@@ -478,7 +491,7 @@ tracks/0/path = NodePath("Position2D/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -508,6 +521,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("attack_pos/Object:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 12 ), ExtResource( 11 ) ]
 }
 
 [sub_resource type="Animation" id=22]
@@ -813,9 +838,6 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 37, -5 ), Vector2( 6, -39 ), Vector2( -38, -8 ), Vector2( -21, 32 ), Vector2( 24, 36 ), Vector2( 35, 12 ), Vector2( 23, 1 ), Vector2( 4, 2 ) ]
 }
 
-[sub_resource type="StreamTexture" id=7]
-load_path = "res://.import/shadow.png-933a40835afcc17c83c194c13369a3bd.stex"
-
 [sub_resource type="CircleShape2D" id=8]
 radius = 160.0
 
@@ -906,18 +928,29 @@ collision_mask = 110
 script = ExtResource( 4 )
 texture = ExtResource( 3 )
 
-[node name="Skills" parent="." index="0" instance=ExtResource( 14 )]
+[node name="attack_pos" type="Position2D" parent="." index="0"]
+visible = false
+position = Vector2( 16, 16 )
 
-[node name="Fovray" type="RayCast2D" parent="." index="1"]
+[node name="Object" type="Sprite" parent="attack_pos" index="0"]
+texture = ExtResource( 11 )
+
+[node name="shadow" type="Sprite" parent="attack_pos" index="1"]
+modulate = Color( 0.529412, 0.494118, 0.494118, 1 )
+texture = ExtResource( 38 )
+
+[node name="Skills" parent="." index="1" instance=ExtResource( 14 )]
+
+[node name="Fovray" type="RayCast2D" parent="." index="2"]
 position = Vector2( 16, 16 )
 cast_to = Vector2( 0, 192 )
 collision_mask = 30
 collide_with_areas = true
 
-[node name="RayCast2D" parent="." index="3"]
+[node name="RayCast2D" parent="." index="4"]
 collision_mask = 14
 
-[node name="AnimationPlayer" parent="." index="4"]
+[node name="AnimationPlayer" parent="." index="5"]
 anims/RESET = SubResource( 9 )
 anims/attack = SubResource( 1 )
 anims/burnKnuckle = SubResource( 21 )
@@ -935,7 +968,7 @@ anims/spinningbirdkick = SubResource( 18 )
 anims/walk = SubResource( 6 )
 anims/whirlwindkick = SubResource( 14 )
 
-[node name="Position2D" parent="." index="5"]
+[node name="Position2D" parent="." index="6"]
 script = ExtResource( 13 )
 
 [node name="Camera2D" type="Camera2D" parent="Position2D" index="0"]
@@ -954,17 +987,14 @@ shadow_filter = 5
 shadow_filter_smooth = 4.2
 shadow_item_cull_mask = 5
 
-[node name="shadow" parent="Position2D" index="2"]
-texture = SubResource( 7 )
-
-[node name="Sprite" parent="Position2D" index="3"]
+[node name="Sprite" parent="Position2D" index="2"]
 z_index = 4
 texture = ExtResource( 3 )
 
 [node name="DMG_Particles" parent="Position2D" index="5"]
 z_index = 4
 
-[node name="Fov" type="Area2D" parent="." index="6"]
+[node name="Fov" type="Area2D" parent="." index="7"]
 position = Vector2( 16, 16 )
 collision_layer = 0
 collision_mask = 126
@@ -973,7 +1003,7 @@ script = ExtResource( 9 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fov" index="0"]
 shape = SubResource( 8 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="8"]
 
 [node name="InventoryContainer" parent="CanvasLayer" index="0" instance=ExtResource( 16 )]
 visible = false
@@ -983,10 +1013,10 @@ margin_right = 486.0
 margin_bottom = 278.0
 mouse_filter = 2
 
-[node name="GameSaver" type="Node" parent="." index="8"]
+[node name="GameSaver" type="Node" parent="." index="9"]
 script = ExtResource( 10 )
 
-[node name="SkillAnimation" type="AnimationPlayer" parent="." index="9"]
+[node name="SkillAnimation" type="AnimationPlayer" parent="." index="10"]
 root_node = NodePath("../Skills")
 anims/kick = SubResource( 10 )
 anims/punch = SubResource( 11 )

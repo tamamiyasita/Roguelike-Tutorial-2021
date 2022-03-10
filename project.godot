@@ -88,6 +88,7 @@ _global_script_class_icons={
 
 config/name="7DRL_2022"
 run/main_scene="res://Main.tscn"
+boot_splash/fullsize=false
 config/icon="res://icon.png"
 config/varsion="0.1.1"
 

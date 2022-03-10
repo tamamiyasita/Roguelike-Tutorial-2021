@@ -7,6 +7,8 @@ onready var states = preload('res://Actors/player_states.tres')
 onready var skill_anime = $SkillAnimation
 onready var skills = $Skills
 
+onready var attck_pos = $attack_pos
+
 onready var container = $CanvasLayer/InventoryContainer
 onready var canvas = $CanvasLayer
 
@@ -192,9 +194,17 @@ func attack(collider, direction):
 		
 
 		anime.play(s.skill_anime)
-		position2d.attack_start(direction, anime.current_animation_length)
-
+		position2d.attack_start(attck_pos ,direction, anime.current_animation_length)
+		
+		attck_pos.show()
+		sprite.hide()
+		$Position2D/shadow.hide()
+		$attack_pos/Object.flip_h = sprite.flip_h
 		yield(anime, "animation_finished" )
+		sprite.show()
+		$Position2D/shadow.show()
+		attck_pos.hide()
+		
 		s.special_skill(damage, collider)
 
 #		var text = [s.skill_anime, "Ling", collider.name, damage]

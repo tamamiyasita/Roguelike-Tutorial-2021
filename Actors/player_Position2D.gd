@@ -3,14 +3,16 @@ extends Position2D
 onready var player = get_parent()
 onready var tween = $Tween
 var offset_pos = Vector2(16,16)
+
+
 func _ready() -> void:
 	pass
 	
-func attack_start(direction, length = 0.4, derec = 1.2):
+func attack_start(node, direction, length = 0.4, derec = 1.2):
 	tween.interpolate_property(
-		self,
+		node,
 		"position",
-		position,
+		node.position,
 		(direction/derec) + position,
 		length,
 		Tween.TRANS_BACK,
@@ -18,7 +20,7 @@ func attack_start(direction, length = 0.4, derec = 1.2):
 	)
 	tween.start()
 	yield(tween, "tween_all_completed" )
-	global_position = player.global_position + offset_pos
+	node.global_position = player.global_position + offset_pos
 	
 func move_start(pos, direction):
 	tween.interpolate_property(

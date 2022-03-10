@@ -558,6 +558,7 @@ script = ExtResource( 12 )
 position = Vector2( 6, 418 )
 
 [node name="LifeBar" type="ProgressBar" parent="Position2D" groups=["lifebar"]]
+visible = false
 anchor_bottom = 1.0
 margin_right = 100.0
 margin_bottom = 16.0
@@ -580,6 +581,7 @@ anims/normal = SubResource( 7 )
 anims/warning = SubResource( 8 )
 
 [node name="TextureRect" type="TextureRect" parent="Position2D/LifeBar"]
+visible = false
 margin_left = 68.0
 margin_top = -29.0
 margin_right = 85.0
