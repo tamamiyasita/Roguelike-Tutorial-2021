@@ -114,7 +114,7 @@ func set_player_position(player)->void:
 	player.position = map_to_world(point)
 	
 	var apple = cabbage_snails.instance()
-	apple.position = map_to_world(point + Vector2(0,1))
+	apple.position = map_to_world(point + Vector2(1,1))
 	items.add_child(apple)
 
 	var t = tec.instance()

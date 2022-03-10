@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://image/bst1_d.png" type="Texture" id=1]
 [ext_resource path="res://image/inventory.png" type="Texture" id=2]
@@ -23,6 +23,8 @@
 [ext_resource path="res://image/Lin_bst.png" type="Texture" id=21]
 [ext_resource path="res://image/Lin_bst1_d2.png" type="Texture" id=22]
 [ext_resource path="res://image/Gugi-Regular.ttf" type="DynamicFontData" id=23]
+[ext_resource path="res://Inventory.tscn" type="PackedScene" id=24]
+[ext_resource path="res://image/item_back2.png" type="Texture" id=25]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.657957, 0.776471, 0.41612, 0.996078 )
@@ -549,6 +551,24 @@ outline_size = 1
 outline_color = Color( 0.490196, 0.745098, 0.52549, 1 )
 font_data = SubResource( 23 )
 
+[sub_resource type="DynamicFont" id=30]
+size = 30
+outline_size = 1
+outline_color = Color( 0.984314, 0.960784, 0.803922, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_char = 2
+font_data = ExtResource( 23 )
+
+[sub_resource type="DynamicFont" id=31]
+size = 12
+outline_size = 1
+outline_color = Color( 0.984314, 0.960784, 0.803922, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_char = 2
+font_data = ExtResource( 23 )
+
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 12 )
 
@@ -558,7 +578,6 @@ script = ExtResource( 12 )
 position = Vector2( 6, 418 )
 
 [node name="LifeBar" type="ProgressBar" parent="Position2D" groups=["lifebar"]]
-visible = false
 anchor_bottom = 1.0
 margin_right = 100.0
 margin_bottom = 16.0
@@ -581,7 +600,6 @@ anims/normal = SubResource( 7 )
 anims/warning = SubResource( 8 )
 
 [node name="TextureRect" type="TextureRect" parent="Position2D/LifeBar"]
-visible = false
 margin_left = 68.0
 margin_top = -29.0
 margin_right = 85.0
@@ -949,3 +967,47 @@ margin_bottom = 46.0
 custom_colors/font_color = Color( 0.807843, 0.0313726, 0.0313726, 1 )
 custom_fonts/font = SubResource( 25 )
 text = "Click on the enemy!"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InventoryContainer" parent="CanvasLayer" instance=ExtResource( 24 )]
+margin_left = -7.0
+margin_top = 92.0
+margin_right = 258.0
+margin_bottom = 342.0
+mouse_filter = 2
+expand = true
+
+[node name="Label" type="Label" parent="CanvasLayer/InventoryContainer"]
+margin_left = 45.0
+margin_top = -43.0
+margin_right = 195.0
+margin_bottom = -12.0
+custom_colors/font_color = Color( 0.117647, 0.431373, 0.54902, 1 )
+custom_fonts/font = SubResource( 30 )
+text = "Inventory"
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
+margin_left = 67.0
+margin_top = 359.0
+margin_right = 141.0
+margin_bottom = 377.0
+texture_normal = ExtResource( 15 )
+texture_hover = ExtResource( 25 )
+expand = true
+
+[node name="Label2" type="Label" parent="CanvasLayer/TextureButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -34.5
+margin_top = -6.5
+margin_right = 34.5
+margin_bottom = 6.5
+custom_colors/font_color = Color( 0.117647, 0.431373, 0.54902, 1 )
+custom_fonts/font = SubResource( 31 )
+text = "Inventory"
+align = 1
+
+[connection signal="pressed" from="CanvasLayer/TextureButton" to="." method="_on_TextureButton_pressed"]

@@ -33,13 +33,7 @@ script = ExtResource( 7 )
 [node name="Camera2D" parent="Player/Position2D" index="0"]
 current = false
 
-[node name="shadow" parent="Player/Position2D" index="2"]
-modulate = Color( 0.529412, 0.494118, 0.494118, 1 )
-
-[node name="Sprite" parent="Player/Position2D" index="4"]
-modulate = Color( 1, 1, 1, 1 )
-
-[node name="FloatingTextManager" parent="Player" index="10"]
+[node name="FloatingTextManager" parent="Player" index="11"]
 script = SubResource( 9 )
 
 [node name="Dungeon" type="TileMap" parent="."]

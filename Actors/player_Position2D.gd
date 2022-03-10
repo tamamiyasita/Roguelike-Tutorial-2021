@@ -21,6 +21,22 @@ func attack_start(node, direction, length = 0.4, derec = 1.2):
 	tween.start()
 	yield(tween, "tween_all_completed" )
 	node.global_position = player.global_position + offset_pos
+
+
+	
+func range_start(node, direction, length = 0.4, derec = 1.2):
+	tween.interpolate_property(
+		node,
+		"position",
+		node.position,
+		(direction/derec) + position,
+		length,
+		Tween.TRANS_LINEAR,
+		Tween.EASE_IN_OUT
+	)
+	tween.start()
+	yield(tween, "tween_all_completed" )
+	node.global_position = player.global_position + offset_pos
 	
 func move_start(pos, direction):
 	tween.interpolate_property(

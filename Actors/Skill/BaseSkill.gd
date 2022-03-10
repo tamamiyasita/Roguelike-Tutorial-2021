@@ -10,7 +10,6 @@ export(int, "small", "middlerate","large", "severe") var skill_power
 var ready_change = false
 
 
-
 onready var skill_info := $TextureRect/Label
 
 func _ready():
@@ -22,6 +21,25 @@ func _ready():
 	var t = [name, skill_activation_rate, skill_power_text[skill_power], combo_bonus]
 	skill_info.text = " Name: {0} \n Skill activation rate: {1}% \n Power: {2} \n Combo bonus: {3}".format(t)
 	
+
+func special_skill(damage, enemy):
+	pass
+
+func melee(direc, enemy, damage, anm, skill_anime):
+	BaseInfo.Player.anime.play(skill_anime)
+	BaseInfo.Player.position2d.attack_start(BaseInfo.Player.position2d, direc, anm.current_animation_length)
+	yield(anm, "animation_finished" )
+	special_skill(damage, enemy)
+	
+
+func range_atk(direc, enemy, damage, anm, skill_anime):
+	BaseInfo.Player.anime.play(skill_anime)
+	BaseInfo.Player.position2d.range_start(BaseInfo.Player.attck_pos, direc, anm.current_animation_length)
+	BaseInfo.Player.show_obj()
+	yield(anm, "animation_finished" )
+	special_skill(damage, enemy)
+	
+
 
 
 func lists_skill_press():

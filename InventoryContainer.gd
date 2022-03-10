@@ -11,3 +11,7 @@ func can_drop_data(_position: Vector2, data) -> bool:
 func drop_data(_position: Vector2, data) -> void:
 	inventory.set_item(data.item_index, data.item)
 
+
+
+func _on_CloseButton_pressed():
+	BaseInfo.Main.ui.inventory.hide()

@@ -4,6 +4,11 @@ extends BaseSkill
 var skill_anime = "whirlwindkick"
 var short_range := []
 
+
+func play(direc, enemy, damage, anm):
+	melee(direc, enemy, damage, anm, skill_anime)
+
+
 func special_skill(amount, enemy):
 	
 	for s in short_range:

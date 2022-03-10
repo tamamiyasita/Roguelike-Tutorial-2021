@@ -20,10 +20,14 @@ onready var skill_dict = {
 #	"Hyakuretsukyaku":"res://Actors/Skill/Hyakuretsukyaku.tscn",
 #	"Dankukyaku":"res://Actors/Skill/Dankukyaku.tscn",
 #	"BurnKnuckle":"res://Actors/Skill/BurnKnuckle.tscn",
-	"ShiningFinger":"res://Actors/Skill/ShiningFinger.tscn"
+#	"ShiningFinger":"res://Actors/Skill/ShiningFinger.tscn",
+#	"Hadouken":"res://Actors/Skill/Hadouken.tscn",
+	"Gadouken":"res://Actors/Skill/Gadouken.tscn"
 }
 
 func return_instance(skill_name):
+	if "@" in skill_name:
+		return
 	print(skill_dict[skill_name])
 	return skill_dict[skill_name]
 

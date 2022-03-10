@@ -1,11 +1,11 @@
 extends Actor
 
-onready var fov_ray :RayCast2D = $Fovray
 onready var fov :Area2D = $Fov
 onready var inventory = preload("res://Items/Inventory.tres")
 onready var states = preload('res://Actors/player_states.tres')
 onready var skill_anime = $SkillAnimation
 onready var skills = $Skills
+onready var fov_ray :RayCast2D = $RayCast2D
 
 onready var attck_pos = $attack_pos
 
@@ -20,6 +20,7 @@ var combo_bonus := 0
 var enemies := []
 var areas := []
 var floor_items := []
+var enemy 
 
 var on_stairs := false
 
@@ -35,11 +36,13 @@ const INPUT_KEY :Dictionary = {
 	}
 
 func _ready() -> void:
+	
 	is_turn_complete = false
 	fov_ray.set_collide_with_areas(true)
 	self.states.reset()
 	print(self.states.max_hp)
 	skill_clear()
+	yield(get_tree(),'idle_frame')
 	skill_set("Punch")
 #	use_item.connect('useitem', container, "setup")
 	
@@ -153,7 +156,10 @@ func get_item():
 				inventory.set_item(i, item)
 				get_tree().call_group("message", "get_massage", "You picked up an {0} ".format([item.name]))
 				floor_items[0].position = Vector2.ZERO
+				floor_items[0].queue_free()
 				break
+			else:
+				continue
 
 func hp_change(value):
 	damage_text.show_value(value)
@@ -167,6 +173,8 @@ func skill_clear():
 	for s in skills.get_children():
 		s.queue_free()
 func skill_set(node_name):
+	if "@" in node_name:
+		return
 	var Skill = load(SkillInfo.return_instance(node_name))
 	var skill = Skill.instance()
 	skill.texture_normal = null
@@ -177,13 +185,14 @@ func skill_set(node_name):
 func attack(collider, direction):
 	$Position2D/Camera2D.current = false
 	for s in skills.get_children():
-		if s.name == "BaseSkill":
-			continue
 		if !is_instance_valid(collider) or collider.states.hp <= 0:
 			state = _TURN_END
 			return
+		if s.name == "BaseSkill":
+			continue
 			
-		
+		enemy = collider
+		yield(get_tree(),'idle_frame')
 		var power = int(rand_range(1, self.states.power))
 		var regist  = int(rand_range(0, collider.states.defense))
 		var damage := 0
@@ -192,25 +201,19 @@ func attack(collider, direction):
 
 		damage = int(clamp(power-regist, 0, self.states.power))
 		
+		s.play(direction, enemy, damage, anime)
 
-		anime.play(s.skill_anime)
-		position2d.attack_start(attck_pos ,direction, anime.current_animation_length)
-		
-		attck_pos.show()
-		sprite.hide()
-		$Position2D/shadow.hide()
-		$attack_pos/Object.flip_h = sprite.flip_h
-		yield(anime, "animation_finished" )
-		sprite.show()
-		$Position2D/shadow.show()
-		attck_pos.hide()
-		
-		s.special_skill(damage, collider)
+#		anime.play(s.skill_anime)
+#		position2d.attack_start(attck_pos ,enumy_pos, anime.current_animation_length)
+#
+#		show_obj()
+#		s.special_skill(damage, collider)
 
 #		var text = [s.skill_anime, "Ling", collider.name, damage]
 #		get_tree().call_group("message", "get_massage",  "{0}  {1} hit the {2} for {3} damage!".format(text))
 		
-		print(collider.name," HP: ", collider.states.hp)
+		yield(anime, "animation_finished" )
+		
 		yield(get_tree().create_timer(0.2), "timeout")
 		if !is_instance_valid(collider) or collider.states.hp <= 0:
 			state = _TURN_END
@@ -218,7 +221,11 @@ func attack(collider, direction):
 	if !state == _TURN_INPUT:
 		state = _TURN_END
 
-
+func show_obj():
+	attck_pos.show()
+#	$attack_pos/Object.flip_h = sprite.flip_h
+	yield(anime, "animation_finished" )
+	attck_pos.hide()
 
 
 func area_check(areas):
@@ -272,6 +279,8 @@ func _on_Player_area_entered(area: Area2D) -> void:
 	if area.collision_layer == 32:
 		print("get_ok")
 		floor_items.append(area)
+		get_item()
+		
 		print(floor_items)
 	else:
 		print("is_stairs")

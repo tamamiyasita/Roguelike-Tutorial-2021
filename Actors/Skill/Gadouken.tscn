@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Actors/Skill/Punch.gd" type="Script" id=1]
-[ext_resource path="res://image/player_attack.png" type="Texture" id=2]
-[ext_resource path="res://image/text_back.png" type="Texture" id=3]
+[ext_resource path="res://image/text_back.png" type="Texture" id=1]
+[ext_resource path="res://image/player_gadoken3.png" type="Texture" id=2]
+[ext_resource path="res://Actors/Skill/Gadouken.gd" type="Script" id=3]
 [ext_resource path="res://image/Gugi-Regular.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
@@ -10,11 +10,13 @@ size = 17
 extra_spacing_top = -1
 font_data = ExtResource( 4 )
 
-[node name="Punch" type="TextureButton"]
+[node name="Gadouken" type="TextureButton"]
 rect_min_size = Vector2( 40, 40 )
 texture_normal = ExtResource( 2 )
 expand = true
-script = ExtResource( 1 )
+script = ExtResource( 3 )
+skill_activation_rate = 80
+combo_bonus = 4
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
@@ -24,7 +26,7 @@ margin_left = -40.0
 margin_top = -145.0
 margin_right = 320.0
 margin_bottom = -37.0
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
 

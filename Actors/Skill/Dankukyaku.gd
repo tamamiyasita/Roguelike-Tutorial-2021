@@ -3,6 +3,11 @@ extends BaseSkill
 
 var skill_anime = "dankukyaku"
 
+
+func play(direc, enemy, damage, anm):
+	melee(direc, enemy, damage, anm, skill_anime)
+
+
 func special_skill(amount, enemy):
 	var d = 0
 	for i in range(3):

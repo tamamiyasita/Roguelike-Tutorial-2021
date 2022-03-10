@@ -4,6 +4,11 @@ onready var rang := $ShortRange
 var skill_anime = "spinningbirdkick"
 var short_range := []
 
+
+func play(direc, enemy, damage, anm):
+	melee(direc, enemy, damage, anm, skill_anime)
+
+
 func special_skill(amount, enemy):
 	for s in short_range:
 		var d = 0
