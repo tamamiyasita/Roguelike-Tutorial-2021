@@ -115,6 +115,8 @@ func hp_change(value):
 			player.states.hp += 3
 			player.states.max_hp += 3
 			get_tree().call_group("skillui", "level_up_skill_add")
+
+
 			
 			player.state = _TURN_INPUT
 			var l = level_up_window.instance()
@@ -138,14 +140,11 @@ func attack(collider, direction):
 #	var damage = (self.states.power-collider.states.defense)
 	
 	collider.hp_change(-damage)
-	collider.anime_state = AMOUNT
 
 	var text = [self.name, collider.name, damage]
 	get_tree().call_group("message", "get_massage", "{0} hit the {1} for {2} damage!".format(text))
 			
-	if collider.states.hp <= 0:
-		print("player dead!")
-		collider.dead()
+
 
 	yield(anime, "animation_finished" )
 	turn_end()

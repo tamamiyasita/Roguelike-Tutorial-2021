@@ -5,7 +5,7 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource( 1 )
-max_hp = 15
-hp = 15
+max_hp = 7
+hp = 7
 power = 2
 defense = 1

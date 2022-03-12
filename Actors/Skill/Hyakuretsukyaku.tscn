@@ -11,12 +11,15 @@ extra_spacing_top = -1
 font_data = ExtResource( 3 )
 
 [node name="Hyakuretsukyaku" type="TextureButton"]
+margin_right = 40.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
+rect_pivot_offset = Vector2( 20, 32 )
 texture_normal = ExtResource( 2 )
 expand = true
 script = ExtResource( 1 )
 skill_activation_rate = 70
-combo_bonus = 2
+combo_bonus = 4
 skill_power = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]

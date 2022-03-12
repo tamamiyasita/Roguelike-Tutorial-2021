@@ -1,7 +1,9 @@
 extends Control
 
 
-
+func _ready():
+	get_tree().call_group("message", "get_massage", "Ling has leveled up")
+	BaseInfo.Player.base_conbo += 3
 
 func _on_maxhp_pressed() -> void:
 	yield(get_tree(),'idle_frame')

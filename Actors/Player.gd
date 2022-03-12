@@ -17,6 +17,7 @@ signal states_changed
 onready var SAVE_KEY: String = "player"
 
 var combo_bonus := 0
+var base_conbo := 0
 var enemies := []
 var areas := []
 var floor_items := []
@@ -101,18 +102,18 @@ func _unhandled_input(event: InputEvent) -> void:
 			if event.is_action_pressed('rest'):
 				turn_end()
 
-			elif event.is_action_pressed("get"):
-				get_item()
-				turn_end()
-				break
-			elif event.is_action_pressed('inv'):
-				container.visible = !container.visible
-				for i in inventory.items:
-					if i == null:
-						BaseInfo.Main.ui.pop.hide()
-					else:
-						BaseInfo.Main.ui.pop.show()
-						break
+#			elif event.is_action_pressed("get"):
+#				get_item()
+#				turn_end()
+#				break
+#			elif event.is_action_pressed('inv'):
+#				container.visible = !container.visible
+#				for i in inventory.items:
+#					if i == null:
+#						BaseInfo.Main.ui.pop.hide()
+#					else:
+#						BaseInfo.Main.ui.pop.show()
+#						break
 
 				break
 			elif event.is_action(direction):
@@ -163,11 +164,14 @@ func get_item():
 
 func hp_change(value):
 	damage_text.show_value(value)
+	anime.play("damage")
+	yield(anime, "animation_finished" )	
 	self.states.hp_change(value)
 	emit_signal('hp_changed', self.states.hp)
 	print(self.states.hp, " my hp")
-	
-
+	if self.states.hp <= 0:
+		print("player dead!")
+		dead()
 
 func skill_clear():
 	for s in skills.get_children():
@@ -186,6 +190,7 @@ func attack(collider, direction):
 	$Position2D/Camera2D.current = false
 	for s in skills.get_children():
 		if !is_instance_valid(collider) or collider.states.hp <= 0:
+			combo_bonus = base_conbo
 			state = _TURN_END
 			return
 		if s.name == "BaseSkill":
@@ -201,25 +206,22 @@ func attack(collider, direction):
 
 		damage = int(clamp(power-regist, 0, self.states.power))
 		
-		s.play(direction, enemy, damage, anime)
+		if !s.play(direction, enemy, damage, anime):
+			combo_bonus = base_conbo
+			state = _TURN_END
+			return
 
-#		anime.play(s.skill_anime)
-#		position2d.attack_start(attck_pos ,enumy_pos, anime.current_animation_length)
-#
-#		show_obj()
-#		s.special_skill(damage, collider)
-
-#		var text = [s.skill_anime, "Ling", collider.name, damage]
-#		get_tree().call_group("message", "get_massage",  "{0}  {1} hit the {2} for {3} damage!".format(text))
-		
 		yield(anime, "animation_finished" )
 		
 		yield(get_tree().create_timer(0.2), "timeout")
 		if !is_instance_valid(collider) or collider.states.hp <= 0:
+			combo_bonus = base_conbo
 			state = _TURN_END
 			return
 	if !state == _TURN_INPUT:
 		state = _TURN_END
+	combo_bonus = base_conbo
+	yield(get_tree(),'idle_frame')
 
 func show_obj():
 	attck_pos.show()

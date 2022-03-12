@@ -68,9 +68,12 @@ func item_use(name, value=null):
 		"Scroll of technique":
 			print("tec")
 			get_tree().call_group("skillui", "add_skill_list")
+			get_tree().call_group("shout", "shout_pop", "   I've learned a new skill!   ", 2.5)
+			get_tree().call_group("message", "get_massage", "You have acquired a new skill (click on the skill icon)")
 		"apple":
 			Player.hp_change(value)
-			get_tree().call_group("message", "get_massage", "You ate an apple and recovered 5 HP")
+			get_tree().call_group("message", "get_massage", ("You ate an apple and recovered ")+str(value)+(" HP"))
+			get_tree().call_group("shout", "shout_pop", "Delicious!", .5)
 		"kick":
 			print("ban!")
 			for e in Enemies.get_children():

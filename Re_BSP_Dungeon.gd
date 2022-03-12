@@ -30,12 +30,23 @@ onready var stairs :Node = $Stairs
 var rats = preload('res://Actors/CheeseRat.tscn')
 var dogs = preload('res://Actors/Dog.tscn')
 var cabbage_snails = preload('res://Actors/Cabbage_snail.tscn')
+var MonsterCarrot = preload("res://Actors/MonsterCarrot.tscn")
+var EvilFish = preload("res://Actors/EvilFish.tscn")
+
+var GobrinShaman = preload("res://Actors/GobrinShaman.tscn")
+var Kobold = preload("res://Actors/Kobold.tscn")
+var PumpkinGobrin = preload("res://Actors/PumpkinGobrin.tscn")
 var Unicorn = preload("res://Actors/unicorn.tscn")
 var Cecile = preload('res://Actors/Cecile.tscn')
+var Rou = preload("res://Actors/MasterRou.tscn")
+
+var tec = preload('res://map_object/ScrollofTechnique.tscn')
 var apples = preload('res://map_object/apple.tscn')
+var pans = preload("res://map_object/pan.tscn")
+var cakes = preload("res://map_object/Cake.tscn")
+
 var forces = preload('res://map_object/force.tscn')
 var fbs = preload("res://map_object/fb.tscn")
-var tec = preload('res://map_object/ScrollofTechnique.tscn')
 
 var cnfs = preload("res://map_object/cnf_2.tscn")
 var daggrs = preload("res://map_object/Daggr.tscn")
@@ -85,25 +96,38 @@ func add_stairs():
 	var second_point = rooms[0].center
 	var last_point = rooms[-1].center
 	var sd_point = rooms[1].center
-	if BaseInfo.Main.dungeon_Lv < 3:
+	if BaseInfo.Main.dungeon_Lv < 5:
 		var s1 = stairs_obj.instance()
 		s1.position = map_to_world(last_point)
 		stairs.add_child(s1)
-		
-		
-		
-#		var s2 = stairs_obj.instance()
-#		s2.position = map_to_world(second_point+Vector2(2,2))
-#		stairs.add_child(s2)
-		
+
+		if BaseInfo.Main.dungeon_Lv == 4:
+			var c = Cecile.instance()
+			c.position = map_to_world(last_point)
+			enemies.add_child(c)
+			var uni = Unicorn.instance()
+			uni.position = map_to_world(last_point+ Vector2(1,0))
+			enemies.add_child(uni)
+			
+		if BaseInfo.Main.dungeon_Lv == 3:
+			var p = PumpkinGobrin.instance()
+			p.position = map_to_world(last_point)
+			enemies.add_child(p)
+		if BaseInfo.Main.dungeon_Lv == 2:
+			var g = GobrinShaman.instance()
+			g.position = map_to_world(last_point)
+			enemies.add_child(g)
+		if BaseInfo.Main.dungeon_Lv == 1:
+			var k = Kobold.instance()
+			k.position = map_to_world(last_point)
+			enemies.add_child(k)
+
+
 	else:
-		var c = Cecile.instance()
-		c.position = map_to_world(last_point)
-		enemies.add_child(c)
 		
-		var uni = Unicorn.instance()
-		uni.position = map_to_world(last_point+ Vector2(1,0))
-		enemies.add_child(uni)
+		var rou = Rou.instance()
+		rou.position = map_to_world(last_point+ Vector2(1,0))
+		enemies.add_child(rou)
 		
 	if BaseInfo.Main.dungeon_Lv < 2:
 		var apple = apples.instance()
@@ -113,12 +137,24 @@ func set_player_position(player)->void:
 	var point = rooms[0].center
 	player.position = map_to_world(point)
 	
-	var apple = cabbage_snails.instance()
-	apple.position = map_to_world(point + Vector2(1,1))
-	items.add_child(apple)
-
+#	var apple = pans.instance()
+#	apple.position = map_to_world(point + Vector2(1,1))
+#	items.add_child(apple)
+#	var e = EvilFish.instance()
+#	e.position = map_to_world(point + Vector2(1,2))
+#	items.add_child(e)
+#	var a = GobrinShaman.instance()
+#	a.position = map_to_world(point + Vector2(1,2))
+#	items.add_child(a)
+#
+	var b = GobrinShaman.instance()
+	b.position = map_to_world(point + Vector2(2,2))
+	enemies.add_child(b)
+#
+#
+#	for i in range(3):
 	var t = tec.instance()
-	t.position = map_to_world(point + Vector2(0,1))
+	t.position = map_to_world(point + Vector2(-3,1))
 	items.add_child(t)
 
 func entity_set():
@@ -137,7 +173,7 @@ func entity_set():
 #			floors.add_child(f)
 
 func enemy_place(rooms) -> void:
-	var max_enemy = [[0,2], [2,3],[3,4]]
+	var max_enemy = [[1,2], [2,3],[2,4]]
 	var enemy_point := []
 	var choice_num = 0
 	var dungeon_lv = BaseInfo.Main.dungeon_Lv
@@ -151,7 +187,7 @@ func enemy_place(rooms) -> void:
 			
 		for e in max_enemy:
 			print(e[0], "dungeon_lv", dungeon_lv)
-			if e[0] > dungeon_lv:
+			if e[0] > dungeon_lv+1:
 				break
 			else:
 				choice_num = e[1]
@@ -178,11 +214,13 @@ func enemy_place(rooms) -> void:
 		var rat = rats.instance()
 		var dog = dogs.instance()
 		var cabbage_snail = cabbage_snails.instance()
+		var monsterCarrot = MonsterCarrot.instance()
+		var evilfish = EvilFish.instance()
 
 
-		var enemy_array = [cabbage_snail, dog, rat]
+		var enemy_array = [evilfish, monsterCarrot, cabbage_snail, dog, rat]
 
-
+		randomize()
 		var rng = int(rand_range(1,100+dungeon_lv))
 
 		for i in enemy_array:
@@ -197,7 +235,7 @@ func enemy_place(rooms) -> void:
 				obstacles.append(i)
 				break
 			else:
-				var ef = [dog, rat]
+				var ef = [monsterCarrot, dog, rat]
 				var e = Util.choose(ef)
 #				var e = enemy_array[o]
 				enemies.add_child(e, true)
@@ -230,6 +268,7 @@ func enemy_place(rooms) -> void:
 
 func item_place(rooms) -> void:
 	var dungeon_lv = BaseInfo.Main.dungeon_Lv
+	var cunt = 0
 
 	var item_chances :Dictionary = {
 		0:["apple", 35],
@@ -276,45 +315,57 @@ func item_place(rooms) -> void:
 #			item_point.pop_back()
 #		if item_point.size() > 5:
 #			item_point.pop_front()
-	if !item_point.empty():
-		if BaseInfo.Main.dungeon_Lv == 0:
-			var knife = knifes.instance()
-			var point = item_point.pop_back()
-			items.add_child(knife)
-			knife.position = map_to_world(point)
-		elif BaseInfo.Main.dungeon_Lv == 1:
-			var bangle = bangles.instance()
-			var point = item_point.pop_back()
-			items.add_child(bangle)
-			bangle.position = map_to_world(point)
-		elif BaseInfo.Main.dungeon_Lv == 2:
-			var daggr = daggrs.instance()
-			var point = item_point.pop_back()
-			items.add_child(daggr)
-			daggr.position = map_to_world(point)
-		elif BaseInfo.Main.dungeon_Lv == 3:
-			var bangle2 = bangle2s.instance()
-			var point = item_point.pop_back()
-			items.add_child(bangle2)
-			bangle2.position = map_to_world(point)
-			
-		for p in item_point:
-			var apple = apples.instance()
-			var force = forces.instance()
-			var cnf = cnfs.instance()
-			var fb = fbs.instance()
-			var item_array = [cnf, fb, force, apple]
-			var rng = rand_range(1,70)
-			for i in item_array:
-				if i.level > BaseInfo.Main.dungeon_Lv+1:
-					continue
-				if rng < i.weight:
-					i.position = map_to_world(p)
-					items.add_child(i)
-					print(i, "ITEM!")
-					break
+#	if !item_point.empty():
+#		if BaseInfo.Main.dungeon_Lv == 0:
+#			var knife = knifes.instance()
+#			var point = item_point.pop_back()
+#			items.add_child(knife)
+#			knife.position = map_to_world(point)
+#		elif BaseInfo.Main.dungeon_Lv == 1:
+#			var bangle = bangles.instance()
+#			var point = item_point.pop_back()
+#			items.add_child(bangle)
+#			bangle.position = map_to_world(point)
+#		elif BaseInfo.Main.dungeon_Lv == 2:
+#			var daggr = daggrs.instance()
+#			var point = item_point.pop_back()
+#			items.add_child(daggr)
+#			daggr.position = map_to_world(point)
+#		elif BaseInfo.Main.dungeon_Lv == 3:
+#			var bangle2 = bangle2s.instance()
+#			var point = item_point.pop_back()
+#			items.add_child(bangle2)
+#			bangle2.position = map_to_world(point)
+#
+	for p in item_point:
+		var apple = apples.instance()
+		var apple2 = apples.instance()
+		var apple3 = apples.instance()
+		var pan = pans.instance()
+		var pan2 = pans.instance()
+		var cake = cakes.instance()
+		var t = tec.instance()
+
+#			var force = forces.instance()
+#			var cnf = cnfs.instance()
+#			var fb = fbs.instance()
+		var item_array = [cake, pan, pan2, apple, apple2, apple3]
+		if cunt < 2:
+			t
+			t.position = map_to_world(p)
+			items.add_child(t)
+			print(t, "ITEM!")
+			cunt += 1
+			continue
+	
+		var im = Util.choose(item_array)
+
+		im.position = map_to_world(p)
+		items.add_child(im)
+		print(im, "ITEM!")
+		
 				
-					
+		print("ITEMS = ", items.get_child_count())
 				
 
 func door_place() -> void:

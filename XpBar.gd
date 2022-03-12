@@ -5,7 +5,7 @@ onready var STR = $STR
 onready var DEF = $DEF
 onready var XP = $Label
 onready var level = $Level
-
+onready var tween := $Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,7 +19,11 @@ func states_update():
 	DEF.text = "DEF "+str(BaseInfo.Player.states.defense)
 	Conbo.text = str(BaseInfo.Player.combo_bonus)
 	
-
+func combo_pop():
+	tween.interpolate_property(Conbo, "rect_scale",
+	Vector2.ONE, Vector2(.5,.5), .5,
+	Tween.TRANS_BOUNCE, Tween.EASE_IN)
+	tween.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:

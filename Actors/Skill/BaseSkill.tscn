@@ -12,6 +12,7 @@ extra_spacing_top = -1
 font_data = ExtResource( 4 )
 
 [node name="BaseSkill" type="TextureButton"]
+modulate = Color( 1, 1, 1, 0.917647 )
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )

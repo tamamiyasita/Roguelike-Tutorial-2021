@@ -66,6 +66,7 @@ func _process(delta: float) -> void:
 		pass
 		
 	if state == _TURN_END:
+		get_tree().call_group("xpbar", "states_update")	
 		is_turn_complete = true
 
 

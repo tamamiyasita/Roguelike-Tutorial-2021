@@ -32,8 +32,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func get_massage(text):
-	massage.insert(0, str(text)+"\n")
-	log_box.bbcode_text += text
+	massage.insert(0, " "+str(text)+"\n")
+	log_box.bbcode_text += text+"\n"
 	
 	set_process(true)
 
@@ -47,3 +47,7 @@ func load_massage() -> void:
 
 
 
+
+
+func _on_TextureButton_pressed():
+	log_bg.visible = !log_bg.visible

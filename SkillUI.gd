@@ -6,24 +6,47 @@ onready var active_skills := $ActiveSkills
 onready var back_panel := $Back
 
 onready var Base_skill = preload("res://Actors/Skill/BaseSkill.tscn")
+onready var level_light = preload("res://Level_pop_light.tscn")
+onready var tween := $Tween
 
 func _ready():
 	back_show()
 	level_up_skill_add()
 
-
+func skill_pop_up(value):
+	for a in active_skills.get_children():
+		if a.name == value:
+#			var skill = active_skills.get_child(value)
+			tween.interpolate_property(a, "rect_scale",
+			Vector2.ONE*2.5, Vector2.ONE, .6,
+			Tween.TRANS_BACK, Tween.EASE_OUT_IN)
+			tween.start()
+	
 func skill_window_open():
-	skill_window.show()
+	if skill_window.visible:
+		for s in active_skills.get_children():
+			if s.ready_change == true:
+				s.ready_change = false
+		skill_window.hide()
+	else:
+		skill_window.show()
+		for s in skill_lists.get_children():
+			s.text_texture.hide()
 
 func level_up_skill_add():
-	var base_skill = Base_skill.instance()
-	active_skills.add_child(base_skill)
+	if back_panel.get_child_count() > active_skills.get_child_count():
+		get_tree().call_group("message", "get_massage", "New skills can now be set.")
+		var base_skill = Base_skill.instance()
+		active_skills.add_child(base_skill)
+
+
 
 func back_show():
 	var cnt = 0
 	for p in active_skills.get_children():
 		print(p.name)
-		if p.name:
+		if p.name != null:
+			print(back_panel.get_child(cnt))
 			back_panel.get_child(cnt).show()
 		else:
 			back_panel.get_child(cnt).hide()
@@ -32,6 +55,8 @@ func back_show():
 func add_skill_list():
 	var add_skill = SkillInfo.skill_list_name.pop_back()
 	if add_skill == null:
+		return
+	if "@" in add_skill:
 		return
 	var Skill = load(SkillInfo.return_instance(add_skill))
 	var skill = Skill.instance()
@@ -46,11 +71,15 @@ func active_skill_change(node_name):
 
 	for a in active_skills.get_children():
 		if a.name == node_name:
-			print("syoutyuudesu")
-			return
+			var baseskill = Base_skill.instance()
+			a.replace_by(baseskill)
+#			return
 
 	for s in active_skills.get_children():
+
 		if s.ready_change == true:
+
+			yield(get_tree(),'idle_frame')
 			var Skill = load(SkillInfo.return_instance(node_name))
 			var skill = Skill.instance()
 			

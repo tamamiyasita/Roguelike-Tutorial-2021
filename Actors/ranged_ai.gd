@@ -1,6 +1,6 @@
 extends "res://Actors/BasicEnemy.gd"
 
-var arrows = preload("res://Bullet.tscn")
+export(PackedScene) var arrows
 
 onready var ranged_ray :RayCast2D = $RayCast2D2
 
@@ -72,14 +72,12 @@ func ranged_attack(collider, direction):
 #	var damage = (self.states.power-collider.states.defense)
 	
 	collider.hp_change(-damage)
-	collider.anime_state = AMOUNT
+
 
 	var text = [self.name, collider.name, damage]
 	get_tree().call_group("message", "get_massage", "{0} hit the {1} for {2} damage!".format(text))
 			
-	if collider.states.hp <= 0:
-		print("player dead!")
-		collider.dead()
+
 	yield(tween, "tween_all_completed" )
 #	yield(anime, "animation_finished" )
 	arrow.queue_free()

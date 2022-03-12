@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-max_hp = 7
-hp = 7
+max_hp = 16
+hp = 16
 power = 4
 defense = 3

@@ -11,8 +11,7 @@ onready var object := $SkillAnime/Object
 export(bool) var obj_on = false
 
 func play(direc, enemy, damage, anm):
-#	melee(direc, enemy, damage, anm, skill_anime)
-	range_atk(direc, enemy, damage, anm, skill_anime)
+	return range_atk(direc, enemy, damage, anm, skill_anime)
 
 
 
