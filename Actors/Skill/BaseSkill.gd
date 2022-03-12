@@ -43,6 +43,7 @@ func melee(direc, enemy, damage, anm, skill_anime):
 func range_atk(direc, enemy, damage, anm, skill_anime):
 	if !hit_chance():
 		return
+	BaseInfo.Player.attck_pos.look_at(enemy.position)
 	BaseInfo.Player.anime.play(skill_anime)
 	BaseInfo.Player.position2d.range_start(BaseInfo.Player.attck_pos, direc, anm.current_animation_length)
 	get_tree().call_group("shout", "shout_pop", name, anm.current_animation_length)
