@@ -27,11 +27,18 @@ func skill_window_open():
 		for s in active_skills.get_children():
 			if s.ready_change == true:
 				s.ready_change = false
+			for i in s.get_children():
+				if i.name != "TextureRect":
+					i.queue_free()
 		skill_window.hide()
 	else:
 		skill_window.show()
 		for s in skill_lists.get_children():
 			s.text_texture.hide()
+			for i in s.get_children():
+				if i.name != "TextureRect":
+					i.queue_free()
+
 
 func level_up_skill_add():
 	if back_panel.get_child_count() > active_skills.get_child_count():
@@ -69,12 +76,6 @@ func add_skill_list():
 
 func active_skill_change(node_name):
 
-	for a in active_skills.get_children():
-		if a.name == node_name:
-			var baseskill = Base_skill.instance()
-			a.replace_by(baseskill)
-#			return
-
 	for s in active_skills.get_children():
 
 		if s.ready_change == true:
@@ -90,6 +91,16 @@ func active_skill_change(node_name):
 	yield(get_tree().create_timer(0.1), "timeout")	
 	for s in active_skills.get_children():
 		get_tree().call_group("player", "skill_set", s.name)
+
+
+	for a in active_skills.get_children():
+		if "@" in a.name:
+			var baseskill = Base_skill.instance()
+			a.replace_by(baseskill)
+		for i in a.get_children():
+			if i.name != "TextureRect":
+				i.queue_free()
+
 	skill_window.hide()
 	back_show()
 

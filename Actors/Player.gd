@@ -183,6 +183,9 @@ func skill_set(node_name):
 	var skill = Skill.instance()
 	skill.texture_normal = null
 	skills.add_child(skill)
+	for s in skills.get_children():
+		if "@" in s.name:
+			s.queue_free()
 		
 
 

@@ -3,10 +3,6 @@ extends BaseSkill
 var skill_anime = "gadouken"
 
 
-onready var anime := $SkillAnime/AnimationPlayer
-onready var tween := $SkillAnime/Tween
-onready var body := $SkillAnime/Body
-onready var object := $SkillAnime/Object
 
 export(bool) var obj_on = false
 

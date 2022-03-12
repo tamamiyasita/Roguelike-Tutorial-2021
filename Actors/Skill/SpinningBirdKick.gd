@@ -33,17 +33,39 @@ func _on_ShortRange_area_exited(area):
 	short_range.erase(area)
 
 func _unhandled_input(event):
-	if event is InputEventKey:
-		if event.pressed:
-			var e = event.as_text()
-			print(e, "EVENT")
-			match e:
-				"Up":
-					rang.rotation_degrees = -90
-				"Down":
-					rang.rotation_degrees = 90
-				"Left":
-					rang.rotation_degrees = 180
-				"Right":
-					rang.rotation_degrees = 0
+	if is_instance_valid(rang):
+		if InputMap.action_has_event("up",event):
+			rang.rotation_degrees = -90
+		if InputMap.action_has_event("down",event):
+			rang.rotation_degrees = 90
+		if InputMap.action_has_event("left",event):
+			rang.rotation_degrees = 180
+		if InputMap.action_has_event("right",event):
+			rang.rotation_degrees = 0
+		if InputMap.action_has_event("up_right",event):
+			rang.rotation_degrees = -90
+		if InputMap.action_has_event("up_left",event):
+			rang.rotation_degrees = -90
+		if InputMap.action_has_event("down_right",event):
+			rang.rotation_degrees = 90
+		if InputMap.action_has_event("down_left",event):
+			rang.rotation_degrees = 90
+		
+			
+			
+			
+#		for e in InputMap.get_actions():
+#		if event is InputEventKey:
+#			if event.pressed:
+#				var e = event.as_text()
+#				print(e, "EVENT")
+#				match e:
+#					"Up":
+#						rang.rotation_degrees = -90
+#					"Down":
+#						rang.rotation_degrees = 90
+#					"Left":
+#						rang.rotation_degrees = 180
+#					"Right":
+#						rang.rotation_degrees = 0
 

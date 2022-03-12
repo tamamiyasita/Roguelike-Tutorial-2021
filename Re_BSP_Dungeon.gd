@@ -120,6 +120,11 @@ func add_stairs():
 			var k = Kobold.instance()
 			k.position = map_to_world(last_point)
 			enemies.add_child(k)
+		if BaseInfo.Main.dungeon_Lv == 0:
+			var point = rooms[0].center
+			var t = tec.instance()
+			t.position = map_to_world(point + Vector2(-3,1))
+			items.add_child(t)
 
 
 	else:
@@ -152,9 +157,6 @@ func set_player_position(player)->void:
 #
 #
 #	for i in range(3):
-	var t = tec.instance()
-	t.position = map_to_world(point + Vector2(-3,1))
-	items.add_child(t)
 
 func entity_set():
 	for tile in tiles:
