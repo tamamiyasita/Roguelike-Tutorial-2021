@@ -18,7 +18,7 @@ func _ready():
 	connect("pressed", self, "_on_BaseSkill_pressed")
 	connect("mouse_entered", self, "_on_mouse_entered")
 	connect("mouse_exited", self, "_on_mouse_exited")
-	yield(get_tree(),'idle_frame')
+#	yield(get_tree(),'idle_frame')
 	
 	var t = [name, skill_activation_rate, skill_power_text[skill_power], combo_bonus]
 	skill_info.text = " Name: {0} \n Skill Use Rate: {1}% \n Power: {2} \n Combo bonus: {3}".format(t)

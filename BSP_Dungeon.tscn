@@ -5,6 +5,7 @@
 
 [node name="BSP_Dungeon" type="TileMap"]
 light_mask = 4
+z_index = -1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_y_sort = true
@@ -20,12 +21,14 @@ script = ExtResource( 3 )
 
 [node name="Doors" type="Node" parent="."]
 
-[node name="Walls" type="Node" parent="."]
+[node name="Walls" type="Node2D" parent="."]
 
-[node name="Floors" type="Node" parent="."]
+[node name="Floors" type="Node2D" parent="."]
+visible = false
 
 [node name="Items" type="Node" parent="."]
 
-[node name="RemoveEntity" type="Node" parent="."]
+[node name="RemoveEntity" type="Node2D" parent="."]
+visible = false
 
 [node name="Stairs" type="Node" parent="."]

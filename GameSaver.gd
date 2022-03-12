@@ -6,8 +6,6 @@ var SAVE_FOLDER : String = "res://save"
 var SAVE_NAME_TEMPLATE : String = "save_%03d.tres"
 
 var apples = preload('res://map_object/apple.tscn')
-var forces = preload('res://map_object/force.tscn')
-var fbs = preload("res://map_object/fb.tscn")
 var cnfs = preload("res://map_object/cnf_2.tscn")
 
 var door = preload('res://map_object/Door.tscn')
@@ -64,7 +62,3 @@ func _load(id : int):
 				BaseInfo.Main.items.add_child(a, true)
 				a._load(save_game)
 				
-			if "Force" in entity.name:
-				var f = forces.instance()
-				BaseInfo.Main.items.add_child(f, true)
-				f._load(save_game)

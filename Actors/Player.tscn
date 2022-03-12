@@ -1136,7 +1136,6 @@ texture = ExtResource( 3 )
 
 [node name="DMG_Particles" parent="Position2D" index="5"]
 z_index = 4
-emitting = true
 
 [node name="Fov" type="Area2D" parent="." index="7"]
 position = Vector2( 16, 16 )

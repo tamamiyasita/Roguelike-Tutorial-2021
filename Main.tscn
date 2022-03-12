@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://BSP_Dungeon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BasicDungeon.tscn" type="PackedScene" id=2]
@@ -9,32 +9,11 @@
 [ext_resource path="res://GameSaver.gd" type="Script" id=18]
 [ext_resource path="res://GameStart.tscn" type="PackedScene" id=22]
 
-[sub_resource type="GDScript" id=9]
-script/source = "extends Node2D
-
-var FCT = preload(\"res://FloatingText.tscn\")
-
-export var travel = Vector2(0, -80)
-export var duration = 2
-export var spread = PI/2
-
-func show_value(value, crit=false):
-	var fct = FCT.instance()
-	add_child(fct)
-	fct.show_value(str(value), travel, duration, spread, crit)
-"
-
 [node name="Main" type="TileMap" groups=["main"]]
 format = 1
 script = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 8 )]
-
-[node name="Camera2D" parent="Player/Position2D" index="0"]
-current = false
-
-[node name="FloatingTextManager" parent="Player" index="11"]
-script = SubResource( 9 )
 
 [node name="Dungeon" type="TileMap" parent="."]
 cell_size = Vector2( 32, 32 )
@@ -63,6 +42,4 @@ color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
 
 [node name="GameStart" parent="." instance=ExtResource( 22 )]
 
-[editable path="Player"]
-[editable path="Player/Skills"]
 [editable path="Dungeon/BSP_Dungeon"]

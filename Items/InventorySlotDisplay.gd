@@ -9,8 +9,6 @@ onready var maru = $Maru
 signal useitem
 
 var apple = preload('res://map_object/apple.tscn')
-var force = preload('res://map_object/force.tscn')
-var fb = preload("res://map_object/fb.tscn")
 var cnf = preload("res://map_object/cnf_2.tscn")
 var daggr = preload("res://map_object/Daggr.tscn")
 var bangle = preload("res://map_object/Bangle.tscn")
@@ -19,9 +17,7 @@ var knife = preload("res://map_object/Knife.tscn")
 var on_wepon = null
 var on_armor = null
 
-var item_list := [apple.instance(), force.instance(),
-fb.instance(), cnf.instance(), daggr.instance(),
-bangle.instance(), knife.instance()]
+
 
 
 func display_item(item):
@@ -100,22 +96,22 @@ func _gui_input(event: InputEvent) -> void:
 #
 					
 					
-		elif event.is_action_pressed('light_mouse'):
-			var item_index = get_index()
-			var item = inventory.items[item_index]	
-			if is_instance_valid(item):		
-				for i in item_list:
-					if item is Wepon or item is Armor:
-						if item.equipment == true:
-							print("equip on")
-							break
-
-					if i.item_name == item.name:
-						BaseInfo.Items.add_child(i)
-						i.position = BaseInfo.Player.position
-						inventory.remove_item(item_index)
-						break
-		
+#		elif event.is_action_pressed('light_mouse'):
+#			var item_index = get_index()
+#			var item = inventory.items[item_index]	
+#			if is_instance_valid(item):		
+#				for i in item_list:
+#					if item is Wepon or item is Armor:
+#						if item.equipment == true:
+#							print("equip on")
+#							break
+#
+#					if i.item_name == item.name:
+#						BaseInfo.Items.add_child(i)
+#						i.position = BaseInfo.Player.position
+#						inventory.remove_item(item_index)
+#						break
+#
 		get_tree().call_group("xpbar", "states_update")
 		
 

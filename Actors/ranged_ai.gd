@@ -63,8 +63,10 @@ func ranged_search(direction) -> void:
 func ranged_attack(collider, direction):
 	anime_state = ATTACK
 	var arrow = arrows.instance()
-	arrow.look_at(direction)
+#	arrow.set_as_toplevel(true)
 	add_child(arrow)
+	arrow.global_position = global_position
+	arrow.look_at(collider.position)
 	position2d.ranged_attack_start(direction, arrow)
 	var power = int(rand_range(0, self.states.power+1))
 	var regist  = int(rand_range(0, collider.states.defense))

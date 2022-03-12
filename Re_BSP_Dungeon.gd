@@ -45,8 +45,7 @@ var apples = preload('res://map_object/apple.tscn')
 var pans = preload("res://map_object/pan.tscn")
 var cakes = preload("res://map_object/Cake.tscn")
 
-var forces = preload('res://map_object/force.tscn')
-var fbs = preload("res://map_object/fb.tscn")
+
 
 var cnfs = preload("res://map_object/cnf_2.tscn")
 var daggrs = preload("res://map_object/Daggr.tscn")
@@ -147,9 +146,9 @@ func set_player_position(player)->void:
 #	a.position = map_to_world(point + Vector2(1,2))
 #	items.add_child(a)
 #
-	var b = GobrinShaman.instance()
-	b.position = map_to_world(point + Vector2(2,2))
-	enemies.add_child(b)
+#	var b = GobrinShaman.instance()
+#	b.position = map_to_world(point + Vector2(2,2))
+#	enemies.add_child(b)
 #
 #
 #	for i in range(3):
