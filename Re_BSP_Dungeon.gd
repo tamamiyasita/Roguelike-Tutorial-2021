@@ -104,9 +104,6 @@ func add_stairs():
 			var c = Cecile.instance()
 			c.position = map_to_world(last_point)
 			enemies.add_child(c)
-			var uni = Unicorn.instance()
-			uni.position = map_to_world(last_point+ Vector2(1,0))
-			enemies.add_child(uni)
 			
 		if BaseInfo.Main.dungeon_Lv == 3:
 			var p = PumpkinGobrin.instance()
@@ -130,7 +127,7 @@ func add_stairs():
 	else:
 		
 		var rou = Rou.instance()
-		rou.position = map_to_world(last_point+ Vector2(1,0))
+		rou.position = map_to_world(last_point)
 		enemies.add_child(rou)
 		
 	if BaseInfo.Main.dungeon_Lv < 2:
@@ -219,26 +216,28 @@ func enemy_place(rooms) -> void:
 		var evilfish = EvilFish.instance()
 
 
-		var enemy_array = [evilfish, monsterCarrot, cabbage_snail, dog, rat]
+		var enemy_array = [cabbage_snail, evilfish, monsterCarrot, dog, rat]
 
 		randomize()
 		var rng = int(rand_range(1,100+dungeon_lv))
+		
 
 		for i in enemy_array:
-			if i.level > dungeon_lv+1:
+			var e = Util.choose(enemy_array)
+			if e.level > dungeon_lv+1:
 				continue
 
-			if rng < i.weight:
-				print(rng, i.weight, i, "  weight!")
-				enemies.add_child(i, true)
-				i.position = map_to_world(p)
-				print(i.name, "ENEMY!")
-				obstacles.append(i)
-				break
+#			if rng < i.weight:
+#				print(rng, i.weight, i, "  weight!")
+#				enemies.add_child(i, true)
+#				i.position = map_to_world(p)
+#				print(i.name, "ENEMY!")
+#				obstacles.append(i)
+#				break
 			else:
-				var ef = [monsterCarrot, dog, rat]
-				var e = Util.choose(ef)
-#				var e = enemy_array[o]
+#				var ef = [monsterCarrot, dog, rat]
+#				var e = Util.choose(ef)
+##				var e = enemy_array[o]
 				enemies.add_child(e, true)
 				e.position = map_to_world(p)
 				print(e.name, "ENEMY!")

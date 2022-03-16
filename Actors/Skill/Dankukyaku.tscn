@@ -19,7 +19,7 @@ texture_normal = ExtResource( 1 )
 expand = true
 script = ExtResource( 2 )
 skill_activation_rate = 70
-combo_bonus = 6
+combo_bonus = 7
 skill_power = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]

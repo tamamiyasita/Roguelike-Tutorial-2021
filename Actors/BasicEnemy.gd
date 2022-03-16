@@ -44,6 +44,7 @@ func take_turn(direction) -> void:
 		basic_ai(direction)
 
 func dead() -> void:
+	get_tree().call_group("sfx", "dead")
 	is_turn_complete = true
 	get_tree().call_group("message", "get_massage", "The {0} is dead".format([self.name]))
 #	sprit.hide()
@@ -96,7 +97,7 @@ func collider_check(collider, direction) -> void:
 
 
 func hp_change(value):
-
+	get_tree().call_group("sfx", "damage")
 	yield(anime, "animation_finished" )
 	var player = BaseInfo.Player
 	self.states.hp_change(value)
@@ -140,7 +141,8 @@ func attack(collider, direction):
 #	var damage = (self.states.power-collider.states.defense)
 	
 	collider.hp_change(-damage)
-
+	get_tree().call_group("sfx", "damage")
+	
 	var text = [self.name, collider.name, damage]
 	get_tree().call_group("message", "get_massage", "{0} hit the {1} for {2} damage!".format(text))
 			

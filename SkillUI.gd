@@ -68,7 +68,7 @@ func add_skill_list():
 	var Skill = load(SkillInfo.return_instance(add_skill))
 	var skill = Skill.instance()
 	skill_lists.add_child(skill)
-	
+	get_tree().call_group("sfx", "learn")
 	
 #	var Skill = load(SkillInfo.return_instance(value))
 #	var skill = Skill.instance()

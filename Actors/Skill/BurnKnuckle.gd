@@ -10,7 +10,7 @@ func play(direc, enemy, damage, anm):
 
 func special_skill(amount, enemy):
 	var damage = amount
-	damage += int(rand_range(3,5))
+	damage += int(rand_range(5,8))
 	enemy.anime.play("damage")  
 	enemy.damage_text.show_value(damage)
 	

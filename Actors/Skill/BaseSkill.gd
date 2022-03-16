@@ -51,6 +51,17 @@ func range_atk(direc, enemy, damage, anm, skill_anime):
 	yield(anm, "animation_finished" )
 	special_skill(damage, enemy)
 	return true
+
+func range_fake_atk(direc, enemy, damage, anm, skill_anime):
+	BaseInfo.Player.attck_pos.look_at(enemy.position+Vector2(16, 16))
+	BaseInfo.Player.anime2.play("b")
+	BaseInfo.Player.position2d.range_start(BaseInfo.Player.attck_pos, direc, .9)
+#	get_tree().call_group("shout", "shout_pop", name, anm.current_animation_length)
+	BaseInfo.Player.show_obj()
+
+
+
+
 	
 func hit_chance():
 	randomize()

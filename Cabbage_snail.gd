@@ -1,6 +1,6 @@
 extends 'res://Actors/BasicEnemy.gd'
 
-var level = 3
+var level = 4
 var weight = 30
 var xp = 28
 

@@ -13,7 +13,7 @@ func _ready():
 
 func shout_pop(value, time):
 	show()
-	text = "      {0}!     ".format([value])
+	text = "         {0}!        ".format([value])
 	yield(get_tree().create_timer(time), "timeout")
 	hide()
 	

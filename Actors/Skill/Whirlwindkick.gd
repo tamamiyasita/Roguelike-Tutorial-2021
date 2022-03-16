@@ -13,7 +13,7 @@ func special_skill(amount, enemy):
 	
 	for s in short_range:
 		var damage = amount
-		damage += int(rand_range(1,2))
+		damage += int(rand_range(2,5))
 		s.anime.play("damage")  
 		s.damage_text.show_value(damage)
 		

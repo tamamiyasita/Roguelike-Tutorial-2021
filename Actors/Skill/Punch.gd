@@ -1,6 +1,6 @@
 extends BaseSkill
 
-var skill_anime = "punch"
+var skill_anime = "attack"
 
 
 

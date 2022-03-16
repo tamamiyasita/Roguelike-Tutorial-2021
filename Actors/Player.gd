@@ -11,6 +11,7 @@ onready var attck_pos = $attack_pos
 
 onready var container = $CanvasLayer/InventoryContainer
 onready var canvas = $CanvasLayer
+onready var anime2 = $anime2
 
 signal hp_changed
 signal states_changed
@@ -155,6 +156,7 @@ func get_item():
 		for i in inventory.items.size():
 			if inventory.items[i] == null:
 				inventory.set_item(i, item)
+				get_tree().call_group("sfx", "get_item")
 				get_tree().call_group("message", "get_massage", "You picked up an {0} ".format([item.name]))
 				floor_items[0].position = Vector2.ZERO
 				floor_items[0].queue_free()
@@ -213,6 +215,7 @@ func attack(collider, direction):
 			combo_bonus = base_conbo
 			state = _TURN_END
 			return
+		get_tree().call_group("sfx", "skill")
 
 		yield(anime, "animation_finished" )
 		
@@ -290,6 +293,7 @@ func _on_Player_area_entered(area: Area2D) -> void:
 	else:
 		print("is_stairs")
 		on_stairs = true
+		get_tree().call_group("next_map", "next_map")
 
 
 func _on_Player_area_exited(area: Area2D) -> void:

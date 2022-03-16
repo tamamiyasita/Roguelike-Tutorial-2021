@@ -34,7 +34,7 @@ func a_path_ready(slf = null) -> void:
 		var es = world_to_map(e.position)
 		obs.append(es)
 	var walkable_cell_list = astar_add_walkable_cells(obs)
-	astar_connect_walkable_cells_diagonal(walkable_cell_list)
+	astar_connect_walkable_cells(walkable_cell_list)
 
 func _draw() -> void:
 	if not _point_path:

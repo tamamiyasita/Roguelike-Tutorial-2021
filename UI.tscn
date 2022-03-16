@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://image/bst1_d.png" type="Texture" id=1]
 [ext_resource path="res://image/inventory.png" type="Texture" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://Explanation.gd" type="Script" id=26]
 [ext_resource path="res://image/batu.png" type="Texture" id=27]
 [ext_resource path="res://image/batu_2.png" type="Texture" id=28]
+[ext_resource path="res://image/mplus-1p-medium.ttf" type="DynamicFontData" id=29]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.657957, 0.776471, 0.41612, 0.996078 )
@@ -581,10 +582,11 @@ extra_spacing_char = 2
 font_data = ExtResource( 23 )
 
 [sub_resource type="DynamicFont" id=33]
+size = 17
 outline_color = Color( 0.705882, 0.47451, 0.878431, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 23 )
+font_data = ExtResource( 29 )
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 12 )
@@ -1057,7 +1059,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -244.0
-margin_top = -184.0
+margin_top = -278.0
 margin_right = 382.0
 margin_bottom = 64.0
 texture = ExtResource( 25 )
@@ -1070,9 +1072,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -340.5
-margin_top = -95.0
+margin_top = -145.5
 margin_right = 340.5
-margin_bottom = 95.0
+margin_bottom = 145.5
 custom_colors/font_color = Color( 0.32549, 0.0784314, 0.027451, 1 )
 custom_constants/line_spacing = 13
 custom_fonts/font = SubResource( 33 )
@@ -1081,24 +1083,27 @@ text = "In order to get a karate license, you must challenge the dungeon and
 It's time to show Master Rou the fruits of your training!
 
 <Operation Description>
-Arrow keys to move, mouse click to use items and set skills"
+[WASD] and arrow keys to move, R key to rest one turn
+ mouse click to use items
+click on the skill icon to set the skill"
 align = 1
 
 [node name="CloseButton" type="TextureButton" parent="Explanation"]
 margin_left = 532.0
-margin_top = 206.0
-margin_right = 608.0
-margin_bottom = 270.0
+margin_top = 298.0
+margin_right = 628.0
+margin_bottom = 378.0
 rect_scale = Vector2( 0.5, 0.5 )
 texture_normal = ExtResource( 27 )
 texture_hover = ExtResource( 28 )
 expand = true
 
 [node name="Clicktouse2" type="Label" parent="Explanation/CloseButton"]
+visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -38.0
-margin_top = -16.0
+margin_top = -32.0
 margin_right = 38.0
 size_flags_horizontal = 14
 size_flags_vertical = 14

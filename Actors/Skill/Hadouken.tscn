@@ -18,7 +18,7 @@ rect_pivot_offset = Vector2( 20, 32 )
 texture_normal = ExtResource( 3 )
 expand = true
 script = ExtResource( 1 )
-skill_activation_rate = 80
+skill_activation_rate = 82
 combo_bonus = 6
 skill_power = 1
 
